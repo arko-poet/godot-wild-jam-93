@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://lp1r8cv50vw5"]
 
 [ext_resource type="Texture2D" uid="uid://bwj1eu3htqo55" path="res://OURSTUFF/resources/DevStarAtlas.tres" id="1_dxmke"]
-[ext_resource type="Script" uid="uid://b0e2tlb5ggcst" path="res://OURSTUFF/Night/star.gd" id="1_wmdgi"]
+[ext_resource type="Script" uid="uid://b0e2tlb5ggcst" path="res://OURSTUFF/Night/stagecoachInteractables/star.gd" id="1_wmdgi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wmdgi"]
 radius = 11.18034
 
-[node name="star" type="Node2D" unique_id=152489992 groups=["Collectable"]]
+[node name="star" type="Node2D" unique_id=152489992 groups=["StagecoachInteractable"]]
 script = ExtResource("1_wmdgi")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=948498031]
@@ -14,7 +14,7 @@ position = Vector2(0.99999976, -2)
 scale = Vector2(0.1889764, 0.16546765)
 texture = ExtResource("1_dxmke")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=963860437 groups=["Collectable"]]
+[node name="Area2D" type="Area2D" parent="." unique_id=963860437 groups=["StagecoachInteractable"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=873790017]
 shape = SubResource("CircleShape2D_wmdgi")
