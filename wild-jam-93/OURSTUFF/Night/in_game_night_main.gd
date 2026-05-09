@@ -14,7 +14,7 @@ var starSpawnTimer
 
 func _ready() -> void:
 	starSpawnTimer = find_child("starSpawnTimer")
-	starSpawnTimer.start(.1)
+	starSpawnTimer.start(1)
 	
 	
 	for i in 4: #temporary
@@ -36,10 +36,10 @@ func _process(delta: float) -> void:
 	elif Input.is_action_just_pressed("mouseSecondary"):
 		selectedStageCoach = null
 
-func spawnStar(): #spawn star
-	var temp = star.instantiate()
-	temp.position = Vector2(randf_range(0, 1000), randf_range(0, 1000))
-	add_child(temp)
+#func spawnStar(): #spawn star OLD
+#	var temp = star.instantiate()
+#	temp.position = Vector2(randf_range(0, 1000), randf_range(0, 1000))
+#	add_child(temp)
 
 func selectStageCoach():
 	pass #attempt to select coach at mouse position, if one exists
@@ -61,4 +61,12 @@ func dispatchStageCoach():
 
 func _on_star_spawn_timer_timeout() -> void:
 	pass # Replace with function body.
-	spawnStar()
+	spawnInteractable(GlobalEnums.spawnables.STAR, Vector2(randf_range(0,1000), randf_range(0,1000)))
+
+func spawnInteractable(type: GlobalEnums.spawnables, location: Vector2): #controls spawning of stars, objects, locations etc
+	pass
+	match type:
+		GlobalEnums.spawnables.STAR:
+			var temp =  star.instantiate()
+			temp.global_position = location
+			add_child(temp)
