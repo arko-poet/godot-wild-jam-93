@@ -3,7 +3,7 @@ extends Node2D
  
 var Camp #camp scene
 var stageCoach = preload("res://OURSTUFF/Night/dev_stagecoach.tscn") #stage coach scene
-var star = preload("res://OURSTUFF/Night/star.tscn") #star scene
+var star = preload("res://OURSTUFF/Night/stagecoachInteractables/star.tscn") #star scene
 
 @export var stageCoachSelectionRange := 50.0
 

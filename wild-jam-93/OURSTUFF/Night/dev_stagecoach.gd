@@ -16,6 +16,7 @@ var movementTimer
 var interactTimer
 var area
 var InGameMain
+@onready var sprite = $Sprite2D
 
 func _ready() -> void:
 	movementTimer = find_child("movementTimer")
@@ -44,6 +45,9 @@ func dispatch(destination: Vector2): #imput a new GLOBAL destination, find route
 		lastPosition = global_position
 		route = (destination - global_position)
 		var routeTime = route.length() / speed 
+		area.rotation = route.angle()
+		sprite.rotation = route.angle()
+		
 		movementTimer.start(routeTime)
 		isMoving = true
 

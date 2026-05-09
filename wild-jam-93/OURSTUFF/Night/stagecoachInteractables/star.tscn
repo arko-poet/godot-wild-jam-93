@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://lp1r8cv50vw5"]
 
 [ext_resource type="Texture2D" uid="uid://bwj1eu3htqo55" path="res://OURSTUFF/resources/DevStarAtlas.tres" id="1_dxmke"]
-[ext_resource type="Script" uid="uid://b0e2tlb5ggcst" path="res://OURSTUFF/Night/star.gd" id="1_wmdgi"]
+[ext_resource type="Script" uid="uid://b0e2tlb5ggcst" path="res://OURSTUFF/Night/stagecoachInteractables/star.gd" id="1_wmdgi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wmdgi"]
 radius = 11.18034

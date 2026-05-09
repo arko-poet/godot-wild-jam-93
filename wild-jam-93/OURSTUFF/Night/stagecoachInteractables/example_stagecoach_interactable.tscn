@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dhmxk2hq8ds26"]
+
+[ext_resource type="Script" uid="uid://jqwntyee5uj6" path="res://OURSTUFF/Night/stagecoachInteractables/example_stagecoach_interactable.gd" id="1_opqis"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3ejst"]
+radius = 26.019224
+
+[node name="exampleStagecoachInteractable" type="Node2D" unique_id=1193431411]
+script = ExtResource("1_opqis")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2123487769 groups=["StagecoachInteractable"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1720549724]
+shape = SubResource("CircleShape2D_3ejst")
