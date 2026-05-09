@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://vnx7xhta3nw2"]
+
+[ext_resource type="Script" uid="uid://caqx6r5mqlut2" path="res://OURSTUFF/Night/in_game_night_main.gd" id="1_lihup"]
+[ext_resource type="Texture2D" uid="uid://ctfl5lq83mmic" path="res://icon.png" id="2_wyheo"]
+
+[node name="InGameNightMain" type="Node2D" unique_id=920217611]
+script = ExtResource("1_lihup")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1720813692]
+position = Vector2(515, 443)
+texture = ExtResource("2_wyheo")
