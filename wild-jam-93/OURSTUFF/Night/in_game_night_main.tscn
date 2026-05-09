@@ -9,3 +9,7 @@ script = ExtResource("1_lihup")
 [node name="Icon" type="Sprite2D" parent="." unique_id=1720813692]
 position = Vector2(515, 443)
 texture = ExtResource("2_wyheo")
+
+[node name="starSpawnTimer" type="Timer" parent="." unique_id=335144939]
+
+[connection signal="timeout" from="starSpawnTimer" to="." method="_on_star_spawn_timer_timeout"]
