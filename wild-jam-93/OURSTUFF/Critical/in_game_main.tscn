@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dijrtmnji7fyu"]
+
+[ext_resource type="Script" uid="uid://ce27mtd8mkyqu" path="res://OURSTUFF/Critical/in_game_main.gd" id="1_rnm73"]
+
+[node name="InGameMain" type="Node" unique_id=1042084489]
+script = ExtResource("1_rnm73")
