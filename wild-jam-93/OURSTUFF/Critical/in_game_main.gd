@@ -9,13 +9,12 @@ var money := 0
 var dayScene
 var nightScene = preload("res://OURSTUFF/Night/in_game_night_main.tscn")
 
-
 var hunterInventory = {
 	"exampleHunter": ["hunterStatsArray", "hunterUpgradesArray"]
 } #inventory of all unlocked hunters
 
 var stageCoaches = {
-	"exampleCoach": ["coachStatsArray", "coachUpgradesArray"]
+	"exampleCoach": ["coachStatsArray", "coachUpgradesArray", "stageCoachInventory"]
 } #inventory of stage coaches
 
 func _ready() -> void:
