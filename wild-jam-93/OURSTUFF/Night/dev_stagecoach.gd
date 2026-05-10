@@ -6,6 +6,7 @@ var interactRange
 
 var hunters = [null, null, null, null]
 var upgrades = [] #non stat based upgrades
+var stamina: int ## how much distance can it travel etc. need to decide how it works
 
 var route #vector 2 
 var interactingNode
