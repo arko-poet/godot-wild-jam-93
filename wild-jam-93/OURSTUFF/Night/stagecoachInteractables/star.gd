@@ -32,3 +32,7 @@ func canInteract(stagecoach: Node2D): #check if stagecoach is able to interact
 		return true
 	else:
 		return false
+
+func stopDecayTimer():
+	decayTimer.stop()
+	print(decayTimer.is_stopped())

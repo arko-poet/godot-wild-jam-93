@@ -10,13 +10,10 @@ var day := 0
 var dayScene
 var nightScene = preload("res://OURSTUFF/Night/in_game_night_main.tscn")
 
-var hunterInventory = {
-	#"exampleHunter": ["hunterStatsArray", "hunterUpgradesArray"]
-} #inventory of all unlocked hunters
-
-var stageCoaches = {
-	#"exampleCoach": ["coachStatsArray", "coachUpgradesArray", "stageCoachInventory"]
-} #inventory of stage coaches
+#we shouldnt ever have to delete specific instances form theses arrays
+#if a hunter dies leave them in the array but set is dead to true
+var hunters = []
+var stageCoaches = []
 
 func _ready() -> void:
 	loadNight()
@@ -36,3 +33,9 @@ func loadNight():
 	var temp = nightScene.instantiate()
 	#send data/ call instatiation function
 	add_child(temp)
+
+func getCoaches():
+	return stageCoaches
+
+func getHunters():
+	return hunters

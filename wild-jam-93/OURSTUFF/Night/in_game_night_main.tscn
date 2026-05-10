@@ -12,4 +12,6 @@ texture = ExtResource("2_wyheo")
 
 [node name="starSpawnTimer" type="Timer" parent="." unique_id=335144939]
 
+[node name="roundTimer" type="Timer" parent="." unique_id=390321457]
+
 [connection signal="timeout" from="starSpawnTimer" to="." method="_on_star_spawn_timer_timeout"]

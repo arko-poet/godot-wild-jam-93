@@ -19,6 +19,7 @@ var area
 var InGameMain
 @onready var sprite = $Sprite2D
 
+
 func _ready() -> void:
 	movementTimer = find_child("movementTimer")
 	interactTimer = find_child("interactTimer")
@@ -60,6 +61,7 @@ func _on_movement_timer_timeout() -> void:
 func _on_interact_timer_timeout() -> void:
 	pass # Replace with function body.
 	isInteracting = false
+	
 	interactingNode.stagecoachInteractComplete()
 
 func getStagecoachData():
@@ -68,3 +70,7 @@ func getStagecoachData():
 		"isInteracting": isInteracting
 	}
 	return data
+
+func setStagecoachData(data: Dictionary): #call this on stagecoach scene when it is spawned
+	isMoving = data["isMoving"]
+	isInteracting = data["isInteracting"]

@@ -20,3 +20,6 @@ func stagecoachInteractStart(): # the result of a stagecoach interacting
 
 func stagecoachInteractComplete(): # called when stagecoach finishes interaciton timer
 	pass 
+
+func stopDecayTimer(): #called when a dispatch happens, other wise you can dispactch a coach to a interactable that becomes null
+	pass

@@ -16,6 +16,7 @@ texture = ExtResource("2_b14l5")
 one_shot = true
 
 [node name="interactTimer" type="Timer" parent="." unique_id=2008179736]
+one_shot = true
 
 [node name="stageCoachArea" type="Area2D" parent="." unique_id=2068043219]
 
