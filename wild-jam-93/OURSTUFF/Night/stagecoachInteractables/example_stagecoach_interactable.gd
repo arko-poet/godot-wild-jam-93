@@ -6,11 +6,17 @@ extends Node2D
 @onready var area2d = $Area2D # must be in "StagecoachInteractable" group
 
 func canInteract(stagecoach: Node2D): #check data and return true if all requirments are met 
-	var data = stagecoach.getStagecoachData
+	var data = stagecoach.getStagecoachData()
 	if true:
 		return true
 	else:
 		return false
 
-func stagecoachInteract(): # the result of a stagecoach interacting
+func getInteractableData():
+	return {} # this returns a dictionary of relevent data, like how long it takes to inteact, chance to take damage etc
+
+func stagecoachInteractStart(): # the result of a stagecoach interacting
+	pass 
+
+func stagecoachInteractComplete(): # called when stagecoach finishes interaciton timer
 	pass 
