@@ -5,23 +5,41 @@ signal hunter_slot_selected(hunter_slot: HunterSlot)
 
 const HOVER_HIGHLIGHT_MODULATE = Color(1.2, 1.2, 1.2)
 
-var hunter: Variant: # TODO decide the type
+var hunter: Hunter:
 	set(value):
 		hunter = value
 		if value != null:
-			# TODO set texture here
+			_hunter_texture.texture = hunter.texture
 			_remove_border_highlight()
-			pass
+		else:
+			_hunter_texture.texture = null
 	
-@onready var bounty_hunter_texture: TextureRect = $Texture
+@onready var _hunter_texture: TextureRect = $Texture
+
+
+#func _ready() -> void:
+	#add_border_highlight()
 
 
 func add_border_highlight() -> void:
-	pass
+	var style = get_theme_stylebox(&"panel").duplicate(true)
+
+	style.border_color = Color.LIME_GREEN
+	style.border_width_left   = 1
+	style.border_width_right  = 1
+	style.border_width_top    = 1
+	style.border_width_bottom = 1
+
+	style.corner_radius_top_left = 1
+	style.corner_radius_top_right = 1
+	style.corner_radius_bottom_left = 1
+	style.corner_radius_bottom_right = 1
+
+	add_theme_stylebox_override(&"panel", style)
 	
 	
 func _remove_border_highlight() -> void:
-	pass
+	remove_theme_stylebox_override(&"panel")
 
 
 func _on_mouse_entered() -> void:
@@ -37,5 +55,4 @@ func _on_gui_input(event: InputEvent) -> void:
 		if hunter == null:
 			hunter_slot_selected.emit(self)
 		else:
-			# TODO remove bounty hunter from the slot
-			pass
+			hunter = null
