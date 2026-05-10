@@ -1,11 +1,11 @@
 extends Node2D
 #this script is in charge of everything involved during the night section of the game
  
-var Camp #camp scene
 const stageCoach = preload("res://OURSTUFF/Night/dev_stagecoach.tscn") #stage coach scene
 const star = preload("res://OURSTUFF/Night/stagecoachInteractables/star.tscn") #star scene
 
 @export var selectionRange := 50.0
+var playableArea := Vector2i(1280, 720)
 
 var stageCoaches = [] #array of all stagecoaches
 var interactables = [] #array of stagecoach interactables
@@ -18,13 +18,10 @@ func _ready() -> void:
 	starSpawnTimer = find_child("starSpawnTimer")
 	starSpawnTimer.start(1)
 	
-	
-	for i in 4: #temporary
-		var temp = stageCoach.instantiate()
-		var newPosition = Vector2(randf_range(0, 1000), randf_range(0, 1000))
-		temp.global_position = newPosition
-		stageCoaches.append(temp)
-		add_child(temp)
+	#temporary, inGameMain should call this funciton with its array of stage coaches
+	spawnStagecoaches([StageCoach.new(), StageCoach.new(), StageCoach.new()]) 
+
+
 
 func _process(delta: float) -> void:
 	
@@ -78,6 +75,7 @@ func selectInteractable():
 func dispatchStagecoach(): # called by the ui when player clicks dispatch
 	if (selectedInteractable != null) && (selectedStageCoach != null):
 		if selectedInteractable.canInteract(selectedStageCoach) == true:
+			selectedInteractable.stopDecayTimer()
 			interactables.erase(selectedInteractable)
 			selectedStageCoach.dispatch(selectedInteractable)
 			selectedInteractable = null
@@ -88,7 +86,7 @@ func dispatchStagecoach(): # called by the ui when player clicks dispatch
 
 func _on_star_spawn_timer_timeout() -> void:
 	pass # Replace with function body.
-	spawnInteractable(GlobalEnums.spawnables.STAR, Vector2(randf_range(0,1000), randf_range(0,1000)))
+	spawnInteractable(GlobalEnums.spawnables.STAR, Vector2(randf_range(0,playableArea.x), randf_range(0,playableArea.y)))
 
 func spawnInteractable(type: GlobalEnums.spawnables, location: Vector2): #controls spawning of stars, objects, locations etc
 	pass
@@ -99,6 +97,23 @@ func spawnInteractable(type: GlobalEnums.spawnables, location: Vector2): #contro
 			interactables.append(temp)
 			add_child(temp)
 
+func spawnStagecoaches(coaches: Array): #array of stage coach objects
+	pass
+	var angleIncrement = (PI) / coaches.size()
+	var distanceFromCamp = 100
+	var campPosition = Vector2(float(playableArea.x)/2, playableArea.y)
+	
+	for i in coaches.size():
+		pass #spawn stagecoaches, apply data to stage coach
+		var temp = stageCoach.instantiate()
+		var displacementVector = (Vector2.from_angle((angleIncrement * i) - (PI/2) - angleIncrement) * distanceFromCamp)
+		temp.position = campPosition + displacementVector
+		stageCoaches.append(temp)
+		add_child(temp)
+
 func deleteInteractable(node: Node2D):
 	interactables.erase(node)
 	node.queue_free()
+
+func adjustPlayableArea(newSize: Vector2i): #call this function when game window is resized
+	playableArea = newSize
