@@ -1,4 +1,4 @@
-extends Node2D
+class_name StageCoach extends Node2D
 #dev stage coach
 
 var speed := 50.0

@@ -17,7 +17,7 @@ var selected_hunter ## TODO decide on type
 ## stagecoach: needs to contain data about selected stagecoach
 ## 			   which bounty hunters are in it etc.
 ## bounty: this will be data about bounty depending on the selected star 
-func show_dispatch_panel(stagecoach: Variant, bounty: Variant) -> void:
+func show_dispatch_panel(stagecoach: StageCoach, bounty: Bounty) -> void:
 	# TODO setup stagecoach grid with stagecoach data/object
 	
 	# TODO setup Bounty panel with bounty data/object
