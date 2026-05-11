@@ -20,6 +20,9 @@ func _ready() -> void:
 	
 	#temporary, inGameMain should call this funciton with its array of stage coaches
 	spawnStagecoaches([StageCoach.new(), StageCoach.new(), StageCoach.new()]) 
+	stageCoaches[0].assignHunters([Hunter.new("res://icon.png")])
+	stageCoaches[1].assignHunters([Hunter.new("res://icon.png"), Hunter.new("res://icon.png")])
+	stageCoaches[2].assignHunters([Hunter.new("res://icon.png"), Hunter.new("res://icon.png"), Hunter.new("res://icon.png")])
 
 
 
@@ -39,7 +42,7 @@ func _process(delta: float) -> void:
 		# can also be deselected via ui
 	
 	if Input.is_action_just_pressed("dev1"):
-		dispatchStagecoach()
+		dispatchStagecoach([null])
 
 #func spawnStar(): #spawn star OLD
 #	var temp = star.instantiate()
@@ -72,12 +75,13 @@ func selectInteractable():
 
 
 
-func dispatchStagecoach(): # called by the ui when player clicks dispatch
+func dispatchStagecoach(hunters: Array): # called by the ui when player clicks dispatch
 	if (selectedInteractable != null) && (selectedStageCoach != null):
 		if selectedInteractable.canInteract(selectedStageCoach) == true:
 			selectedInteractable.stopDecayTimer()
 			interactables.erase(selectedInteractable)
 			selectedStageCoach.dispatch(selectedInteractable)
+			#selectedStageCoach.assignHunters(hunters) #un comment when you are integrating ui
 			selectedInteractable = null
 			selectedStageCoach = null
 			print("dispatched")
