@@ -1,9 +1,19 @@
 class_name Hunter extends RefCounted
 
-var face_texture
+signal state_changed
+
+enum State {AVAILABLE, BUSY, UNAVAILABLE}
+
+var face_texture_path: String
 var power: int
 var health: int
+var state := State.AVAILABLE:
+	set(value):
+		state = value
+		state_changed.emit()
 
 
-func _init(face_texture_path: String) -> void:
-	face_texture = load(face_texture_path)
+func _init(p_face_texture_path: String, p_power = 1, p_health = 2) -> void:
+	face_texture_path = p_face_texture_path
+	power = p_power
+	health = p_health

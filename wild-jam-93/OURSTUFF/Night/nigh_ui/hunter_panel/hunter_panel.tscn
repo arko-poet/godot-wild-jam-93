@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cy0lu5c2w761v"]
+
+[ext_resource type="Script" uid="uid://2ovyb2dg3y4s" path="res://OURSTUFF/Night/nigh_ui/hunter_panel/hunter_panel.gd" id="1_i0k52"]
+[ext_resource type="Texture2D" uid="uid://ctfl5lq83mmic" path="res://icon.png" id="2_mrjkh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mrjkh"]
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[node name="HunterPanel" type="Panel" unique_id=1304751859]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_default_cursor_shape = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mrjkh")
+script = ExtResource("1_i0k52")
+
+[node name="Icon" type="TextureRect" parent="." unique_id=473480400]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_mrjkh")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
