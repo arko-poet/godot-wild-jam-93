@@ -3,7 +3,7 @@ class_name HunterSlot extends Panel
 
 ## this notifies dispatch window which slot user selecter for the hunter
 signal hunter_slot_selected(hunter_slot: HunterSlot)
-signal hunter_removed(hunter: Hunter)
+signal hunter_removed(p_hunter: Hunter)
 
 const HOVER_HIGHLIGHT_MODULATE = Color(1.2, 1.2, 1.2)
 
@@ -20,22 +20,16 @@ var hunter: Hunter:
 
 
 #func _ready() -> void:
+	# just a TEST
 	#add_border_highlight()
 
 
 func add_border_highlight() -> void:
-	var style = get_theme_stylebox(&"panel").duplicate(true)
+	var style := get_theme_stylebox(&"panel").duplicate(true)
 
 	style.border_color = Color.LIME_GREEN
-	style.border_width_left   = 1
-	style.border_width_right  = 1
-	style.border_width_top    = 1
-	style.border_width_bottom = 1
-
-	style.corner_radius_top_left = 1
-	style.corner_radius_top_right = 1
-	style.corner_radius_bottom_left = 1
-	style.corner_radius_bottom_right = 1
+	style.set_border_width_all(1)
+	style.set_corner_radius_all(1)
 
 	add_theme_stylebox_override(&"panel", style)
 	

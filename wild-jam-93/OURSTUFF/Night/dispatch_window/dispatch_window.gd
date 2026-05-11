@@ -41,4 +41,4 @@ func _on_hunter_slot_selected(hunter_slot: HunterSlot) -> void:
 	assert(selected_hunter != null)
 	
 	hunter_slot.hunter = selected_hunter
-	stagecoach.hunters.append(selected_hunter)
+	stagecoach.hunters.append(selected_hunter) # TODO use function instead

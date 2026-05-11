@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://b5585qc7rlr0g"]
 
-[ext_resource type="Texture2D" uid="uid://ctfl5lq83mmic" path="res://icon.png" id="1_ixyee"]
-[ext_resource type="Script" uid="uid://dly753478tixw" path="res://OURSTUFF/Night/ui/night_ui.gd" id="1_n6nwx"]
+[ext_resource type="Script" uid="uid://dly753478tixw" path="res://OURSTUFF/Night/nigh_ui/night_ui.gd" id="1_n6nwx"]
 
 [node name="NightUI" type="Control" unique_id=423829076]
 layout_mode = 3
@@ -25,26 +24,6 @@ text = "Bounty Hunters"
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-
-[node name="TestTexture" type="TextureRect" parent="VBoxContainer/HunterGrid" unique_id=6023892]
-layout_mode = 2
-texture = ExtResource("1_ixyee")
-
-[node name="TestTexture2" type="TextureRect" parent="VBoxContainer/HunterGrid" unique_id=1044599538]
-layout_mode = 2
-texture = ExtResource("1_ixyee")
-
-[node name="TestTexture3" type="TextureRect" parent="VBoxContainer/HunterGrid" unique_id=2132376558]
-layout_mode = 2
-texture = ExtResource("1_ixyee")
-
-[node name="TestTexture4" type="TextureRect" parent="VBoxContainer/HunterGrid" unique_id=547228278]
-layout_mode = 2
-texture = ExtResource("1_ixyee")
-
-[node name="TestTexture5" type="TextureRect" parent="VBoxContainer/HunterGrid" unique_id=1746084446]
-layout_mode = 2
-texture = ExtResource("1_ixyee")
 
 [node name="TimeLeftLabel" type="Label" parent="." unique_id=591525346]
 layout_mode = 1
