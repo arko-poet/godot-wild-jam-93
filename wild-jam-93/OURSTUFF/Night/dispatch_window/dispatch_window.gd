@@ -3,6 +3,7 @@ class_name DispatchWindow extends Control
 signal dispatched ## start moving stagecoach once this is emitted
 
 var selected_hunter: Hunter
+var stagecoach: StageCoach
 
 @onready var _bounty_prize: Label = $BountyPanel/Prize
 @onready var _bounty_icon: TextureRect = $BountyPanel/Icon
@@ -10,7 +11,8 @@ var selected_hunter: Hunter
 @onready var _stagecoach_stamina: Label = $StagecoachPanel/VBoxContainer/Stamina
 @onready var hunter_grid: GridContainer = $HunterGrid
 
-func show_dispatch_panel(stagecoach: StageCoach, bounty: Bounty) -> void:
+func show_dispatch_panel(new_stagecoach: StageCoach, bounty: Bounty) -> void:
+	stagecoach = new_stagecoach
 	_stagecoach_power.text = "Power: %s" % stagecoach.hunters.size()
 	_stagecoach_stamina.text = "Stamina: %s" % stagecoach.stamina
 	_bounty_prize.text = "$ %s" % bounty.reward
@@ -39,3 +41,4 @@ func _on_hunter_slot_selected(hunter_slot: HunterSlot) -> void:
 	assert(selected_hunter != null)
 	
 	hunter_slot.hunter = selected_hunter
+	stagecoach.hunters.append(selected_hunter)

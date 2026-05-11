@@ -2,6 +2,7 @@ class_name HunterSlot extends Panel
 
 ## this notifies dispatch window which slot user selecter for the hunter
 signal hunter_slot_selected(hunter_slot: HunterSlot)
+signal hunter_removed(hunter: Hunter)
 
 const HOVER_HIGHLIGHT_MODULATE = Color(1.2, 1.2, 1.2)
 
@@ -55,4 +56,5 @@ func _on_gui_input(event: InputEvent) -> void:
 		if hunter == null:
 			hunter_slot_selected.emit(self)
 		else:
+			hunter_removed.emit(hunter)
 			hunter = null
