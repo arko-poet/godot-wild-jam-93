@@ -4,7 +4,7 @@ class_name StageCoach extends Node2D
 var speed := 50.0
 var interactRange
 
-var hunters = [null, null, null, null]
+var hunters = []
 var upgrades = [] #non stat based upgrades
 var stamina: int ## how much distance can it travel etc. need to decide how it works
 
@@ -15,7 +15,6 @@ var isMoving := false
 var isInteracting := false
 
 var movementTimer
-var interactTimer
 var area
 var InGameMain
 @onready var sprite = $Sprite2D
@@ -23,7 +22,6 @@ var InGameMain
 
 func _ready() -> void:
 	movementTimer = find_child("movementTimer")
-	interactTimer = find_child("interactTimer")
 	area = find_child("stageCoachArea")
 	InGameMain = find_parent("InGameMain")
 
@@ -49,29 +47,36 @@ func dispatch(node: Node2D): #imput a new interacrable node, find route and time
 		movementTimer.start(routeTime)
 		isMoving = true
 
-func _on_movement_timer_timeout() -> void:
-	pass # destination reached
+func interactStart(): #called when stagecoach reaches destinatino
+	pass
 	var data = interactingNode.getInteractableData() 
 	
 	isMoving = false
-	interactingNode.stagecoachInteractStart()
+	interactingNode.stagecoachInteractStart(self)
 	isInteracting = true
 	movementTimer.stop()
-	interactTimer.start(7)
 
-func _on_interact_timer_timeout() -> void:
-	pass # Replace with function body.
+func interactComplete(): #called by interactable when interaciton finished
+	pass
 	isInteracting = false
-	
-	interactingNode.stagecoachInteractComplete()
+
+func _on_movement_timer_timeout() -> void:
+	pass # destination reached
+	interactStart()
+
 
 func getStagecoachData():
 	var data = {
 		"isMoving": isMoving,
-		"isInteracting": isInteracting
+		"isInteracting": isInteracting,
+		"hunters": hunters
 	}
 	return data
 
 func setStagecoachData(data: Dictionary): #call this on stagecoach scene when it is spawned
 	isMoving = data["isMoving"]
 	isInteracting = data["isInteracting"]
+	hunters = "hunters"
+
+func assignHunters(newHunters: Array): #called by the ingamenightmain when dispatched
+	hunters = newHunters

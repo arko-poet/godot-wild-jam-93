@@ -20,5 +20,10 @@ texture = ExtResource("1_dxmke")
 shape = SubResource("CircleShape2D_wmdgi")
 
 [node name="decayTimer" type="Timer" parent="." unique_id=1831540402]
+one_shot = true
+
+[node name="interactTimer" type="Timer" parent="." unique_id=1652750756]
+one_shot = true
 
 [connection signal="timeout" from="decayTimer" to="." method="_on_decay_timer_timeout"]
+[connection signal="timeout" from="interactTimer" to="." method="_on_interact_timer_timeout"]

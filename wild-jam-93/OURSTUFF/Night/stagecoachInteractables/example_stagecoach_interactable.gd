@@ -15,8 +15,8 @@ func canInteract(stagecoach: Node2D): #check data and return true if all requirm
 func getInteractableData():
 	return {} # this returns a dictionary of relevent data, like how long it takes to inteact, chance to take damage etc
 
-func stagecoachInteractStart(): # the result of a stagecoach interacting
-	pass 
+func stagecoachInteractStart(stagecoach: StageCoach): # the result of a stagecoach interacting
+	pass #input stage coach, get array of hunters, this would decide how interaction would go like length of time or fail chance
 
 func stagecoachInteractComplete(): # called when stagecoach finishes interaciton timer
 	pass 

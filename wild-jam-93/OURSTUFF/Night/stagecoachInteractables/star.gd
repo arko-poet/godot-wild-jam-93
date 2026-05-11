@@ -1,8 +1,11 @@
 extends Node2D
 
 var decayTimer
+@onready var interactTimer = $interactTimer
 var inGameMain
 var inGameNightMain
+
+var interactingStagecoach
 
 func _ready() -> void:
 	decayTimer = find_child("decayTimer")
@@ -14,13 +17,18 @@ func _ready() -> void:
 func _on_decay_timer_timeout() -> void:
 	inGameNightMain.deleteInteractable(self)
 
-func stagecoachInteractStart():
+func stagecoachInteractStart(stagecoach: StageCoach):
 	pass
+	interactingStagecoach = stagecoach
+	var hunters = interactingStagecoach.getStagecoachData()["hunters"]
+	interactTimer.start(10 / hunters.size())
+	print(interactTimer.time_left)
 
 func getInteractableData():
 	return {}
 
 func stagecoachInteractComplete():
+	interactingStagecoach.interactComplete()
 	inGameMain.addMoney(1)
 	inGameNightMain.deleteInteractable(self)
 
@@ -36,3 +44,8 @@ func canInteract(stagecoach: Node2D): #check if stagecoach is able to interact
 func stopDecayTimer():
 	decayTimer.stop()
 	print(decayTimer.is_stopped())
+
+
+func _on_interact_timer_timeout() -> void:
+	pass # Replace with function body.
+	stagecoachInteractComplete()
