@@ -1,4 +1,5 @@
 class_name HunterSlot extends Panel
+# TODO This needs to be renamed to StageCoach slot
 
 ## this notifies dispatch window which slot user selecter for the hunter
 signal hunter_slot_selected(hunter_slot: HunterSlot)
