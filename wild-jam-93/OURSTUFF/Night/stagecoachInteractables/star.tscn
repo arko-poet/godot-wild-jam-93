@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bwj1eu3htqo55" path="res://OURSTUFF/resources/DevStarAtlas.tres" id="1_dxmke"]
 [ext_resource type="Script" uid="uid://b0e2tlb5ggcst" path="res://OURSTUFF/Night/stagecoachInteractables/star.gd" id="1_wmdgi"]
+[ext_resource type="PackedScene" uid="uid://hvui1gigm1pt" path="res://OURSTUFF/Night/nigh_ui/star_timer_bar/star_time_bar.tscn" id="3_r24oq"]
 
 [node name="star" type="Node2D" unique_id=152489992 groups=["StagecoachInteractable"]]
 script = ExtResource("1_wmdgi")
@@ -16,6 +17,10 @@ one_shot = true
 
 [node name="interactTimer" type="Timer" parent="." unique_id=1652750756]
 one_shot = true
+
+[node name="TimerBar" parent="." unique_id=702095990 instance=ExtResource("3_r24oq")]
+position = Vector2(1.9073486e-06, 13)
+scale = Vector2(0.99999994, 1)
 
 [connection signal="timeout" from="decayTimer" to="." method="_on_decay_timer_timeout"]
 [connection signal="timeout" from="interactTimer" to="." method="_on_interact_timer_timeout"]

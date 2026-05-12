@@ -6,6 +6,7 @@ var inGameMain
 var inGameNightMain
 
 
+@onready var star_time_bar: Node2D = $TimerBar
 
 
 func _ready() -> void:
@@ -13,10 +14,19 @@ func _ready() -> void:
 	inGameMain = find_parent("InGameMain")
 	inGameNightMain = find_parent("InGameNightMain")
 	
+	# TODO this shouild probably be just integer, ui handles how reward is displayed
 	dispatchDescription = "Reward 1$"
 	dispatchIcon = "res://OURSTUFF/resources/DevStarAtlas.tres" #path of icon
 	
-	decayTimer.start(randf_range(15, 20))
+	var decay_time := randf_range(15, 20)
+	star_time_bar.set_decay_time(decay_time)
+	decayTimer.start(decay_time)
+	
+
+func _process(_delta: float) -> void:
+	# NOTE if this is too expensive computationally we can create extra timer that will update periodically instead
+	star_time_bar.update_time_left(decayTimer.time_left)
+
 
 func _on_decay_timer_timeout() -> void:
 	inGameNightMain.deleteInteractable(self)
