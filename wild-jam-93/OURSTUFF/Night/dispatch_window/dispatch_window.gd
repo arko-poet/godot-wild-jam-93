@@ -1,6 +1,6 @@
 class_name DispatchWindow extends Control
 
-signal dispatched ## start moving stagecoach once this is emitted
+signal dispatched(connectedStagecoach: StageCoach) ## start moving stagecoach once this is emitted
 
 var selected_hunter: Hunter
 var stagecoach: StageCoach
@@ -20,7 +20,7 @@ func show_dispatch_panel(new_stagecoach: StageCoach, new_interactable: Node2D) -
 	_stagecoach_stamina.text = "Stamina: %s" % stagecoach.stamina
 	_interactables_description.text = "%s" % interactableData["dispatchDescription"]
 	_interactables_icon.texture = load(interactableData["dispatchIcon"]) # TODO each boutny different image?
-	
+	print(stagecoach)
 	for i in stagecoach.hunters.size():
 		assert(stagecoach.hunters[i] != null)
 		
@@ -44,4 +44,4 @@ func _on_hunter_slot_selected(hunter_slot: HunterSlot) -> void:
 	assert(selected_hunter != null)
 	
 	hunter_slot.hunter = selected_hunter
-	stagecoach.hunters.append(selected_hunter) # TODO use function instead
+	stagecoach.hunters.append(selected_hunter)

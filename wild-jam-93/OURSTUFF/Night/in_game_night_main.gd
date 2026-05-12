@@ -4,6 +4,8 @@ extends Node2D
 const stageCoach = preload("res://OURSTUFF/Night/dev_stagecoach.tscn") #stage coach scene
 const star = preload("res://OURSTUFF/Night/stagecoachInteractables/star.tscn") #star scene
 const dispatchWindow = preload("res://OURSTUFF/Night/dispatch_window/dispatch_window.tscn")
+const devHunterIcon = "res://OURSTUFF/resources/devBountyHunter.png"
+
 
 @export var selectionRange := 50.0
 var playableArea := Vector2i(1280, 720)
@@ -59,7 +61,9 @@ func selectStageCoach():
 			if selectedInteractable != null:
 				var temp = dispatchWindow.instantiate()
 				dispatchUiLayer.add_child(temp)
+				temp.dispatched.connect(dispatchStagecoach)
 				temp.show_dispatch_panel(selectedStageCoach, selectedInteractable)
+				print(selectedStageCoach.hunters)
 			break
 
 func selectInteractable():
@@ -74,20 +78,21 @@ func selectInteractable():
 				if selectedStageCoach != null:
 					var temp = dispatchWindow.instantiate()
 					dispatchUiLayer.add_child(temp)
+					temp.dispatched.connect(dispatchStagecoach)
 					temp.show_dispatch_panel(selectedStageCoach, selectedInteractable)
+					print(selectedStageCoach.hunters)
 				break
 		else:
 			interactables.remove_at(i)
 
 
 
-func dispatchStagecoach(hunters: Array): # called by the ui when player clicks dispatch
+func dispatchStagecoach(): # called by the ui when player clicks dispatch
 	if (selectedInteractable != null) && (selectedStageCoach != null):
 		if selectedInteractable.canInteract(selectedStageCoach) == true:
 			selectedInteractable.stopDecayTimer()
 			interactables.erase(selectedInteractable)
 			selectedStageCoach.dispatch(selectedInteractable)
-			#selectedStageCoach.assignHunters(hunters) #un comment when you are integrating ui
 			selectedInteractable = null
 			selectedStageCoach = null
 			print("dispatched")
@@ -119,6 +124,7 @@ func spawnStagecoaches(coaches: Array): #array of stage coach objects
 		var displacementVector = (Vector2.from_angle((angleIncrement * i) - (PI/2) - angleIncrement) * distanceFromCamp)
 		temp.position = campPosition + displacementVector
 		stageCoaches.append(temp)
+		temp.setStagecoachData(coaches[i].getStagecoachData())
 		add_child(temp)
 
 func deleteInteractable(node: Node2D):

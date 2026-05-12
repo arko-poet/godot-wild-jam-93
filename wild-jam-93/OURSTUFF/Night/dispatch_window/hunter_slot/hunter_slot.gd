@@ -11,7 +11,7 @@ var hunter: Hunter:
 	set(value):
 		hunter = value
 		if value != null:
-			_hunter_texture.texture = hunter.texture
+			_hunter_texture.texture = load(hunter.face_texture_path)
 			_remove_border_highlight()
 		else:
 			_hunter_texture.texture = null

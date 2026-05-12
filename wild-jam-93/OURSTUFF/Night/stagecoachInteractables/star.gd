@@ -24,7 +24,7 @@ func stagecoachInteractStart(stagecoach: StageCoach):
 	pass
 	interactingStagecoach = stagecoach
 	var hunters = interactingStagecoach.getStagecoachData()["hunters"]
-	interactTimer.start(10 / hunters.size())
+	interactTimer.start(12 / (hunters.size() + 1))
 	print(interactTimer.time_left)
 
 func getInteractableData():

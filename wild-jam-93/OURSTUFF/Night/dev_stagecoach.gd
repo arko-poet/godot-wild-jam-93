@@ -74,7 +74,7 @@ func getStagecoachData():
 func setStagecoachData(data: Dictionary): #call this on stagecoach scene when it is spawned
 	isMoving = data["isMoving"]
 	isInteracting = data["isInteracting"]
-	hunters = "hunters"
+	hunters = data["hunters"]
 
 func assignHunters(newHunters: Array): #called by the ingamenightmain when dispatched
 	hunters = newHunters

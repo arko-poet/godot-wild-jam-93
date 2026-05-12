@@ -18,7 +18,10 @@ var stageCoaches = []
 
 func _ready() -> void:
 	stageCoaches = [StageCoach.new(), StageCoach.new(), StageCoach.new()]
-	for i in 8:
+	stageCoaches[0].hunters = [Hunter.new(devHunterIcon)]
+	stageCoaches[1].hunters = [Hunter.new(devHunterIcon), Hunter.new(devHunterIcon)]
+	stageCoaches[2].hunters = [Hunter.new(devHunterIcon), Hunter.new(devHunterIcon), Hunter.new(devHunterIcon)]
+	for i in 2:
 		hunters.append(Hunter.new(devHunterIcon))
 	loadNight()
 
@@ -37,6 +40,7 @@ func loadNight():
 	var temp = nightScene.instantiate()
 	#send data/ call instatiation function
 	temp.spawnStagecoaches(stageCoaches)
+	print(stageCoaches[2].hunters)
 	add_child(temp)
 
 func getCoaches():
