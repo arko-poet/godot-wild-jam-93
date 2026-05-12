@@ -18,11 +18,13 @@ func show_dispatch_panel(new_stagecoach: StageCoach, new_interactable: Node2D) -
 	
 	stagecoach = new_stagecoach
 	interactable = new_interactable
+	
 	var interactableData = interactable.getInteractableData()
 	_stagecoach_power.text = "Power: %s" % stagecoach.hunters.size()
 	_stagecoach_stamina.text = "Stamina: %s" % stagecoach.stamina
 	_interactables_description.text = "%s" % interactableData["dispatchDescription"]
 	_interactables_icon.texture = load(interactableData["dispatchIcon"]) # TODO each boutny different image?
+	
 	print(stagecoach)
 	for i in stagecoach.hunters.size():
 		assert(stagecoach.hunters[i] != null)
@@ -41,7 +43,8 @@ func _on_dispatch_button_pressed() -> void:
 func _on_hunter_selected(hunter: Hunter) -> void:
 	selected_hunter = hunter
 	for hunter_slot: HunterSlot in hunter_grid.get_children():
-		hunter_slot.add_border_highlight()
+		if hunter_slot.hunter == null:
+			hunter_slot.add_border_highlight()
 
 
 func _on_hunter_slot_selected(hunter_slot: HunterSlot) -> void:
