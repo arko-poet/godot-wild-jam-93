@@ -40,7 +40,7 @@ func _process(delta: float) -> void:
 		pass
 		if selectedStageCoach == null:
 			selectStageCoach()
-		if selectedInteractable == null:
+		elif selectedInteractable == null:
 			selectInteractable()
 		
 	elif Input.is_action_just_pressed("mouseSecondary"):
