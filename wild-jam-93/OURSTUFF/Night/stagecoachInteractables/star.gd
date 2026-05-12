@@ -7,6 +7,9 @@ var inGameNightMain
 
 var interactingStagecoach
 
+var dispatchDescription := "hunt speed =  10/hunters. Reward 1$"
+var dispatchIcon = "res://OURSTUFF/resources/DevStarAtlas.tres" #path of icon
+
 func _ready() -> void:
 	decayTimer = find_child("decayTimer")
 	inGameMain = find_parent("InGameMain")
@@ -25,7 +28,10 @@ func stagecoachInteractStart(stagecoach: StageCoach):
 	print(interactTimer.time_left)
 
 func getInteractableData():
-	return {}
+	return {
+		"dispatchDescription": dispatchDescription,
+		"dispatchIcon": dispatchIcon
+	}
 
 func stagecoachInteractComplete():
 	interactingStagecoach.interactComplete()

@@ -4,19 +4,22 @@ signal dispatched ## start moving stagecoach once this is emitted
 
 var selected_hunter: Hunter
 var stagecoach: StageCoach
+var interactable: Node2D 
 
-@onready var _bounty_prize: Label = $BountyPanel/Prize
-@onready var _bounty_icon: TextureRect = $BountyPanel/Icon
+@onready var _interactables_description: Label = $InteractablesPanel/Description # changed form prize
+@onready var _interactables_icon: TextureRect = $InteractablesPanel/Icon
 @onready var _stagecoach_power: Label = $StagecoachPanel/VBoxContainer/Power
 @onready var _stagecoach_stamina: Label = $StagecoachPanel/VBoxContainer/Stamina
 @onready var hunter_grid: GridContainer = $HunterGrid
 
-func show_dispatch_panel(new_stagecoach: StageCoach, bounty: Bounty) -> void:
+func show_dispatch_panel(new_stagecoach: StageCoach, new_interactable: Node2D) -> void:
 	stagecoach = new_stagecoach
+	interactable = new_interactable
+	var interactableData = interactable.getInteractableData()
 	_stagecoach_power.text = "Power: %s" % stagecoach.hunters.size()
 	_stagecoach_stamina.text = "Stamina: %s" % stagecoach.stamina
-	_bounty_prize.text = "$ %s" % bounty.reward
-	_bounty_icon.texture = load("res://icon.png") # TODO each boutny different image?
+	_interactables_description.text = "%s" % interactableData["dispatchDescription"]
+	_interactables_icon.texture = load(interactableData["dispatchIcon"]) # TODO each boutny different image?
 	
 	for i in stagecoach.hunters.size():
 		assert(stagecoach.hunters[i] != null)

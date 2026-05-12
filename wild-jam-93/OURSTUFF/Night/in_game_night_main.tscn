@@ -14,4 +14,6 @@ texture = ExtResource("2_wyheo")
 
 [node name="roundTimer" type="Timer" parent="." unique_id=390321457]
 
+[node name="dispatchUiLayer" type="CanvasLayer" parent="." unique_id=659596729]
+
 [connection signal="timeout" from="starSpawnTimer" to="." method="_on_star_spawn_timer_timeout"]

@@ -15,14 +15,13 @@ var isMoving := false
 var isInteracting := false
 
 var movementTimer
-var area
+
 var InGameMain
 @onready var sprite = $Sprite2D
 
 
 func _ready() -> void:
 	movementTimer = find_child("movementTimer")
-	area = find_child("stageCoachArea")
 	InGameMain = find_parent("InGameMain")
 
 func _process(delta: float) -> void:
@@ -41,7 +40,6 @@ func dispatch(node: Node2D): #imput a new interacrable node, find route and time
 		lastPosition = global_position
 		route = (destination - global_position)
 		var routeTime = route.length() / speed 
-		area.rotation = route.angle()
 		sprite.rotation = route.angle()
 		
 		movementTimer.start(routeTime)

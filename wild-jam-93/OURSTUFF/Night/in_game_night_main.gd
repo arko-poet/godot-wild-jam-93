@@ -3,6 +3,7 @@ extends Node2D
  
 const stageCoach = preload("res://OURSTUFF/Night/dev_stagecoach.tscn") #stage coach scene
 const star = preload("res://OURSTUFF/Night/stagecoachInteractables/star.tscn") #star scene
+const dispatchWindow = preload("res://OURSTUFF/Night/dispatch_window/dispatch_window.tscn")
 
 @export var selectionRange := 50.0
 var playableArea := Vector2i(1280, 720)
@@ -13,16 +14,13 @@ var selectedStageCoach
 var selectedInteractable
 
 var starSpawnTimer
+@onready var dispatchUiLayer = $dispatchUiLayer
 
 func _ready() -> void:
 	starSpawnTimer = find_child("starSpawnTimer")
 	starSpawnTimer.start(1)
 	
-	#temporary, inGameMain should call this funciton with its array of stage coaches
-	spawnStagecoaches([StageCoach.new(), StageCoach.new(), StageCoach.new()]) 
-	stageCoaches[0].assignHunters([Hunter.new("res://icon.png")])
-	stageCoaches[1].assignHunters([Hunter.new("res://icon.png"), Hunter.new("res://icon.png")])
-	stageCoaches[2].assignHunters([Hunter.new("res://icon.png"), Hunter.new("res://icon.png"), Hunter.new("res://icon.png")])
+
 
 
 
@@ -42,7 +40,7 @@ func _process(delta: float) -> void:
 		# can also be deselected via ui
 	
 	if Input.is_action_just_pressed("dev1"):
-		dispatchStagecoach([null])
+		pass #dispatchStagecoach([null])
 
 #func spawnStar(): #spawn star OLD
 #	var temp = star.instantiate()
@@ -58,6 +56,10 @@ func selectStageCoach():
 			selectedStageCoach = stageCoaches[i]
 			#highlight coach or something
 			print("selected")
+			if selectedInteractable != null:
+				var temp = dispatchWindow.instantiate()
+				dispatchUiLayer.add_child(temp)
+				temp.show_dispatch_panel(selectedStageCoach, selectedInteractable)
 			break
 
 func selectInteractable():
@@ -69,6 +71,10 @@ func selectInteractable():
 				selectedInteractable = interactables[i]
 				#call a function to spawn ui element here
 				print("selected")
+				if selectedStageCoach != null:
+					var temp = dispatchWindow.instantiate()
+					dispatchUiLayer.add_child(temp)
+					temp.show_dispatch_panel(selectedStageCoach, selectedInteractable)
 				break
 		else:
 			interactables.remove_at(i)
