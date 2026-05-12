@@ -1,9 +1,15 @@
 class_name NighUI extends Control
 
+signal hunter_selected(hunter: Hunter)
+
 const HunterPanelScene: PackedScene = preload("res://OURSTUFF/Night/nigh_ui/hunter_panel/hunter_panel.tscn")
 
 var hunters: Dictionary[Hunter, HunterPanel]
-var selected_hunter: Hunter
+var selected_hunter: Hunter:
+	set(value):
+		if value != null and value.state == Hunter.State.AVAILABLE:
+			selected_hunter = value
+			hunter_selected.emit(selected_hunter)
 
 @onready var hunter_grid: GridContainer = $VBoxContainer/HunterGrid
 @onready var time_left_label: Label = $TimeLeftLabel
@@ -15,11 +21,11 @@ var selected_hunter: Hunter
 @onready var speed_4_button: Button = $HBoxContainer/Speed4Button
 
 
-func _ready() -> void:
-	# jsut a TEST to be removed
-	for i in 2:
-		var hunter = Hunter.new("res://icon.png")
-		add_hunter(hunter)
+#func _ready() -> void:
+	## jsut a TEST to be removed
+	#for i in 10:
+		#var hunter = Hunter.new("res://icon.png")
+		#add_hunter(hunter)
 ##
 #
 #var test: float = 0
@@ -77,3 +83,8 @@ func _on_hunter_selected(hunter: Hunter) -> void:
 	for h in hunters:
 		if h != hunter:
 			hunters[h].remove_border()
+
+
+func _on_dispatch_window_hunter_assigned(hunter: Hunter) -> void:
+	hunters[hunter].remove_border()
+	selected_hunter = null

@@ -9,13 +9,26 @@ var day := 0
 
 var dayScene
 var nightScene = preload("res://OURSTUFF/Night/in_game_night_main.tscn")
+const devHunterIcon = "res://OURSTUFF/resources/devBountyHunter.png"
 
 #we shouldnt ever have to delete specific instances form theses arrays
 #if a hunter dies leave them in the array but set is dead to true
-var hunters = []
+var hunters: Array[Hunter]
 var stageCoaches = []
 
 func _ready() -> void:
+	stageCoaches = [StageCoach.new(), StageCoach.new(), StageCoach.new()]
+	
+	for i in 10:
+		var hunter = Hunter.new(devHunterIcon)
+		hunters.append(hunter)
+		#night_ui.add_hunter(hunter)
+
+	#stageCoaches[0].hunters = [Hunter.new(devHunterIcon)]
+	#stageCoaches[1].hunters = [Hunter.new(devHunterIcon), Hunter.new(devHunterIcon)]
+	#stageCoaches[2].hunters = [Hunter.new(devHunterIcon), Hunter.new(devHunterIcon), Hunter.new(devHunterIcon)]
+	#for i in 2:
+		#hunters.append(Hunter.new(devHunterIcon))
 	loadNight()
 
 func addMoney(value: int): # use negative int for subtractinon
@@ -32,7 +45,10 @@ func loadNight():
 	pass
 	var temp = nightScene.instantiate()
 	#send data/ call instatiation function
+	temp.spawnStagecoaches(stageCoaches)
+	print(stageCoaches[2].hunters)
 	add_child(temp)
+	temp.set_hunters(hunters as Array[Hunter])
 
 func getCoaches():
 	return stageCoaches

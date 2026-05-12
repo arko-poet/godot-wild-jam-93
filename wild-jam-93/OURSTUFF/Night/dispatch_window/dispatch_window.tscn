@@ -58,7 +58,7 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "DISPATCH"
 
-[node name="BountyPanel" type="Panel" parent="." unique_id=2037429776]
+[node name="InteractablesPanel" type="Panel" parent="." unique_id=2037429776]
 custom_minimum_size = Vector2(200, 300)
 layout_mode = 1
 anchors_preset = -1
@@ -69,7 +69,7 @@ offset_right = -16.0
 grow_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_yhbs4")
 
-[node name="Title" type="Label" parent="BountyPanel" unique_id=2007709579]
+[node name="Title" type="Label" parent="InteractablesPanel" unique_id=2007709579]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -78,7 +78,7 @@ offset_top = 8.0
 grow_horizontal = 2
 text = "BOUNTY"
 
-[node name="Icon" type="TextureRect" parent="BountyPanel" unique_id=1775465875]
+[node name="Icon" type="TextureRect" parent="InteractablesPanel" unique_id=1775465875]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -89,7 +89,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_otvtg")
 
-[node name="Prize" type="Label" parent="BountyPanel" unique_id=1058534622]
+[node name="Description" type="Label" parent="InteractablesPanel" unique_id=1058534622]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -105,7 +105,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 32
 text = "$ 1000"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="BountyPanel" unique_id=1410431926]
+[node name="VBoxContainer" type="VBoxContainer" parent="InteractablesPanel" unique_id=1410431926]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.0
@@ -116,11 +116,11 @@ offset_right = 88.0
 offset_bottom = -8.0
 grow_vertical = 0
 
-[node name="Time" type="Label" parent="BountyPanel/VBoxContainer" unique_id=98003638]
+[node name="Time" type="Label" parent="InteractablesPanel/VBoxContainer" unique_id=98003638]
 layout_mode = 2
 text = "Time: 03:12"
 
-[node name="Difficulty" type="Label" parent="BountyPanel/VBoxContainer" unique_id=1687430583]
+[node name="Difficulty" type="Label" parent="InteractablesPanel/VBoxContainer" unique_id=1687430583]
 layout_mode = 2
 text = "Difficulty: 5"
 
@@ -185,6 +185,7 @@ layout_mode = 2
 layout_mode = 2
 
 [connection signal="pressed" from="DispatchButton" to="." method="_on_dispatch_button_pressed"]
+[connection signal="hunter_removed" from="HunterGrid/HunterSlot" to="." method="_on_hunter_slot_hunter_removed"]
 [connection signal="hunter_slot_selected" from="HunterGrid/HunterSlot" to="." method="_on_hunter_slot_selected"]
 [connection signal="hunter_slot_selected" from="HunterGrid/HunterSlot2" to="." method="_on_hunter_slot_selected"]
 [connection signal="hunter_slot_selected" from="HunterGrid/HunterSlot3" to="." method="_on_hunter_slot_selected"]

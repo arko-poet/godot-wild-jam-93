@@ -3,9 +3,6 @@
 [ext_resource type="Script" uid="uid://b5dkktcv5hexa" path="res://OURSTUFF/Night/dev_stagecoach.gd" id="1_psqc1"]
 [ext_resource type="Texture2D" uid="uid://dvq0rgaaipkdk" path="res://OURSTUFF/resources/DevStageCoachAtlas.tres" id="2_b14l5"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_psqc1"]
-size = Vector2(195, 121)
-
 [node name="devStagecoach" type="Node2D" unique_id=400670669]
 script = ExtResource("1_psqc1")
 
@@ -14,11 +11,5 @@ texture = ExtResource("2_b14l5")
 
 [node name="movementTimer" type="Timer" parent="." unique_id=1120012615]
 one_shot = true
-
-[node name="stageCoachArea" type="Area2D" parent="." unique_id=2068043219]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="stageCoachArea" unique_id=1558600720]
-position = Vector2(5.5, 3.5)
-shape = SubResource("RectangleShape2D_psqc1")
 
 [connection signal="timeout" from="movementTimer" to="." method="_on_movement_timer_timeout"]

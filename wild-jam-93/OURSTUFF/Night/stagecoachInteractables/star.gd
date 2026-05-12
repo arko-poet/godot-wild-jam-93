@@ -1,4 +1,4 @@
-extends Node2D
+extends StagecoachInteractable 
 
 var decayTimer
 @onready var interactTimer = $interactTimer
@@ -7,10 +7,15 @@ var inGameNightMain
 
 var interactingStagecoach
 
+
+
 func _ready() -> void:
 	decayTimer = find_child("decayTimer")
 	inGameMain = find_parent("InGameMain")
 	inGameNightMain = find_parent("InGameNightMain")
+	
+	dispatchDescription = "Reward 1$"
+	dispatchIcon = "res://OURSTUFF/resources/DevStarAtlas.tres" #path of icon
 	
 	decayTimer.start(randf_range(15, 20))
 
@@ -21,11 +26,14 @@ func stagecoachInteractStart(stagecoach: StageCoach):
 	pass
 	interactingStagecoach = stagecoach
 	var hunters = interactingStagecoach.getStagecoachData()["hunters"]
-	interactTimer.start(10 / hunters.size())
+	interactTimer.start(12 / (hunters.size() + 1))
 	print(interactTimer.time_left)
 
 func getInteractableData():
-	return {}
+	return {
+		"dispatchDescription": dispatchDescription,
+		"dispatchIcon": dispatchIcon
+	}
 
 func stagecoachInteractComplete():
 	interactingStagecoach.interactComplete()

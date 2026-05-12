@@ -3,6 +3,9 @@ extends Node2D
  
 const stageCoach = preload("res://OURSTUFF/Night/dev_stagecoach.tscn") #stage coach scene
 const star = preload("res://OURSTUFF/Night/stagecoachInteractables/star.tscn") #star scene
+#const dispatchWindow = preload("res://OURSTUFF/Night/dispatch_window/dispatch_window.tscn")
+const devHunterIcon = "res://OURSTUFF/resources/devBountyHunter.png"
+
 
 @export var selectionRange := 50.0
 var playableArea := Vector2i(1280, 720)
@@ -14,16 +17,14 @@ var selectedInteractable
 
 var starSpawnTimer
 
+@onready var dispatchUiLayer = $dispatchUiLayer
+@onready var night_ui: NighUI = $dispatchUiLayer/NightUI
+@onready var dispatch_window: DispatchWindow = $dispatchUiLayer/DispatchWindow
+
+
 func _ready() -> void:
 	starSpawnTimer = find_child("starSpawnTimer")
 	starSpawnTimer.start(1)
-	
-	#temporary, inGameMain should call this funciton with its array of stage coaches
-	spawnStagecoaches([StageCoach.new(), StageCoach.new(), StageCoach.new()]) 
-	stageCoaches[0].assignHunters([Hunter.new("res://icon.png")])
-	stageCoaches[1].assignHunters([Hunter.new("res://icon.png"), Hunter.new("res://icon.png")])
-	stageCoaches[2].assignHunters([Hunter.new("res://icon.png"), Hunter.new("res://icon.png"), Hunter.new("res://icon.png")])
-
 
 
 func _process(delta: float) -> void:
@@ -42,12 +43,17 @@ func _process(delta: float) -> void:
 		# can also be deselected via ui
 	
 	if Input.is_action_just_pressed("dev1"):
-		dispatchStagecoach([null])
+		pass #dispatchStagecoach([null])
 
 #func spawnStar(): #spawn star OLD
 #	var temp = star.instantiate()
 #	temp.position = Vector2(randf_range(0, 1000), randf_range(0, 1000))
 #	add_child(temp)
+
+func set_hunters(hunters: Array[Hunter]) -> void:
+	for hunter in hunters:
+		night_ui.add_hunter(hunter)
+
 
 func selectStageCoach():
 	pass #attempt to select coach at mouse position, if one exists
@@ -58,6 +64,9 @@ func selectStageCoach():
 			selectedStageCoach = stageCoaches[i]
 			#highlight coach or something
 			print("selected")
+			if selectedInteractable != null:
+				dispatch_window.show_dispatch_panel(selectedStageCoach, selectedInteractable)
+				print(selectedStageCoach.hunters)
 			break
 
 func selectInteractable():
@@ -69,19 +78,22 @@ func selectInteractable():
 				selectedInteractable = interactables[i]
 				#call a function to spawn ui element here
 				print("selected")
+				if selectedStageCoach != null:
+					
+					dispatch_window.show_dispatch_panel(selectedStageCoach, selectedInteractable)
+					print(selectedStageCoach.hunters)
 				break
 		else:
 			interactables.remove_at(i)
 
 
 
-func dispatchStagecoach(hunters: Array): # called by the ui when player clicks dispatch
+func dispatchStagecoach(stagecoach: StageCoach): # called by the ui when player clicks dispatch
 	if (selectedInteractable != null) && (selectedStageCoach != null):
 		if selectedInteractable.canInteract(selectedStageCoach) == true:
 			selectedInteractable.stopDecayTimer()
 			interactables.erase(selectedInteractable)
 			selectedStageCoach.dispatch(selectedInteractable)
-			#selectedStageCoach.assignHunters(hunters) #un comment when you are integrating ui
 			selectedInteractable = null
 			selectedStageCoach = null
 			print("dispatched")
@@ -113,6 +125,7 @@ func spawnStagecoaches(coaches: Array): #array of stage coach objects
 		var displacementVector = (Vector2.from_angle((angleIncrement * i) - (PI/2) - angleIncrement) * distanceFromCamp)
 		temp.position = campPosition + displacementVector
 		stageCoaches.append(temp)
+		temp.setStagecoachData(coaches[i].getStagecoachData())
 		add_child(temp)
 
 func deleteInteractable(node: Node2D):
