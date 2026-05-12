@@ -15,19 +15,25 @@ var interactables = [] #array of stagecoach interactables
 var selectedStageCoach
 var selectedInteractable
 
-var starSpawnTimer
+var inGameMain
 
 @onready var dispatchUiLayer = $dispatchUiLayer
 @onready var night_ui: NighUI = $dispatchUiLayer/NightUI
 @onready var dispatch_window: DispatchWindow = $dispatchUiLayer/DispatchWindow
+@onready var roundTimer = $roundTimer
+@onready var starSpawnTimer = $starSpawnTimer
 
 
 func _ready() -> void:
-	starSpawnTimer = find_child("starSpawnTimer")
+	inGameMain = find_parent("InGameMain")
 	starSpawnTimer.start(1)
+	roundTimer.start(60.0 * 5.0)
 
 
 func _process(delta: float) -> void:
+	
+	#update ui time
+	night_ui.update_time_left(int(roundTimer.time_left + 1.0))
 	
 	#input detection
 	if Input.is_action_just_pressed("mousePrimary"):
@@ -134,3 +140,8 @@ func deleteInteractable(node: Node2D):
 
 func adjustPlayableArea(newSize: Vector2i): #call this function when game window is resized
 	playableArea = newSize
+
+
+func _on_round_timer_timeout() -> void:
+	pass # Replace with function body.
+	inGameMain.loadDay()

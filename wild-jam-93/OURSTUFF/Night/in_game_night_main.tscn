@@ -33,6 +33,7 @@ offset_right = 320.0
 offset_bottom = 180.0
 
 [connection signal="timeout" from="starSpawnTimer" to="." method="_on_star_spawn_timer_timeout"]
+[connection signal="timeout" from="roundTimer" to="." method="_on_round_timer_timeout"]
 [connection signal="hunter_selected" from="dispatchUiLayer/NightUI" to="dispatchUiLayer/DispatchWindow" method="_on_hunter_selected"]
 [connection signal="dispatched" from="dispatchUiLayer/DispatchWindow" to="." method="dispatchStagecoach"]
 [connection signal="hunter_assigned" from="dispatchUiLayer/DispatchWindow" to="dispatchUiLayer/NightUI" method="_on_dispatch_window_hunter_assigned"]
