@@ -25,8 +25,6 @@ var starSpawnTimer
 func _ready() -> void:
 	starSpawnTimer = find_child("starSpawnTimer")
 	starSpawnTimer.start(1)
-	
-	find_parent("main")
 
 
 func _process(delta: float) -> void:

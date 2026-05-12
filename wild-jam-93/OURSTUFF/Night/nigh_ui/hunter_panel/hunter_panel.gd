@@ -42,5 +42,5 @@ func _on_gui_input(event: InputEvent) -> void:
 
 
 func _hunter_state_changed() -> void:
-	var style := get_theme_stylebox(&"panel")
-	style.bg_color = STATE_COLORS[hunter.state]
+	print("hunter state changed")
+	get_theme_stylebox(&"panel").bg_color = STATE_COLORS[hunter.state]
