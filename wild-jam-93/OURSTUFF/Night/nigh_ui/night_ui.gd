@@ -7,8 +7,9 @@ const HunterPanelScene: PackedScene = preload("res://OURSTUFF/Night/nigh_ui/hunt
 var hunters: Dictionary[Hunter, HunterPanel]
 var selected_hunter: Hunter:
 	set(value):
-		selected_hunter = value
-		hunter_selected.emit(selected_hunter)
+		if value.state == Hunter.State.AVAILABLE:
+			selected_hunter = value
+			hunter_selected.emit(selected_hunter)
 
 @onready var hunter_grid: GridContainer = $VBoxContainer/HunterGrid
 @onready var time_left_label: Label = $TimeLeftLabel

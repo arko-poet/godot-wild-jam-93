@@ -26,12 +26,7 @@ func _ready() -> void:
 	starSpawnTimer = find_child("starSpawnTimer")
 	starSpawnTimer.start(1)
 	
-	# temporary TEST, hunters will need to exist globally
-	for i in 10:
-		var hunter = Hunter.new(devHunterIcon)
-		night_ui.add_hunter(hunter)
-
-
+	find_parent("main")
 
 
 func _process(delta: float) -> void:
@@ -57,6 +52,11 @@ func _process(delta: float) -> void:
 #	temp.position = Vector2(randf_range(0, 1000), randf_range(0, 1000))
 #	add_child(temp)
 
+func set_hunters(hunters: Array[Hunter]) -> void:
+	for hunter in hunters:
+		night_ui.add_hunter(hunter)
+
+
 func selectStageCoach():
 	pass #attempt to select coach at mouse position, if one exists
 	#right now you can select a moving coach and divert it, but that cna change
@@ -81,6 +81,7 @@ func selectInteractable():
 				#call a function to spawn ui element here
 				print("selected")
 				if selectedStageCoach != null:
+					
 					dispatch_window.show_dispatch_panel(selectedStageCoach, selectedInteractable)
 					print(selectedStageCoach.hunters)
 				break

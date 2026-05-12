@@ -13,6 +13,9 @@ var interactable: Node2D
 @onready var hunter_grid: GridContainer = $HunterGrid
 
 func show_dispatch_panel(new_stagecoach: StageCoach, new_interactable: Node2D) -> void:
+	for hunter_slot: HunterSlot in hunter_grid.get_children():
+		hunter_slot.hunter = null
+	
 	stagecoach = new_stagecoach
 	interactable = new_interactable
 	var interactableData = interactable.getInteractableData()
