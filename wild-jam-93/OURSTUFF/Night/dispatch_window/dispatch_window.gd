@@ -31,7 +31,7 @@ func show_dispatch_panel(new_stagecoach: StageCoach, new_interactable: Node2D) -
 	_interactables_description.text = "%s" % interactableData["dispatchDescription"]
 	_interactables_icon.texture = load(interactableData["dispatchIcon"]) # TODO each boutny different image?
 	
-	print(stagecoach)
+	print(stagecoach.isInteracting)
 	for i in stagecoach.hunters.size():
 		assert(stagecoach.hunters[i] != null)
 		
