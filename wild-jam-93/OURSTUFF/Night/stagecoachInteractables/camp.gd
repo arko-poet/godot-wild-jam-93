@@ -18,11 +18,11 @@ func stagecoachInteractStart(stagecoach: StageCoach): # the result of a stagecoa
 	
 func stagecoachInteractComplete(): # called when stagecoach finishes interaciton timer
 	pass 
-	interactingStagecoach.stamina = 1
+	interactingStagecoach.stamina = 15
 	interactingStagecoach.interactComplete()
 	
 
-func canInteract(stagecoach: Node2D): #check data and return true if all requirments are met 
+func canInteract(stagecoach: StageCoach): #check data and return true if all requirments are met 
 	var data = stagecoach.getStagecoachData()
 	if true:
 		return true

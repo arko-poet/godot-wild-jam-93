@@ -68,7 +68,7 @@ func selectStageCoach():
 	#right now you can select a moving coach and divert it, but that cna change
 	for i in stageCoaches.size():
 		var distance = (get_global_mouse_position() - stageCoaches[i].global_position).length()
-		if distance <= selectionRange:
+		if (distance <= selectionRange) && (stageCoaches[i].isInteracting == false):
 			selectedStageCoach = stageCoaches[i]
 			#highlight coach or something
 			if selectedInteractable != null:
