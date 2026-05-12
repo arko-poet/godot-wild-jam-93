@@ -1,4 +1,4 @@
-extends Node2D
+extends StagecoachInteractable
 
 var decayTimer
 @onready var interactTimer = $interactTimer
@@ -7,13 +7,15 @@ var inGameNightMain
 
 var interactingStagecoach
 
-var dispatchDescription := "hunt speed =  10/hunters. Reward 1$"
-var dispatchIcon = "res://OURSTUFF/resources/DevStarAtlas.tres" #path of icon
+
 
 func _ready() -> void:
 	decayTimer = find_child("decayTimer")
 	inGameMain = find_parent("InGameMain")
 	inGameNightMain = find_parent("InGameNightMain")
+	
+	dispatchDescription = "Reward 1$"
+	dispatchIcon = "res://OURSTUFF/resources/DevStarAtlas.tres" #path of icon
 	
 	decayTimer.start(randf_range(15, 20))
 

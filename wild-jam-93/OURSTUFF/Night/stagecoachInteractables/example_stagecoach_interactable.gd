@@ -1,4 +1,4 @@
-extends Node2D
+class_name StagecoachInteractable extends Node2D
 
 #example stagecoach interactable
 #these would spawn on the map during night gameplay
