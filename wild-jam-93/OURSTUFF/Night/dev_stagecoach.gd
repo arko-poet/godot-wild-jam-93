@@ -6,7 +6,7 @@ var interactRange
 
 var hunters = []
 var upgrades = [] #non stat based upgrades
-var stamina: int ## how much distance can it travel etc. need to decide how it works
+var stamina := 15.0 # how many seconds of travel the stagecoach has left
 
 var route #vector 2 
 var interactingNode
@@ -31,6 +31,8 @@ func _process(delta: float) -> void:
 		var timerPercentDone = (movementTimer.wait_time - movementTimer.time_left) / movementTimer.wait_time
 		
 		position = lastPosition + (timerPercentDone * route)
+		stamina -= delta
+		print(stamina)
 
 
 func dispatch(node: Node2D): #imput a new interacrable node, find route and time of route, start moving
@@ -69,14 +71,16 @@ func getStagecoachData():
 	var data = {
 		"isMoving": isMoving,
 		"isInteracting": isInteracting,
-		"hunters": hunters
-	}
+		"hunters": hunters,
+		"stamina": stamina
+		}
 	return data
 
 func setStagecoachData(data: Dictionary): #call this on stagecoach scene when it is spawned
 	isMoving = data["isMoving"]
 	isInteracting = data["isInteracting"]
 	hunters = data["hunters"]
+	stamina = data["stamina"]
 
 func assignHunters(newHunters: Array): #called by the ingamenightmain when dispatched
 	hunters = newHunters

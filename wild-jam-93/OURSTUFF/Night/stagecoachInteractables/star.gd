@@ -39,11 +39,12 @@ func stagecoachInteractComplete():
 	inGameMain.addMoney(1)
 	inGameNightMain.deleteInteractable(self)
 
-func canInteract(stagecoach: Node2D): #check if stagecoach is able to interact
+func canInteract(stagecoach: StageCoach): #check if stagecoach is able to interact
 	pass
 	var data = stagecoach.getStagecoachData()
 	print(data)
-	if data["isInteracting"] == false:
+	var temp = (global_position - stagecoach.global_position).length() / stagecoach.speed
+	if (data["isInteracting"] == false) && data["stamina"] > temp:
 		return true
 	else:
 		return false
