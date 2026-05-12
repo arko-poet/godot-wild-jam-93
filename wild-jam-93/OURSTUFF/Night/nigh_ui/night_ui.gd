@@ -7,7 +7,7 @@ const HunterPanelScene: PackedScene = preload("res://OURSTUFF/Night/nigh_ui/hunt
 var hunters: Dictionary[Hunter, HunterPanel]
 var selected_hunter: Hunter:
 	set(value):
-		if value.state == Hunter.State.AVAILABLE:
+		if value != null and value.state == Hunter.State.AVAILABLE:
 			selected_hunter = value
 			hunter_selected.emit(selected_hunter)
 
@@ -83,3 +83,8 @@ func _on_hunter_selected(hunter: Hunter) -> void:
 	for h in hunters:
 		if h != hunter:
 			hunters[h].remove_border()
+
+
+func _on_dispatch_window_hunter_assigned(hunter: Hunter) -> void:
+	hunters[hunter].remove_border()
+	selected_hunter = null

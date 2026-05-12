@@ -1,6 +1,7 @@
 class_name DispatchWindow extends Control
 
 signal dispatched(connectedStagecoach: StageCoach) ## start moving stagecoach once this is emitted
+signal hunter_assigned(hunter: Hunter)
 
 var selected_hunter: Hunter
 var stagecoach: StageCoach
@@ -51,3 +52,10 @@ func _on_hunter_slot_selected(hunter_slot: HunterSlot) -> void:
 	if selected_hunter != null:
 		hunter_slot.hunter = selected_hunter
 		stagecoach.hunters.append(selected_hunter)
+		hunter_assigned.emit(selected_hunter)
+		selected_hunter = null
+
+
+func _on_hunter_slot_hunter_removed(hunter: Hunter) -> void:
+	hunter.state = Hunter.State.AVAILABLE
+	stagecoach.hunters.erase(hunter)
