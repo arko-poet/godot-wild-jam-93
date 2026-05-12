@@ -1,4 +1,4 @@
-extends StagecoachInteractable
+extends StagecoachInteractable 
 
 var decayTimer
 @onready var interactTimer = $interactTimer

@@ -31,17 +31,17 @@ func show_dispatch_panel(new_stagecoach: StageCoach, new_interactable: Node2D) -
 
 func _on_dispatch_button_pressed() -> void:
 	hide()
-	dispatched.emit()
+	dispatched.emit(stagecoach)
 
 
 ## needs to get a signal which notifies that user has selected a bounty hunter
-func _on_hunter_selected() -> void:
+func _on_hunter_selected(hunter: Hunter) -> void:
+	selected_hunter = hunter
 	for hunter_slot: HunterSlot in hunter_grid.get_children():
 		hunter_slot.add_border_highlight()
 
 
 func _on_hunter_slot_selected(hunter_slot: HunterSlot) -> void:
-	assert(selected_hunter != null)
-	
-	hunter_slot.hunter = selected_hunter
-	stagecoach.hunters.append(selected_hunter)
+	if selected_hunter != null:
+		hunter_slot.hunter = selected_hunter
+		stagecoach.hunters.append(selected_hunter)

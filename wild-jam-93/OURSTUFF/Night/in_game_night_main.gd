@@ -3,7 +3,7 @@ extends Node2D
  
 const stageCoach = preload("res://OURSTUFF/Night/dev_stagecoach.tscn") #stage coach scene
 const star = preload("res://OURSTUFF/Night/stagecoachInteractables/star.tscn") #star scene
-const dispatchWindow = preload("res://OURSTUFF/Night/dispatch_window/dispatch_window.tscn")
+#const dispatchWindow = preload("res://OURSTUFF/Night/dispatch_window/dispatch_window.tscn")
 const devHunterIcon = "res://OURSTUFF/resources/devBountyHunter.png"
 
 
@@ -16,12 +16,20 @@ var selectedStageCoach
 var selectedInteractable
 
 var starSpawnTimer
+
 @onready var dispatchUiLayer = $dispatchUiLayer
+@onready var night_ui: NighUI = $dispatchUiLayer/NightUI
+@onready var dispatch_window: DispatchWindow = $dispatchUiLayer/DispatchWindow
+
 
 func _ready() -> void:
 	starSpawnTimer = find_child("starSpawnTimer")
 	starSpawnTimer.start(1)
 	
+	# temporary TEST, hunters will need to exist globally
+	for i in 10:
+		var hunter = Hunter.new(devHunterIcon)
+		night_ui.add_hunter(hunter)
 
 
 
@@ -59,10 +67,7 @@ func selectStageCoach():
 			#highlight coach or something
 			print("selected")
 			if selectedInteractable != null:
-				var temp = dispatchWindow.instantiate()
-				dispatchUiLayer.add_child(temp)
-				temp.dispatched.connect(dispatchStagecoach)
-				temp.show_dispatch_panel(selectedStageCoach, selectedInteractable)
+				dispatch_window.show_dispatch_panel(selectedStageCoach, selectedInteractable)
 				print(selectedStageCoach.hunters)
 			break
 
@@ -76,10 +81,7 @@ func selectInteractable():
 				#call a function to spawn ui element here
 				print("selected")
 				if selectedStageCoach != null:
-					var temp = dispatchWindow.instantiate()
-					dispatchUiLayer.add_child(temp)
-					temp.dispatched.connect(dispatchStagecoach)
-					temp.show_dispatch_panel(selectedStageCoach, selectedInteractable)
+					dispatch_window.show_dispatch_panel(selectedStageCoach, selectedInteractable)
 					print(selectedStageCoach.hunters)
 				break
 		else:
@@ -87,7 +89,7 @@ func selectInteractable():
 
 
 
-func dispatchStagecoach(): # called by the ui when player clicks dispatch
+func dispatchStagecoach(stagecoach: StageCoach): # called by the ui when player clicks dispatch
 	if (selectedInteractable != null) && (selectedStageCoach != null):
 		if selectedInteractable.canInteract(selectedStageCoach) == true:
 			selectedInteractable.stopDecayTimer()

@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://caqx6r5mqlut2" path="res://OURSTUFF/Night/in_game_night_main.gd" id="1_lihup"]
 [ext_resource type="Texture2D" uid="uid://ctfl5lq83mmic" path="res://icon.png" id="2_wyheo"]
+[ext_resource type="PackedScene" uid="uid://b5585qc7rlr0g" path="res://OURSTUFF/Night/nigh_ui/night_ui.tscn" id="3_wyheo"]
+[ext_resource type="PackedScene" uid="uid://dth0h0htj80ro" path="res://OURSTUFF/Night/dispatch_window/dispatch_window.tscn" id="4_af67n"]
 
 [node name="InGameNightMain" type="Node2D" unique_id=920217611]
 script = ExtResource("1_lihup")
@@ -16,4 +18,20 @@ texture = ExtResource("2_wyheo")
 
 [node name="dispatchUiLayer" type="CanvasLayer" parent="." unique_id=659596729]
 
+[node name="NightUI" parent="dispatchUiLayer" unique_id=423829076 instance=ExtResource("3_wyheo")]
+
+[node name="DispatchWindow" parent="dispatchUiLayer" unique_id=1899161779 instance=ExtResource("4_af67n")]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -180.0
+offset_right = 320.0
+offset_bottom = 180.0
+
 [connection signal="timeout" from="starSpawnTimer" to="." method="_on_star_spawn_timer_timeout"]
+[connection signal="hunter_selected" from="dispatchUiLayer/NightUI" to="dispatchUiLayer/DispatchWindow" method="_on_hunter_selected"]
+[connection signal="dispatched" from="dispatchUiLayer/DispatchWindow" to="." method="dispatchStagecoach"]
