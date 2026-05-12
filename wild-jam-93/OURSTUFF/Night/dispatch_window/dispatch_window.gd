@@ -3,7 +3,12 @@ class_name DispatchWindow extends Control
 signal dispatched(connectedStagecoach: StageCoach) ## start moving stagecoach once this is emitted
 signal hunter_assigned(hunter: Hunter)
 
-var selected_hunter: Hunter
+var selected_hunter: Hunter:
+	set(value):
+		selected_hunter = value
+		if value == null:
+			for hunter_slot: HunterSlot in hunter_grid.get_children():
+				hunter_slot.remove_border_highlight()
 var stagecoach: StageCoach
 var interactable: Node2D 
 
