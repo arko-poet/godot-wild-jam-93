@@ -37,8 +37,9 @@ func _add_border() -> void:
 
 func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
-		hunter_selected.emit(hunter)
-		_add_border()
+		if hunter.state == Hunter.State.AVAILABLE:
+			hunter_selected.emit(hunter)
+			_add_border()
 
 
 func _hunter_state_changed() -> void:

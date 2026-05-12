@@ -12,7 +12,7 @@ var hunter: Hunter:
 		hunter = value
 		if value != null:
 			_hunter_texture.texture = load(hunter.face_texture_path)
-			_remove_border_highlight()
+			remove_border_highlight()
 			hunter.state = Hunter.State.BUSY
 		else:
 			_hunter_texture.texture = null
@@ -35,7 +35,7 @@ func add_border_highlight() -> void:
 	add_theme_stylebox_override(&"panel", style)
 	
 	
-func _remove_border_highlight() -> void:
+func remove_border_highlight() -> void:
 	remove_theme_stylebox_override(&"panel")
 
 
