@@ -3,6 +3,7 @@ extends Node2D
  
 const stageCoach = preload("res://OURSTUFF/Night/dev_stagecoach.tscn") #stage coach scene
 const star = preload("res://OURSTUFF/Night/stagecoachInteractables/star.tscn") #star scene
+const camp = preload("res://OURSTUFF/Night/stagecoachInteractables/camp.tscn")
 #const dispatchWindow = preload("res://OURSTUFF/Night/dispatch_window/dispatch_window.tscn")
 const devHunterIcon = "res://OURSTUFF/resources/devBountyHunter.png"
 
@@ -28,6 +29,7 @@ func _ready() -> void:
 	inGameMain = find_parent("InGameMain")
 	starSpawnTimer.start(1)
 	roundTimer.start(60.0 * 5.0)
+	spawnInteractable("camp", Vector2(0,0))
 
 
 func _process(delta: float) -> void:
@@ -69,10 +71,8 @@ func selectStageCoach():
 		if distance <= selectionRange:
 			selectedStageCoach = stageCoaches[i]
 			#highlight coach or something
-			print("selected")
 			if selectedInteractable != null:
 				dispatch_window.show_dispatch_panel(selectedStageCoach, selectedInteractable)
-				print(selectedStageCoach.hunters)
 			break
 
 func selectInteractable():
@@ -83,11 +83,9 @@ func selectInteractable():
 			if distance <= selectionRange:
 				selectedInteractable = interactables[i]
 				#call a function to spawn ui element here
-				print("selected")
 				if selectedStageCoach != null:
 					
 					dispatch_window.show_dispatch_panel(selectedStageCoach, selectedInteractable)
-					print(selectedStageCoach.hunters)
 				break
 		else:
 			interactables.remove_at(i)
@@ -108,14 +106,19 @@ func dispatchStagecoach(stagecoach: StageCoach): # called by the ui when player 
 
 func _on_star_spawn_timer_timeout() -> void:
 	pass # Replace with function body.
-	spawnInteractable(GlobalEnums.spawnables.STAR, Vector2(randf_range(0,playableArea.x), randf_range(0,playableArea.y)))
+	spawnInteractable("star", Vector2(randf_range(0,playableArea.x), randf_range(0,playableArea.y)))
 
-func spawnInteractable(type: GlobalEnums.spawnables, location: Vector2): #controls spawning of stars, objects, locations etc
+func spawnInteractable(type: String, location: Vector2): #controls spawning of stars, objects, locations etc
 	pass
 	match type:
-		GlobalEnums.spawnables.STAR:
+		"star":
 			var temp =  star.instantiate()
 			temp.global_position = location
+			interactables.append(temp)
+			add_child(temp)
+		"camp":
+			var temp = camp.instantiate()
+			temp.position = Vector2i(playableArea.x / 2, playableArea.y - 25)
 			interactables.append(temp)
 			add_child(temp)
 

@@ -5,7 +5,6 @@ var decayTimer
 var inGameMain
 var inGameNightMain
 
-var interactingStagecoach
 
 @onready var star_time_bar: Node2D = $TimerBar
 

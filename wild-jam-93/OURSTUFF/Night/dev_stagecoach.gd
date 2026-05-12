@@ -13,6 +13,7 @@ var interactingNode
 var lastPosition #position at time of dispatching
 var isMoving := false
 var isInteracting := false
+var isAtCamp := true
 
 var movementTimer
 
@@ -52,11 +53,12 @@ func interactStart(): #called when stagecoach reaches destinatino
 	isMoving = false
 	interactingNode.stagecoachInteractStart(self)
 	isInteracting = true
-	movementTimer.stop()
+	#movementTimer.stop()
 
 func interactComplete(): #called by interactable when interaciton finished
 	pass
 	isInteracting = false
+	print("ASS")
 
 func _on_movement_timer_timeout() -> void:
 	pass # destination reached
