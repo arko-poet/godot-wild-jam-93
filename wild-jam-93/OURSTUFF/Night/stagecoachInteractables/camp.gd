@@ -1,0 +1,35 @@
+extends StagecoachInteractable
+
+@onready var campTexture = "res://OURSTUFF/resources/DevCampAtlas.tres"
+
+@onready var interactTimer = $interactTimer
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+	dispatchDescription = "Refill Stamina"
+	dispatchIcon = campTexture
+
+func stagecoachInteractStart(stagecoach: StageCoach): # the result of a stagecoach interacting
+	pass #input stage coach, get array of hunters, this would decide how interaction would go like length of time or fail chance
+	interactingStagecoach = stagecoach
+	interactTimer.start(0.1)
+	print(stagecoach.isInteracting)
+	
+func stagecoachInteractComplete(): # called when stagecoach finishes interaciton timer
+	pass 
+	interactingStagecoach.stamina = 1
+	interactingStagecoach.interactComplete()
+	
+
+func canInteract(stagecoach: Node2D): #check data and return true if all requirments are met 
+	var data = stagecoach.getStagecoachData()
+	if true:
+		return true
+	else:
+		return false
+
+
+func _on_interact_timer_timeout() -> void:
+	pass # Replace with function body.
+	stagecoachInteractComplete()

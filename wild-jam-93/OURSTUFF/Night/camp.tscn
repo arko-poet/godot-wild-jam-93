@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://br4tmaaj48on7"]
-
-[node name="camp" type="Node2D" unique_id=502608680]
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1278291905]

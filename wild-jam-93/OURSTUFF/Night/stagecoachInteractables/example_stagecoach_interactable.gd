@@ -6,13 +6,10 @@ class_name StagecoachInteractable extends Node2D
 var dispatchDescription := ""
 var dispatchIcon = "" #path of icon
 
+var interactingStagecoach: StageCoach
 
 func canInteract(stagecoach: Node2D): #check data and return true if all requirments are met 
-	var data = stagecoach.getStagecoachData()
-	if true:
-		return true
-	else:
-		return false
+	return true
 
 func getInteractableData():
 	return {

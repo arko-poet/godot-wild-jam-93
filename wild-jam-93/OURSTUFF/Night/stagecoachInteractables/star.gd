@@ -5,7 +5,6 @@ var decayTimer
 var inGameMain
 var inGameNightMain
 
-var interactingStagecoach
 
 
 
