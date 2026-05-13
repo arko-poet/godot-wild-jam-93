@@ -45,18 +45,27 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_1vqpv")
 
-[node name="DispatchButton" type="Button" parent="." unique_id=337294282]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1783059755]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -64.0
+offset_left = -194.0
+offset_top = -32.0
+offset_right = -34.0
 offset_bottom = -8.0
 grow_horizontal = 0
 grow_vertical = 0
+
+[node name="DispatchButton" type="Button" parent="HBoxContainer" unique_id=337294282]
+layout_mode = 2
 text = "DISPATCH"
+
+[node name="CancelButton" type="Button" parent="HBoxContainer" unique_id=500679443]
+layout_mode = 2
+text = "CANCEL"
 
 [node name="InteractablesPanel" type="Panel" parent="." unique_id=2037429776]
 custom_minimum_size = Vector2(200, 300)
@@ -187,7 +196,8 @@ layout_mode = 2
 [node name="StagecoachSlot4" parent="HunterGrid" unique_id=343284322 instance=ExtResource("3_otvtg")]
 layout_mode = 2
 
-[connection signal="pressed" from="DispatchButton" to="." method="_on_dispatch_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/DispatchButton" to="." method="_on_dispatch_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
 [connection signal="hunter_removed" from="HunterGrid/StagecoachSlot" to="." method="_on_hunter_slot_hunter_removed"]
 [connection signal="hunter_slot_selected" from="HunterGrid/StagecoachSlot" to="." method="_on_hunter_slot_selected"]
 [connection signal="hunter_removed" from="HunterGrid/StagecoachSlot2" to="." method="_on_hunter_slot_hunter_removed"]

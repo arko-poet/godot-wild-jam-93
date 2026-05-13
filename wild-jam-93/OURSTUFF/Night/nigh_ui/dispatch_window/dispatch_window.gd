@@ -74,3 +74,7 @@ func _on_hunter_slot_hunter_removed(hunter: Hunter) -> void:
 	print("hunter removed")
 	hunter.state = Hunter.State.AVAILABLE
 	stagecoach.hunters.erase(hunter)
+
+
+func _on_cancel_button_pressed() -> void:
+	hide()
