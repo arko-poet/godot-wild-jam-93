@@ -42,6 +42,7 @@ func _process(delta: float) -> void:
 
 func dispatch(node: StagecoachInteractable): #imput a new interacrable node, find route and time of route, start moving
 	pass
+	isAtCamp = false
 	interactingNode = node
 	var destination = interactingNode.global_position
 	if !isInteracting:

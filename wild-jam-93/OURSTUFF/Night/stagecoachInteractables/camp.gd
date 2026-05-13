@@ -16,6 +16,7 @@ func _ready() -> void:
 func stagecoachInteractStart(stagecoach: StageCoach): # the result of a stagecoach interacting
 	pass #input stage coach, get array of hunters, this would decide how interaction would go like length of time or fail chance
 	interactingStagecoach = stagecoach
+	interactingStagecoach.isAtCamp = true
 	interactTimer.start(0.1)
 	print(stagecoach.isInteracting)
 	
