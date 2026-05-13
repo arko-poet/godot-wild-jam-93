@@ -7,8 +7,8 @@ var selected_hunter: Hunter:
 	set(value):
 		selected_hunter = value
 		if value == null:
-			for hunter_slot: HunterSlot in hunter_grid.get_children():
-				hunter_slot.remove_border_highlight()
+			for stagecoach_slot: StagecoachSlot in hunter_grid.get_children():
+				stagecoach_slot.remove_border_highlight()
 var stagecoach: StageCoach
 var interactable: Node2D 
 
@@ -19,32 +19,42 @@ var interactable: Node2D
 @onready var _stagecoach_power: Label = $StagecoachPanel/VBoxContainer/Power
 @onready var _stagecoach_stamina: Label = $StagecoachPanel/VBoxContainer/Stamina
 @onready var hunter_grid: GridContainer = $HunterGrid
+@onready var dispatch_button: Button = $HBoxContainer/DispatchButton
+
 
 func show_dispatch_panel(new_stagecoach: StageCoach, new_interactable: Node2D) -> void:
-	for hunter_slot: HunterSlot in hunter_grid.get_children():
-		hunter_slot.hunter = null
+	for stagecoach_slot: StagecoachSlot in hunter_grid.get_children():
+		stagecoach_slot.hunter = null
 	
 	stagecoach = new_stagecoach
 	interactable = new_interactable
 	
-	var temp = (stagecoach.global_position - interactable.global_position).length() / stagecoach.speed
+	var stamina_needed = (stagecoach.global_position - interactable.global_position).length() / stagecoach.speed
+	if interactable is Camp:
+		stamina_needed = 0.0
+
+	_stagecoach_power.text = "Power: %s" % stagecoach.hunters.size()
+	_stagecoach_stamina.text = "Stamina: %.1f/%.1f" % [stagecoach.stamina, Camp.MAX_STAMINA]
 	
 	var interactableData = interactable.getInteractableData()
-	_stagecoach_power.text = "Power: %s" % stagecoach.hunters.size()
-	_stagecoach_stamina.text = "Stamina: %s" % stagecoach.stamina
 	_interactables_description.text = "%s" % interactableData["dispatchDescription"]
-	_interactables_icon.texture = load(interactableData["dispatchIcon"]) # TODO each boutny different image?
+	_interactables_icon.texture = load(interactableData["dispatchIcon"])
 	_interactables_title.text = interactableData["dispatchTitle"]
-	if interactable is Camp:
-		_interactables_stamina.text = "Req. Stamina: %s" % 0
-	else:
-		_interactables_stamina.text = "Req. Stamina: %s" % temp
+	_interactables_stamina.text = "Req. Stamina: %.1f" % stamina_needed
 	
 	print(stagecoach.isInteracting)
 	for i in stagecoach.hunters.size():
 		assert(stagecoach.hunters[i] != null)
 		
-		(hunter_grid.get_child(i) as HunterSlot).hunter = stagecoach.hunters[i]
+		(hunter_grid.get_child(i) as StagecoachSlot).hunter = stagecoach.hunters[i]
+		
+	# check if sufficient
+	dispatch_button.disabled = stagecoach.stamina < stamina_needed
+	if dispatch_button.disabled:
+		dispatch_button.tooltip_text = "INSUFFICIENT STAMINA!"
+	else:
+		dispatch_button.tooltip_text = ""
+	
 	
 	show()
 
@@ -57,14 +67,14 @@ func _on_dispatch_button_pressed() -> void:
 ## needs to get a signal which notifies that user has selected a bounty hunter
 func _on_hunter_selected(hunter: Hunter) -> void:
 	selected_hunter = hunter
-	for hunter_slot: HunterSlot in hunter_grid.get_children():
-		if hunter_slot.hunter == null:
-			hunter_slot.add_border_highlight()
+	for stagecoach_slot: StagecoachSlot in hunter_grid.get_children():
+		if stagecoach_slot.hunter == null:
+			stagecoach_slot.add_border_highlight()
 
 
-func _on_hunter_slot_selected(hunter_slot: HunterSlot) -> void:
+func _on_hunter_slot_selected(stagecoach_slot: StagecoachSlot) -> void:
 	if selected_hunter != null:
-		hunter_slot.hunter = selected_hunter
+		stagecoach_slot.hunter = selected_hunter
 		stagecoach.hunters.append(selected_hunter)
 		hunter_assigned.emit(selected_hunter)
 		selected_hunter = null
@@ -74,3 +84,7 @@ func _on_hunter_slot_hunter_removed(hunter: Hunter) -> void:
 	print("hunter removed")
 	hunter.state = Hunter.State.AVAILABLE
 	stagecoach.hunters.erase(hunter)
+
+
+func _on_cancel_button_pressed() -> void:
+	hide()

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://hvui1gigm1pt"]
 
-[ext_resource type="Script" uid="uid://ba3s3r3w3qg7s" path="res://OURSTUFF/Night/nigh_ui/star_timer_bar/star_time_bar.gd" id="1_lr7kv"]
+[ext_resource type="Script" uid="uid://dvtr2seqo72be" path="res://OURSTUFF/Night/nigh_ui/star_timer_bar/star_time_bar.gd" id="1_lr7kv"]
 
 [node name="StarTimeBar" type="Node2D" unique_id=702095990]
 script = ExtResource("1_lr7kv")

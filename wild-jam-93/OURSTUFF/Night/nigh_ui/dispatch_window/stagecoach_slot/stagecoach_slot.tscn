@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://b88nvplnvmcu"]
 
-[ext_resource type="Script" uid="uid://cl00m4jgbpaoh" path="res://OURSTUFF/Night/dispatch_window/hunter_slot/hunter_slot.gd" id="1_ejr5p"]
+[ext_resource type="Script" uid="uid://cl00m4jgbpaoh" path="res://OURSTUFF/Night/nigh_ui/dispatch_window/stagecoach_slot/stagecoach_slot.gd" id="1_aaasq"]
 
-[node name="BountyHunterSlot" type="Panel" unique_id=1734010295]
+[node name="BountyStagecoachSlot" type="Panel" unique_id=1734010295]
 custom_minimum_size = Vector2(64, 64)
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,7 +11,7 @@ offset_right = -1216.0
 offset_bottom = -656.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ejr5p")
+script = ExtResource("1_aaasq")
 
 [node name="Texture" type="TextureRect" parent="." unique_id=1699549357]
 layout_mode = 1

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://caqx6r5mqlut2" path="res://OURSTUFF/Night/in_game_night_main.gd" id="1_lihup"]
 [ext_resource type="Texture2D" uid="uid://ctfl5lq83mmic" path="res://icon.png" id="2_wyheo"]
 [ext_resource type="PackedScene" uid="uid://b5585qc7rlr0g" path="res://OURSTUFF/Night/nigh_ui/night_ui.tscn" id="3_wyheo"]
-[ext_resource type="PackedScene" uid="uid://dth0h0htj80ro" path="res://OURSTUFF/Night/dispatch_window/dispatch_window.tscn" id="4_af67n"]
+[ext_resource type="PackedScene" uid="uid://dth0h0htj80ro" path="res://OURSTUFF/Night/nigh_ui/dispatch_window/dispatch_window.tscn" id="4_af67n"]
 
 [node name="InGameNightMain" type="Node2D" unique_id=920217611]
 script = ExtResource("1_lihup")

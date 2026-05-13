@@ -64,6 +64,7 @@ func canInteract(stagecoach: StageCoach): #check if stagecoach is able to intera
 
 func stopDecayTimer():
 	decayTimer.stop()
+	star_time_bar.hide()
 	print(decayTimer.is_stopped())
 
 

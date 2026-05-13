@@ -1,8 +1,8 @@
-class_name HunterSlot extends Panel
+class_name StagecoachSlot extends Panel
 # TODO This needs to be renamed to StageCoach slot
 
 ## this notifies dispatch window which slot user selecter for the hunter
-signal hunter_slot_selected(hunter_slot: HunterSlot)
+signal hunter_slot_selected(stagecoach_slot: StagecoachSlot)
 signal hunter_removed(p_hunter: Hunter)
 
 const HOVER_HIGHLIGHT_MODULATE = Color(1.2, 1.2, 1.2)

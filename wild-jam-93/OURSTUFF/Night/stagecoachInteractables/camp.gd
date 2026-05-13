@@ -1,5 +1,7 @@
 class_name Camp extends StagecoachInteractable
 
+const MAX_STAMINA := 15.0
+
 @onready var campTexture = "res://OURSTUFF/resources/DevCampAtlas.tres"
 
 @onready var interactTimer = $interactTimer
@@ -19,7 +21,7 @@ func stagecoachInteractStart(stagecoach: StageCoach): # the result of a stagecoa
 	
 func stagecoachInteractComplete(): # called when stagecoach finishes interaciton timer
 	pass 
-	interactingStagecoach.stamina = 15
+	interactingStagecoach.stamina = MAX_STAMINA
 	interactingStagecoach.interactComplete()
 	
 
