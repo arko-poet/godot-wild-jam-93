@@ -110,10 +110,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 8.0
-offset_top = -77.0
-offset_right = 88.0
-offset_bottom = -8.0
+offset_left = 7.0
+offset_top = -101.0
+offset_right = 95.0
+offset_bottom = -4.0
 grow_vertical = 0
 
 [node name="Time" type="Label" parent="InteractablesPanel/VBoxContainer" unique_id=98003638]
@@ -123,6 +123,9 @@ text = "Time: 03:12"
 [node name="Difficulty" type="Label" parent="InteractablesPanel/VBoxContainer" unique_id=1687430583]
 layout_mode = 2
 text = "Difficulty: 5"
+
+[node name="RequiredStamina" type="Label" parent="InteractablesPanel/VBoxContainer" unique_id=1173926853]
+layout_mode = 2
 
 [node name="StagecoachPanel" type="Panel" parent="." unique_id=704100280]
 custom_minimum_size = Vector2(300, 100)
