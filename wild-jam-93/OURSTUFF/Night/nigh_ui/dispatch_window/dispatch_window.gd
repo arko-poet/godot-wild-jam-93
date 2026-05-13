@@ -31,14 +31,14 @@ func show_dispatch_panel(new_stagecoach: StageCoach, new_interactable: Node2D) -
 	
 	var interactableData = interactable.getInteractableData()
 	_stagecoach_power.text = "Power: %s" % stagecoach.hunters.size()
-	_stagecoach_stamina.text = "Stamina: %s" % stagecoach.stamina
+	_stagecoach_stamina.text = "Stamina: %.1f" % stagecoach.stamina
 	_interactables_description.text = "%s" % interactableData["dispatchDescription"]
 	_interactables_icon.texture = load(interactableData["dispatchIcon"]) # TODO each boutny different image?
 	_interactables_title.text = interactableData["dispatchTitle"]
 	if interactable is Camp:
-		_interactables_stamina.text = "Req. Stamina: %s" % 0
+		_interactables_stamina.text = "Req. Stamina: %.1f" % 0
 	else:
-		_interactables_stamina.text = "Req. Stamina: %s" % temp
+		_interactables_stamina.text = "Req. Stamina: %.1f" % temp
 	
 	print(stagecoach.isInteracting)
 	for i in stagecoach.hunters.size():
