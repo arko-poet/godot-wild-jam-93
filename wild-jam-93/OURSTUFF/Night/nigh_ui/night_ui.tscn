@@ -44,15 +44,15 @@ anchor_right = 0.25
 grow_horizontal = 2
 text = "$1000"
 
-[node name="SettingsButton" type="Button" parent="." unique_id=1958536157]
+[node name="SettingsButton" type="Label" parent="." unique_id=252157109]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -8.0
-offset_bottom = 8.0
+offset_left = -150.0
+offset_bottom = 31.0
 grow_horizontal = 0
-text = "SETTIGNS"
+text = "Press 'Esc' to open menu"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=218490218]
 layout_mode = 1
@@ -78,7 +78,6 @@ text = "2x"
 layout_mode = 2
 text = "4x"
 
-[connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/Speed1Button" to="." method="_on_speed_1_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/Speed2Button" to="." method="_on_speed_2_button_pressed"]
