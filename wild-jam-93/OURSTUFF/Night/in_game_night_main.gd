@@ -120,7 +120,6 @@ func _on_star_spawn_timer_timeout() -> void:
 		isOverlaping = false
 		temp = Vector2(randf_range(0,playableArea.x), randf_range(0,playableArea.y))
 		for i in allClickables:
-			print(allClickables)
 			if (temp - i.global_position).length() < overlapRange:
 				isOverlaping = true
 				break

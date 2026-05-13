@@ -72,9 +72,13 @@ func canInteract(stagecoach: StageCoach): #check if stagecoach is able to intera
 		return false
 
 func stopDecayTimer():
-	decayTimer.stop()
+	decayTimer.set_paused(true)
 	star_time_bar.hide()
 	print(decayTimer.is_stopped())
+
+func startDecayTimer():
+	decayTimer.set_paused(false)
+	star_time_bar.show()
 
 
 func _on_interact_timer_timeout() -> void:
