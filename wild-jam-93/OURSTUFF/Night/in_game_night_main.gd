@@ -9,6 +9,8 @@ const devHunterIcon = "res://OURSTUFF/resources/devBountyHunter.png"
 
 
 @export var selectionRange := 50.0
+@export var overlapRange := 75
+
 var playableArea := Vector2i(1280, 720)
 
 var stageCoaches = [] #array of all stagecoaches
@@ -110,7 +112,21 @@ func dispatchStagecoach(stagecoach: StageCoach): # called by the ui when player 
 
 func _on_star_spawn_timer_timeout() -> void:
 	pass # Replace with function body.
-	spawnInteractable("star", Vector2(randf_range(0,playableArea.x), randf_range(0,playableArea.y)))
+	
+	var isOverlaping = true
+	var allClickables = stageCoaches + interactables
+	var temp = Vector2(0,0)
+	while(isOverlaping): # may have performance issues if large numbers
+		isOverlaping = false
+		temp = Vector2(randf_range(0,playableArea.x), randf_range(0,playableArea.y))
+		for i in allClickables:
+			print(allClickables)
+			if (temp - i.global_position).length() < overlapRange:
+				isOverlaping = true
+				break
+	
+	starSpawnTimer.start(randf_range(3, 7))
+	spawnInteractable("star", temp)
 
 func spawnInteractable(type: String, location: Vector2): #controls spawning of stars, objects, locations etc
 	pass

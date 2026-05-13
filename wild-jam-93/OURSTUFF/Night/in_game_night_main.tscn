@@ -15,6 +15,7 @@ position = Vector2(515, 443)
 texture = ExtResource("2_wyheo")
 
 [node name="starSpawnTimer" type="Timer" parent="." unique_id=335144939]
+one_shot = true
 
 [node name="roundTimer" type="Timer" parent="." unique_id=390321457]
 

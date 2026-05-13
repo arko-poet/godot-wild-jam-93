@@ -7,6 +7,7 @@ var dispatchDescription := ""
 var dispatchIcon = "" #path of icon
 var dispatchTitle = "" #title of interactable panel
 
+var bounty: Bounty
 var interactingStagecoach: StageCoach
 
 func canInteract(stagecoach: StageCoach): #check data and return true if all requirments are met 
