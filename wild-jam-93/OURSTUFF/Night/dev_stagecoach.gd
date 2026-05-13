@@ -19,11 +19,13 @@ var movementTimer
 
 var InGameMain
 @onready var sprite = $Sprite2D
+@onready var stamina_bar: Node2D = $StaminaBar
 
 
 func _ready() -> void:
 	movementTimer = find_child("movementTimer")
 	InGameMain = find_parent("InGameMain")
+	stamina_bar.set_max_stamina(Camp.MAX_STAMINA)
 
 func _process(delta: float) -> void:
 	if isMoving: # move
@@ -33,6 +35,7 @@ func _process(delta: float) -> void:
 		position = lastPosition + (timerPercentDone * route)
 		stamina -= delta
 		print(stamina)
+		stamina_bar.update_stamina(stamina)
 
 
 func dispatch(node: Node2D): #imput a new interacrable node, find route and time of route, start moving
