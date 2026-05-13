@@ -6,7 +6,7 @@ var interactRange
 
 var hunters = []
 var upgrades = [] #non stat based upgrades
-var stamina := 15.0 # how many seconds of travel the stagecoach has left
+var stamina := Camp.MAX_STAMINA # how many seconds of travel the stagecoach has left
 
 var route #vector 2 
 var interactingNode
