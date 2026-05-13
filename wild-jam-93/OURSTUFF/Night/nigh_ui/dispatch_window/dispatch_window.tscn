@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dth0h0htj80ro"]
 
-[ext_resource type="Script" uid="uid://c58rljiscgmbe" path="res://OURSTUFF/Night/dispatch_window/dispatch_window.gd" id="1_83nhf"]
+[ext_resource type="Script" uid="uid://c58rljiscgmbe" path="res://OURSTUFF/Night/nigh_ui/dispatch_window/dispatch_window.gd" id="1_83nhf"]
 [ext_resource type="Texture2D" uid="uid://ctfl5lq83mmic" path="res://icon.png" id="2_otvtg"]
-[ext_resource type="PackedScene" uid="uid://b88nvplnvmcu" path="res://OURSTUFF/Night/dispatch_window/hunter_slot/hunter_slot.tscn" id="3_otvtg"]
+[ext_resource type="PackedScene" uid="uid://b88nvplnvmcu" path="res://OURSTUFF/Night/nigh_ui/dispatch_window/hunter_slot/hunter_slot.tscn" id="3_otvtg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1vqpv"]
 bg_color = Color(0.078431375, 0.13333334, 0.2509804, 1)

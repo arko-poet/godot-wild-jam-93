@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b88nvplnvmcu"]
 
-[ext_resource type="Script" uid="uid://cl00m4jgbpaoh" path="res://OURSTUFF/Night/dispatch_window/hunter_slot/hunter_slot.gd" id="1_ejr5p"]
+[ext_resource type="Script" uid="uid://cl00m4jgbpaoh" path="res://OURSTUFF/Night/nigh_ui/dispatch_window/hunter_slot/hunter_slot.gd" id="1_ejr5p"]
 
 [node name="BountyHunterSlot" type="Panel" unique_id=1734010295]
 custom_minimum_size = Vector2(64, 64)
