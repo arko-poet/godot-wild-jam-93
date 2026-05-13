@@ -14,7 +14,6 @@ var selected_hunter: Hunter:
 @onready var hunter_grid: GridContainer = $VBoxContainer/HunterGrid
 @onready var time_left_label: Label = $TimeLeftLabel
 @onready var money_label: Label = $MoneyLabel
-@onready var settings_button: Button = $SettingsButton
 @onready var pause_button: Button = $HBoxContainer/PauseButton
 @onready var speed_1_button: Button = $HBoxContainer/Speed1Button
 @onready var speed_2_button: Button = $HBoxContainer/Speed2Button
@@ -71,11 +70,6 @@ func _on_speed_2_button_pressed() -> void:
 
 func _on_speed_4_button_pressed() -> void:
 	Engine.time_scale = 4.0
-
-
-func _on_settings_button_pressed() -> void:
-	# TODO figure out how to use template to open settings
-	pass # Replace with function body.
 
 
 func _on_hunter_selected(hunter: Hunter) -> void:
