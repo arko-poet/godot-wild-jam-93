@@ -37,6 +37,9 @@ func _process(delta: float) -> void:
 	#update ui time
 	night_ui.update_time_left(int(roundTimer.time_left + 1.0))
 	
+	#GITHUB ASSS FUCKN YOU
+	var ihateyou = 0
+	
 	#input detection
 	if Input.is_action_just_pressed("mousePrimary"):
 		pass
