@@ -22,5 +22,25 @@ one_shot = true
 position = Vector2(1.9073486e-06, 13)
 scale = Vector2(0.99999994, 1)
 
+[node name="BountyProgressLabel" type="Label" parent="." unique_id=1242448715]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -35.5
+offset_right = 20.0
+offset_bottom = -12.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 24
+text = "100%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="timeout" from="decayTimer" to="." method="_on_decay_timer_timeout"]
 [connection signal="timeout" from="interactTimer" to="." method="_on_interact_timer_timeout"]

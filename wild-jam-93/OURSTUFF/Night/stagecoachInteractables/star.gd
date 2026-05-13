@@ -1,12 +1,14 @@
 extends StagecoachInteractable 
 
 var decayTimer
+var interaction_time: float
 @onready var interactTimer = $interactTimer
 var inGameMain
 var inGameNightMain
 
 
 @onready var star_time_bar: Node2D = $TimerBar
+@onready var bounty_progress_label: Label = $BountyProgressLabel
 
 
 func _ready() -> void:
@@ -27,6 +29,9 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	# NOTE if this is too expensive computationally we can create extra timer that will update periodically instead
 	star_time_bar.update_time_left(decayTimer.time_left)
+	
+	if not interactTimer.is_stopped():
+		_update_bounty_progress_label()
 
 
 func _on_decay_timer_timeout() -> void:
@@ -36,8 +41,11 @@ func stagecoachInteractStart(stagecoach: StageCoach):
 	pass
 	interactingStagecoach = stagecoach
 	var hunters = interactingStagecoach.getStagecoachData()["hunters"]
-	interactTimer.start(12 / (hunters.size() + 1))
+	interaction_time = 12 / (hunters.size() + 1)
+	interactTimer.start(interaction_time)
 	print(interactTimer.time_left)
+	
+	bounty_progress_label.show()
 
 func getInteractableData():
 	return {
@@ -51,6 +59,7 @@ func stagecoachInteractComplete():
 	interactingStagecoach.interactComplete()
 	inGameMain.addMoney(1)
 	inGameNightMain.deleteInteractable(self)
+	
 
 func canInteract(stagecoach: StageCoach): #check if stagecoach is able to interact
 	pass
@@ -71,3 +80,7 @@ func stopDecayTimer():
 func _on_interact_timer_timeout() -> void:
 	pass # Replace with function body.
 	stagecoachInteractComplete()
+
+
+func _update_bounty_progress_label() -> void:
+	bounty_progress_label.text = "%s%%" % int(((interaction_time - interactTimer.time_left) / interaction_time)* 100) 
