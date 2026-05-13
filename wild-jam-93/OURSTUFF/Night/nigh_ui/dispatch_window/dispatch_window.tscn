@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c58rljiscgmbe" path="res://OURSTUFF/Night/nigh_ui/dispatch_window/dispatch_window.gd" id="1_83nhf"]
 [ext_resource type="Texture2D" uid="uid://ctfl5lq83mmic" path="res://icon.png" id="2_otvtg"]
-[ext_resource type="PackedScene" uid="uid://b88nvplnvmcu" path="res://OURSTUFF/Night/nigh_ui/dispatch_window/hunter_slot/hunter_slot.tscn" id="3_otvtg"]
+[ext_resource type="PackedScene" uid="uid://b88nvplnvmcu" path="res://OURSTUFF/Night/nigh_ui/dispatch_window/stagecoach_slot/stagecoach_slot.tscn" id="3_otvtg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1vqpv"]
 bg_color = Color(0.078431375, 0.13333334, 0.2509804, 1)
@@ -175,24 +175,24 @@ offset_right = 132.0
 offset_bottom = 132.0
 columns = 2
 
-[node name="HunterSlot" parent="HunterGrid" unique_id=1734010295 instance=ExtResource("3_otvtg")]
+[node name="StagecoachSlot" parent="HunterGrid" unique_id=1734010295 instance=ExtResource("3_otvtg")]
 layout_mode = 2
 
-[node name="HunterSlot2" parent="HunterGrid" unique_id=565418700 instance=ExtResource("3_otvtg")]
+[node name="StagecoachSlot2" parent="HunterGrid" unique_id=565418700 instance=ExtResource("3_otvtg")]
 layout_mode = 2
 
-[node name="HunterSlot3" parent="HunterGrid" unique_id=33095940 instance=ExtResource("3_otvtg")]
+[node name="StagecoachSlot3" parent="HunterGrid" unique_id=33095940 instance=ExtResource("3_otvtg")]
 layout_mode = 2
 
-[node name="HunterSlot4" parent="HunterGrid" unique_id=343284322 instance=ExtResource("3_otvtg")]
+[node name="StagecoachSlot4" parent="HunterGrid" unique_id=343284322 instance=ExtResource("3_otvtg")]
 layout_mode = 2
 
 [connection signal="pressed" from="DispatchButton" to="." method="_on_dispatch_button_pressed"]
-[connection signal="hunter_removed" from="HunterGrid/HunterSlot" to="." method="_on_hunter_slot_hunter_removed"]
-[connection signal="hunter_slot_selected" from="HunterGrid/HunterSlot" to="." method="_on_hunter_slot_selected"]
-[connection signal="hunter_removed" from="HunterGrid/HunterSlot2" to="." method="_on_hunter_slot_hunter_removed"]
-[connection signal="hunter_slot_selected" from="HunterGrid/HunterSlot2" to="." method="_on_hunter_slot_selected"]
-[connection signal="hunter_removed" from="HunterGrid/HunterSlot3" to="." method="_on_hunter_slot_hunter_removed"]
-[connection signal="hunter_slot_selected" from="HunterGrid/HunterSlot3" to="." method="_on_hunter_slot_selected"]
-[connection signal="hunter_removed" from="HunterGrid/HunterSlot4" to="." method="_on_hunter_slot_hunter_removed"]
-[connection signal="hunter_slot_selected" from="HunterGrid/HunterSlot4" to="." method="_on_hunter_slot_selected"]
+[connection signal="hunter_removed" from="HunterGrid/StagecoachSlot" to="." method="_on_hunter_slot_hunter_removed"]
+[connection signal="hunter_slot_selected" from="HunterGrid/StagecoachSlot" to="." method="_on_hunter_slot_selected"]
+[connection signal="hunter_removed" from="HunterGrid/StagecoachSlot2" to="." method="_on_hunter_slot_hunter_removed"]
+[connection signal="hunter_slot_selected" from="HunterGrid/StagecoachSlot2" to="." method="_on_hunter_slot_selected"]
+[connection signal="hunter_removed" from="HunterGrid/StagecoachSlot3" to="." method="_on_hunter_slot_hunter_removed"]
+[connection signal="hunter_slot_selected" from="HunterGrid/StagecoachSlot3" to="." method="_on_hunter_slot_selected"]
+[connection signal="hunter_removed" from="HunterGrid/StagecoachSlot4" to="." method="_on_hunter_slot_hunter_removed"]
+[connection signal="hunter_slot_selected" from="HunterGrid/StagecoachSlot4" to="." method="_on_hunter_slot_selected"]

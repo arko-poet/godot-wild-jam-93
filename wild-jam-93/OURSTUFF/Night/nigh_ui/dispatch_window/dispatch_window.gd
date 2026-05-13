@@ -7,8 +7,8 @@ var selected_hunter: Hunter:
 	set(value):
 		selected_hunter = value
 		if value == null:
-			for hunter_slot: HunterSlot in hunter_grid.get_children():
-				hunter_slot.remove_border_highlight()
+			for stagecoach_slot: StagecoachSlot in hunter_grid.get_children():
+				stagecoach_slot.remove_border_highlight()
 var stagecoach: StageCoach
 var interactable: Node2D 
 
@@ -21,8 +21,8 @@ var interactable: Node2D
 @onready var hunter_grid: GridContainer = $HunterGrid
 
 func show_dispatch_panel(new_stagecoach: StageCoach, new_interactable: Node2D) -> void:
-	for hunter_slot: HunterSlot in hunter_grid.get_children():
-		hunter_slot.hunter = null
+	for stagecoach_slot: StagecoachSlot in hunter_grid.get_children():
+		stagecoach_slot.hunter = null
 	
 	stagecoach = new_stagecoach
 	interactable = new_interactable
@@ -44,7 +44,7 @@ func show_dispatch_panel(new_stagecoach: StageCoach, new_interactable: Node2D) -
 	for i in stagecoach.hunters.size():
 		assert(stagecoach.hunters[i] != null)
 		
-		(hunter_grid.get_child(i) as HunterSlot).hunter = stagecoach.hunters[i]
+		(hunter_grid.get_child(i) as StagecoachSlot).hunter = stagecoach.hunters[i]
 	
 	show()
 
@@ -57,14 +57,14 @@ func _on_dispatch_button_pressed() -> void:
 ## needs to get a signal which notifies that user has selected a bounty hunter
 func _on_hunter_selected(hunter: Hunter) -> void:
 	selected_hunter = hunter
-	for hunter_slot: HunterSlot in hunter_grid.get_children():
-		if hunter_slot.hunter == null:
-			hunter_slot.add_border_highlight()
+	for stagecoach_slot: StagecoachSlot in hunter_grid.get_children():
+		if stagecoach_slot.hunter == null:
+			stagecoach_slot.add_border_highlight()
 
 
-func _on_hunter_slot_selected(hunter_slot: HunterSlot) -> void:
+func _on_hunter_slot_selected(stagecoach_slot: StagecoachSlot) -> void:
 	if selected_hunter != null:
-		hunter_slot.hunter = selected_hunter
+		stagecoach_slot.hunter = selected_hunter
 		stagecoach.hunters.append(selected_hunter)
 		hunter_assigned.emit(selected_hunter)
 		selected_hunter = null
