@@ -17,6 +17,7 @@ func _ready() -> void:
 	# TODO this shouild probably be just integer, ui handles how reward is displayed
 	dispatchDescription = "Reward 1$"
 	dispatchIcon = "res://OURSTUFF/resources/DevStarAtlas.tres" #path of icon
+	dispatchTitle = "Bounty"
 	
 	var decay_time := randf_range(15, 20)
 	star_time_bar.set_decay_time(decay_time)
@@ -41,7 +42,9 @@ func stagecoachInteractStart(stagecoach: StageCoach):
 func getInteractableData():
 	return {
 		"dispatchDescription": dispatchDescription,
-		"dispatchIcon": dispatchIcon
+		"dispatchIcon": dispatchIcon,
+		"dispatchTitle": dispatchTitle
+		
 	}
 
 func stagecoachInteractComplete():

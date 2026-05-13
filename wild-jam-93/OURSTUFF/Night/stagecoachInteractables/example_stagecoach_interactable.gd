@@ -5,6 +5,7 @@ class_name StagecoachInteractable extends Node2D
 
 var dispatchDescription := ""
 var dispatchIcon = "" #path of icon
+var dispatchTitle = "" #title of interactable panel
 
 var interactingStagecoach: StageCoach
 
@@ -14,7 +15,8 @@ func canInteract(stagecoach: StageCoach): #check data and return true if all req
 func getInteractableData():
 	return {
 		"dispatchDescription": dispatchDescription,
-		"dispatchIcon": dispatchIcon
+		"dispatchIcon": dispatchIcon,
+		"dispatchTitle": dispatchTitle
 	} # this returns a dictionary of relevent data, like how long it takes to inteact, chance to take damage etc
 
 func stagecoachInteractStart(stagecoach: StageCoach): # the result of a stagecoach interacting

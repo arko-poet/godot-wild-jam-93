@@ -14,6 +14,7 @@ var interactable: Node2D
 
 @onready var _interactables_description: Label = $InteractablesPanel/Description # changed form prize
 @onready var _interactables_icon: TextureRect = $InteractablesPanel/Icon
+@onready var _interactables_title: Label = $InteractablesPanel/Title
 @onready var _stagecoach_power: Label = $StagecoachPanel/VBoxContainer/Power
 @onready var _stagecoach_stamina: Label = $StagecoachPanel/VBoxContainer/Stamina
 @onready var hunter_grid: GridContainer = $HunterGrid
@@ -30,6 +31,7 @@ func show_dispatch_panel(new_stagecoach: StageCoach, new_interactable: Node2D) -
 	_stagecoach_stamina.text = "Stamina: %s" % stagecoach.stamina
 	_interactables_description.text = "%s" % interactableData["dispatchDescription"]
 	_interactables_icon.texture = load(interactableData["dispatchIcon"]) # TODO each boutny different image?
+	_interactables_title.text = interactableData["dispatchTitle"]
 	
 	print(stagecoach.isInteracting)
 	for i in stagecoach.hunters.size():
