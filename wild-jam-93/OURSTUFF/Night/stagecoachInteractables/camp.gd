@@ -1,4 +1,4 @@
-extends StagecoachInteractable
+class_name Camp extends StagecoachInteractable
 
 @onready var campTexture = "res://OURSTUFF/resources/DevCampAtlas.tres"
 
@@ -9,6 +9,7 @@ func _ready() -> void:
 	pass # Replace with function body.
 	dispatchDescription = "Refill Stamina"
 	dispatchIcon = campTexture
+	dispatchTitle = "Refill"
 
 func stagecoachInteractStart(stagecoach: StageCoach): # the result of a stagecoach interacting
 	pass #input stage coach, get array of hunters, this would decide how interaction would go like length of time or fail chance
