@@ -10,6 +10,8 @@ var stamina := Camp.MAX_STAMINA # how many seconds of travel the stagecoach has 
 
 var route #vector 2 
 var interactingNode
+var pausedNode
+var pausedTime
 var lastPosition #position at time of dispatching
 var isMoving := false
 var isInteracting := false
@@ -38,11 +40,14 @@ func _process(delta: float) -> void:
 		stamina_bar.update_stamina(stamina)
 
 
-func dispatch(node: Node2D): #imput a new interacrable node, find route and time of route, start moving
+func dispatch(node: StagecoachInteractable): #imput a new interacrable node, find route and time of route, start moving
 	pass
 	interactingNode = node
 	var destination = interactingNode.global_position
 	if !isInteracting:
+		
+		if pausedNode != null:
+			pausedNode.startDecayTimer()
 		lastPosition = global_position
 		route = (destination - global_position)
 		var routeTime = route.length() / speed 
@@ -50,11 +55,12 @@ func dispatch(node: Node2D): #imput a new interacrable node, find route and time
 		
 		movementTimer.start(routeTime)
 		isMoving = true
+		pausedNode = interactingNode
 
 func interactStart(): #called when stagecoach reaches destinatino
 	pass
 	var data = interactingNode.getInteractableData() 
-	
+	pausedNode = null
 	isMoving = false
 	interactingNode.stagecoachInteractStart(self)
 	isInteracting = true
