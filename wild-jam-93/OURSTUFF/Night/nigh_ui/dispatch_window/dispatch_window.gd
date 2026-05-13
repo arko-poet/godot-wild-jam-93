@@ -1,6 +1,7 @@
 class_name DispatchWindow extends Control
 
 signal dispatched(connectedStagecoach: StageCoach) ## start moving stagecoach once this is emitted
+signal cancel
 signal hunter_assigned(hunter: Hunter)
 
 var selected_hunter: Hunter:
@@ -21,6 +22,10 @@ var interactable: Node2D
 @onready var hunter_grid: GridContainer = $HunterGrid
 @onready var dispatch_button: Button = $HBoxContainer/DispatchButton
 
+var inGameNightMain
+
+func _ready() -> void:
+	inGameNightMain = find_parent("InGameNightMain")
 
 func show_dispatch_panel(new_stagecoach: StageCoach, new_interactable: Node2D) -> void:
 	for stagecoach_slot: StagecoachSlot in hunter_grid.get_children():
@@ -88,3 +93,4 @@ func _on_hunter_slot_hunter_removed(hunter: Hunter) -> void:
 
 func _on_cancel_button_pressed() -> void:
 	hide()
+	cancel.emit()

@@ -101,8 +101,8 @@ func dispatchStagecoach(stagecoach: StageCoach): # called by the ui when player 
 	if (selectedInteractable != null) && (selectedStageCoach != null):
 		if selectedInteractable.canInteract(selectedStageCoach) == true:
 			selectedInteractable.stopDecayTimer()
-			if !(selectedInteractable is Camp):
-				interactables.erase(selectedInteractable)
+			#if !(selectedInteractable is Camp):
+			#	interactables.erase(selectedInteractable)
 			selectedStageCoach.dispatch(selectedInteractable)
 			selectedInteractable = null
 			selectedStageCoach = null
@@ -167,3 +167,9 @@ func adjustPlayableArea(newSize: Vector2i): #call this function when game window
 func _on_round_timer_timeout() -> void:
 	pass # Replace with function body.
 	inGameMain.loadDay()
+
+
+func _on_dispatch_window_cancel() -> void:
+	pass # Replace with function body.
+	selectedInteractable = null
+	selectedStageCoach = null
