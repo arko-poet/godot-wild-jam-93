@@ -1,4 +1,4 @@
-extends Node2D
+class_name Night extends Node2D
 #this script is in charge of everything involved during the night section of the game
  
 const stageCoach = preload("res://OURSTUFF/Night/dev_stagecoach.tscn") #stage coach scene
@@ -7,6 +7,7 @@ const camp = preload("res://OURSTUFF/Night/stagecoachInteractables/camp.tscn")
 #const dispatchWindow = preload("res://OURSTUFF/Night/dispatch_window/dispatch_window.tscn")
 const devHunterIcon = "res://OURSTUFF/resources/devBountyHunter.png"
 const FloatingText: PackedScene = preload("res://OURSTUFF/Night/nigh_ui/floating_text/floating_text.tscn")
+const NIGHT_DURATION := 300.0
 
 @export var interactableSelectionRange := 50.0
 @export var stagecoachSelectionRange := 75.0
@@ -242,5 +243,5 @@ func _on_bounty_expired(p_position) -> void:
 func _on_night_ui_intro_finished() -> void:
 	# start night
 	starSpawnTimer.start(1)
-	roundTimer.start(60.0 * 5.0)
+	roundTimer.start(NIGHT_DURATION)
 	spawnInteractable("camp", Vector2(0,0))
