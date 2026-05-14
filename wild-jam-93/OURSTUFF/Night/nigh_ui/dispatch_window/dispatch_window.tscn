@@ -130,6 +130,7 @@ layout_mode = 2
 text = "Time: 03:12"
 
 [node name="Difficulty" type="Label" parent="InteractablesPanel/VBoxContainer" unique_id=1687430583]
+visible = false
 layout_mode = 2
 text = "Difficulty: 5"
 
