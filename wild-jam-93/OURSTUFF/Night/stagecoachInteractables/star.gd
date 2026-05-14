@@ -1,6 +1,7 @@
 extends StagecoachInteractable 
 
 signal bounty_completed(success: bool, p_position: Vector2)
+signal bounty_expired
 
 var decayTimer
 var interaction_time: float
@@ -44,6 +45,7 @@ func _process(_delta: float) -> void:
 
 
 func _on_decay_timer_timeout() -> void:
+	bounty_expired.emit()
 	inGameNightMain.deleteInteractable(self)
 
 func stagecoachInteractStart(stagecoach: StageCoach):

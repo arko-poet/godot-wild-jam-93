@@ -118,5 +118,6 @@ func _update_hunter_power() -> void:
 	_stagecoach_power.text = "Power: %s" % power
 	
 	# bounty fail chance
-	interactable.updateFailChance(stagecoach.hunters)
-	_fail_chance.text = "Fail Chance: %s%%" % int(interactable.failChance * 100)
+	if interactable is not Camp:
+		interactable.updateFailChance(stagecoach.hunters)
+		_fail_chance.text = "Fail Chance: %s%%" % int(interactable.failChance * 100)
