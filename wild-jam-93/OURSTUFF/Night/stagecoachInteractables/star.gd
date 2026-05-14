@@ -77,6 +77,11 @@ func stagecoachInteractComplete():
 		bounty_completed.emit(false, global_position)
 		interactingStagecoach.interactComplete()
 		inGameNightMain.deleteInteractable(self)
+		
+		# hunter injuries
+		for h in interactingStagecoach.hunters:
+			h.state = Hunter.State.UNAVAILABLE
+			
 	
 
 func canInteract(stagecoach: StageCoach): #check if stagecoach is able to interact
@@ -112,7 +117,8 @@ func _update_bounty_progress_label() -> void:
 func updateFailChance(hunters: Array):
 	var power := 0
 	for h in hunters:
-		power += h.power
+		if h.state != Hunter.State.UNAVAILABLE:
+			power += h.power
 	if power > bounty.difficulty:
 		failChance = 0.0
 	elif power == 0:
