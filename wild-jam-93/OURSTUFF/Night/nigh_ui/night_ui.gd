@@ -18,6 +18,9 @@ var selected_hunter: Hunter:
 @onready var speed_1_button: Button = $HBoxContainer/Speed1Button
 @onready var speed_2_button: Button = $HBoxContainer/Speed2Button
 @onready var speed_4_button: Button = $HBoxContainer/Speed4Button
+@onready var helpbutton: Button = $HelpButton
+@onready var help_panel: Panel = $HelpPanel
+@onready var close_help_panel_button: Button = $HelpPanel/CloseButton
 
 
 #func _ready() -> void:
@@ -91,3 +94,11 @@ func _on_hunter_selected(hunter: Hunter) -> void:
 func _on_dispatch_window_hunter_assigned(hunter: Hunter) -> void:
 	hunters[hunter].remove_border()
 	selected_hunter = null
+
+
+func _on_helpbutton_pressed() -> void:
+	help_panel.show()
+
+
+func _on_close_button_pressed() -> void:
+	help_panel.hide()
