@@ -1,9 +1,20 @@
 class_name NighUI extends Control
 
 signal hunter_selected(hunter: Hunter)
+signal intro_finished
 
 const HunterPanelScene: PackedScene = preload("res://OURSTUFF/Night/nigh_ui/hunter_panel/hunter_panel.tscn")
+const INTRO: Array[String] = [
+	"Welcome to the [world name]!",
+	"Every night, valuable stars appear in the desert.",
+	"Many try to collect them, but the desert is full of dangers — and competition.",
+	"The town’s mayor pays bounties for recovered stars.",
+	"You've gathered a bunch of bounty hunters and stagecoaches",
+	"Dispatch them into the desert, recover the stars, and maximize your profit.",
+	"Good Luck!"
+]
 
+var intro_index := 0
 var hunters: Dictionary[Hunter, HunterPanel]
 var selected_hunter: Hunter:
 	set(value):
@@ -21,14 +32,13 @@ var selected_hunter: Hunter:
 @onready var helpbutton: Button = $HelpButton
 @onready var help_panel: Panel = $HelpPanel
 @onready var close_help_panel_button: Button = $HelpPanel/CloseButton
+@onready var intro_label: Label = $GameIntro/Label
+@onready var game_intro: PanelContainer = $GameIntro
 
 
-#func _ready() -> void:
-	## jsut a TEST to be removed
-	#for i in 10:
-		#var hunter = Hunter.new("res://icon.png")
-		#add_hunter(hunter)
-##
+func _ready() -> void:
+	intro_label.text = INTRO[intro_index]
+#
 #
 #var test: float = 0
 #func _process(delta: float) -> void:
@@ -102,3 +112,14 @@ func _on_helpbutton_pressed() -> void:
 
 func _on_close_button_pressed() -> void:
 	help_panel.hide()
+
+
+func _on_game_intro_gui_input(event: InputEvent) -> void:
+	# advance intro on left click
+	if event is InputEventMouseButton and event.pressed:
+		intro_index += 1
+		if intro_index == INTRO.size():
+			game_intro.hide()
+			intro_finished.emit()
+		else:
+			intro_label.text = INTRO[intro_index]
