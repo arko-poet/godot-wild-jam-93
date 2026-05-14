@@ -9,6 +9,11 @@ var dispatchTitle = "" #title of interactable panel
 
 var interactingStagecoach: StageCoach
 
+var selected := false:
+	set(value):
+		selected = value
+		queue_redraw()
+
 func canInteract(stagecoach: StageCoach): #check data and return true if all requirments are met 
 	return true
 

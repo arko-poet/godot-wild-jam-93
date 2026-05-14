@@ -12,10 +12,6 @@ var inGameNightMain
 var bounty: Bounty
 var failChance
 
-var selected := false:
-	set(value):
-		selected = value
-		queue_redraw()
 
 @onready var star_time_bar: Node2D = $TimerBar
 @onready var bounty_progress_label: Label = $BountyProgressLabel
