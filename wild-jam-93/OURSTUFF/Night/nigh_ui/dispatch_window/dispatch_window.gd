@@ -72,7 +72,7 @@ func show_dispatch_panel(new_stagecoach: StageCoach, new_interactable: Node2D) -
 	# inform player if sufficient stamina
 	dispatch_button.disabled = stagecoach.stamina < stamina_needed
 	if dispatch_button.disabled:
-		dispatch_button.tooltip_text = "INSUFFICIENT STAMINA!"
+		dispatch_button.tooltip_text = "INSUFFICIENT STAMINA\nREFILL IN TOWN"
 	else:
 		dispatch_button.tooltip_text = ""
 	
