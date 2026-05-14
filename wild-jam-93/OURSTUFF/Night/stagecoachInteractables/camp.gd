@@ -5,6 +5,7 @@ const MAX_STAMINA := 15.0
 @onready var campTexture = "res://OURSTUFF/resources/DevCampAtlas.tres"
 
 @onready var interactTimer = $interactTimer
+@onready var sprite = $Sprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
