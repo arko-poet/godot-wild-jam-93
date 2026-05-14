@@ -7,10 +7,12 @@
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4h5hi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lg7he"]
+resource_local_to_scene = true
 atlas = ExtResource("1_76ark")
 region = Rect2(24, 147, 93, 76)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0nxxq"]
+resource_local_to_scene = true
 atlas = ExtResource("1_76ark")
 region = Rect2(0, 14, 120, 108)
 
