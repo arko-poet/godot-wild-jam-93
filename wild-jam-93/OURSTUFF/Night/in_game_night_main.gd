@@ -6,7 +6,7 @@ const star = preload("res://OURSTUFF/Night/stagecoachInteractables/star.tscn") #
 const camp = preload("res://OURSTUFF/Night/stagecoachInteractables/camp.tscn")
 #const dispatchWindow = preload("res://OURSTUFF/Night/dispatch_window/dispatch_window.tscn")
 const devHunterIcon = "res://OURSTUFF/resources/devBountyHunter.png"
-
+const FloatingText: PackedScene = preload("res://OURSTUFF/Night/nigh_ui/floating_text/floating_text.tscn")
 
 @export var interactableSelectionRange := 50.0
 @export var stagecoachSelectionRange := 75.0
@@ -147,6 +147,7 @@ func spawnInteractable(type: String, location: Vector2): #controls spawning of s
 			var temp =  star.instantiate()
 			temp.global_position = location
 			interactables.append(temp)
+			temp.bounty_completed.connect(_on_bounty_completed)
 			add_child(temp)
 		"camp":
 			var temp = camp.instantiate()
@@ -190,3 +191,18 @@ func _on_dispatch_window_cancel() -> void:
 	if selectedStageCoach != null:
 		selectedStageCoach.sprite.scale /= stagecoachSelectScale
 		selectedStageCoach = null
+
+
+func _on_bounty_completed(success: bool, p_position: Vector2) -> void:
+	# Floating Text
+	var floating_text := FloatingText.instantiate()
+	var text
+	if success:
+		text = "SUCCESS"
+		floating_text.modulate = Color.GREEN
+	else:
+		text = "FAILURE"
+		floating_text.modulate = Color.RED
+	add_child(floating_text)
+	floating_text.position = p_position
+	floating_text.show_text(text)
