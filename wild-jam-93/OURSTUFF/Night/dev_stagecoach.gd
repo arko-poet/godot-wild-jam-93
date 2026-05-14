@@ -4,7 +4,7 @@ class_name StageCoach extends Node2D
 var speed := 50.0
 var interactRange
 
-var hunters = []
+var hunters: Array[Hunter] = []
 var upgrades = [] #non stat based upgrades
 var bounties = []
 var stamina := Camp.MAX_STAMINA # how many seconds of travel the stagecoach has left
@@ -16,7 +16,11 @@ var pausedTime
 var lastPosition #position at time of dispatching
 var isMoving := false
 var isInteracting := false
-var isAtCamp := true
+var isAtCamp := true:
+	set(value):
+		isAtCamp = value
+		for h in hunters:
+			h.at_camp = value
 
 var movementTimer
 

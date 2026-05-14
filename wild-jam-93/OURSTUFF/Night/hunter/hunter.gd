@@ -11,6 +11,7 @@ var state := State.AVAILABLE:
 	set(value):
 		state = value
 		state_changed.emit()
+var at_camp := true
 
 
 func _init(p_face_texture_path: String, p_power = 1, p_health = 2) -> void:

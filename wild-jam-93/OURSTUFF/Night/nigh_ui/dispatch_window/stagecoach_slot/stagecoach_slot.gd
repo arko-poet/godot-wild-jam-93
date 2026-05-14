@@ -51,6 +51,7 @@ func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		if hunter == null:
 			hunter_slot_selected.emit(self)
-		else:
+		elif hunter.at_camp:
+			print(hunter.at_camp)
 			hunter_removed.emit(hunter)
 			hunter = null
