@@ -44,16 +44,6 @@ anchor_right = 0.25
 grow_horizontal = 2
 text = "$1000"
 
-[node name="SettingsButton" type="Label" parent="." unique_id=252157109]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -150.0
-offset_bottom = 31.0
-grow_horizontal = 0
-text = "Press 'Esc' to open menu"
-
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=218490218]
 layout_mode = 1
 anchors_preset = -1
@@ -79,7 +69,112 @@ text = "2x"
 layout_mode = 2
 text = "4x"
 
+[node name="HelpButton" type="Button" parent="." unique_id=1897686449]
+layout_mode = 0
+offset_left = 1264.0
+offset_right = 1280.0
+offset_bottom = 40.0
+grow_horizontal = 0
+text = "HELP"
+
+[node name="HelpPanel" type="Panel" parent="." unique_id=549440930]
+visible = false
+custom_minimum_size = Vector2(400, 600)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HelpPanel" unique_id=2032080555]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center][font_size=28][b]Game Rules[/b][/font_size][/center]
+
+[font_size=22][b]Preparing a Dispatch[/b][/font_size]
+• Choose a [u]Stagecoach[/u] and a [u]Star[/u] to prepare the dispatch
+• Assign [u]Bounty Hunters[/u] to the [u]Stagecoach[/u] and send them out
+• Be quick — the competition may claim targets before you do
+
+[font_size=22][b]Danger & Crew Strength[/b][/font_size]
+• Dangerous desert areas require stronger crews
+• Make sure your crew is powerful enough for the region
+• Your [u]Stagecoach Power[/u] determines how much danger your crew can handle
+
+[font_size=22][b]Supplies & Recovery[/b][/font_size]
+• [u]Stagecoaches[/u] carry limited supplies — refill them in town
+• Dispatches can fail
+• Injured hunters must return to town to recover
+
+[center]────────────────────────[/center]
+
+[font_size=22][b]Controls[/b][/font_size]
+
+[b]Right Mouse Button[/b] — Cancel Selection
+[b]Esc[/b] — Pause Menu
+[b]Left Mouse Button[/b] — All Other Actions
+
+[center]────────────────────────[/center]
+
+[font_size=22][b]Hunter Status Colors[/b][/font_size]
+
+[color=green]● Green[/color] — Available in town
+[color=yellow]● Yellow[/color] — Currently on a dispatch
+[color=red]● Red[/color] — Injured"
+
+[node name="CloseButton" type="Button" parent="HelpPanel" unique_id=179815828]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -9.0
+offset_top = -39.0
+offset_right = 9.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "OK"
+
+[node name="GameIntro" type="PanelContainer" parent="." unique_id=757018696]
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -20.0
+offset_right = 64.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="GameIntro" unique_id=1849898140]
+layout_mode = 2
+size_flags_horizontal = 4
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="pressed" from="HBoxContainer/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/Speed1Button" to="." method="_on_speed_1_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/Speed2Button" to="." method="_on_speed_2_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/Speed4Button" to="." method="_on_speed_4_button_pressed"]
+[connection signal="pressed" from="HelpButton" to="." method="_on_helpbutton_pressed"]
+[connection signal="pressed" from="HelpPanel/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="gui_input" from="GameIntro" to="." method="_on_game_intro_gui_input"]
