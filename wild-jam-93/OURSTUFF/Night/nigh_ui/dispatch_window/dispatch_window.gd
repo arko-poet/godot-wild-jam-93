@@ -81,6 +81,8 @@ func show_dispatch_panel(new_stagecoach: StageCoach, new_interactable: Node2D) -
 
 
 func _on_dispatch_button_pressed() -> void:
+	if interactable is not Camp:
+		interactable.bounty_expired.disconnect(_on_bounty_expired)
 	hide()
 	dispatched.emit(stagecoach)
 
@@ -108,6 +110,8 @@ func _on_hunter_slot_hunter_removed(hunter: Hunter) -> void:
 
 
 func _on_cancel_button_pressed() -> void:
+	if interactable is not Camp:
+		interactable.bounty_expired.disconnect(_on_bounty_expired)
 	hide()
 	cancel.emit()
 
