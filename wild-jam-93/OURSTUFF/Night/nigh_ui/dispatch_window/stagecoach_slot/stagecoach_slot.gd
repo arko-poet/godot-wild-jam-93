@@ -13,7 +13,8 @@ var hunter: Hunter:
 		if value != null:
 			_hunter_texture.texture = load(hunter.face_texture_path)
 			remove_border_highlight()
-			hunter.state = Hunter.State.BUSY
+			if hunter.state == Hunter.State.AVAILABLE:
+				hunter.state = Hunter.State.BUSY
 		else:
 			_hunter_texture.texture = null
 	

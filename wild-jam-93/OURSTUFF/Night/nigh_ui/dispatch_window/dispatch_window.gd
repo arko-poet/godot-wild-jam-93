@@ -121,7 +121,8 @@ func _update_hunter_power() -> void:
 	# hunter power
 	var power := 0
 	for hunter in stagecoach.hunters:
-		power += hunter.power
+		if hunter.state != Hunter.State.UNAVAILABLE:
+			power += hunter.power
 	_stagecoach_power.text = "Power: %s" % power
 	
 	# bounty fail chance
