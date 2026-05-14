@@ -57,7 +57,7 @@ func show_dispatch_panel(new_stagecoach: StageCoach, new_interactable: Node2D) -
 
 	# bounty/interactable display
 	var interactableData = interactable.getInteractableData()
-	_interactables_reward.text = "Reward: $%s" % reward
+	_interactables_reward.text = "$%s" % reward
 	_interactables_difficulty.text = "Difficulty: %s" % difficulty
 	_interactables_icon.texture = load(interactableData["dispatchIcon"])
 	_interactables_title.text = interactableData["dispatchTitle"]

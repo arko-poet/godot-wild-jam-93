@@ -126,6 +126,7 @@ offset_bottom = -4.0
 grow_vertical = 0
 
 [node name="Time" type="Label" parent="InteractablesPanel/VBoxContainer" unique_id=98003638]
+visible = false
 layout_mode = 2
 text = "Time: 03:12"
 
