@@ -51,8 +51,10 @@ func show_dispatch_panel(new_stagecoach: StageCoach, new_interactable: Node2D) -
 		difficulty = interactable.bounty.difficulty
 		reward = interactable.bounty.reward
 
-	_stagecoach_power.text = "Power: %s" % stagecoach.hunters.size()
+	# stagecoach properties
 	_stagecoach_stamina.text = "Stamina: %.1f/%.1f" % [stagecoach.stamina, Camp.MAX_STAMINA]
+	_update_hunter_power()
+
 	
 	var interactableData = interactable.getInteractableData()
 	_interactables_reward.text = "Reward: $%s" % reward
@@ -68,13 +70,12 @@ func show_dispatch_panel(new_stagecoach: StageCoach, new_interactable: Node2D) -
 		
 		(hunter_grid.get_child(i) as StagecoachSlot).hunter = stagecoach.hunters[i]
 		
-	# check if sufficient
+	# check if sufficient stamina
 	dispatch_button.disabled = stagecoach.stamina < stamina_needed
 	if dispatch_button.disabled:
 		dispatch_button.tooltip_text = "INSUFFICIENT STAMINA!"
 	else:
 		dispatch_button.tooltip_text = ""
-	
 	
 	show()
 
@@ -98,14 +99,23 @@ func _on_hunter_slot_selected(stagecoach_slot: StagecoachSlot) -> void:
 		stagecoach.hunters.append(selected_hunter)
 		hunter_assigned.emit(selected_hunter)
 		selected_hunter = null
+		_update_hunter_power()
 
 
 func _on_hunter_slot_hunter_removed(hunter: Hunter) -> void:
 	print("hunter removed")
 	hunter.state = Hunter.State.AVAILABLE
 	stagecoach.hunters.erase(hunter)
+	_update_hunter_power()
 
 
 func _on_cancel_button_pressed() -> void:
 	hide()
 	cancel.emit()
+
+
+func _update_hunter_power() -> void:
+	var power := 0
+	for hunter in stagecoach.hunters:
+		power += hunter.power
+	_stagecoach_power.text = "Power: %s" % power
