@@ -6,6 +6,7 @@ var interactRange
 
 var hunters = []
 var upgrades = [] #non stat based upgrades
+var bounties = []
 var stamina := Camp.MAX_STAMINA # how many seconds of travel the stagecoach has left
 
 var route #vector 2 
@@ -36,7 +37,6 @@ func _process(delta: float) -> void:
 		
 		position = lastPosition + (timerPercentDone * route)
 		stamina -= delta
-		print(stamina)
 		stamina_bar.update_stamina(stamina)
 
 

@@ -13,12 +13,14 @@ var selected_hunter: Hunter:
 var stagecoach: StageCoach
 var interactable: Node2D 
 
-@onready var _interactables_description: Label = $InteractablesPanel/Description # changed form prize
+@onready var _interactables_reward: Label = $InteractablesPanel/Description # changed form prize
 @onready var _interactables_icon: TextureRect = $InteractablesPanel/Icon
 @onready var _interactables_title: Label = $InteractablesPanel/Title
 @onready var _interactables_stamina: Label = $InteractablesPanel/VBoxContainer/RequiredStamina
+@onready var _interactables_difficulty: Label = $InteractablesPanel/VBoxContainer/Difficulty
 @onready var _stagecoach_power: Label = $StagecoachPanel/VBoxContainer/Power
 @onready var _stagecoach_stamina: Label = $StagecoachPanel/VBoxContainer/Stamina
+@onready var _fail_chance: Label = $InteractablesPanel/VBoxContainer/FailChance
 @onready var hunter_grid: GridContainer = $HunterGrid
 @onready var dispatch_button: Button = $HBoxContainer/DispatchButton
 
@@ -34,18 +36,31 @@ func show_dispatch_panel(new_stagecoach: StageCoach, new_interactable: Node2D) -
 	stagecoach = new_stagecoach
 	interactable = new_interactable
 	
+	var reward
+	var failValue
+	var difficulty
 	var stamina_needed = (stagecoach.global_position - interactable.global_position).length() / stagecoach.speed
 	if interactable is Camp:
 		stamina_needed = 0.0
+		failValue = 0
+		difficulty = 0
+		reward = 0
+	else:
+		interactable.updateFailChance(stagecoach.hunters)
+		failValue = int(interactable.failChance * 100)
+		difficulty = interactable.bounty.difficulty
+		reward = interactable.bounty.reward
 
 	_stagecoach_power.text = "Power: %s" % stagecoach.hunters.size()
 	_stagecoach_stamina.text = "Stamina: %.1f/%.1f" % [stagecoach.stamina, Camp.MAX_STAMINA]
 	
 	var interactableData = interactable.getInteractableData()
-	_interactables_description.text = "%s" % interactableData["dispatchDescription"]
+	_interactables_reward.text = "Reward: $%s" % reward
+	_interactables_difficulty.text = "Difficulty: %s" % difficulty
 	_interactables_icon.texture = load(interactableData["dispatchIcon"])
 	_interactables_title.text = interactableData["dispatchTitle"]
 	_interactables_stamina.text = "Req. Stamina: %.1f" % stamina_needed
+	_fail_chance.text = "Fail Chance: %%%s" % failValue
 	
 	print(stagecoach.isInteracting)
 	for i in stagecoach.hunters.size():

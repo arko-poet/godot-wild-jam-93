@@ -120,8 +120,8 @@ anchors_preset = -1
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 7.0
-offset_top = -101.0
-offset_right = 95.0
+offset_top = -129.0
+offset_right = 155.0
 offset_bottom = -4.0
 grow_vertical = 0
 
@@ -136,6 +136,10 @@ text = "Difficulty: 5"
 [node name="RequiredStamina" type="Label" parent="InteractablesPanel/VBoxContainer" unique_id=1173926853]
 layout_mode = 2
 text = "Req. Stamina: -12.3"
+
+[node name="FailChance" type="Label" parent="InteractablesPanel/VBoxContainer" unique_id=1137483218]
+layout_mode = 2
+text = "Difficulty: 5"
 
 [node name="StagecoachPanel" type="Panel" parent="." unique_id=704100280]
 custom_minimum_size = Vector2(300, 100)
