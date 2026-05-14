@@ -12,9 +12,15 @@ var inGameNightMain
 var bounty: Bounty
 var failChance
 
+var selected := false:
+	set(value):
+		selected = value
+		queue_redraw()
+
 @onready var star_time_bar: Node2D = $TimerBar
 @onready var bounty_progress_label: Label = $BountyProgressLabel
 @onready var sprite: Sprite2D = $Sprite2D
+@onready var collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
 
 
 func _ready() -> void:
@@ -42,6 +48,17 @@ func _process(_delta: float) -> void:
 	
 	if not interactTimer.is_stopped():
 		_update_bounty_progress_label()
+
+
+func _draw() -> void:
+	if selected:
+		draw_circle(
+				Vector2(0, 0),
+				max(collision_shape_2d.shape.size.x, collision_shape_2d.shape.size.y) / 2,
+				Color.DARK_ORCHID,
+				false,
+				4.0,
+		)
 
 
 func _on_decay_timer_timeout() -> void:
@@ -125,3 +142,11 @@ func updateFailChance(hunters: Array):
 		failChance = 1.0
 	else: # power <= difficulty
 		failChance = max(0.0, 0.1 * (1 + bounty.difficulty - power))
+
+
+func _on_area_2d_mouse_entered() -> void:
+	scale = Vector2(1.1, 1.1)
+
+
+func _on_area_2d_mouse_exited() -> void:
+	scale = Vector2(1.0, 1.0)
