@@ -11,6 +11,8 @@ const devHunterIcon = "res://OURSTUFF/resources/devBountyHunter.png"
 @export var interactableSelectionRange := 50.0
 @export var stagecoachSelectionRange := 75.0
 @export var overlapRange := 75
+@export var stagecoachSelectScale := 1.2
+@export var interactableSelectScale := 1.5
 
 var playableArea := Vector2i(1280, 720)
 
@@ -52,8 +54,14 @@ func _process(delta: float) -> void:
 			selectInteractable()
 		
 	elif Input.is_action_just_pressed("mouseSecondary"):
-		selectedStageCoach = null
-		selectedInteractable = null
+		if selectedInteractable != null:
+			selectedInteractable.sprite.scale /= interactableSelectScale
+			selectedInteractable = null
+		if selectedStageCoach != null:
+			selectedStageCoach.sprite.scale /= stagecoachSelectScale
+			selectedStageCoach = null
+		
+		dispatch_window.hide()
 		# can also be deselected via ui
 	
 	if Input.is_action_just_pressed("dev1"):
@@ -76,6 +84,7 @@ func selectStageCoach():
 		var distance = (get_global_mouse_position() - stageCoaches[i].global_position).length()
 		if (distance <= stagecoachSelectionRange) && (stageCoaches[i].isInteracting == false):
 			selectedStageCoach = stageCoaches[i]
+			selectedStageCoach.sprite.scale *= stagecoachSelectScale
 			#highlight coach or something
 			if selectedInteractable != null:
 				dispatch_window.show_dispatch_panel(selectedStageCoach, selectedInteractable)
@@ -88,6 +97,7 @@ func selectInteractable():
 			var distance = (get_global_mouse_position() - interactables[i].global_position).length()
 			if distance <= interactableSelectionRange:
 				selectedInteractable = interactables[i]
+				selectedInteractable.sprite.scale *= interactableSelectScale
 				#call a function to spawn ui element here
 				if selectedStageCoach != null:
 					
@@ -105,6 +115,8 @@ func dispatchStagecoach(stagecoach: StageCoach): # called by the ui when player 
 			#if !(selectedInteractable is Camp):
 			#	interactables.erase(selectedInteractable)
 			selectedStageCoach.dispatch(selectedInteractable)
+			selectedInteractable.sprite.scale /= interactableSelectScale
+			selectedStageCoach.sprite.scale /= stagecoachSelectScale
 			selectedInteractable = null
 			selectedStageCoach = null
 			print("dispatched")
@@ -119,7 +131,7 @@ func _on_star_spawn_timer_timeout() -> void:
 	var temp = Vector2(0,0)
 	while(isOverlaping): # may have performance issues if large numbers
 		isOverlaping = false
-		temp = Vector2(randf_range(0,playableArea.x), randf_range(0,playableArea.y))
+		temp = Vector2(randf_range(90,playableArea.x), randf_range(0,playableArea.y - 50))
 		for i in allClickables:
 			if (temp - i.global_position).length() < overlapRange:
 				isOverlaping = true
@@ -172,5 +184,9 @@ func _on_round_timer_timeout() -> void:
 
 func _on_dispatch_window_cancel() -> void:
 	pass # Replace with function body.
-	selectedInteractable = null
-	selectedStageCoach = null
+	if selectedInteractable != null:
+		selectedInteractable.sprite.scale /= interactableSelectScale
+		selectedInteractable = null
+	if selectedStageCoach != null:
+		selectedStageCoach.sprite.scale /= stagecoachSelectScale
+		selectedStageCoach = null

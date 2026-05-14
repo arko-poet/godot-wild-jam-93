@@ -9,7 +9,7 @@ var inGameNightMain
 
 @onready var star_time_bar: Node2D = $TimerBar
 @onready var bounty_progress_label: Label = $BountyProgressLabel
-
+@onready var sprite: Sprite2D = $Sprite2D
 
 func _ready() -> void:
 	decayTimer = find_child("decayTimer")
