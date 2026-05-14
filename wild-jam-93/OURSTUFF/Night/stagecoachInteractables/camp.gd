@@ -31,6 +31,11 @@ func stagecoachInteractComplete(): # called when stagecoach finishes interaciton
 		inGameMain.addMoney(i.reward)
 		print(i.reward)
 	interactingStagecoach.bounties = []
+	
+	#heal hunters
+	for h: Hunter in interactingStagecoach.hunters:
+		h.state = Hunter.State.BUSY
+	
 	interactingStagecoach.interactComplete()
 	
 
