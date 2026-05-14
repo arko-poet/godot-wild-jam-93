@@ -47,9 +47,10 @@ func loadNight():
 	pass
 	current_night_scene = nightScene.instantiate()
 	#send data/ call instatiation function
-	current_night_scene.spawnStagecoaches(stageCoaches)
+	
 	print(stageCoaches[2].hunters)
 	add_child(current_night_scene)
+	current_night_scene.spawnStagecoaches(stageCoaches)
 	current_night_scene.set_hunters(hunters as Array[Hunter])
 
 func getCoaches():

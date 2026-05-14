@@ -26,6 +26,8 @@ var movementTimer
 
 var InGameMain
 
+var ui_layer: CanvasLayer
+
 var selected := false:
 	set(value):
 		selected = value
@@ -40,9 +42,14 @@ func _ready() -> void:
 	movementTimer = find_child("movementTimer")
 	InGameMain = find_parent("InGameMain")
 	stamina_bar.set_max_stamina(Camp.MAX_STAMINA)
+	print(stamina_bar.get_parent())
+	print("ui_layer: ", ui_layer)
+	stamina_bar.reparent(ui_layer)
+	print(stamina_bar.get_parent())
 
 func _process(delta: float) -> void:
 	if isMoving: # move
+		stamina_bar.position = position
 		pass
 		var timerPercentDone = (movementTimer.wait_time - movementTimer.time_left) / movementTimer.wait_time
 		

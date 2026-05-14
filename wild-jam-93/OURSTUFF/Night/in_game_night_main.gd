@@ -191,7 +191,9 @@ func spawnStagecoaches(coaches: Array): #array of stage coach objects
 		temp.position = campPosition + displacementVector
 		stageCoaches.append(temp)
 		temp.setStagecoachData(coaches[i].getStagecoachData())
+		temp.ui_layer = dispatchUiLayer
 		add_child(temp)
+		
 
 func deleteInteractable(node: Node2D):
 	interactables.erase(node)
@@ -226,7 +228,7 @@ func _on_bounty_completed(success: bool, p_position: Vector2) -> void:
 	else:
 		text = "FAILURE"
 		floating_text.modulate = Color.RED
-	add_child(floating_text)
+	dispatchUiLayer.add_child(floating_text)
 	floating_text.position = p_position
 	floating_text.show_text(text)
 
@@ -235,7 +237,7 @@ func _on_bounty_expired(p_position) -> void:
 	var floating_text := FloatingText.instantiate()
 	var text := "EXPIRED"
 	floating_text.modulate = Color.YELLOW
-	add_child(floating_text)
+	dispatchUiLayer.add_child(floating_text)
 	floating_text.position = p_position
 	floating_text.show_text(text)
 
