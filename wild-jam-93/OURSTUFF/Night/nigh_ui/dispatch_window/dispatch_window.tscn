@@ -136,7 +136,7 @@ text = "Difficulty: 5"
 
 [node name="RequiredStamina" type="Label" parent="InteractablesPanel/VBoxContainer" unique_id=1173926853]
 layout_mode = 2
-text = "Req. Stamina: -12.3"
+text = "12.3 miles"
 
 [node name="FailChance" type="Label" parent="InteractablesPanel/VBoxContainer" unique_id=1137483218]
 layout_mode = 2

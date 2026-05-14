@@ -61,7 +61,7 @@ func show_dispatch_panel(new_stagecoach: StageCoach, new_interactable: Node2D) -
 	_interactables_difficulty.text = "Difficulty: %s" % difficulty
 	_interactables_icon.texture = load(interactableData["dispatchIcon"])
 	_interactables_title.text = interactableData["dispatchTitle"]
-	_interactables_stamina.text = "Req. Stamina: %.1f" % stamina_needed
+	_interactables_stamina.text = "%.1f miles" % stamina_needed
 	_fail_chance.text = "Fail Chance: %%%s" % failValue
 	
 	# stagecoach slot filling
