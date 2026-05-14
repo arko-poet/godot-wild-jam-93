@@ -1,6 +1,7 @@
-extends Node2D
+class_name StagecoachAnimation extends Node2D
 
 @onready var anim: AnimationPlayer = $AnimationPlayer
+@onready var sprites: Array = [$Sprite2D, $Sprite2D2]
 
 func _ready():
 	$Line2D._root = $Point_line2D

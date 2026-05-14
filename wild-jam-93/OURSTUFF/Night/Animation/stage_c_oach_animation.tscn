@@ -651,7 +651,7 @@ script = ExtResource("1_lg7he")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=394255853]
 material = SubResource("CanvasItemMaterial_4h5hi")
-position = Vector2(-44, 27)
+position = Vector2(49, -10)
 texture = SubResource("AtlasTexture_lg7he")
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=944317799]
@@ -663,10 +663,10 @@ texture = SubResource("AtlasTexture_0nxxq")
 libraries/ = SubResource("AnimationLibrary_88qc0")
 
 [node name="Point_line2D" type="Marker2D" parent="." unique_id=1206467052]
-position = Vector2(52, -38)
+position = Vector2(-102, 37)
 
 [node name="Point_Line2D2" type="Marker2D" parent="." unique_id=932458122]
-position = Vector2(102, -10)
+position = Vector2(-101, -13)
 
 [node name="Line2D" type="Line2D" parent="." unique_id=2107134351]
 modulate = Color(0.41568628, 0.2627451, 0, 1)
