@@ -49,7 +49,7 @@ func update_time_left(seconds_left: int) -> void:
 	
 	
 func update_money(money: int) -> void:
-	money_label.text = "4 %s" % money
+	money_label.text = "$%s" % money
 
 
 func _on_pause_button_pressed() -> void:

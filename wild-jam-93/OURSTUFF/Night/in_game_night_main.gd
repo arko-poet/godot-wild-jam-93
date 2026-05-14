@@ -32,9 +32,12 @@ var inGameMain
 
 func _ready() -> void:
 	inGameMain = find_parent("InGameMain")
+	
 	starSpawnTimer.start(1)
 	roundTimer.start(60.0 * 5.0)
 	spawnInteractable("camp", Vector2(0,0))
+	
+	night_ui.update_money(inGameMain.money)
 
 
 func _process(delta: float) -> void:
