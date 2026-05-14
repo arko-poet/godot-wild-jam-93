@@ -38,32 +38,30 @@ func show_dispatch_panel(new_stagecoach: StageCoach, new_interactable: Node2D) -
 	for stagecoach_slot: StagecoachSlot in hunter_grid.get_children():
 		stagecoach_slot.hunter = null
 	
-	var reward
-	var failValue
-	var difficulty
+	# bounty properties
+	var reward: String
 	var stamina_needed = (stagecoach.global_position - interactable.global_position).length() / stagecoach.speed
 	if interactable is Camp:
-		stamina_needed = 0.0
+		_interactables_stamina.hide()
 		_fail_chance.hide()
-		difficulty = 0
-		reward = 0
+		reward = "+ Resupply\n+ Heal"
 	else:
 		interactable.updateFailChance(stagecoach.hunters)
+		_interactables_stamina.show()
 		_fail_chance.show()
-		difficulty = interactable.bounty.difficulty
-		reward = interactable.bounty.reward
-
-	# stagecoach properties
-	_stagecoach_stamina.text = "Stamina: %.1f/%.1f" % [stagecoach.stamina, Camp.MAX_STAMINA]
-	_update_hunter_power()
+		reward = "$%s" % interactable.bounty.reward
 
 	# bounty/interactable display
 	var interactableData = interactable.getInteractableData()
-	_interactables_reward.text = "$%s" % reward
-	_interactables_difficulty.text = "Difficulty: %s" % difficulty
+	_interactables_reward.text = reward
+	#_interactables_difficulty.text = "Difficulty: %s" % difficulty
 	_interactables_icon.texture = load(interactableData["dispatchIcon"])
 	_interactables_title.text = interactableData["dispatchTitle"]
 	_interactables_stamina.text = "%.1f miles" % stamina_needed
+	
+	# stagecoach properties
+	_stagecoach_stamina.text = "Stamina: %.1f/%.1f" % [stagecoach.stamina, Camp.MAX_STAMINA]
+	_update_hunter_power()
 	
 	# stagecoach slot filling
 	for i in stagecoach.hunters.size():
