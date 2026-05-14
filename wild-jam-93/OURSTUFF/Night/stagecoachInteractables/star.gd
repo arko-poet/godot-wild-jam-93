@@ -1,4 +1,4 @@
-extends StagecoachInteractable 
+class_name Star extends StagecoachInteractable 
 
 signal bounty_completed(success: bool, p_position: Vector2)
 signal bounty_expired(p_position: Vector2)
@@ -7,7 +7,7 @@ var decayTimer
 var interaction_time: float
 @onready var interactTimer = $interactTimer
 var inGameMain
-var inGameNightMain
+var inGameNightMain: Night
 
 var bounty: Bounty
 var failChance
@@ -36,6 +36,9 @@ func _ready() -> void:
 	var decay_time := randf_range(15, 20)
 	star_time_bar.set_decay_time(decay_time)
 	decayTimer.start(decay_time)
+	
+	star_time_bar.reparent(inGameNightMain.dispatchUiLayer)
+	bounty_progress_label.reparent(inGameNightMain.dispatchUiLayer)
 	
 
 func _process(_delta: float) -> void:

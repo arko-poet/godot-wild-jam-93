@@ -198,6 +198,10 @@ func spawnStagecoaches(coaches: Array): #array of stage coach objects
 func deleteInteractable(node: Node2D):
 	interactables.erase(node)
 	node.queue_free()
+	if node is Star:
+		node.star_time_bar.queue_free()
+		node.bounty_progress_label.queue_free()
+
 
 func adjustPlayableArea(newSize: Vector2i): #call this function when game window is resized
 	playableArea = newSize
