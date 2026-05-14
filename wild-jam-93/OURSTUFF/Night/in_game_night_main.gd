@@ -3,6 +3,7 @@ class_name Night extends Node2D
  
 const stageCoach = preload("res://OURSTUFF/Night/dev_stagecoach.tscn") #stage coach scene
 const star = preload("res://OURSTUFF/Night/stagecoachInteractables/star.tscn") #star scene
+const starAnimation = preload("res://OURSTUFF/Night/Animation/star_animation.tscn")
 const camp = preload("res://OURSTUFF/Night/stagecoachInteractables/camp.tscn")
 #const dispatchWindow = preload("res://OURSTUFF/Night/dispatch_window/dispatch_window.tscn")
 const devHunterIcon = "res://OURSTUFF/resources/devBountyHunter.png"
@@ -158,9 +159,14 @@ func _on_star_spawn_timer_timeout() -> void:
 			if (temp - i.global_position).length() < overlapRange:
 				isOverlaping = true
 				break
-	
+	#star animation
+	var animation = starAnimation.instantiate()
+	animation.global_position = Vector2(randi_range(0, playableArea.x), -10)
+	animation.target = temp
+	animation.impact_ground.connect(spawnInteractable.bind("star", temp))
+	add_child(animation)
 	starSpawnTimer.start(randf_range(3, 7))
-	spawnInteractable("star", temp)
+
 
 func spawnInteractable(type: String, location: Vector2): #controls spawning of stars, objects, locations etc
 	pass
@@ -171,6 +177,11 @@ func spawnInteractable(type: String, location: Vector2): #controls spawning of s
 			temp.global_position = location
 			interactables.append(temp)
 			temp.bounty_completed.connect(_on_bounty_completed)
+			
+			for i in get_children():
+				if i is AnimationStar:
+					i.reparent(temp)
+					
 			add_child(temp)
 		"camp":
 			var temp = camp.instantiate()

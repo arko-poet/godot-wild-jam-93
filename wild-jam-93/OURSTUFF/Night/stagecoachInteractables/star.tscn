@@ -11,6 +11,7 @@ size = Vector2(32, 28.5)
 script = ExtResource("1_wmdgi")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=948498031]
+visible = false
 position = Vector2(0.99999976, -2)
 scale = Vector2(0.1889764, 0.16546765)
 texture = ExtResource("1_dxmke")
