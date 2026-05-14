@@ -1,5 +1,7 @@
 extends StagecoachInteractable 
 
+signal bounty_completed(success: bool, p_position: Vector2)
+
 var decayTimer
 var interaction_time: float
 @onready var interactTimer = $interactTimer
@@ -12,6 +14,7 @@ var failChance
 @onready var star_time_bar: Node2D = $TimerBar
 @onready var bounty_progress_label: Label = $BountyProgressLabel
 @onready var sprite: Sprite2D = $Sprite2D
+
 
 func _ready() -> void:
 	decayTimer = find_child("decayTimer")
@@ -67,9 +70,9 @@ func stagecoachInteractComplete():
 		interactingStagecoach.interactComplete()
 		interactingStagecoach.bounties.append(bounty)
 		inGameNightMain.deleteInteractable(self)
-		print("succsess")
+		bounty_completed.emit(true, global_position)
 	else:
-		print("fail")
+		bounty_completed.emit(false, global_position)
 		interactingStagecoach.interactComplete()
 		inGameNightMain.deleteInteractable(self)
 	
