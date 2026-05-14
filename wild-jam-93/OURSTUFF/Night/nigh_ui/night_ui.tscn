@@ -68,6 +68,7 @@ text = "II"
 
 [node name="Speed1Button" type="Button" parent="HBoxContainer" unique_id=56339402]
 layout_mode = 2
+disabled = true
 text = "1x"
 
 [node name="Speed2Button" type="Button" parent="HBoxContainer" unique_id=1003003581]
