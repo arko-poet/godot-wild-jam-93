@@ -42,39 +42,38 @@ func show_dispatch_panel(new_stagecoach: StageCoach, new_interactable: Node2D) -
 	var stamina_needed = (stagecoach.global_position - interactable.global_position).length() / stagecoach.speed
 	if interactable is Camp:
 		stamina_needed = 0.0
-		failValue = 0
+		_fail_chance.hide()
 		difficulty = 0
 		reward = 0
 	else:
 		interactable.updateFailChance(stagecoach.hunters)
-		failValue = int(interactable.failChance * 100)
+		_fail_chance.show()
 		difficulty = interactable.bounty.difficulty
 		reward = interactable.bounty.reward
 
-	_stagecoach_power.text = "Power: %s" % stagecoach.hunters.size()
+	# stagecoach properties
 	_stagecoach_stamina.text = "Stamina: %.1f/%.1f" % [stagecoach.stamina, Camp.MAX_STAMINA]
-	
+	_update_hunter_power()
+
+	# bounty/interactable display
 	var interactableData = interactable.getInteractableData()
-	_interactables_reward.text = "Reward: $%s" % reward
+	_interactables_reward.text = "$%s" % reward
 	_interactables_difficulty.text = "Difficulty: %s" % difficulty
 	_interactables_icon.texture = load(interactableData["dispatchIcon"])
 	_interactables_title.text = interactableData["dispatchTitle"]
-	_interactables_stamina.text = "Req. Stamina: %.1f" % stamina_needed
-	_fail_chance.text = "Fail Chance: %%%s" % failValue
+	_interactables_stamina.text = "%.1f miles" % stamina_needed
 	
-	print(stagecoach.isInteracting)
+	# stagecoach slot filling
 	for i in stagecoach.hunters.size():
 		assert(stagecoach.hunters[i] != null)
-		
 		(hunter_grid.get_child(i) as StagecoachSlot).hunter = stagecoach.hunters[i]
 		
-	# check if sufficient
+	# inform player if sufficient stamina
 	dispatch_button.disabled = stagecoach.stamina < stamina_needed
 	if dispatch_button.disabled:
-		dispatch_button.tooltip_text = "INSUFFICIENT STAMINA!"
+		dispatch_button.tooltip_text = "INSUFFICIENT STAMINA\nRESUPPLY IN TOWN"
 	else:
 		dispatch_button.tooltip_text = ""
-	
 	
 	show()
 
@@ -84,7 +83,6 @@ func _on_dispatch_button_pressed() -> void:
 	dispatched.emit(stagecoach)
 
 
-## needs to get a signal which notifies that user has selected a bounty hunter
 func _on_hunter_selected(hunter: Hunter) -> void:
 	selected_hunter = hunter
 	for stagecoach_slot: StagecoachSlot in hunter_grid.get_children():
@@ -98,14 +96,27 @@ func _on_hunter_slot_selected(stagecoach_slot: StagecoachSlot) -> void:
 		stagecoach.hunters.append(selected_hunter)
 		hunter_assigned.emit(selected_hunter)
 		selected_hunter = null
+		_update_hunter_power()
 
 
 func _on_hunter_slot_hunter_removed(hunter: Hunter) -> void:
-	print("hunter removed")
 	hunter.state = Hunter.State.AVAILABLE
 	stagecoach.hunters.erase(hunter)
+	_update_hunter_power()
 
 
 func _on_cancel_button_pressed() -> void:
 	hide()
 	cancel.emit()
+
+
+func _update_hunter_power() -> void:
+	# hunter power
+	var power := 0
+	for hunter in stagecoach.hunters:
+		power += hunter.power
+	_stagecoach_power.text = "Power: %s" % power
+	
+	# bounty fail chance
+	interactable.updateFailChance(stagecoach.hunters)
+	_fail_chance.text = "Fail Chance: %s%%" % int(interactable.failChance * 100)

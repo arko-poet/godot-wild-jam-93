@@ -126,16 +126,18 @@ offset_bottom = -4.0
 grow_vertical = 0
 
 [node name="Time" type="Label" parent="InteractablesPanel/VBoxContainer" unique_id=98003638]
+visible = false
 layout_mode = 2
 text = "Time: 03:12"
 
 [node name="Difficulty" type="Label" parent="InteractablesPanel/VBoxContainer" unique_id=1687430583]
+visible = false
 layout_mode = 2
 text = "Difficulty: 5"
 
 [node name="RequiredStamina" type="Label" parent="InteractablesPanel/VBoxContainer" unique_id=1173926853]
 layout_mode = 2
-text = "Req. Stamina: -12.3"
+text = "12.3 miles"
 
 [node name="FailChance" type="Label" parent="InteractablesPanel/VBoxContainer" unique_id=1137483218]
 layout_mode = 2

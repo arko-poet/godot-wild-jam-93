@@ -108,5 +108,12 @@ func _update_bounty_progress_label() -> void:
 	bounty_progress_label.text = "%s%%" % int(((interaction_time - interactTimer.time_left) / interaction_time)* 100) 
 
 func updateFailChance(hunters: Array):
-	pass
-	failChance = float(bounty.difficulty - hunters.size()) / 10.0
+	var power := 0
+	for h in hunters:
+		power += h.power
+	if power > bounty.difficulty:
+		failChance = 0.0
+	elif power == 0:
+		failChance = 1.0
+	else: # power <= difficulty
+		failChance = max(0.0, 0.1 * (1 + bounty.difficulty - power))
