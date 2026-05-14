@@ -129,5 +129,5 @@ func _update_hunter_power() -> void:
 		_fail_chance.text = "Fail Chance: %s%%" % int(interactable.failChance * 100.0)
 
 
-func _on_bounty_expired() -> void:
+func _on_bounty_expired(_p_position) -> void:
 	hide()
