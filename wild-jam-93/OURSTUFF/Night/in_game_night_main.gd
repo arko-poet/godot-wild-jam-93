@@ -115,12 +115,18 @@ func selectInteractable():
 		if interactables[i] != null: #jank. check in any null values in array and delete
 			var distance = (get_global_mouse_position() - interactables[i].global_position).length()
 			if distance <= interactableSelectionRange:
-				selectedInteractable = interactables[i]
-				selectedInteractable.sprite.scale *= interactableSelectScale
-				#call a function to spawn ui element here
-				if selectedStageCoach != null:
-					
-					dispatch_window.show_dispatch_panel(selectedStageCoach, selectedInteractable)
+				var temp = false
+				for n in stageCoaches:
+					if (n.interactingNode == interactables[i]) && (interactables[i] is not Camp): #cannont select destination of another stagecoach (except camp)
+						temp = true
+						break
+				if !temp:
+					selectedInteractable = interactables[i]
+					selectedInteractable.sprite.scale *= interactableSelectScale
+					#call a function to spawn ui element here
+					if selectedStageCoach != null:
+						
+						dispatch_window.show_dispatch_panel(selectedStageCoach, selectedInteractable)
 				break
 		else:
 			interactables.remove_at(i)
