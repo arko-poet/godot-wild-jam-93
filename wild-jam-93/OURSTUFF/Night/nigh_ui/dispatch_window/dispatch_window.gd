@@ -30,11 +30,13 @@ func _ready() -> void:
 	inGameNightMain = find_parent("InGameNightMain")
 
 func show_dispatch_panel(new_stagecoach: StageCoach, new_interactable: Node2D) -> void:
-	for stagecoach_slot: StagecoachSlot in hunter_grid.get_children():
-		stagecoach_slot.hunter = null
-	
 	stagecoach = new_stagecoach
 	interactable = new_interactable
+	if interactable is not Camp:
+		interactable.bounty_expired.connect(_on_bounty_expired)
+	# clean slots from previously selected stagecoach
+	for stagecoach_slot: StagecoachSlot in hunter_grid.get_children():
+		stagecoach_slot.hunter = null
 	
 	var reward
 	var failValue
@@ -120,4 +122,8 @@ func _update_hunter_power() -> void:
 	# bounty fail chance
 	if interactable is not Camp:
 		interactable.updateFailChance(stagecoach.hunters)
-		_fail_chance.text = "Fail Chance: %s%%" % int(interactable.failChance * 100)
+		_fail_chance.text = "Fail Chance: %s%%" % int(interactable.failChance * 100.0)
+
+
+func _on_bounty_expired() -> void:
+	hide()
