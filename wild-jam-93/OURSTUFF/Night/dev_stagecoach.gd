@@ -34,7 +34,7 @@ var selected := false:
 @onready var sprite = $Sprite2D
 @onready var stamina_bar: Node2D = $StaminaBar
 @onready var collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
-
+@onready var stage_coach_animation: StagecoachAnimation = $StageCOachAnimation
 
 func _ready() -> void:
 	movementTimer = find_child("movementTimer")
@@ -44,6 +44,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if isMoving: # move
 		pass
+		stage_coach_animation.animate(route.normalized())
 		var timerPercentDone = (movementTimer.wait_time - movementTimer.time_left) / movementTimer.wait_time
 		
 		position = lastPosition + (timerPercentDone * route)
@@ -74,7 +75,6 @@ func dispatch(node: StagecoachInteractable): #imput a new interacrable node, fin
 		lastPosition = global_position
 		route = (destination - global_position)
 		var routeTime = route.length() / speed 
-		sprite.rotation = route.angle()
 		
 		movementTimer.start(routeTime)
 		isMoving = true
@@ -117,10 +117,15 @@ func setStagecoachData(data: Dictionary): #call this on stagecoach scene when it
 func assignHunters(newHunters: Array): #called by the ingamenightmain when dispatched
 	hunters = newHunters
 
+func setSpriteScale(new_scale: float):
+	for i in stage_coach_animation.sprites:
+		i.scale = Vector2(new_scale, new_scale)
 
 func _on_area_2d_mouse_entered() -> void:
 	scale = Vector2(1.1, 1.1)
+	setSpriteScale(1.1)
 
 
 func _on_area_2d_mouse_exited() -> void:
 	scale = Vector2(1.0, 1.0)
+	setSpriteScale(1.1)
