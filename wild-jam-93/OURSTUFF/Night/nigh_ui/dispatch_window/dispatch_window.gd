@@ -89,12 +89,14 @@ func _on_dispatch_button_pressed() -> void:
 func _on_hunter_selected(hunter: Hunter) -> void:
 	selected_hunter = hunter
 	for stagecoach_slot: StagecoachSlot in hunter_grid.get_children():
-		if stagecoach_slot.hunter == null:
+		if stagecoach_slot.hunter == null and stagecoach.isAtCamp:
 			stagecoach_slot.add_border_highlight()
 
 
+## add hunter to a stagecoach
 func _on_hunter_slot_selected(stagecoach_slot: StagecoachSlot) -> void:
-	if selected_hunter != null:
+	if selected_hunter != null and stagecoach.isAtCamp:
+		print(selected_hunter.at_camp)
 		stagecoach_slot.hunter = selected_hunter
 		stagecoach.hunters.append(selected_hunter)
 		hunter_assigned.emit(selected_hunter)
