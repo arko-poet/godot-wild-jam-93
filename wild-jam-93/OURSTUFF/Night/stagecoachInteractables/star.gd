@@ -6,6 +6,8 @@ var interaction_time: float
 var inGameMain
 var inGameNightMain
 
+var bounty: Bounty
+var failChance
 
 @onready var star_time_bar: Node2D = $TimerBar
 @onready var bounty_progress_label: Label = $BountyProgressLabel
@@ -16,8 +18,12 @@ func _ready() -> void:
 	inGameMain = find_parent("InGameMain")
 	inGameNightMain = find_parent("InGameNightMain")
 	
+	bounty = Bounty.new()
+	bounty.difficulty = randi_range(1, 5)
+	bounty.reward = randi_range(50, 150) * bounty.difficulty
+	
 	# TODO this shouild probably be just integer, ui handles how reward is displayed
-	dispatchDescription = "Reward 1$"
+	dispatchDescription = "Reward $%s" % bounty.difficulty
 	dispatchIcon = "res://OURSTUFF/resources/DevStarAtlas.tres" #path of icon
 	dispatchTitle = "Bounty"
 	
@@ -56,9 +62,16 @@ func getInteractableData():
 	}
 
 func stagecoachInteractComplete():
-	interactingStagecoach.interactComplete()
-	inGameMain.addMoney(1)
-	inGameNightMain.deleteInteractable(self)
+	var failRoll = randf_range(0, 1) 
+	if failChance < failRoll:
+		interactingStagecoach.interactComplete()
+		interactingStagecoach.bounties.append(bounty)
+		inGameNightMain.deleteInteractable(self)
+		print("succsess")
+	else:
+		print("fail")
+		interactingStagecoach.interactComplete()
+		inGameNightMain.deleteInteractable(self)
 	
 
 func canInteract(stagecoach: StageCoach): #check if stagecoach is able to interact
@@ -83,8 +96,14 @@ func startDecayTimer():
 
 func _on_interact_timer_timeout() -> void:
 	pass # Replace with function body.
+	
 	stagecoachInteractComplete()
+	
 
 
 func _update_bounty_progress_label() -> void:
 	bounty_progress_label.text = "%s%%" % int(((interaction_time - interactTimer.time_left) / interaction_time)* 100) 
+
+func updateFailChance(hunters: Array):
+	pass
+	failChance = float(bounty.difficulty - hunters.size()) / 10.0

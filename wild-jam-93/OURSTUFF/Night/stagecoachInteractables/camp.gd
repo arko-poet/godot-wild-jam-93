@@ -7,9 +7,12 @@ const MAX_STAMINA := 15.0
 @onready var interactTimer = $interactTimer
 @onready var sprite = $Sprite2D
 
+var inGameMain
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
+	inGameMain = find_parent("InGameMain")
 	dispatchDescription = "Refill Stamina"
 	dispatchIcon = campTexture
 	dispatchTitle = "Refill"
@@ -24,6 +27,10 @@ func stagecoachInteractStart(stagecoach: StageCoach): # the result of a stagecoa
 func stagecoachInteractComplete(): # called when stagecoach finishes interaciton timer
 	pass 
 	interactingStagecoach.stamina = MAX_STAMINA
+	for i in interactingStagecoach.bounties:
+		inGameMain.addMoney(i.reward)
+		print(i.reward)
+	interactingStagecoach.bounties = []
 	interactingStagecoach.interactComplete()
 	
 
