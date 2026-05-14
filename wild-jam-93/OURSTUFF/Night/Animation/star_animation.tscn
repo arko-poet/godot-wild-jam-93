@@ -1,0 +1,105 @@
+[gd_scene format=3 uid="uid://btupxbstxpk2g"]
+
+[ext_resource type="Script" uid="uid://dqdt0ifpaqbrk" path="res://OURSTUFF/Night/Animation/Map/starAnimation.gd" id="1_h8i0r"]
+[ext_resource type="Texture2D" uid="uid://d4cm64qyqt2kd" path="res://OURSTUFF/Night/Animation/Map/props.png" id="2_6f726"]
+[ext_resource type="Script" uid="uid://c6kcc7to67jvn" path="res://OURSTUFF/Night/Animation/Map/startrail.gd" id="3_eanks"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_017em"]
+light_mode = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xcyfb"]
+atlas = ExtResource("2_6f726")
+region = Rect2(517, 134, 41, 42)
+
+[sub_resource type="Curve" id="Curve_8mnmd"]
+_data = [Vector2(0, 0.49438208), 0.0, 0.0, 0, 0, Vector2(0.4842105, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkrat"]
+atlas = ExtResource("2_6f726")
+region = Rect2(517, 134, 41, 42)
+
+[sub_resource type="Curve" id="Curve_riuky"]
+_data = [Vector2(0, 0.7415731), 0.0, 0.0, 0, 0, Vector2(0.5105263, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_3ysx0"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1ebqj"]
+light_mode = 1
+
+[sub_resource type="Curve" id="Curve_1ebqj"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.34831464), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_1ebqj"]
+offsets = PackedFloat32Array(0, 0.5914634, 0.79268295, 1)
+colors = PackedColorArray(0, 0.8027964, 0.7349415, 0, 0, 0.58907485, 0.96216804, 0.6112313, 0.63559985, 0, 0.19669342, 0.80271447, 1, 1, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6bk67"]
+atlas = ExtResource("2_6f726")
+region = Rect2(517, 134, 41, 42)
+
+[node name="Star" type="CharacterBody2D" unique_id=160080908]
+material = SubResource("CanvasItemMaterial_017em")
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_h8i0r")
+
+[node name="IMPACT" type="CPUParticles2D" parent="." unique_id=1099302164]
+use_parent_material = true
+emitting = false
+amount = 13
+texture = SubResource("AtlasTexture_xcyfb")
+one_shot = true
+explosiveness = 0.65
+lifetime_randomness = 0.35
+direction = Vector2(0, -1)
+gravity = Vector2(0, 0)
+initial_velocity_min = 147.0
+initial_velocity_max = 156.0
+damping_min = 100.0
+damping_max = 100.0
+scale_amount_min = 0.1
+scale_amount_max = 0.4
+scale_amount_curve = SubResource("Curve_8mnmd")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=572141325]
+use_parent_material = true
+amount = 16
+texture = SubResource("AtlasTexture_lkrat")
+emission_shape = 1
+emission_sphere_radius = 48.0
+gravity = Vector2(0, 0)
+angular_velocity_min = -400.0
+angular_velocity_max = 400.0
+scale_amount_min = 0.2
+scale_amount_max = 0.6
+scale_amount_curve = SubResource("Curve_riuky")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+hue_variation_curve = SubResource("Curve_3ysx0")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=205641645]
+top_level = true
+material = SubResource("CanvasItemMaterial_1ebqj")
+use_parent_material = true
+width = 4.57
+width_curve = SubResource("Curve_1ebqj")
+gradient = SubResource("Gradient_1ebqj")
+script = ExtResource("3_eanks")
+
+[node name="Line2D2" type="Line2D" parent="." unique_id=728760439]
+top_level = true
+material = SubResource("CanvasItemMaterial_1ebqj")
+use_parent_material = true
+width = 4.57
+width_curve = SubResource("Curve_1ebqj")
+gradient = SubResource("Gradient_1ebqj")
+script = ExtResource("3_eanks")
+coef = -0.3
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1359082438]
+use_parent_material = true
+texture = SubResource("AtlasTexture_6bk67")

@@ -1,0 +1,480 @@
+[gd_scene format=3 uid="uid://bg1srjrddd146"]
+
+[ext_resource type="Texture2D" uid="uid://d4cm64qyqt2kd" path="res://OURSTUFF/Night/Animation/Map/props.png" id="1_0111g"]
+[ext_resource type="Script" uid="uid://dldnqaeiutwdc" path="res://OURSTUFF/Night/Animation/night_transition.gd" id="2_wkk5a"]
+[ext_resource type="Script" uid="uid://bld8242ffi1d2" path="res://OURSTUFF/Night/Animation/Map/test_star.gd" id="3_52scm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52scm"]
+atlas = ExtResource("1_0111g")
+region = Rect2(10, 252, 38, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ebqj"]
+atlas = ExtResource("1_0111g")
+region = Rect2(78, 278, 57, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fhqe2"]
+atlas = ExtResource("1_0111g")
+region = Rect2(13, 367, 68, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_riuky"]
+atlas = ExtResource("1_0111g")
+region = Rect2(116, 359, 96, 79)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ysx0"]
+atlas = ExtResource("1_0111g")
+region = Rect2(399, 248, 156, 208)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3nkh"]
+atlas = ExtResource("1_0111g")
+region = Rect2(0, 0, 489, 223)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_017em"]
+atlas = ExtResource("1_0111g")
+region = Rect2(500, 4, 69, 82)
+
+[sub_resource type="Gradient" id="Gradient_jqksr"]
+offsets = PackedFloat32Array(0, 0.05, 0.1, 0.9, 0.95, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.3764706, 0.15294118, 0.43529412, 1, 0.09019608, 0.08235294, 0.17254902, 1, 0.09019608, 0.08235294, 0.17254902, 1, 0.87221414, 0.5382301, 0.4428321, 1, 1, 1, 1, 1)
+
+[node name="Map" type="Node2D" unique_id=2016845786]
+y_sort_enabled = true
+
+[node name="cactus1" type="Node2D" parent="." unique_id=560960449]
+y_sort_enabled = true
+scale = Vector2(0.5, 0.5)
+
+[node name="Cactus" type="Sprite2D" parent="cactus1" unique_id=395694291]
+position = Vector2(184, 100)
+texture = SubResource("AtlasTexture_52scm")
+
+[node name="Cactus2" type="Sprite2D" parent="cactus1" unique_id=337229145]
+position = Vector2(232, 140)
+texture = SubResource("AtlasTexture_52scm")
+
+[node name="Cactus4" type="Sprite2D" parent="cactus1" unique_id=460328638]
+position = Vector2(377.01147, 310.34482)
+texture = SubResource("AtlasTexture_52scm")
+
+[node name="Cactus5" type="Sprite2D" parent="cactus1" unique_id=789152196]
+position = Vector2(540.2299, 278.16092)
+texture = SubResource("AtlasTexture_52scm")
+
+[node name="Cactus6" type="Sprite2D" parent="cactus1" unique_id=1276872621]
+position = Vector2(1335.6322, 416.09195)
+texture = SubResource("AtlasTexture_52scm")
+
+[node name="Cactus7" type="Sprite2D" parent="cactus1" unique_id=1414300013]
+position = Vector2(1358.6207, 542.52856)
+texture = SubResource("AtlasTexture_52scm")
+
+[node name="Cactus8" type="Sprite2D" parent="cactus1" unique_id=981724740]
+position = Vector2(1243.6783, 655.19543)
+texture = SubResource("AtlasTexture_52scm")
+
+[node name="Cactus9" type="Sprite2D" parent="cactus1" unique_id=2048150900]
+position = Vector2(1494.2529, 804.62067)
+texture = SubResource("AtlasTexture_52scm")
+
+[node name="Cactus10" type="Sprite2D" parent="cactus1" unique_id=1583084091]
+position = Vector2(928.73596, 850.57465)
+texture = SubResource("AtlasTexture_52scm")
+
+[node name="Cactus11" type="Sprite2D" parent="cactus1" unique_id=1051072362]
+position = Vector2(1133.9425, 609.2183)
+scale = Vector2(1.9850978, 2.174835)
+texture = SubResource("AtlasTexture_52scm")
+
+[node name="Cactus12" type="Sprite2D" parent="cactus1" unique_id=1178179918]
+position = Vector2(1019.0001, 721.8852)
+texture = SubResource("AtlasTexture_52scm")
+
+[node name="Cactus13" type="Sprite2D" parent="cactus1" unique_id=2141174401]
+position = Vector2(1520.1493, 416.11496)
+texture = SubResource("AtlasTexture_52scm")
+
+[node name="Cactus15" type="Sprite2D" parent="cactus1" unique_id=204386094]
+position = Vector2(1127.0461, 416.11493)
+texture = SubResource("AtlasTexture_52scm")
+
+[node name="Cactus16" type="Sprite2D" parent="cactus1" unique_id=480210787]
+position = Vector2(1037.3912, 190.82756)
+texture = SubResource("AtlasTexture_52scm")
+
+[node name="Cactus17" type="Sprite2D" parent="cactus1" unique_id=265993840]
+position = Vector2(1287.966, 340.25275)
+texture = SubResource("AtlasTexture_52scm")
+
+[node name="Cactus18" type="Sprite2D" parent="cactus1" unique_id=2059654831]
+position = Vector2(1402.9082, 749.44824)
+texture = SubResource("AtlasTexture_52scm")
+
+[node name="Cactus19" type="Sprite2D" parent="cactus1" unique_id=532962919]
+position = Vector2(1136.2415, 790.8276)
+scale = Vector2(-1.0101104, 1.0906018)
+texture = SubResource("AtlasTexture_52scm")
+
+[node name="Cactus20" type="Sprite2D" parent="cactus1" unique_id=599096389]
+position = Vector2(1046.5867, 565.5402)
+texture = SubResource("AtlasTexture_52scm")
+
+[node name="Cactus21" type="Sprite2D" parent="cactus1" unique_id=892243931]
+position = Vector2(1297.1613, 714.9654)
+scale = Vector2(-1.0101137, 1.0906019)
+texture = SubResource("AtlasTexture_52scm")
+
+[node name="Cactus22" type="Sprite2D" parent="cactus1" unique_id=205406418]
+position = Vector2(2270, 246)
+texture = SubResource("AtlasTexture_52scm")
+
+[node name="Cactus23" type="Sprite2D" parent="cactus1" unique_id=2023829141]
+position = Vector2(952.3334, 625.3104)
+texture = SubResource("AtlasTexture_52scm")
+
+[node name="Cactus24" type="Sprite2D" parent="cactus1" unique_id=596682057]
+position = Vector2(1202.908, 774.7357)
+scale = Vector2(-1.0101104, 1.0906019)
+texture = SubResource("AtlasTexture_52scm")
+
+[node name="Cactus25" type="Sprite2D" parent="cactus1" unique_id=133953927]
+position = Vector2(1607.5057, 1154.069)
+texture = SubResource("AtlasTexture_52scm")
+
+[node name="Cactus26" type="Sprite2D" parent="cactus1" unique_id=1413453726]
+position = Vector2(1237.391, 349.44818)
+texture = SubResource("AtlasTexture_52scm")
+
+[node name="Cactus27" type="Sprite2D" parent="cactus1" unique_id=555993037]
+position = Vector2(1425.8966, 574.7356)
+texture = SubResource("AtlasTexture_52scm")
+
+[node name="Cactus28" type="Sprite2D" parent="cactus1" unique_id=698622675]
+position = Vector2(970.7246, 698.8735)
+texture = SubResource("AtlasTexture_52scm")
+
+[node name="Cactus29" type="Sprite2D" parent="cactus1" unique_id=1736042210]
+position = Vector2(2446.586, 908.069)
+texture = SubResource("AtlasTexture_52scm")
+
+[node name="Cactus30" type="Sprite2D" parent="cactus1" unique_id=971411834]
+position = Vector2(1246.5863, 724.1608)
+scale = Vector2(-1.0101137, 1.0906018)
+texture = SubResource("AtlasTexture_52scm")
+
+[node name="Cactus32" type="Sprite2D" parent="cactus1" unique_id=62293072]
+position = Vector2(1913.2528, 1298.8735)
+texture = SubResource("AtlasTexture_52scm")
+
+[node name="Cactus33" type="Sprite2D" parent="cactus1" unique_id=1809900624]
+position = Vector2(2455.7813, 1282.7816)
+texture = SubResource("AtlasTexture_52scm")
+
+[node name="Cactus34" type="Sprite2D" parent="cactus1" unique_id=95309919]
+position = Vector2(159.22989, 891.9772)
+texture = SubResource("AtlasTexture_52scm")
+
+[node name="Cactus35" type="Sprite2D" parent="cactus1" unique_id=656691080]
+position = Vector2(584.5172, 754.06903)
+texture = SubResource("AtlasTexture_52scm")
+
+[node name="Cactus36" type="Sprite2D" parent="cactus1" unique_id=1870819320]
+position = Vector2(1127.0459, 737.9771)
+texture = SubResource("AtlasTexture_52scm")
+
+[node name="Cactus37" type="Sprite2D" parent="cactus1" unique_id=1744905964]
+position = Vector2(1239.0806, 519.54016)
+texture = SubResource("AtlasTexture_52scm")
+
+[node name="Cactus38" type="Sprite2D" parent="cactus1" unique_id=538879672]
+position = Vector2(1285.6666, 298.8737)
+texture = SubResource("AtlasTexture_52scm")
+
+[node name="Cactus39" type="Sprite2D" parent="cactus1" unique_id=2136765658]
+position = Vector2(1536.2413, 448.29886)
+texture = SubResource("AtlasTexture_52scm")
+
+[node name="Cactus40" type="Sprite2D" parent="cactus1" unique_id=346718023]
+position = Vector2(1145.4369, 206.91951)
+texture = SubResource("AtlasTexture_52scm")
+
+[node name="Cactus41" type="Sprite2D" parent="cactus1" unique_id=1223118236]
+position = Vector2(878.77014, 248.29878)
+texture = SubResource("AtlasTexture_52scm")
+
+[node name="Cactus42" type="Sprite2D" parent="cactus1" unique_id=1244486461]
+position = Vector2(1067.2759, 473.5862)
+texture = SubResource("AtlasTexture_52scm")
+
+[node name="Cactus43" type="Sprite2D" parent="cactus1" unique_id=232560039]
+position = Vector2(1317.8505, 623.01135)
+texture = SubResource("AtlasTexture_52scm")
+
+[node name="Cactus44" type="Sprite2D" parent="cactus1" unique_id=2095128485]
+position = Vector2(1282.7585, 434.4828)
+scale = Vector2(1.9850978, 2.174835)
+texture = SubResource("AtlasTexture_52scm")
+
+[node name="Cactus45" type="Sprite2D" parent="cactus1" unique_id=1372585393]
+position = Vector2(1381.6091, 593.1035)
+scale = Vector2(1.9850978, 2.174835)
+texture = SubResource("AtlasTexture_52scm")
+
+[node name="Cactus3" type="Sprite2D" parent="cactus1" unique_id=215649712]
+position = Vector2(198, 156)
+scale = Vector2(1.5263158, 1.5263158)
+texture = SubResource("AtlasTexture_52scm")
+
+[node name="cactus2" type="Node2D" parent="." unique_id=1174100247]
+y_sort_enabled = true
+scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="cactus2" unique_id=581098894]
+position = Vector2(276, 435)
+texture = SubResource("AtlasTexture_1ebqj")
+
+[node name="Sprite2D2" type="Sprite2D" parent="cactus2" unique_id=1764366540]
+position = Vector2(922, 428)
+scale = Vector2(1.3555467, 1.3737259)
+texture = SubResource("AtlasTexture_1ebqj")
+
+[node name="Sprite2D3" type="Sprite2D" parent="cactus2" unique_id=1581062068]
+position = Vector2(850, 606)
+texture = SubResource("AtlasTexture_1ebqj")
+
+[node name="Sprite2D4" type="Sprite2D" parent="cactus2" unique_id=1666062035]
+position = Vector2(1068, 672)
+texture = SubResource("AtlasTexture_1ebqj")
+
+[node name="Sprite2D5" type="Sprite2D" parent="cactus2" unique_id=433236464]
+position = Vector2(1206, 566)
+texture = SubResource("AtlasTexture_1ebqj")
+
+[node name="Sprite2D6" type="Sprite2D" parent="cactus2" unique_id=363071465]
+position = Vector2(1206, 388)
+texture = SubResource("AtlasTexture_1ebqj")
+
+[node name="Sprite2D7" type="Sprite2D" parent="cactus2" unique_id=14333259]
+position = Vector2(1800, 184)
+scale = Vector2(0.63759625, 0.80209893)
+texture = SubResource("AtlasTexture_1ebqj")
+
+[node name="Sprite2D8" type="Sprite2D" parent="cactus2" unique_id=724517462]
+position = Vector2(2064, 488)
+scale = Vector2(1.3555467, 1.3737259)
+texture = SubResource("AtlasTexture_1ebqj")
+
+[node name="Sprite2D9" type="Sprite2D" parent="cactus2" unique_id=214206947]
+position = Vector2(1510, 884)
+scale = Vector2(0.63759625, 0.80209893)
+texture = SubResource("AtlasTexture_1ebqj")
+
+[node name="Sprite2D16" type="Sprite2D" parent="cactus2" unique_id=62416541]
+position = Vector2(724, 818)
+texture = SubResource("AtlasTexture_1ebqj")
+
+[node name="Sprite2D17" type="Sprite2D" parent="cactus2" unique_id=2092819822]
+position = Vector2(724, 152)
+texture = SubResource("AtlasTexture_1ebqj")
+
+[node name="Sprite2D18" type="Sprite2D" parent="cactus2" unique_id=2060217765]
+position = Vector2(2222, 112)
+texture = SubResource("AtlasTexture_1ebqj")
+
+[node name="Sprite2D10" type="Sprite2D" parent="cactus2" unique_id=451336273]
+position = Vector2(374, 1056)
+texture = SubResource("AtlasTexture_1ebqj")
+
+[node name="Sprite2D11" type="Sprite2D" parent="cactus2" unique_id=154687165]
+position = Vector2(756, 1122)
+scale = Vector2(1.3555467, 1.3737259)
+texture = SubResource("AtlasTexture_1ebqj")
+
+[node name="Sprite2D12" type="Sprite2D" parent="cactus2" unique_id=526558872]
+position = Vector2(420, 594)
+scale = Vector2(0.8000002, 0.7396455)
+texture = SubResource("AtlasTexture_1ebqj")
+
+[node name="Sprite2D13" type="Sprite2D" parent="cactus2" unique_id=768367521]
+position = Vector2(1546, 122)
+texture = SubResource("AtlasTexture_1ebqj")
+
+[node name="Sprite2D14" type="Sprite2D" parent="cactus2" unique_id=1785931624]
+position = Vector2(2200, 1096)
+texture = SubResource("AtlasTexture_1ebqj")
+
+[node name="Sprite2D15" type="Sprite2D" parent="cactus2" unique_id=1758142160]
+position = Vector2(1066, 808.00006)
+scale = Vector2(1.9767442, 1.9078947)
+texture = SubResource("AtlasTexture_1ebqj")
+
+[node name="rock1" type="Node2D" parent="." unique_id=599141547]
+y_sort_enabled = true
+scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="rock1" unique_id=434503378]
+position = Vector2(628, 232)
+texture = SubResource("AtlasTexture_fhqe2")
+flip_h = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="rock1" unique_id=689065636]
+position = Vector2(1030, 318)
+texture = SubResource("AtlasTexture_fhqe2")
+flip_h = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="rock1" unique_id=2094515603]
+position = Vector2(846, 774)
+scale = Vector2(0.7211223, 0.8118778)
+texture = SubResource("AtlasTexture_fhqe2")
+
+[node name="Sprite2D4" type="Sprite2D" parent="rock1" unique_id=2045150816]
+position = Vector2(2272, 602)
+scale = Vector2(1.6368783, 1.4296805)
+texture = SubResource("AtlasTexture_fhqe2")
+
+[node name="Sprite2D5" type="Sprite2D" parent="rock1" unique_id=1976962697]
+position = Vector2(2252, 826)
+texture = SubResource("AtlasTexture_fhqe2")
+
+[node name="Sprite2D6" type="Sprite2D" parent="rock1" unique_id=1173933705]
+position = Vector2(1932, 111.99999)
+scale = Vector2(1.6368783, 1.4296805)
+texture = SubResource("AtlasTexture_fhqe2")
+
+[node name="Sprite2D7" type="Sprite2D" parent="rock1" unique_id=83317105]
+position = Vector2(1170, 932)
+texture = SubResource("AtlasTexture_fhqe2")
+
+[node name="Sprite2D8" type="Sprite2D" parent="rock1" unique_id=1525375103]
+position = Vector2(616, 1236)
+scale = Vector2(0.7211223, 0.8118778)
+texture = SubResource("AtlasTexture_fhqe2")
+
+[node name="Sprite2D9" type="Sprite2D" parent="rock1" unique_id=1024330957]
+position = Vector2(200, 754)
+texture = SubResource("AtlasTexture_fhqe2")
+
+[node name="rock2" type="Node2D" parent="." unique_id=736816430]
+y_sort_enabled = true
+scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="rock2" unique_id=1943914655]
+position = Vector2(1438, 204)
+scale = Vector2(1.0681883, 1.4175901)
+texture = SubResource("AtlasTexture_riuky")
+
+[node name="Sprite2D2" type="Sprite2D" parent="rock2" unique_id=1228829574]
+position = Vector2(1280, 574)
+texture = SubResource("AtlasTexture_riuky")
+
+[node name="Sprite2D3" type="Sprite2D" parent="rock2" unique_id=785376975]
+position = Vector2(1366, 1076)
+scale = Vector2(0.6474001, 0.6399024)
+texture = SubResource("AtlasTexture_riuky")
+
+[node name="Sprite2D6" type="Sprite2D" parent="rock2" unique_id=2130669500]
+position = Vector2(1920, 778)
+scale = Vector2(0.6474001, 0.6399024)
+texture = SubResource("AtlasTexture_riuky")
+flip_h = true
+
+[node name="Sprite2D4" type="Sprite2D" parent="rock2" unique_id=1165610103]
+position = Vector2(138, 1030)
+scale = Vector2(1.0681883, 1.4175901)
+texture = SubResource("AtlasTexture_riuky")
+flip_h = true
+
+[node name="Sprite2D5" type="Sprite2D" parent="rock2" unique_id=1128354356]
+position = Vector2(2368, 416)
+texture = SubResource("AtlasTexture_riuky")
+
+[node name="tree" type="Node2D" parent="." unique_id=1146588534]
+y_sort_enabled = true
+scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D3" type="Sprite2D" parent="tree" unique_id=135848904]
+position = Vector2(426, 1240)
+scale = Vector2(0.6495285, 0.8485064)
+texture = SubResource("AtlasTexture_3ysx0")
+
+[node name="Sprite2D4" type="Sprite2D" parent="tree" unique_id=1640952976]
+position = Vector2(508.41727, 1095.7633)
+scale = Vector2(0.41560626, 0.5361858)
+texture = SubResource("AtlasTexture_3ysx0")
+
+[node name="Sprite2D13" type="Sprite2D" parent="tree" unique_id=1381363648]
+position = Vector2(406.41727, 1077.7634)
+scale = Vector2(0.41560626, 0.5361861)
+texture = SubResource("AtlasTexture_3ysx0")
+
+[node name="Sprite2D14" type="Sprite2D" parent="tree" unique_id=704385986]
+position = Vector2(220.4173, 1107.7632)
+scale = Vector2(0.41560626, 0.5361861)
+texture = SubResource("AtlasTexture_3ysx0")
+
+[node name="Sprite2D5" type="Sprite2D" parent="tree" unique_id=1336304373]
+position = Vector2(1670, 420)
+scale = Vector2(0.6495285, 0.8485064)
+texture = SubResource("AtlasTexture_3ysx0")
+
+[node name="Sprite2D6" type="Sprite2D" parent="tree" unique_id=1297117292]
+position = Vector2(1756, 228)
+scale = Vector2(0.6495285, 0.8485064)
+texture = SubResource("AtlasTexture_3ysx0")
+
+[node name="Sprite2D7" type="Sprite2D" parent="tree" unique_id=1260952252]
+position = Vector2(2151.3315, 219.12233)
+scale = Vector2(0.9145075, 0.9915609)
+texture = SubResource("AtlasTexture_3ysx0")
+
+[node name="Sprite2D8" type="Sprite2D" parent="tree" unique_id=1956013620]
+position = Vector2(2148, 420)
+scale = Vector2(0.6495285, 0.8485064)
+texture = SubResource("AtlasTexture_3ysx0")
+
+[node name="Sprite2D9" type="Sprite2D" parent="tree" unique_id=1545557368]
+position = Vector2(1986, 472)
+scale = Vector2(0.6495285, 0.8485064)
+texture = SubResource("AtlasTexture_3ysx0")
+flip_h = true
+
+[node name="Sprite2D10" type="Sprite2D" parent="tree" unique_id=807373842]
+position = Vector2(2035.3315, 218.12233)
+scale = Vector2(0.4786107, 0.6357916)
+texture = SubResource("AtlasTexture_3ysx0")
+
+[node name="Sprite2D11" type="Sprite2D" parent="tree" unique_id=1046442734]
+position = Vector2(2110, 184)
+scale = Vector2(1.0555336, 1.193484)
+texture = SubResource("AtlasTexture_3ysx0")
+
+[node name="Sprite2D12" type="Sprite2D" parent="tree" unique_id=1634661937]
+position = Vector2(1640, 260)
+scale = Vector2(1.1068158, 1.2415608)
+texture = SubResource("AtlasTexture_3ysx0")
+flip_h = true
+
+[node name="oasis" type="Node2D" parent="." unique_id=248864029]
+scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="oasis" unique_id=1281401240]
+position = Vector2(1888, 370)
+texture = SubResource("AtlasTexture_d3nkh")
+
+[node name="Sprite2D2" type="Sprite2D" parent="oasis" unique_id=2114273403]
+position = Vector2(334, 1230)
+scale = Vector2(0.6495285, 0.8485064)
+texture = SubResource("AtlasTexture_d3nkh")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=801506565]
+z_index = -20
+position = Vector2(643, 325)
+scale = Vector2(20.22793, 10.464455)
+texture = SubResource("AtlasTexture_017em")
+metadata/_edit_lock_ = true
+
+[node name="NightModulate" type="CanvasModulate" parent="." unique_id=1803822199]
+color = Color(0.3770127, 0.15157232, 0.43649843, 1)
+script = ExtResource("2_wkk5a")
+gradient_time = SubResource("Gradient_jqksr")
+
+[node name="TEST STAR" type="Node2D" parent="." unique_id=477901045]
+script = ExtResource("3_52scm")

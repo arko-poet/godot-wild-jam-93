@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://q5khb8i2hu6r"]
+
+[ext_resource type="Texture2D" uid="uid://0w5nqb8q6t4f" path="res://OURSTUFF/Night/Animation/StageCoach/stagecoach.png" id="1_uyq1t"]
+
+[resource]
+atlas = ExtResource("1_uyq1t")
+region = Rect2(962, 1, 84, 128)
