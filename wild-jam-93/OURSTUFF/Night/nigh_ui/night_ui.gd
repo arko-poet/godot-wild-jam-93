@@ -62,14 +62,23 @@ func _on_pause_button_pressed() -> void:
 
 func _on_speed_1_button_pressed() -> void:
 	Engine.time_scale = 1.0
+	speed_1_button.disabled = true
+	speed_2_button.disabled = false
+	speed_4_button.disabled = false
 
 
 func _on_speed_2_button_pressed() -> void:
 	Engine.time_scale = 2.0
+	speed_1_button.disabled = false
+	speed_2_button.disabled = true
+	speed_4_button.disabled = false
 
 
 func _on_speed_4_button_pressed() -> void:
 	Engine.time_scale = 4.0
+	speed_1_button.disabled = false
+	speed_2_button.disabled = false
+	speed_4_button.disabled = true
 
 
 func _on_hunter_selected(hunter: Hunter) -> void:
