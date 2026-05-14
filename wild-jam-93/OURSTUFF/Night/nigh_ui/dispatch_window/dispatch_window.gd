@@ -44,6 +44,7 @@ func show_dispatch_panel(new_stagecoach: StageCoach, new_interactable: Node2D) -
 	if interactable is Camp:
 		_interactables_stamina.hide()
 		_fail_chance.hide()
+		stamina_needed = 0.0
 		reward = "+ Resupply\n+ Heal"
 	else:
 		interactable.updateFailChance(stagecoach.hunters)
