@@ -145,6 +145,7 @@ func spawnInteractable(type: String, location: Vector2): #controls spawning of s
 	match type:
 		"star":
 			var temp =  star.instantiate()
+			temp.bounty_expired.connect(_on_bounty_expired)
 			temp.global_position = location
 			interactables.append(temp)
 			temp.bounty_completed.connect(_on_bounty_completed)
@@ -203,6 +204,15 @@ func _on_bounty_completed(success: bool, p_position: Vector2) -> void:
 	else:
 		text = "FAILURE"
 		floating_text.modulate = Color.RED
+	add_child(floating_text)
+	floating_text.position = p_position
+	floating_text.show_text(text)
+
+
+func _on_bounty_expired(p_position) -> void:
+	var floating_text := FloatingText.instantiate()
+	var text := "EXPIRED"
+	floating_text.modulate = Color.YELLOW
 	add_child(floating_text)
 	floating_text.position = p_position
 	floating_text.show_text(text)
