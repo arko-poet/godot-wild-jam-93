@@ -22,6 +22,7 @@ one_shot = true
 [node name="dispatchUiLayer" type="CanvasLayer" parent="." unique_id=659596729]
 
 [node name="NightUI" parent="dispatchUiLayer" unique_id=423829076 instance=ExtResource("3_wyheo")]
+mouse_filter = 1
 
 [node name="DispatchWindow" parent="dispatchUiLayer" unique_id=1899161779 instance=ExtResource("4_af67n")]
 visible = false

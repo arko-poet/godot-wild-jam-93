@@ -4,6 +4,9 @@
 [ext_resource type="Script" uid="uid://b0e2tlb5ggcst" path="res://OURSTUFF/Night/stagecoachInteractables/star.gd" id="1_wmdgi"]
 [ext_resource type="PackedScene" uid="uid://hvui1gigm1pt" path="res://OURSTUFF/Night/nigh_ui/star_timer_bar/star_time_bar.tscn" id="3_r24oq"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r24oq"]
+size = Vector2(32, 28.5)
+
 [node name="star" type="Node2D" unique_id=152489992 groups=["StagecoachInteractable"]]
 script = ExtResource("1_wmdgi")
 
@@ -42,5 +45,13 @@ text = "100%"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Area2D" type="Area2D" parent="." unique_id=1619799136]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=9017135]
+position = Vector2(0, -1.75)
+shape = SubResource("RectangleShape2D_r24oq")
+
 [connection signal="timeout" from="decayTimer" to="." method="_on_decay_timer_timeout"]
 [connection signal="timeout" from="interactTimer" to="." method="_on_interact_timer_timeout"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

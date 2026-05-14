@@ -4,10 +4,15 @@
 [ext_resource type="Texture2D" uid="uid://dvq0rgaaipkdk" path="res://OURSTUFF/resources/DevStageCoachAtlas.tres" id="2_b14l5"]
 [ext_resource type="PackedScene" uid="uid://dw3cy6iybipxm" path="res://OURSTUFF/Night/nigh_ui/stamina_bar/stamina_bar.tscn" id="3_b14l5"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b14l5"]
+size = Vector2(202, 116)
+
 [node name="devStagecoach" type="Node2D" unique_id=400670669]
+z_index = 1
 script = ExtResource("1_psqc1")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1187800713]
+z_index = -1
 texture = ExtResource("2_b14l5")
 
 [node name="movementTimer" type="Timer" parent="." unique_id=1120012615]
@@ -15,4 +20,12 @@ one_shot = true
 
 [node name="StaminaBar" parent="." unique_id=702095990 instance=ExtResource("3_b14l5")]
 
+[node name="Area2D" type="Area2D" parent="." unique_id=1148872581]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=30248717]
+position = Vector2(3, -5)
+shape = SubResource("RectangleShape2D_b14l5")
+
 [connection signal="timeout" from="movementTimer" to="." method="_on_movement_timer_timeout"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

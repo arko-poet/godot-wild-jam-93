@@ -18,8 +18,23 @@ var playableArea := Vector2i(1280, 720)
 
 var stageCoaches = [] #array of all stagecoaches
 var interactables = [] #array of stagecoach interactables
-var selectedStageCoach
-var selectedInteractable
+var selectedStageCoach:
+	set(value):
+		if value == null and selectedStageCoach != null:
+			selectedStageCoach.selected = false
+		selectedStageCoach = value
+		if selectedStageCoach != null:
+			selectedStageCoach.selected = true
+var selectedInteractable:
+	set(value):
+		if value is not Camp:
+			if value == null and selectedInteractable != null:
+				selectedInteractable.selected = false
+			selectedInteractable = value
+			if selectedInteractable != null:
+				selectedInteractable.selected = true
+		else:
+			selectedInteractable = value
 
 var inGameMain
 
@@ -89,6 +104,7 @@ func selectStageCoach():
 			selectedStageCoach = stageCoaches[i]
 			selectedStageCoach.sprite.scale *= stagecoachSelectScale
 			#highlight coach or something
+			selectedStageCoach.selected = true
 			if selectedInteractable != null:
 				dispatch_window.show_dispatch_panel(selectedStageCoach, selectedInteractable)
 			break

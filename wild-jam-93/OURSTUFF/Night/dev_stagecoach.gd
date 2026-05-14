@@ -25,8 +25,15 @@ var isAtCamp := true:
 var movementTimer
 
 var InGameMain
+
+var selected := false:
+	set(value):
+		selected = value
+		queue_redraw()
+
 @onready var sprite = $Sprite2D
 @onready var stamina_bar: Node2D = $StaminaBar
+@onready var collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
 
 
 func _ready() -> void:
@@ -42,6 +49,17 @@ func _process(delta: float) -> void:
 		position = lastPosition + (timerPercentDone * route)
 		stamina -= delta
 		stamina_bar.update_stamina(stamina)
+
+
+func _draw() -> void:
+	if selected:
+		draw_circle(
+				Vector2(0, 0),
+				max(collision_shape_2d.shape.size.x, collision_shape_2d.shape.size.y) / 2,
+				Color.AQUA,
+				false,
+				4.0,
+		)
 
 
 func dispatch(node: StagecoachInteractable): #imput a new interacrable node, find route and time of route, start moving
@@ -98,3 +116,11 @@ func setStagecoachData(data: Dictionary): #call this on stagecoach scene when it
 
 func assignHunters(newHunters: Array): #called by the ingamenightmain when dispatched
 	hunters = newHunters
+
+
+func _on_area_2d_mouse_entered() -> void:
+	scale = Vector2(1.1, 1.1)
+
+
+func _on_area_2d_mouse_exited() -> void:
+	scale = Vector2(1.0, 1.0)
