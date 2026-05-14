@@ -7,8 +7,12 @@ var interactRange
 var hunters: Array[Hunter] = []
 var upgrades = [] #non stat based upgrades
 var bounties = []
-var stamina := Camp.MAX_STAMINA # how many seconds of travel the stagecoach has left
-
+var stamina := Camp.MAX_STAMINA: # how many seconds of travel the stagecoach has left
+	set(value):
+		stamina = value
+		if stamina_bar:
+			stamina_bar.position = position
+			stamina_bar.update_stamina(stamina)
 var route #vector 2 
 var interactingNode
 var pausedNode
@@ -26,6 +30,8 @@ var movementTimer
 
 var InGameMain
 
+var ui_layer: CanvasLayer
+
 var selected := false:
 	set(value):
 		selected = value
@@ -40,6 +46,10 @@ func _ready() -> void:
 	movementTimer = find_child("movementTimer")
 	InGameMain = find_parent("InGameMain")
 	stamina_bar.set_max_stamina(Camp.MAX_STAMINA)
+	
+	# need to put it to ui_layer, otherwise it get shaded by canvas modulate
+	stamina_bar.reparent(ui_layer)
+	
 
 func _process(delta: float) -> void:
 	if isMoving: # move
@@ -48,7 +58,6 @@ func _process(delta: float) -> void:
 		
 		position = lastPosition + (timerPercentDone * route)
 		stamina -= delta
-		stamina_bar.update_stamina(stamina)
 
 
 func _draw() -> void:

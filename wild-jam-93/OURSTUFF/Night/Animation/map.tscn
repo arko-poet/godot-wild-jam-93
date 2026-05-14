@@ -477,4 +477,5 @@ script = ExtResource("2_wkk5a")
 gradient_time = SubResource("Gradient_jqksr")
 
 [node name="TEST STAR" type="Node2D" parent="." unique_id=477901045]
+visible = false
 script = ExtResource("3_52scm")

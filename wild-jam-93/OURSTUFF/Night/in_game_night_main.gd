@@ -1,4 +1,4 @@
-extends Node2D
+class_name Night extends Node2D
 #this script is in charge of everything involved during the night section of the game
  
 const stageCoach = preload("res://OURSTUFF/Night/dev_stagecoach.tscn") #stage coach scene
@@ -7,6 +7,7 @@ const camp = preload("res://OURSTUFF/Night/stagecoachInteractables/camp.tscn")
 #const dispatchWindow = preload("res://OURSTUFF/Night/dispatch_window/dispatch_window.tscn")
 const devHunterIcon = "res://OURSTUFF/resources/devBountyHunter.png"
 const FloatingText: PackedScene = preload("res://OURSTUFF/Night/nigh_ui/floating_text/floating_text.tscn")
+const NIGHT_DURATION := 300.0
 
 @export var interactableSelectionRange := 50.0
 @export var stagecoachSelectionRange := 75.0
@@ -190,11 +191,17 @@ func spawnStagecoaches(coaches: Array): #array of stage coach objects
 		temp.position = campPosition + displacementVector
 		stageCoaches.append(temp)
 		temp.setStagecoachData(coaches[i].getStagecoachData())
+		temp.ui_layer = dispatchUiLayer
 		add_child(temp)
+		
 
 func deleteInteractable(node: Node2D):
 	interactables.erase(node)
 	node.queue_free()
+	if node is Star:
+		node.star_time_bar.queue_free()
+		node.bounty_progress_label.queue_free()
+
 
 func adjustPlayableArea(newSize: Vector2i): #call this function when game window is resized
 	playableArea = newSize
@@ -225,7 +232,7 @@ func _on_bounty_completed(success: bool, p_position: Vector2) -> void:
 	else:
 		text = "FAILURE"
 		floating_text.modulate = Color.RED
-	add_child(floating_text)
+	dispatchUiLayer.add_child(floating_text)
 	floating_text.position = p_position
 	floating_text.show_text(text)
 
@@ -234,7 +241,7 @@ func _on_bounty_expired(p_position) -> void:
 	var floating_text := FloatingText.instantiate()
 	var text := "EXPIRED"
 	floating_text.modulate = Color.YELLOW
-	add_child(floating_text)
+	dispatchUiLayer.add_child(floating_text)
 	floating_text.position = p_position
 	floating_text.show_text(text)
 
@@ -242,5 +249,5 @@ func _on_bounty_expired(p_position) -> void:
 func _on_night_ui_intro_finished() -> void:
 	# start night
 	starSpawnTimer.start(1)
-	roundTimer.start(60.0 * 5.0)
+	roundTimer.start(NIGHT_DURATION)
 	spawnInteractable("camp", Vector2(0,0))

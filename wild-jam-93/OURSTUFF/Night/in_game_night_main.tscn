@@ -6,11 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://dth0h0htj80ro" path="res://OURSTUFF/Night/nigh_ui/dispatch_window/dispatch_window.tscn" id="4_af67n"]
 [ext_resource type="Script" uid="uid://cyh0d64pfygbl" path="res://addons/maaacks_game_template/base/nodes/utilities/pause_menu_controller.gd" id="5_6v3sb"]
 [ext_resource type="PackedScene" uid="uid://ch7wxnbttg3ik" path="res://addons/maaacks_game_template/examples/scenes/windows/pause_menu_layer.tscn" id="6_htc02"]
+[ext_resource type="PackedScene" uid="uid://bg1srjrddd146" path="res://OURSTUFF/Night/Animation/map.tscn" id="7_aw8nv"]
 
 [node name="InGameNightMain" type="Node2D" unique_id=920217611]
 script = ExtResource("1_lihup")
 
+[node name="Map" parent="." unique_id=2016845786 instance=ExtResource("7_aw8nv")]
+
 [node name="Icon" type="Sprite2D" parent="." unique_id=1720813692]
+visible = false
 position = Vector2(515, 443)
 texture = ExtResource("2_wyheo")
 
@@ -22,10 +26,12 @@ one_shot = true
 [node name="dispatchUiLayer" type="CanvasLayer" parent="." unique_id=659596729]
 
 [node name="NightUI" parent="dispatchUiLayer" unique_id=423829076 instance=ExtResource("3_wyheo")]
+z_index = 1
 mouse_filter = 1
 
 [node name="DispatchWindow" parent="dispatchUiLayer" unique_id=1899161779 instance=ExtResource("4_af67n")]
 visible = false
+z_index = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
