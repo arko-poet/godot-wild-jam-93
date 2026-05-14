@@ -8,7 +8,8 @@ const camp = preload("res://OURSTUFF/Night/stagecoachInteractables/camp.tscn")
 const devHunterIcon = "res://OURSTUFF/resources/devBountyHunter.png"
 
 
-@export var selectionRange := 50.0
+@export var interactableSelectionRange := 50.0
+@export var stagecoachSelectionRange := 75.0
 @export var overlapRange := 75
 
 var playableArea := Vector2i(1280, 720)
@@ -73,7 +74,7 @@ func selectStageCoach():
 	#right now you can select a moving coach and divert it, but that cna change
 	for i in stageCoaches.size():
 		var distance = (get_global_mouse_position() - stageCoaches[i].global_position).length()
-		if (distance <= selectionRange) && (stageCoaches[i].isInteracting == false):
+		if (distance <= stagecoachSelectionRange) && (stageCoaches[i].isInteracting == false):
 			selectedStageCoach = stageCoaches[i]
 			#highlight coach or something
 			if selectedInteractable != null:
@@ -85,7 +86,7 @@ func selectInteractable():
 	for i in interactables.size():
 		if interactables[i] != null: #jank. check in any null values in array and delete
 			var distance = (get_global_mouse_position() - interactables[i].global_position).length()
-			if distance <= selectionRange:
+			if distance <= interactableSelectionRange:
 				selectedInteractable = interactables[i]
 				#call a function to spawn ui element here
 				if selectedStageCoach != null:
