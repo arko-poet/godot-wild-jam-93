@@ -12,6 +12,7 @@ var stamina := Camp.MAX_STAMINA: # how many seconds of travel the stagecoach has
 		stamina = value
 		if stamina_bar:
 			stamina_bar.position = position
+			stamina_bar.update_stamina(stamina)
 var route #vector 2 
 var interactingNode
 var pausedNode
