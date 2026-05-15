@@ -5,18 +5,23 @@ class_name StagecoachSlot extends Panel
 signal hunter_slot_selected(stagecoach_slot: StagecoachSlot)
 signal hunter_removed(p_hunter: Hunter)
 
+const portrait = preload("res://OURSTUFF/Night/Animation/UI_ART/portrait_test.tscn")
+
 const HOVER_HIGHLIGHT_MODULATE = Color(1.2, 1.2, 1.2)
 
 var hunter: Hunter:
 	set(value):
 		hunter = value
 		if value != null:
-			_hunter_texture.texture = load(hunter.face_texture_path)
+			var temp = portrait.instantiate()
+			add_child(temp)
+			temp._init_seeded_portrait(hunter.hunterFaceSeed)
 			remove_border_highlight()
 			if hunter.state == Hunter.State.AVAILABLE:
 				hunter.state = Hunter.State.BUSY
 		else:
-			_hunter_texture.texture = null
+			for i in get_children():
+				i.queue_free()
 	
 @onready var _hunter_texture: TextureRect = $Texture
 

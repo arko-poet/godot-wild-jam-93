@@ -2,6 +2,8 @@ class_name HunterPanel extends Panel
 
 signal hunter_selected(selected_hunter: Hunter)
 
+const portrait = preload("res://OURSTUFF/Night/Animation/UI_ART/portrait_test.tscn")
+
 const STATE_COLORS: Dictionary[Hunter.State, Color] = {
 	Hunter.State.AVAILABLE: Color("#34D399"),
 	Hunter.State.BUSY: Color("#FBBF24"),
@@ -23,6 +25,10 @@ var hunter: Hunter:
 		assert(hunter == null) # hunter is only meant to be set once
 		hunter = value
 		icon.texture = load(hunter.face_texture_path)
+		var temp = portrait.instantiate()
+		add_child(temp)
+		temp._init_seeded_portrait(hunter.hunterFaceSeed)
+		
 		hunter.state_changed.connect(_hunter_state_changed)
 		get_theme_stylebox(&"panel").bg_color = STATE_COLORS[hunter.state]
 

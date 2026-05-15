@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c1x444kowfy8u"]
 
 [ext_resource type="Script" uid="uid://cl0gwuikvp1px" path="res://OURSTUFF/Night/Animation/UI_ART/portrait_test.gd" id="1_1rygy"]
-[ext_resource type="Texture2D" uid="uid://68523es8urp2" path="res://OURSTUFF/Night/Animation/UI_ART/character.png" id="2_5nd1h"]
+[ext_resource type="Texture2D" uid="uid://dfjwn3v7qlar4" path="res://OURSTUFF/Night/Animation/UI_ART/character.png" id="2_5nd1h"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7l3uk"]
 
