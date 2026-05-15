@@ -1,6 +1,6 @@
 class_name Camp extends StagecoachInteractable
 
-const MAX_STAMINA := 15.0
+const MAX_STAMINA := 30.0
 
 @onready var campTexture = "res://OURSTUFF/resources/DevCampAtlas.tres"
 
