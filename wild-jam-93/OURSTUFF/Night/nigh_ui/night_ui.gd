@@ -2,6 +2,7 @@ class_name NighUI extends Control
 
 signal hunter_selected(hunter: Hunter)
 signal intro_finished
+signal play_again
 
 const HunterPanelScene: PackedScene = preload("res://OURSTUFF/Night/nigh_ui/hunter_panel/hunter_panel.tscn")
 const INTRO: Array[String] = [
@@ -34,6 +35,8 @@ var selected_hunter: Hunter:
 @onready var close_help_panel_button: Button = $HelpPanel/CloseButton
 @onready var intro_label: Label = $GameIntro/Label
 @onready var game_intro: PanelContainer = $GameIntro
+@onready var score_panel: PanelContainer = $ScorePanel
+@onready var score_label: Label = $ScorePanel/VBoxContainer/ScoreLabel
 
 
 func _ready() -> void:
@@ -63,6 +66,11 @@ func update_time_left(seconds_left: int) -> void:
 	
 func update_money(money: int) -> void:
 	money_label.text = "$%s" % money
+
+
+func show_score_panel(money: int) -> void:
+	score_label.text = "You've earned  %s$ this night." % money
+	score_panel.show()
 
 
 func _on_pause_button_pressed() -> void:
@@ -124,3 +132,7 @@ func _on_game_intro_gui_input(event: InputEvent) -> void:
 			intro_finished.emit()
 		else:
 			intro_label.text = INTRO[intro_index]
+
+
+func _on_play_again_button_pressed() -> void:
+	play_again.emit()

@@ -221,8 +221,8 @@ func adjustPlayableArea(newSize: Vector2i): #call this function when game window
 
 
 func _on_round_timer_timeout() -> void:
-	pass # Replace with function body.
-	inGameMain.loadDay()
+	night_ui.show_score_panel(inGameMain.money)
+	get_tree().paused = true
 
 
 func _on_dispatch_window_cancel() -> void:
@@ -264,3 +264,12 @@ func _on_night_ui_intro_finished() -> void:
 	starSpawnTimer.start(1)
 	roundTimer.start(NIGHT_DURATION)
 	spawnInteractable("camp", Vector2(0,0))
+
+
+func _on_night_ui_play_again() -> void:
+	get_tree().paused = false
+	# this just restarts the scene, not ideal but has to do for now
+	SceneLoader.reload_current_scene()
+	
+	#night_ui.score_panel.hide()
+	#inGameMain.loadDay()
