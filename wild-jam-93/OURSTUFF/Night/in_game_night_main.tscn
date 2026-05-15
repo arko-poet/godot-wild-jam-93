@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b5585qc7rlr0g" path="res://OURSTUFF/Night/nigh_ui/night_ui.tscn" id="3_wyheo"]
 [ext_resource type="PackedScene" uid="uid://dth0h0htj80ro" path="res://OURSTUFF/Night/nigh_ui/dispatch_window/dispatch_window.tscn" id="4_af67n"]
 [ext_resource type="Script" uid="uid://cyh0d64pfygbl" path="res://addons/maaacks_game_template/base/nodes/utilities/pause_menu_controller.gd" id="5_6v3sb"]
+[ext_resource type="Theme" uid="uid://cw0ct2u04pouy" path="res://OURSTUFF/Night/Animation/UI_ART/menu_theme.tres" id="5_hs856"]
 [ext_resource type="PackedScene" uid="uid://ch7wxnbttg3ik" path="res://addons/maaacks_game_template/examples/scenes/windows/pause_menu_layer.tscn" id="6_htc02"]
 [ext_resource type="PackedScene" uid="uid://6dt6hu2s6jwb" path="res://OURSTUFF/Night/nigh_ui/into_panel/intro_panel.tscn" id="6_jgg60"]
 [ext_resource type="PackedScene" uid="uid://bg1srjrddd146" path="res://OURSTUFF/Night/Animation/map.tscn" id="7_aw8nv"]
@@ -30,6 +31,7 @@ one_shot = true
 visible = false
 z_index = 1
 mouse_filter = 1
+theme = ExtResource("5_hs856")
 
 [node name="DispatchWindow" parent="dispatchUiLayer" unique_id=1899161779 instance=ExtResource("4_af67n")]
 visible = false
@@ -43,8 +45,10 @@ offset_left = -320.0
 offset_top = -180.0
 offset_right = 320.0
 offset_bottom = 180.0
+theme = ExtResource("5_hs856")
 
 [node name="IntroPanel" parent="dispatchUiLayer" unique_id=1892030920 instance=ExtResource("6_jgg60")]
+theme = ExtResource("5_hs856")
 
 [node name="PauseMenuController" type="Node" parent="." unique_id=1039268102]
 script = ExtResource("5_6v3sb")
