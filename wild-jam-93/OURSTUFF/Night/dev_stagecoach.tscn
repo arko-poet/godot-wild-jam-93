@@ -9,26 +9,28 @@
 resource_local_to_scene = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b14l5"]
-size = Vector2(202, 116)
+size = Vector2(234, 123)
 
 [node name="devStagecoach" type="Node2D" unique_id=400670669]
 z_index = 1
 material = SubResource("CanvasItemMaterial_b14l5")
-scale = Vector2(0.5, 0.5)
 script = ExtResource("1_psqc1")
 
 [node name="StageCOachAnimation" parent="." unique_id=869997365 instance=ExtResource("2_b14l5")]
 use_parent_material = true
+scale = Vector2(0.5, 0.5)
 
 [node name="movementTimer" type="Timer" parent="." unique_id=1120012615]
 one_shot = true
 
 [node name="StaminaBar" parent="." unique_id=702095990 instance=ExtResource("3_b14l5")]
+position = Vector2(0, 34)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1148872581]
+scale = Vector2(0.5, 0.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=30248717]
-position = Vector2(3, -5)
+position = Vector2(-13, -8.5)
 shape = SubResource("RectangleShape2D_b14l5")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1304168188]
