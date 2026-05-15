@@ -140,7 +140,7 @@ func _on_area_2d_mouse_entered() -> void:
 
 
 func _on_area_2d_mouse_exited() -> void:
-
+	scale = stageCoachScale
 
 func _on_light_timer_timeout() -> void:
 	pass # Replace with function body.
