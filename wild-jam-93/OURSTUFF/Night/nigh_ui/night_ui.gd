@@ -108,11 +108,12 @@ func _on_dispatch_window_hunter_assigned(hunter: Hunter) -> void:
 
 func _on_helpbutton_pressed() -> void:
 	help_panel.show()
+	get_tree().paused = true
 
 
 func _on_close_button_pressed() -> void:
 	help_panel.hide()
-
+	get_tree().paused = false
 
 func _on_game_intro_gui_input(event: InputEvent) -> void:
 	# advance intro on left click

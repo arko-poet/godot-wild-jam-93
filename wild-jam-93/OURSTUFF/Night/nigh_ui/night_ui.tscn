@@ -78,6 +78,7 @@ grow_horizontal = 0
 text = "HELP"
 
 [node name="HelpPanel" type="Panel" parent="." unique_id=549440930]
+process_mode = 3
 visible = false
 custom_minimum_size = Vector2(400, 600)
 layout_mode = 1
@@ -137,16 +138,14 @@ text = "[center][font_size=28][b]Game Rules[/b][/font_size][/center]
 
 [node name="CloseButton" type="Button" parent="HelpPanel" unique_id=179815828]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = -1
+anchor_left = 1.0
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -9.0
-offset_top = -39.0
-offset_right = 9.0
-offset_bottom = -8.0
-grow_horizontal = 2
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 0
 grow_vertical = 0
 text = "OK"
 

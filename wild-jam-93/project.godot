@@ -13,7 +13,7 @@ config_version=5
 config/name="Wild Jam 93"
 run/main_scene="res://scenes/opening/opening.tscn"
 config/features=PackedStringArray("4.6")
-config/icon="res://icon.png"
+config/icon="uid://dh3n74rhxxpaa"
 
 [autoload]
 
