@@ -62,13 +62,13 @@ offset_bottom = -8.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="DispatchButton" type="Button" parent="HBoxContainer" unique_id=337294282]
-layout_mode = 2
-text = "DISPATCH"
-
 [node name="CancelButton" type="Button" parent="HBoxContainer" unique_id=500679443]
 layout_mode = 2
 text = "CANCEL"
+
+[node name="DispatchButton" type="Button" parent="HBoxContainer" unique_id=337294282]
+layout_mode = 2
+text = "DISPATCH"
 
 [node name="InteractablesPanel" type="Panel" parent="." unique_id=2037429776]
 custom_minimum_size = Vector2(200, 300)
@@ -237,8 +237,8 @@ layout_mode = 2
 stream = ExtResource("5_s3aue")
 bus = &"SFX"
 
-[connection signal="pressed" from="HBoxContainer/DispatchButton" to="." method="_on_dispatch_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/DispatchButton" to="." method="_on_dispatch_button_pressed"]
 [connection signal="hunter_removed" from="HunterGrid/StagecoachSlot" to="." method="_on_hunter_slot_hunter_removed"]
 [connection signal="hunter_slot_selected" from="HunterGrid/StagecoachSlot" to="." method="_on_hunter_slot_selected"]
 [connection signal="hunter_removed" from="HunterGrid/StagecoachSlot2" to="." method="_on_hunter_slot_hunter_removed"]
