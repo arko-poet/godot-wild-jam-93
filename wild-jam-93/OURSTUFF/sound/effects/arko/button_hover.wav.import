@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://d3dc4h48hj8jg"
-path="res://.godot/imported/Blip.wav-9fbb9a13783b2d348d861e3484fbdf9e.sample"
+path="res://.godot/imported/button_hover.wav-4729b7c2a2f1ebba089f8612d0dd3a77.sample"
 
 [deps]
 
-source_file="res://OURSTUFF/sound/effects/arko/Blip.wav"
-dest_files=["res://.godot/imported/Blip.wav-9fbb9a13783b2d348d861e3484fbdf9e.sample"]
+source_file="res://OURSTUFF/sound/effects/arko/button_hover.wav"
+dest_files=["res://.godot/imported/button_hover.wav-4729b7c2a2f1ebba089f8612d0dd3a77.sample"]
 
 [params]
 
