@@ -38,7 +38,7 @@ var selected := false:
 		selected = value
 		queue_redraw()
 
-@onready var sprite = $Sprite2D
+#@onready var sprite = $Sprite2D
 @onready var stamina_bar: Node2D = $StaminaBar
 @onready var collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
 @onready var stage_coach_animation: StagecoachAnimation = $StageCOachAnimation
