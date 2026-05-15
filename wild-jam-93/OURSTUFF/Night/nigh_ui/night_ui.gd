@@ -5,6 +5,7 @@ signal play_again
 
 const HunterPanelScene: PackedScene = preload("res://OURSTUFF/Night/nigh_ui/hunter_panel/hunter_panel.tscn")
 
+var inGameNightMain 
 var hunters: Dictionary[Hunter, HunterPanel]
 var selected_hunter: Hunter:
 	set(value):
@@ -32,6 +33,8 @@ var selected_hunter: Hunter:
 	#test += delta
 	#print(test)
 
+func _ready() -> void:
+	inGameNightMain = find_parent("InGameNightMain")
 
 func add_hunter(hunter: Hunter) -> void:
 	var hunter_panel: HunterPanel = HunterPanelScene.instantiate()
@@ -54,7 +57,9 @@ func update_money(money: int) -> void:
 
 func show_score_panel(money: int) -> void:
 	score_label.text = "You've earned  %s$ this night." % money
+	inGameNightMain.find_child("DispatchWindow").hide()
 	score_panel.show()
+
 
 
 func _on_pause_button_pressed() -> void:
