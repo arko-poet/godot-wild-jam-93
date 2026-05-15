@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dth0h0htj80ro" path="res://OURSTUFF/Night/nigh_ui/dispatch_window/dispatch_window.tscn" id="4_af67n"]
 [ext_resource type="Script" uid="uid://cyh0d64pfygbl" path="res://addons/maaacks_game_template/base/nodes/utilities/pause_menu_controller.gd" id="5_6v3sb"]
 [ext_resource type="PackedScene" uid="uid://ch7wxnbttg3ik" path="res://addons/maaacks_game_template/examples/scenes/windows/pause_menu_layer.tscn" id="6_htc02"]
+[ext_resource type="PackedScene" uid="uid://6dt6hu2s6jwb" path="res://OURSTUFF/Night/nigh_ui/into_panel/intro_panel.tscn" id="6_jgg60"]
 [ext_resource type="PackedScene" uid="uid://bg1srjrddd146" path="res://OURSTUFF/Night/Animation/map.tscn" id="7_aw8nv"]
 
 [node name="InGameNightMain" type="Node2D" unique_id=920217611]
@@ -26,6 +27,7 @@ one_shot = true
 [node name="dispatchUiLayer" type="CanvasLayer" parent="." unique_id=659596729]
 
 [node name="NightUI" parent="dispatchUiLayer" unique_id=423829076 instance=ExtResource("3_wyheo")]
+visible = false
 z_index = 1
 mouse_filter = 1
 
@@ -42,6 +44,8 @@ offset_top = -180.0
 offset_right = 320.0
 offset_bottom = 180.0
 
+[node name="IntroPanel" parent="dispatchUiLayer" unique_id=1892030920 instance=ExtResource("6_jgg60")]
+
 [node name="PauseMenuController" type="Node" parent="." unique_id=1039268102]
 script = ExtResource("5_6v3sb")
 pause_menu_packed = ExtResource("6_htc02")
@@ -49,9 +53,10 @@ pause_menu_packed = ExtResource("6_htc02")
 [connection signal="timeout" from="starSpawnTimer" to="." method="_on_star_spawn_timer_timeout"]
 [connection signal="timeout" from="roundTimer" to="." method="_on_round_timer_timeout"]
 [connection signal="hunter_selected" from="dispatchUiLayer/NightUI" to="dispatchUiLayer/DispatchWindow" method="_on_hunter_selected"]
-[connection signal="intro_finished" from="dispatchUiLayer/NightUI" to="." method="_on_night_ui_intro_finished"]
+[connection signal="play_again" from="dispatchUiLayer/NightUI" to="." method="_on_night_ui_play_again"]
 [connection signal="cancel" from="dispatchUiLayer/DispatchWindow" to="." method="_on_dispatch_window_cancel"]
 [connection signal="dispatched" from="dispatchUiLayer/DispatchWindow" to="." method="dispatchStagecoach"]
 [connection signal="hunter_assigned" from="dispatchUiLayer/DispatchWindow" to="dispatchUiLayer/NightUI" method="_on_dispatch_window_hunter_assigned"]
+[connection signal="intro_finished" from="dispatchUiLayer/IntroPanel" to="." method="_on_night_ui_intro_finished"]
 
 [editable path="Map"]

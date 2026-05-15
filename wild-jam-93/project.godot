@@ -10,10 +10,11 @@ config_version=5
 
 [application]
 
-config/name="Wild Jam 93"
+config/name="Nebula Bounty Hunters"
+config/version="0.0.1"
 run/main_scene="res://scenes/opening/opening.tscn"
 config/features=PackedStringArray("4.6")
-config/icon="res://icon.png"
+config/icon="uid://dh3n74rhxxpaa"
 
 [autoload]
 
