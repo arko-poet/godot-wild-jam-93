@@ -12,6 +12,7 @@ var selected_hunter: Hunter:
 				stagecoach_slot.remove_border_highlight()
 var stagecoach: StageCoach
 var interactable: Node2D 
+var stamina_needed
 
 @onready var _interactables_reward: Label = $InteractablesPanel/Description # changed form prize
 @onready var _interactables_icon: TextureRect = $InteractablesPanel/Icon
@@ -42,7 +43,7 @@ func show_dispatch_panel(new_stagecoach: StageCoach, new_interactable: Node2D) -
 	
 	# bounty properties
 	var reward: String
-	var stamina_needed = (stagecoach.global_position - interactable.global_position).length() / stagecoach.speed
+	stamina_needed = (stagecoach.global_position - interactable.global_position).length() / stagecoach.speed
 	if interactable is Camp:
 		_interactables_stamina.hide()
 		_fail_chance.hide()
@@ -71,10 +72,12 @@ func show_dispatch_panel(new_stagecoach: StageCoach, new_interactable: Node2D) -
 		assert(stagecoach.hunters[i] != null)
 		(hunter_grid.get_child(i) as StagecoachSlot).hunter = stagecoach.hunters[i]
 		
-	# inform player if sufficient stamina
-	dispatch_button.disabled = stagecoach.stamina < stamina_needed
-	if dispatch_button.disabled:
+	# inform player if sufficient stamina and at least one hunter
+	dispatch_button.disabled = (stagecoach.stamina < stamina_needed) || (stagecoach.hunters.size() <= 0)
+	if (stagecoach.stamina < stamina_needed):
 		dispatch_button.tooltip_text = "INSUFFICIENT STAMINA\nRESUPPLY IN TOWN"
+	elif (stagecoach.hunters.size() <= 0):
+		dispatch_button.tooltip_text = "NOT ENOUGH HUNTERS"
 	else:
 		dispatch_button.tooltip_text = ""
 	
@@ -132,6 +135,14 @@ func _update_hunter_power() -> void:
 	if interactable is not Camp:
 		interactable.updateFailChance(stagecoach.hunters)
 		_fail_chance.text = "Fail Chance: %s%%" % int(interactable.failChance * 100.0)
+	
+	dispatch_button.disabled = (stagecoach.stamina < stamina_needed) || (stagecoach.hunters.size() <= 0)
+	if (stagecoach.stamina < stamina_needed):
+		dispatch_button.tooltip_text = "INSUFFICIENT STAMINA\nRESUPPLY IN TOWN"
+	elif (stagecoach.hunters.size() <= 0):
+		dispatch_button.tooltip_text = "NOT ENOUGH HUNTERS"
+	else:
+		dispatch_button.tooltip_text = ""
 
 
 func _on_bounty_expired(_p_position) -> void:
