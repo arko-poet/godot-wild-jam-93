@@ -264,6 +264,7 @@ func _on_night_ui_intro_finished() -> void:
 	starSpawnTimer.start(1)
 	roundTimer.start(NIGHT_DURATION)
 	spawnInteractable("camp", Vector2(0,0))
+	night_ui.show()
 
 
 func _on_night_ui_play_again() -> void:

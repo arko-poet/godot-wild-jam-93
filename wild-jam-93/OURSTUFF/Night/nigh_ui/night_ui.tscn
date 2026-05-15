@@ -149,28 +149,6 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "OK"
 
-[node name="GameIntro" type="PanelContainer" parent="." unique_id=757018696]
-custom_minimum_size = Vector2(128, 32)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -64.0
-offset_top = -20.0
-offset_right = 64.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="GameIntro" unique_id=1849898140]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "INTRO TEXT"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="ScorePanel" type="PanelContainer" parent="." unique_id=347556490]
 process_mode = 3
 visible = false
@@ -205,5 +183,4 @@ text = "Play Again"
 [connection signal="pressed" from="HBoxContainer/Speed4Button" to="." method="_on_speed_4_button_pressed"]
 [connection signal="pressed" from="HelpButton" to="." method="_on_helpbutton_pressed"]
 [connection signal="pressed" from="HelpPanel/CloseButton" to="." method="_on_close_button_pressed"]
-[connection signal="gui_input" from="GameIntro" to="." method="_on_game_intro_gui_input"]
 [connection signal="pressed" from="ScorePanel/VBoxContainer/PlayAgainButton" to="." method="_on_play_again_button_pressed"]
