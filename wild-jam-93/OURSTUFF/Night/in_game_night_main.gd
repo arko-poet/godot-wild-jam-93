@@ -81,6 +81,7 @@ func _process(delta: float) -> void:
 			selectedStageCoach = null
 		
 		dispatch_window.hide()
+		night_ui.hunter_box.hide()
 		# can also be deselected via ui
 	
 	if Input.is_action_just_pressed("dev1"):
@@ -109,6 +110,7 @@ func selectStageCoach():
 			selectedStageCoach.selected = true
 			if selectedInteractable != null:
 				dispatch_window.show_dispatch_panel(selectedStageCoach, selectedInteractable)
+				night_ui.hunter_box.show()
 			break
 
 func selectInteractable():
@@ -129,6 +131,7 @@ func selectInteractable():
 					if selectedStageCoach != null:
 						
 						dispatch_window.show_dispatch_panel(selectedStageCoach, selectedInteractable)
+						night_ui.hunter_box.show()
 				break
 		else:
 			interactables.remove_at(i)

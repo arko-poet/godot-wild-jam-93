@@ -58,9 +58,7 @@ pause_menu_packed = ExtResource("6_htc02")
 [connection signal="timeout" from="roundTimer" to="." method="_on_round_timer_timeout"]
 [connection signal="hunter_selected" from="dispatchUiLayer/NightUI" to="dispatchUiLayer/DispatchWindow" method="_on_hunter_selected"]
 [connection signal="play_again" from="dispatchUiLayer/NightUI" to="." method="_on_night_ui_play_again"]
-[connection signal="cancel" from="dispatchUiLayer/DispatchWindow" to="." method="_on_dispatch_window_cancel"]
-[connection signal="dispatched" from="dispatchUiLayer/DispatchWindow" to="." method="dispatchStagecoach"]
-[connection signal="hunter_assigned" from="dispatchUiLayer/DispatchWindow" to="dispatchUiLayer/NightUI" method="_on_dispatch_window_hunter_assigned"]
+[connection signal="cancel" from="dispatchUiLayer/DispatchWindow" to="dispatchUiLayer/NightUI" method="_on_dispatch_window_cancel"]
 [connection signal="intro_finished" from="dispatchUiLayer/IntroPanel" to="." method="_on_night_ui_intro_finished"]
 
 [editable path="Map"]
