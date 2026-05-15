@@ -39,6 +39,7 @@ StagecoachInteractable=""
 
 [gui]
 
+theme/custom="uid://cw0ct2u04pouy"
 common/drop_mouse_on_gui_input_disabled=true
 
 [input]

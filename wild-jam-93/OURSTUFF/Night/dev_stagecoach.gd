@@ -3,7 +3,7 @@ class_name StageCoach extends Node2D
 
 var speed := 50.0
 var interactRange
-var stageCoachScale := .5
+var stageCoachScale := scale
 
 var hunters: Array[Hunter] = []
 var upgrades = [] #non stat based upgrades
@@ -12,8 +12,9 @@ var stamina := Camp.MAX_STAMINA: # how many seconds of travel the stagecoach has
 	set(value):
 		stamina = value
 		if stamina_bar:
-			stamina_bar.position = position
+			stamina_bar.position = position + stamina_bar_offset
 			stamina_bar.update_stamina(stamina)
+var stamina_bar_offset: Vector2
 var route #vector 2 
 var interactingNode
 var pausedNode
@@ -49,6 +50,8 @@ func _ready() -> void:
 	movementTimer = find_child("movementTimer")
 	InGameMain = find_parent("InGameMain")
 	stamina_bar.set_max_stamina(Camp.MAX_STAMINA)
+	stamina_bar_offset = stamina_bar.position
+	
 	# need to put it to ui_layer, otherwise it get shaded by canvas modulate
 	stamina_bar.reparent(ui_layer)
 	
@@ -133,13 +136,13 @@ func setSpriteScale(new_scale: float):
 		i.scale = Vector2(new_scale, new_scale)
 
 func _on_area_2d_mouse_entered() -> void:
-	scale = Vector2(.6, .6)
+	scale = stageCoachScale * 1.1
 
 
 func _on_area_2d_mouse_exited() -> void:
-	scale = Vector2(stageCoachScale, stageCoachScale)
 
 
 func _on_light_timer_timeout() -> void:
 	pass # Replace with function body.
 	pointLight.energy = 2.5
+	scale = stageCoachScale
