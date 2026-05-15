@@ -21,7 +21,7 @@ var selected_hunter: Hunter:
 @onready var speed_4_button: Button = $HBoxContainer/Speed4Button
 @onready var helpbutton: Button = $HelpButton
 @onready var help_panel: Panel = $HelpPanel
-@onready var close_help_panel_button: Button = $HelpPanel/CloseButton
+@onready var close_help_panel_button: Button = $HelpPanel/MarginContainer/CloseButton
 @onready var score_panel: PanelContainer = $ScorePanel
 @onready var score_label: Label = $ScorePanel/VBoxContainer/ScoreLabel
 

@@ -92,7 +92,7 @@ func _on_dispatch_button_pressed() -> void:
 func _on_hunter_selected(hunter: Hunter) -> void:
 	selected_hunter = hunter
 	for stagecoach_slot: StagecoachSlot in hunter_grid.get_children():
-		if stagecoach_slot.hunter == null and stagecoach.isAtCamp:
+		if stagecoach_slot.hunter == null and stagecoach != null and stagecoach.isAtCamp:
 			stagecoach_slot.add_border_highlight()
 
 
