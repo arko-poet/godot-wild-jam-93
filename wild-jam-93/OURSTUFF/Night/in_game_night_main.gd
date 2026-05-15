@@ -45,7 +45,7 @@ var inGameMain
 @onready var dispatch_window: DispatchWindow = $dispatchUiLayer/DispatchWindow
 @onready var roundTimer = $roundTimer
 @onready var starSpawnTimer = $starSpawnTimer
-
+@onready var nightModulate = $Map/NightModulate
 
 func _ready() -> void:
 	inGameMain = find_parent("InGameMain")
@@ -57,6 +57,8 @@ func _process(delta: float) -> void:
 	
 	#update ui time
 	night_ui.update_time_left(int(roundTimer.time_left + 1.0))
+	var percentRemainingNight = 1 - (roundTimer.time_left / roundTimer.wait_time)
+	nightModulate.updateColor(percentRemainingNight)
 	
 	#GITHUB ASSS FUCKN YOU
 	var ihateyou = 0
