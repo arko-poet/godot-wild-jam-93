@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://c1x444kowfy8u"]
+
+[ext_resource type="Script" uid="uid://cl0gwuikvp1px" path="res://OURSTUFF/Night/Animation/UI_ART/portrait_test.gd" id="1_1rygy"]
+[ext_resource type="Texture2D" uid="uid://68523es8urp2" path="res://OURSTUFF/Night/Animation/UI_ART/character.png" id="2_5nd1h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7l3uk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kocl7"]
+resource_local_to_scene = true
+atlas = ExtResource("2_5nd1h")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vpel"]
+resource_local_to_scene = true
+atlas = ExtResource("2_5nd1h")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmp2x"]
+resource_local_to_scene = true
+atlas = ExtResource("2_5nd1h")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4nm0"]
+resource_local_to_scene = true
+atlas = ExtResource("2_5nd1h")
+region = Rect2(0, 0, 64, 64)
+
+[node name="Portrait_generator" type="Panel" unique_id=993431955]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 64.0
+offset_bottom = 64.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_7l3uk")
+script = ExtResource("1_1rygy")
+
+[node name="HEAD" type="TextureRect" parent="." unique_id=231485504]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_kocl7")
+stretch_mode = 2
+
+[node name="EYE" type="TextureRect" parent="." unique_id=836214941]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+texture = SubResource("AtlasTexture_3vpel")
+
+[node name="MOUTH" type="TextureRect" parent="." unique_id=1611748626]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 3.0
+offset_right = 73.0
+offset_bottom = 67.0
+texture = SubResource("AtlasTexture_cmp2x")
+
+[node name="HAT" type="TextureRect" parent="." unique_id=858215808]
+layout_mode = 0
+offset_top = -5.0
+offset_right = 64.0
+offset_bottom = 59.0
+texture = SubResource("AtlasTexture_o4nm0")
