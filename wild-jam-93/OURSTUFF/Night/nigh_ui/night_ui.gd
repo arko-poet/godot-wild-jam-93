@@ -13,7 +13,7 @@ var selected_hunter: Hunter:
 			selected_hunter = value
 			hunter_selected.emit(selected_hunter)
 
-@onready var hunter_grid: GridContainer = $VBoxContainer/HunterGrid
+@onready var hunter_grid: GridContainer = $HunterBox/HunterGrid
 @onready var time_left_label: Label = $TimeLeftLabel
 @onready var money_label: Label = $MoneyLabel
 @onready var pause_button: Button = $HBoxContainer/PauseButton
@@ -25,6 +25,7 @@ var selected_hunter: Hunter:
 @onready var close_help_panel_button: Button = $HelpPanel/MarginContainer/CloseButton
 @onready var score_panel: PanelContainer = $ScorePanel
 @onready var score_label: Label = $ScorePanel/VBoxContainer/ScoreLabel
+@onready var hunter_box: VBoxContainer = $HunterBox
 
 
 #
@@ -115,3 +116,7 @@ func _on_close_button_pressed() -> void:
 
 func _on_play_again_button_pressed() -> void:
 	play_again.emit()
+
+
+func _on_dispatch_window_cancel() -> void:
+	hunter_box.hide()

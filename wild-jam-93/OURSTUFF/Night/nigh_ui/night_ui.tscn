@@ -11,16 +11,17 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_n6nwx")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=222427354]
+[node name="HunterBox" type="VBoxContainer" parent="." unique_id=222427354]
+visible = false
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 720.0
 
-[node name="HuntersLabel" type="Label" parent="VBoxContainer" unique_id=762028144]
+[node name="HuntersLabel" type="Label" parent="HunterBox" unique_id=762028144]
 layout_mode = 2
 text = "Bounty Hunters"
 
-[node name="HunterGrid" type="GridContainer" parent="VBoxContainer" unique_id=1812580236]
+[node name="HunterGrid" type="GridContainer" parent="HunterBox" unique_id=1812580236]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 size_flags_horizontal = 4
