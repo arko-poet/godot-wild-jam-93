@@ -3,6 +3,7 @@ extends Node
 #stuff like money, upgrades, bounty hunters etc
 #also controls loading and unloading day and night scenes
 
+const BOUNTY_HUNTER_COUNT := 7
 
 var money := 0
 var day := 0
@@ -21,7 +22,7 @@ var stageCoaches = []
 func _ready() -> void:
 	stageCoaches = [StageCoach.new(), StageCoach.new(), StageCoach.new()]
 	
-	for i in 10:
+	for i in BOUNTY_HUNTER_COUNT:
 		var hunter = Hunter.new(devHunterIcon)
 		hunters.append(hunter)
 		#night_ui.add_hunter(hunter)
