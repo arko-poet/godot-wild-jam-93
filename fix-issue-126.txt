@@ -1,0 +1,2 @@
+Fix for issue #126
+Wallet: zp6
