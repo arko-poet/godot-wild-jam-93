@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dth0h0htj80ro"]
 
 [ext_resource type="Script" uid="uid://c58rljiscgmbe" path="res://OURSTUFF/Night/nigh_ui/dispatch_window/dispatch_window.gd" id="1_83nhf"]
-[ext_resource type="Texture2D" uid="uid://ctfl5lq83mmic" path="res://icon.png" id="2_otvtg"]
+[ext_resource type="Texture2D" uid="uid://bmjj8cfytd0ar" path="res://OURSTUFF/Night/Animation/UI_ART/ui_icon.png" id="3_j6hqk"]
 [ext_resource type="PackedScene" uid="uid://b88nvplnvmcu" path="res://OURSTUFF/Night/nigh_ui/dispatch_window/stagecoach_slot/stagecoach_slot.tscn" id="3_otvtg"]
 [ext_resource type="AudioStream" uid="uid://di7hjfd7dgihs" path="res://OURSTUFF/sound/effects/whip_sound/universfield-whip-02-242215.mp3" id="5_s3aue"]
 
@@ -13,17 +13,19 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.98039216, 0.38039216, 0.28627452, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yhbs4"]
-bg_color = Color(0.15294118, 0.20392157, 0.30588236, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.8352941, 0.2509804, 0.18039216, 1)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s3aue"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ojlr5"]
+atlas = ExtResource("3_j6hqk")
+region = Rect2(6, 222, 215, 292)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dgd1a"]
+atlas = ExtResource("3_j6hqk")
+region = Rect2(330, 0, 85, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knrgd"]
+atlas = ExtResource("3_j6hqk")
+region = Rect2(317, 308, 267, 167)
 
 [node name="DispatchWindow" type="Control" unique_id=1899161779]
 custom_minimum_size = Vector2(640, 360)
@@ -77,14 +79,25 @@ anchor_right = 1.0
 offset_top = 16.0
 offset_right = -16.0
 grow_horizontal = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_yhbs4")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_s3aue")
+
+[node name="TextureRect" type="TextureRect" parent="InteractablesPanel" unique_id=2001814347]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -7.5
+offset_right = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_ojlr5")
 
 [node name="Title" type="Label" parent="InteractablesPanel" unique_id=2007709579]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
-offset_top = 8.0
+offset_top = 15.0
 grow_horizontal = 2
 text = "BOUNTY"
 
@@ -97,7 +110,7 @@ anchor_right = 0.5
 anchor_bottom = 0.25
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_otvtg")
+texture = SubResource("AtlasTexture_dgd1a")
 
 [node name="Description" type="Label" parent="InteractablesPanel" unique_id=1058534622]
 layout_mode = 1
@@ -152,10 +165,11 @@ layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 16.0
-offset_bottom = -16.0
+offset_left = 10.0
+offset_top = -110.0
+offset_right = 367.0
+offset_bottom = -10.0
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_yhbs4")
 
 [node name="Title" type="Label" parent="StagecoachPanel" unique_id=1455660570]
 layout_mode = 1
@@ -184,6 +198,19 @@ text = "Power: 6"
 [node name="Stamina" type="Label" parent="StagecoachPanel/VBoxContainer" unique_id=1611122111]
 layout_mode = 2
 text = "Stamina: 800/1000"
+
+[node name="stagecoach" type="TextureRect" parent="." unique_id=1736792256]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.141
+anchor_top = 0.103
+anchor_right = 0.205
+anchor_bottom = 0.103
+offset_left = -22.240005
+offset_top = -0.08000183
+offset_right = 275.56
+offset_bottom = 217.84
+texture = SubResource("AtlasTexture_knrgd")
 
 [node name="HunterGrid" type="GridContainer" parent="." unique_id=1839142401]
 layout_mode = 1

@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://d4cm64qyqt2kd" path="res://OURSTUFF/Night/Animation/Map/props.png" id="1_0111g"]
 [ext_resource type="Script" uid="uid://dldnqaeiutwdc" path="res://OURSTUFF/Night/Animation/night_transition.gd" id="2_wkk5a"]
-[ext_resource type="Script" uid="uid://bld8242ffi1d2" path="res://OURSTUFF/Night/Animation/Map/test_star.gd" id="3_52scm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_52scm"]
 atlas = ExtResource("1_0111g")
@@ -24,6 +23,10 @@ region = Rect2(116, 359, 96, 79)
 atlas = ExtResource("1_0111g")
 region = Rect2(399, 248, 156, 208)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_wkk5a"]
+atlas = ExtResource("1_0111g")
+region = Rect2(10, 476, 224, 191)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_d3nkh"]
 atlas = ExtResource("1_0111g")
 region = Rect2(0, 0, 489, 223)
@@ -33,8 +36,8 @@ atlas = ExtResource("1_0111g")
 region = Rect2(500, 4, 69, 82)
 
 [sub_resource type="Gradient" id="Gradient_jqksr"]
-offsets = PackedFloat32Array(0, 0.05, 0.1, 0.9, 0.95, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0.3764706, 0.15294118, 0.43529412, 1, 0.09019608, 0.08235294, 0.17254902, 1, 0.09019608, 0.08235294, 0.17254902, 1, 0.87221414, 0.5382301, 0.4428321, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0, 0.1, 0.2, 0.8, 0.9, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.3764706, 0.15294118, 0.43529412, 1, 0.26467016, 0.24860215, 0.44086927, 1, 0.2627451, 0.24705882, 0.4392157, 1, 0.87221414, 0.5382301, 0.4428321, 1, 1, 1, 1, 1)
 
 [node name="Map" type="Node2D" unique_id=2016845786]
 y_sort_enabled = true
@@ -452,6 +455,51 @@ scale = Vector2(1.1068158, 1.2415608)
 texture = SubResource("AtlasTexture_3ysx0")
 flip_h = true
 
+[node name="settlement" type="Node2D" parent="." unique_id=961622889]
+
+[node name="Sprite2D3" type="Sprite2D" parent="settlement" unique_id=2111968609]
+position = Vector2(49, 155)
+scale = Vector2(0.2709424, 0.27094242)
+texture = SubResource("AtlasTexture_wkk5a")
+flip_h = true
+
+[node name="Sprite2D4" type="Sprite2D" parent="settlement" unique_id=329050473]
+position = Vector2(996, 455)
+scale = Vector2(0.30464652, 0.33646974)
+texture = SubResource("AtlasTexture_wkk5a")
+
+[node name="Sprite2D5" type="Sprite2D" parent="settlement" unique_id=1070772509]
+position = Vector2(939.99994, 478)
+scale = Vector2(0.30464652, 0.33646974)
+texture = SubResource("AtlasTexture_wkk5a")
+
+[node name="Sprite2D6" type="Sprite2D" parent="settlement" unique_id=1382349092]
+position = Vector2(995.99994, 430)
+scale = Vector2(0.30464652, 0.33646974)
+texture = SubResource("AtlasTexture_wkk5a")
+
+[node name="Sprite2D7" type="Sprite2D" parent="settlement" unique_id=1223214664]
+position = Vector2(1035, 466)
+scale = Vector2(0.30464652, 0.33646974)
+texture = SubResource("AtlasTexture_wkk5a")
+
+[node name="Sprite2D8" type="Sprite2D" parent="settlement" unique_id=1456898776]
+position = Vector2(987, 489)
+scale = Vector2(0.30464652, 0.33646974)
+texture = SubResource("AtlasTexture_wkk5a")
+
+[node name="Sprite2D" type="Sprite2D" parent="settlement" unique_id=560289477]
+position = Vector2(118, 167.00002)
+scale = Vector2(0.2709424, 0.27094242)
+texture = SubResource("AtlasTexture_wkk5a")
+flip_h = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="settlement" unique_id=415973847]
+position = Vector2(118, 143)
+scale = Vector2(0.2709424, 0.27094242)
+texture = SubResource("AtlasTexture_wkk5a")
+flip_h = true
+
 [node name="oasis" type="Node2D" parent="." unique_id=248864029]
 scale = Vector2(0.5, 0.5)
 
@@ -475,7 +523,3 @@ metadata/_edit_lock_ = true
 color = Color(0.3770127, 0.15157232, 0.43649843, 1)
 script = ExtResource("2_wkk5a")
 gradient_time = SubResource("Gradient_jqksr")
-
-[node name="TEST STAR" type="Node2D" parent="." unique_id=477901045]
-visible = false
-script = ExtResource("3_52scm")
