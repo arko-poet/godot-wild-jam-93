@@ -23,6 +23,8 @@ var interactable: Node2D
 @onready var _fail_chance: Label = $InteractablesPanel/VBoxContainer/FailChance
 @onready var hunter_grid: GridContainer = $HunterGrid
 @onready var dispatch_button: Button = $HBoxContainer/DispatchButton
+@onready var whip_sound: AudioStreamPlayer2D = $WhipSound
+
 
 var inGameNightMain
 
@@ -84,6 +86,7 @@ func _on_dispatch_button_pressed() -> void:
 		interactable.bounty_expired.disconnect(_on_bounty_expired)
 	hide()
 	dispatched.emit(stagecoach)
+	whip_sound.play()
 
 
 func _on_hunter_selected(hunter: Hunter) -> void:
