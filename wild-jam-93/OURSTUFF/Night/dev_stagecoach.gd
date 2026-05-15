@@ -3,6 +3,7 @@ class_name StageCoach extends Node2D
 
 var speed := 50.0
 var interactRange
+var stageCoachScale := .5
 
 var hunters: Array[Hunter] = []
 var upgrades = [] #non stat based upgrades
@@ -131,10 +132,8 @@ func setSpriteScale(new_scale: float):
 		i.scale = Vector2(new_scale, new_scale)
 
 func _on_area_2d_mouse_entered() -> void:
-	scale = Vector2(1.1, 1.1)
-	setSpriteScale(1.1)
+	scale = Vector2(.6, .6)
 
 
 func _on_area_2d_mouse_exited() -> void:
-	scale = Vector2(1.0, 1.0)
-	setSpriteScale(1.1)
+	scale = Vector2(stageCoachScale, stageCoachScale)

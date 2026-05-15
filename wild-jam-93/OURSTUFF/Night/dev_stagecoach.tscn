@@ -9,6 +9,7 @@ size = Vector2(202, 116)
 
 [node name="devStagecoach" type="Node2D" unique_id=400670669]
 z_index = 1
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_psqc1")
 
 [node name="StageCOachAnimation" parent="." unique_id=869997365 instance=ExtResource("2_b14l5")]
