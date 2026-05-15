@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bvte5ogo2rgv3"
+path="res://.godot/imported/Nagrywanie (11).ogg-09326f8adeab6dc87e932fe112d586b2.oggvorbisstr"
+
+[deps]
+
+source_file="res://OURSTUFF/sound/voice_lines/arko/Nagrywanie (11).ogg"
+dest_files=["res://.godot/imported/Nagrywanie (11).ogg-09326f8adeab6dc87e932fe112d586b2.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

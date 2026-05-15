@@ -1,6 +1,12 @@
 [gd_scene format=3 uid="uid://dijrtmnji7fyu"]
 
 [ext_resource type="Script" uid="uid://ce27mtd8mkyqu" path="res://OURSTUFF/Critical/in_game_main.gd" id="1_rnm73"]
+[ext_resource type="PackedScene" uid="uid://bkcsjsk2ciff" path="res://addons/maaacks_game_template/base/nodes/music_players/background_music_player.tscn" id="2_jisu2"]
+[ext_resource type="AudioStream" uid="uid://d0a886p5icq4p" path="res://OURSTUFF/sound/music/gameplay.mp3" id="3_oopit"]
 
 [node name="InGameMain" type="Node" unique_id=1042084489]
 script = ExtResource("1_rnm73")
+
+[node name="BackgroundMusicPlayer" parent="." unique_id=1446051342 instance=ExtResource("2_jisu2")]
+stream = ExtResource("3_oopit")
+parameters/looping = true

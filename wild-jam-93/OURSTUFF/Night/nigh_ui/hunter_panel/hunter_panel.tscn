@@ -26,4 +26,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_mrjkh")
 
+[node name="VoiceLinePlayer" type="AudioStreamPlayer2D" parent="." unique_id=829718197]
+bus = &"SFX"
+
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
