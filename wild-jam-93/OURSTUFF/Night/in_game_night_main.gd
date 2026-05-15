@@ -77,6 +77,7 @@ func _process(delta: float) -> void:
 			selectedInteractable = null
 		if selectedStageCoach != null:
 			selectedStageCoach.setSpriteScale(1.0)
+			selectedStageCoach.material.light_mode = 0
 			selectedStageCoach = null
 		
 		dispatch_window.hide()
@@ -103,6 +104,7 @@ func selectStageCoach():
 		if (distance <= stagecoachSelectionRange) && (stageCoaches[i].isInteracting == false):
 			selectedStageCoach = stageCoaches[i]
 			selectedStageCoach.setSpriteScale(1.2)
+			selectedStageCoach.material.light_mode = 1
 			#highlight coach or something
 			selectedStageCoach.selected = true
 			if selectedInteractable != null:
@@ -142,6 +144,7 @@ func dispatchStagecoach(stagecoach: StageCoach): # called by the ui when player 
 			selectedStageCoach.dispatch(selectedInteractable)
 			selectedInteractable.sprite.scale /= interactableSelectScale
 			selectedStageCoach.setSpriteScale(1.0)
+			selectedStageCoach.material.light_mode = 0
 			selectedInteractable = null
 			selectedStageCoach = null
 			print("dispatched")
