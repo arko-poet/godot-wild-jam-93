@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dqdt0ifpaqbrk" path="res://OURSTUFF/Night/Animation/Map/starAnimation.gd" id="1_h8i0r"]
 [ext_resource type="Texture2D" uid="uid://d4cm64qyqt2kd" path="res://OURSTUFF/Night/Animation/Map/props.png" id="2_6f726"]
 [ext_resource type="Script" uid="uid://c6kcc7to67jvn" path="res://OURSTUFF/Night/Animation/Map/startrail.gd" id="3_eanks"]
+[ext_resource type="Texture2D" uid="uid://crea6idq55vqr" path="res://OURSTUFF/resources/9my1K.png" id="4_l52jw"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_017em"]
 light_mode = 1
@@ -103,3 +104,9 @@ coef = -0.3
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1359082438]
 use_parent_material = true
 texture = SubResource("AtlasTexture_6bk67")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1576874692]
+position = Vector2(-4, 7.999996)
+scale = Vector2(1.4228573, 1.48)
+color = Color(1, 1, 0.5294118, 1)
+texture = ExtResource("4_l52jw")
