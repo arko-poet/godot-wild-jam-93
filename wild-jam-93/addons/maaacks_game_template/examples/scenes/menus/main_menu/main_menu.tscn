@@ -13,6 +13,9 @@ confirm_new_game = true
 options_packed_scene = ExtResource("3_qhsni")
 credits_packed_scene = ExtResource("4_qhsni")
 
+[node name="SubTitleLabel" parent="MenuContainer/SubTitleMargin/SubTitleContainer" parent_id_path=PackedInt32Array(930520368) index="0" unique_id=1037003361]
+text = ""
+
 [node name="ContinueGameButton" type="Button" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" parent_id_path=PackedInt32Array(2017477786) index="1" unique_id=1495566523]
 unique_name_in_owner = true
 visible = false
