@@ -43,6 +43,8 @@ var selected := false:
 @onready var stamina_bar: Node2D = $StaminaBar
 @onready var collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
 @onready var stage_coach_animation: StagecoachAnimation = $StageCOachAnimation
+@onready var pointLight: PointLight2D = $PointLight2D
+@onready var lightTimer: Timer = $lightTimer
 
 func _ready() -> void:
 	movementTimer = find_child("movementTimer")
@@ -138,4 +140,9 @@ func _on_area_2d_mouse_entered() -> void:
 
 
 func _on_area_2d_mouse_exited() -> void:
+
+
+func _on_light_timer_timeout() -> void:
+	pass # Replace with function body.
+	pointLight.energy = 2.5
 	scale = stageCoachScale

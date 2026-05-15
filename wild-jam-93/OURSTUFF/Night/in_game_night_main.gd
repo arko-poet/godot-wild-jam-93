@@ -266,6 +266,8 @@ func _on_night_ui_intro_finished() -> void:
 	# start night
 	starSpawnTimer.start(1)
 	roundTimer.start(NIGHT_DURATION)
+	for i in stageCoaches:
+		i.lightTimer.start(randf_range(20, 30))
 	spawnInteractable("camp", Vector2(0,0))
 	night_ui.show()
 

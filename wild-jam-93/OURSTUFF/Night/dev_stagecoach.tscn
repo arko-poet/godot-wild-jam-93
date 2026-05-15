@@ -37,9 +37,12 @@ shape = SubResource("RectangleShape2D_b14l5")
 position = Vector2(3.9999695, -10.0000305)
 scale = Vector2(2.2657142, 1.85)
 color = Color(0.7866932, 0.46402866, 0.07003514, 1)
-energy = 2.49
+energy = 0.0
 texture = ExtResource("4_trda3")
+
+[node name="lightTimer" type="Timer" parent="." unique_id=820773428]
 
 [connection signal="timeout" from="movementTimer" to="." method="_on_movement_timer_timeout"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="timeout" from="lightTimer" to="." method="_on_light_timer_timeout"]
