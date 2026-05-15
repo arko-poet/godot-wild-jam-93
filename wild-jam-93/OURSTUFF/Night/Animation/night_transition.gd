@@ -2,13 +2,6 @@ extends CanvasModulate
 
 @export var gradient_time: Gradient
 
-## How long the night last in second
-var night_time = Night.NIGHT_DURATION
-var current_time: float = 0.0
 
-func _process(delta: float) -> void:
-	current_time += delta
-	
-	var ratio_in_game_time = current_time/night_time
-	
-	color = gradient_time.sample(ratio_in_game_time)
+func updateColor(ratio: float):
+	color = gradient_time.sample(ratio)

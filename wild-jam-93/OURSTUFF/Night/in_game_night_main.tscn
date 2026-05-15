@@ -53,3 +53,5 @@ pause_menu_packed = ExtResource("6_htc02")
 [connection signal="cancel" from="dispatchUiLayer/DispatchWindow" to="." method="_on_dispatch_window_cancel"]
 [connection signal="dispatched" from="dispatchUiLayer/DispatchWindow" to="." method="dispatchStagecoach"]
 [connection signal="hunter_assigned" from="dispatchUiLayer/DispatchWindow" to="dispatchUiLayer/NightUI" method="_on_dispatch_window_hunter_assigned"]
+
+[editable path="Map"]

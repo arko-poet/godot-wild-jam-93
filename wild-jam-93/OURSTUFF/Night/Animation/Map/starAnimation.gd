@@ -17,7 +17,8 @@ func _process(delta: float) -> void:
 		dir = (get_global_mouse_position() - global_position).normalized()
 	else:
 		dir =  (target - global_position).normalized()
-	
+	if (global_position.distance_to(get_global_mouse_position()) < 5 and not target) or (target and global_position.distance_to(target) < 20):
+		speed = 100
 	if (global_position.distance_to(get_global_mouse_position()) < 5 and not target) or (target and global_position.distance_to(target) < 5):
 		if not has_impact_ground:
 			has_impact_ground = true
