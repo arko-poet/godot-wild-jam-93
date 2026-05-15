@@ -7,6 +7,13 @@ const STATE_COLORS: Dictionary[Hunter.State, Color] = {
 	Hunter.State.BUSY: Color("#FBBF24"),
 	Hunter.State.UNAVAILABLE: Color("#F87171")
 }
+const VOICE_LINES := [
+	preload("res://OURSTUFF/sound/voice_lines/arko/Nagrywanie (11).ogg"),
+	preload("res://OURSTUFF/sound/voice_lines/arko/Nagrywanie (12).ogg"),
+	preload("res://OURSTUFF/sound/voice_lines/arko/Nagrywanie (13).ogg"),
+	preload("res://OURSTUFF/sound/voice_lines/arko/Nagrywanie (14).ogg"),
+	preload("res://OURSTUFF/sound/voice_lines/arko/Nagrywanie (15).ogg")
+]
 const BORDER_COLOR := Color.WHITE
 const BORDER_WIDTH := 3
 const BORDER_OVERRIDE_NAME := &"border"
@@ -20,6 +27,7 @@ var hunter: Hunter:
 		get_theme_stylebox(&"panel").bg_color = STATE_COLORS[hunter.state]
 
 @onready var icon: TextureRect = $Icon
+@onready var voice_line_player: AudioStreamPlayer2D = $VoiceLinePlayer
 
 
 func remove_border() -> void:
@@ -38,8 +46,19 @@ func _add_border() -> void:
 func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		if hunter.state == Hunter.State.AVAILABLE:
+			_play_voice_line()
 			hunter_selected.emit(hunter)
 			_add_border()
+
+
+func _play_voice_line() -> void:
+	if VOICE_LINES.is_empty():
+		return
+
+	var line = VOICE_LINES.pick_random()
+
+	voice_line_player.stream = line
+	voice_line_player.play()
 
 
 func _hunter_state_changed() -> void:
