@@ -63,11 +63,14 @@ grow_horizontal = 0
 grow_vertical = 0
 
 [node name="CancelButton" type="Button" parent="HBoxContainer" unique_id=500679443]
+modulate = Color(0.8175213, 0.8175213, 0.81752115, 1)
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
 text = "CANCEL"
 
 [node name="DispatchButton" type="Button" parent="HBoxContainer" unique_id=337294282]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
 text = "DISPATCH"
 
 [node name="InteractablesPanel" type="Panel" parent="." unique_id=2037429776]

@@ -64,19 +64,23 @@ grow_horizontal = 2
 
 [node name="PauseButton" type="Button" parent="HBoxContainer" unique_id=1373857284]
 process_mode = 3
+custom_minimum_size = Vector2(24, 0)
 layout_mode = 2
 text = "II"
 
 [node name="Speed1Button" type="Button" parent="HBoxContainer" unique_id=56339402]
+custom_minimum_size = Vector2(24, 0)
 layout_mode = 2
 disabled = true
 text = "1x"
 
 [node name="Speed2Button" type="Button" parent="HBoxContainer" unique_id=1003003581]
+custom_minimum_size = Vector2(24, 0)
 layout_mode = 2
 text = "2x"
 
 [node name="Speed4Button" type="Button" parent="HBoxContainer" unique_id=546145257]
+custom_minimum_size = Vector2(24, 0)
 layout_mode = 2
 text = "4x"
 
