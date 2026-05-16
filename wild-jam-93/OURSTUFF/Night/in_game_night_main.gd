@@ -17,6 +17,9 @@ const NIGHT_DURATION := 300.0
 @export var stagecoachSelectScale := 1.2
 @export var interactableSelectScale := 1.5
 
+var starSpawnHighRoll := 7.0
+var starSpawnLowRoll := 3.0
+
 var playableArea := Vector2i(1280, 720)
 
 var stageCoaches = [] #array of all stagecoaches

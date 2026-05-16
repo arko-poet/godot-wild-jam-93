@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bcy8hb5diihae"]
+
+[ext_resource type="Script" uid="uid://2pwsy6q2mk6m" path="res://OURSTUFF/Night/power_ups/free_money.gd" id="1_l75ri"]
+
+[node name="freeMoney" type="Node2D" unique_id=689917074]
+script = ExtResource("1_l75ri")
+
+[node name="Timer" type="Timer" parent="." unique_id=1360932176]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
