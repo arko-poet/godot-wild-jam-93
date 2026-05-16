@@ -48,6 +48,7 @@ var selected := false:
 @onready var pointLight: PointLight2D = $PointLight2D
 @onready var lightTimer: Timer = $lightTimer
 @onready var horse_sound: AudioStreamPlayer2D = $HorseSound
+@onready var dirtParticles: CPUParticles2D = $StageCOachAnimation/CPUParticles2D
 
 
 func _ready() -> void:
@@ -63,11 +64,14 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if isMoving: # move
 		pass
+		dirtParticles.emitting = true
 		stage_coach_animation.animate(route.normalized())
 		var timerPercentDone = (movementTimer.wait_time - movementTimer.time_left) / movementTimer.wait_time
 		
 		position = lastPosition + (timerPercentDone * route)
 		stamina -= delta
+	else:
+		dirtParticles.emitting = false
 
 
 func _draw() -> void:
