@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://d4cm64qyqt2kd" path="res://OURSTUFF/Night/Animation/Map/props.png" id="1_0111g"]
 [ext_resource type="Script" uid="uid://dldnqaeiutwdc" path="res://OURSTUFF/Night/Animation/night_transition.gd" id="2_wkk5a"]
+[ext_resource type="Texture2D" uid="uid://cv737qeuwh7oc" path="res://OURSTUFF/Night/Animation/Map/camp.png" id="3_wkk5a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_52scm"]
 atlas = ExtResource("1_0111g")
@@ -523,3 +524,8 @@ metadata/_edit_lock_ = true
 color = Color(0.3770127, 0.15157232, 0.43649843, 1)
 script = ExtResource("2_wkk5a")
 gradient_time = SubResource("Gradient_jqksr")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=416403]
+position = Vector2(660, 733)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_wkk5a")
