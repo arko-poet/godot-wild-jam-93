@@ -3,11 +3,22 @@
 [ext_resource type="Script" uid="uid://b5dkktcv5hexa" path="res://OURSTUFF/Night/dev_stagecoach.gd" id="1_psqc1"]
 [ext_resource type="PackedScene" uid="uid://b2qn8fayyuahi" path="res://OURSTUFF/Night/Animation/stage_c_oach_animation.tscn" id="2_b14l5"]
 [ext_resource type="PackedScene" uid="uid://dw3cy6iybipxm" path="res://OURSTUFF/Night/nigh_ui/stamina_bar/stamina_bar.tscn" id="3_b14l5"]
+[ext_resource type="Texture2D" uid="uid://0w5nqb8q6t4f" path="res://OURSTUFF/Night/Animation/StageCoach/stagecoach.png" id="3_w4eig"]
 [ext_resource type="Texture2D" uid="uid://crea6idq55vqr" path="res://OURSTUFF/resources/9my1K.png" id="4_trda3"]
 [ext_resource type="AudioStream" uid="uid://sqx4o24jlusw" path="res://OURSTUFF/sound/effects/horse/418428__soundslikewillem__neighing-horse.wav" id="5_8oxbi"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_b14l5"]
 resource_local_to_scene = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_imxsf"]
+resource_local_to_scene = true
+atlas = ExtResource("3_w4eig")
+region = Rect2(24, 147, 93, 76)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_abrj3"]
+resource_local_to_scene = true
+atlas = ExtResource("3_w4eig")
+region = Rect2(0, 14, 120, 108)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b14l5"]
 size = Vector2(234, 123)
@@ -20,6 +31,15 @@ script = ExtResource("1_psqc1")
 [node name="StageCOachAnimation" parent="." unique_id=869997365 instance=ExtResource("2_b14l5")]
 use_parent_material = true
 scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" parent="StageCOachAnimation" index="0" unique_id=394255853]
+texture = SubResource("AtlasTexture_imxsf")
+
+[node name="Sprite2D2" parent="StageCOachAnimation" index="1" unique_id=944317799]
+texture = SubResource("AtlasTexture_abrj3")
+
+[node name="CPUParticles2D" parent="StageCOachAnimation" index="7" unique_id=1612455192]
+emitting = false
 
 [node name="movementTimer" type="Timer" parent="." unique_id=1120012615]
 one_shot = true
@@ -51,3 +71,5 @@ bus = &"SFX"
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
 [connection signal="timeout" from="lightTimer" to="." method="_on_light_timer_timeout"]
+
+[editable path="StageCOachAnimation"]
