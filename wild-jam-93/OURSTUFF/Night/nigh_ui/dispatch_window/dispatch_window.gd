@@ -64,6 +64,10 @@ func show_dispatch_panel(new_stagecoach: StageCoach, new_interactable: Node2D) -
 		_fail_chance.hide()
 		stamina_needed = 0.0
 		reward = "+ Resupply\n+ Heal"
+	elif interactable is PowerUp:
+		_fail_chance.hide()
+		_interactables_stamina.show()
+		reward = interactable.powerUpDescription
 	else:
 		interactable.updateFailChance(stagecoach.hunters)
 		_interactables_stamina.show()
@@ -147,7 +151,7 @@ func _update_hunter_power() -> void:
 	_stagecoach_power.text = "Power: %s" % power
 	
 	# bounty fail chance
-	if interactable is not Camp:
+	if (interactable is not Camp) && (interactable is not PowerUp):
 		interactable.updateFailChance(stagecoach.hunters)
 		_fail_chance.text = "Fail Chance: %s%%" % int(interactable.failChance * 100.0)
 	

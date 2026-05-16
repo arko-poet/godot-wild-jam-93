@@ -3,6 +3,7 @@ class_name Night extends Node2D
  
 const stageCoach = preload("res://OURSTUFF/Night/dev_stagecoach.tscn") #stage coach scene
 const star = preload("res://OURSTUFF/Night/stagecoachInteractables/star.tscn") #star scene
+const powerUp = preload("res://OURSTUFF/Night/power_ups/default_power_up.tscn")
 const starAnimation = preload("res://OURSTUFF/Night/Animation/star_animation.tscn")
 const camp = preload("res://OURSTUFF/Night/stagecoachInteractables/camp.tscn")
 #const dispatchWindow = preload("res://OURSTUFF/Night/dispatch_window/dispatch_window.tscn")
@@ -51,6 +52,8 @@ func _ready() -> void:
 	inGameMain = find_parent("InGameMain")
 	
 	night_ui.update_money(inGameMain.money)
+	
+	spawnInteractable("powerUp", Vector2(playableArea.x/2, playableArea.y/2))
 
 
 func _process(delta: float) -> void:
@@ -193,6 +196,12 @@ func spawnInteractable(type: String, location: Vector2): #controls spawning of s
 			temp.position = Vector2i(playableArea.x / 2, playableArea.y - 25)
 			interactables.append(temp)
 			add_child(temp)
+		"powerUp":
+			var temp = powerUp.instantiate()
+			interactables.append(temp)
+			temp.global_position = location
+			add_child(temp)
+			
 
 func spawnStagecoaches(coaches: Array): #array of stage coach objects
 	pass
