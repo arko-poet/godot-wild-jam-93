@@ -81,7 +81,11 @@ func dispatch(node: StagecoachInteractable): #imput a new interacrable node, fin
 	pass
 	isAtCamp = false
 	interactingNode = node
+	
 	var destination = interactingNode.global_position
+	if interactingNode is Camp:
+		var temp = (destination - global_position).normalized() * 100
+		destination -= temp
 	if !isInteracting:
 		
 		if pausedNode != null:

@@ -142,8 +142,6 @@ func dispatchStagecoach(stagecoach: StageCoach): # called by the ui when player 
 	if (selectedInteractable != null) && (selectedStageCoach != null):
 		if selectedInteractable.canInteract(selectedStageCoach) == true:
 			selectedInteractable.stopDecayTimer()
-			#if !(selectedInteractable is Camp):
-			#	interactables.erase(selectedInteractable)
 			selectedStageCoach.dispatch(selectedInteractable)
 			selectedInteractable.sprite.scale /= interactableSelectScale
 			selectedStageCoach.setSpriteScale(1.0)
