@@ -3,13 +3,15 @@ extends Control
 signal intro_finished
 
 const INTRO: Array[String] = [
-	"Welcome to the [world name]!",
-	"Every night, valuable stars appear in the desert.",
-	"Many try to collect them, but the desert is full of dangers — and competition.",
-	"The town’s mayor pays bounties for recovered stars.",
-	"You've gathered a bunch of bounty hunters and stagecoaches",
-	"Dispatch them into the desert, recover the stars, and maximize your profit.",
-	"Good Luck!"
+	"Welcome Dispatcher.",
+	"Every night, stars fall across the desert.",
+	"Stars are a source of stardust, a valuable fuel.",
+	"The mayor pays bounties for recovered stars.",
+	"Many try to collect them, but the desert is full of dangers - and competition.",
+	"Your goal is to manage a gang of hunters to collect the stars and maximise profit.",
+	"Select a stagecoach, assign hunters and pick a star to hunt.",
+	"Be quick or other gangs will claim them before you.",
+	"Good Luck."
 ]
 
 var index := 0
