@@ -55,10 +55,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -194.0
-offset_top = -32.0
-offset_right = -34.0
-offset_bottom = -8.0
+offset_left = -149.0
+offset_top = -34.0
+offset_right = 11.0
+offset_bottom = -9.0
 grow_horizontal = 0
 grow_vertical = 0
 
@@ -98,6 +98,18 @@ anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
 offset_top = 15.0
+grow_horizontal = 2
+text = "BOUNTY"
+
+[node name="timeleft" type="Label" parent="InteractablesPanel" unique_id=1569319057]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -117.0
+offset_top = 312.0
+offset_right = -47.0
+offset_bottom = 334.0
 grow_horizontal = 2
 text = "BOUNTY"
 
