@@ -294,6 +294,7 @@ func _on_night_ui_intro_finished() -> void:
 
 func _on_night_ui_play_again() -> void:
 	get_tree().paused = false
+	Engine.time_scale = 1.0
 	# this just restarts the scene, not ideal but has to do for now
 	SceneLoader.reload_current_scene()
 	
