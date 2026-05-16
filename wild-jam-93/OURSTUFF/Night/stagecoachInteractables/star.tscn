@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bwj1eu3htqo55" path="res://OURSTUFF/resources/DevStarAtlas.tres" id="1_dxmke"]
 [ext_resource type="Script" uid="uid://b0e2tlb5ggcst" path="res://OURSTUFF/Night/stagecoachInteractables/star.gd" id="1_wmdgi"]
 [ext_resource type="PackedScene" uid="uid://hvui1gigm1pt" path="res://OURSTUFF/Night/nigh_ui/star_timer_bar/star_time_bar.tscn" id="3_r24oq"]
+[ext_resource type="AudioStream" uid="uid://bciva3q5dahe" path="res://OURSTUFF/sound/effects/shooting_star/351810__plasterbrain__shooting-star-4.ogg" id="4_ggh5l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r24oq"]
 size = Vector2(32, 28.5)
@@ -49,6 +50,11 @@ vertical_alignment = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=9017135]
 position = Vector2(0, -1.75)
 shape = SubResource("RectangleShape2D_r24oq")
+
+[node name="StarSound" type="AudioStreamPlayer2D" parent="." unique_id=1916383649]
+stream = ExtResource("4_ggh5l")
+volume_db = -11.773
+bus = &"SFX"
 
 [connection signal="timeout" from="decayTimer" to="." method="_on_decay_timer_timeout"]
 [connection signal="timeout" from="interactTimer" to="." method="_on_interact_timer_timeout"]

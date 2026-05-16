@@ -36,6 +36,8 @@ var ui_layer: CanvasLayer
 
 var selected := false:
 	set(value):
+		if value == true:
+			horse_sound.play()
 		selected = value
 		queue_redraw()
 
@@ -45,6 +47,8 @@ var selected := false:
 @onready var stage_coach_animation: StagecoachAnimation = $StageCOachAnimation
 @onready var pointLight: PointLight2D = $PointLight2D
 @onready var lightTimer: Timer = $lightTimer
+@onready var horse_sound: AudioStreamPlayer2D = $HorseSound
+
 
 func _ready() -> void:
 	movementTimer = find_child("movementTimer")

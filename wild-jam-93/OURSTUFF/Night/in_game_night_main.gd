@@ -52,6 +52,9 @@ var inGameMain
 @onready var starSpawnTimer = $starSpawnTimer
 @onready var spawnPowerupTimer = $spawnPowerupTimer
 @onready var nightModulate = $Map/NightModulate
+@onready var bounty_success_sound: AudioStreamPlayer2D = $BountySuccessSound
+@onready var bounty_failed_sound: AudioStreamPlayer2D = $BountyFailedSound
+
 
 func _ready() -> void:
 	inGameMain = find_parent("InGameMain")
@@ -260,9 +263,11 @@ func _on_bounty_completed(success: bool, p_position: Vector2) -> void:
 	if success:
 		text = "SUCCESS"
 		floating_text.modulate = Color.GREEN
+		bounty_success_sound.play()
 	else:
 		text = "FAILURE"
 		floating_text.modulate = Color.RED
+		bounty_failed_sound.play()
 	dispatchUiLayer.add_child(floating_text)
 	floating_text.position = p_position
 	floating_text.show_text(text)

@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b2qn8fayyuahi" path="res://OURSTUFF/Night/Animation/stage_c_oach_animation.tscn" id="2_b14l5"]
 [ext_resource type="PackedScene" uid="uid://dw3cy6iybipxm" path="res://OURSTUFF/Night/nigh_ui/stamina_bar/stamina_bar.tscn" id="3_b14l5"]
 [ext_resource type="Texture2D" uid="uid://crea6idq55vqr" path="res://OURSTUFF/resources/9my1K.png" id="4_trda3"]
+[ext_resource type="AudioStream" uid="uid://sqx4o24jlusw" path="res://OURSTUFF/sound/effects/horse/418428__soundslikewillem__neighing-horse.wav" id="5_8oxbi"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_b14l5"]
 resource_local_to_scene = true
@@ -41,6 +42,10 @@ energy = 0.0
 texture = ExtResource("4_trda3")
 
 [node name="lightTimer" type="Timer" parent="." unique_id=820773428]
+
+[node name="HorseSound" type="AudioStreamPlayer2D" parent="." unique_id=317138654]
+stream = ExtResource("5_8oxbi")
+bus = &"SFX"
 
 [connection signal="timeout" from="movementTimer" to="." method="_on_movement_timer_timeout"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]

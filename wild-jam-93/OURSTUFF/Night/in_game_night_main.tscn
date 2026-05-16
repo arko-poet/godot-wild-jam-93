@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://ch7wxnbttg3ik" path="res://addons/maaacks_game_template/examples/scenes/windows/pause_menu_layer.tscn" id="6_htc02"]
 [ext_resource type="PackedScene" uid="uid://6dt6hu2s6jwb" path="res://OURSTUFF/Night/nigh_ui/into_panel/intro_panel.tscn" id="6_jgg60"]
 [ext_resource type="PackedScene" uid="uid://bg1srjrddd146" path="res://OURSTUFF/Night/Animation/map.tscn" id="7_aw8nv"]
+[ext_resource type="AudioStream" uid="uid://cagqy045hnun7" path="res://OURSTUFF/sound/effects/bell_ding/611113__5ro4__bell-ding-1.wav" id="10_r787d"]
+[ext_resource type="AudioStream" uid="uid://18vxc72oh1wv" path="res://OURSTUFF/sound/effects/Failure/242503__gabrielaraujo__failurewrong-action.wav" id="11_ea2mb"]
 
 [node name="InGameNightMain" type="Node2D" unique_id=920217611]
 script = ExtResource("1_lihup")
@@ -55,6 +57,15 @@ script = ExtResource("5_6v3sb")
 pause_menu_packed = ExtResource("6_htc02")
 
 [node name="spawnPowerupTimer" type="Timer" parent="." unique_id=1424174009]
+
+[node name="BountySuccessSound" type="AudioStreamPlayer2D" parent="." unique_id=1213427029]
+stream = ExtResource("10_r787d")
+volume_db = -9.811
+bus = &"SFX"
+
+[node name="BountyFailedSound" type="AudioStreamPlayer2D" parent="." unique_id=473889418]
+stream = ExtResource("11_ea2mb")
+bus = &"SFX"
 
 [connection signal="timeout" from="starSpawnTimer" to="." method="_on_star_spawn_timer_timeout"]
 [connection signal="timeout" from="roundTimer" to="." method="_on_round_timer_timeout"]

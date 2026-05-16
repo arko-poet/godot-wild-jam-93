@@ -7,6 +7,7 @@ const floatingText = preload("res://OURSTUFF/Night/nigh_ui/floating_text/floatin
 
 @onready var interactTimer = $interactTimer
 @onready var sprite = $Sprite2D
+@onready var money_sound: AudioStreamPlayer2D = $MoneySound
 
 
 var inGameMain
@@ -37,6 +38,7 @@ func stagecoachInteractComplete(): # called when stagecoach finishes interaciton
 		var temp = floatingText.instantiate()
 		add_child(temp)
 		temp.show_text("$%s" % cashEarned) 
+		money_sound.play()
 		#play cash register sound
 	interactingStagecoach.bounties = []
 	
