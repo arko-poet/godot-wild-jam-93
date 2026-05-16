@@ -4,6 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://2yavsf8a5751" path="res://OURSTUFF/Night/Animation/Map/signpost.png" id="2_xowhr"]
 [ext_resource type="AudioStream" uid="uid://cpmooyuf201ri" path="res://OURSTUFF/sound/effects/money/63524__florian_reinke__money5.wav" id="3_vuhgm"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_vuhgm"]
+radius = 61.008198
+
 [node name="camp" type="Node2D" unique_id=502608680]
 script = ExtResource("1_xowhr")
 
@@ -11,12 +14,13 @@ script = ExtResource("1_xowhr")
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_xowhr")
 
-[node name="Label" type="Label" parent="." unique_id=1958245946]
-offset_left = -28.999998
-offset_top = -37.0
-offset_right = 24.000002
-offset_bottom = -15.0
+[node name="Label" type="Label" parent="Sprite2D" unique_id=1958245946]
+offset_left = -53.999996
+offset_top = -75.99999
+offset_right = 55.909054
+offset_bottom = -32.999992
 rotation = 0.5235988
+theme_override_font_sizes/font_size = 48
 text = "TOWN"
 
 [node name="interactTimer" type="Timer" parent="." unique_id=1792201363]
@@ -27,4 +31,12 @@ one_shot = true
 stream = ExtResource("3_vuhgm")
 bus = &"SFX"
 
+[node name="Area2D" type="Area2D" parent="." unique_id=189706647]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1585250836]
+position = Vector2(-7, 0)
+shape = SubResource("CircleShape2D_vuhgm")
+
 [connection signal="timeout" from="interactTimer" to="." method="_on_interact_timer_timeout"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
