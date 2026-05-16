@@ -84,8 +84,7 @@ func _process(delta: float) -> void:
 		night_ui.hunter_box.hide()
 		# can also be deselected via ui
 	
-	if Input.is_action_just_pressed("dev1"):
-		pass #dispatchStagecoach([null])
+
 
 #func spawnStar(): #spawn star OLD
 #	var temp = star.instantiate()
