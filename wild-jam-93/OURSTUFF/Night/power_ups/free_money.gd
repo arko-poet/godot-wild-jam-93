@@ -6,7 +6,7 @@ var inGameMain
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
-	inGameMain = find_parent("InGameNightMain")
+	inGameMain = find_parent("InGameMain")
 	timer.start(0.1)
 	inGameMain.addMoney(randi_range(1000, 2000))
 
