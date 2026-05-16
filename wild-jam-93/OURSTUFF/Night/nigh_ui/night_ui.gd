@@ -68,7 +68,8 @@ func _on_pause_button_pressed() -> void:
 		pause_button.text = "▶"
 	else:
 		pause_button.text = "II"
-	get_tree().paused = !get_tree().paused
+	if !help_panel.visible:
+		get_tree().paused = !get_tree().paused
 
 
 func _on_speed_1_button_pressed() -> void:
