@@ -157,9 +157,7 @@ func _update_hunter_power() -> void:
 		interactable.updateFailChance(stagecoach.hunters)
 		_fail_chance.text = "Fail Chance: %s%%" % int(interactable.failChance * 100.0)
 	
-	print(power)
 	dispatch_button.disabled = (stagecoach.stamina < stamina_needed) || (stagecoach.hunters.size() <= 0) || (power == 0 and interactable is not Camp)
-	print(dispatch_button.disabled)
 	if (stagecoach.stamina < stamina_needed):
 		dispatch_button.tooltip_text = "INSUFFICIENT STAMINA\nRESUPPLY IN TOWN"
 	elif (stagecoach.hunters.size() <= 0):
