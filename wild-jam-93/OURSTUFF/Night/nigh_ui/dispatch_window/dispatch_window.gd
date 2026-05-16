@@ -106,6 +106,15 @@ func show_dispatch_panel(new_stagecoach: StageCoach, new_interactable: Node2D) -
 
 
 func _on_dispatch_button_pressed() -> void:
+	var tweens = get_tree().create_tween()
+	tweens.tween_property($stagecoach, "position", Vector2(800, 37), 0.5)
+	tweens.parallel().tween_property(self, "modulate", Color(1, 1, 1, 0), 0.5)
+	tweens.parallel().tween_property($HunterGrid, "position", Vector2(928, 64), 0.5)
+	await tweens.finished
+	$stagecoach.position = Vector2(68, 37)
+	$HunterGrid.position = Vector2(128, 64)
+	modulate = Color.WHITE
+	
 	if interactable is not Camp:
 		interactable.bounty_expired.disconnect(_on_bounty_expired)
 	hide()
