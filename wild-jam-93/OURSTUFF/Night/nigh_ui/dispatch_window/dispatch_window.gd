@@ -84,7 +84,7 @@ func show_dispatch_panel(new_stagecoach: StageCoach, new_interactable: Node2D) -
 	
 	# stagecoach properties
 	_stagecoach_stamina.text = "Stamina: %.1f/%.1f" % [stagecoach.stamina, Camp.MAX_STAMINA]
-	_update_hunter_power()
+
 	
 	# stagecoach slot filling
 	for i in stagecoach.hunters.size():
@@ -99,6 +99,8 @@ func show_dispatch_panel(new_stagecoach: StageCoach, new_interactable: Node2D) -
 		dispatch_button.tooltip_text = "NOT ENOUGH HUNTERS"
 	else:
 		dispatch_button.tooltip_text = ""
+	
+	_update_hunter_power()
 	
 	show()
 
@@ -155,11 +157,15 @@ func _update_hunter_power() -> void:
 		interactable.updateFailChance(stagecoach.hunters)
 		_fail_chance.text = "Fail Chance: %s%%" % int(interactable.failChance * 100.0)
 	
-	dispatch_button.disabled = (stagecoach.stamina < stamina_needed) || (stagecoach.hunters.size() <= 0)
+	print(power)
+	dispatch_button.disabled = (stagecoach.stamina < stamina_needed) || (stagecoach.hunters.size() <= 0) || (power == 0 and interactable is not Camp)
+	print(dispatch_button.disabled)
 	if (stagecoach.stamina < stamina_needed):
 		dispatch_button.tooltip_text = "INSUFFICIENT STAMINA\nRESUPPLY IN TOWN"
 	elif (stagecoach.hunters.size() <= 0):
 		dispatch_button.tooltip_text = "NOT ENOUGH HUNTERS"
+	elif power == 0:
+		dispatch_button.tooltip_text = "HEAL IN TOWN"
 	else:
 		dispatch_button.tooltip_text = ""
 
