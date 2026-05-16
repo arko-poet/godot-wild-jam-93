@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://mwvv11h0ymhx"]
+
+[ext_resource type="Script" uid="uid://uafs86jt5ye4" path="res://OURSTUFF/Night/power_ups/horse_pill.gd" id="1_3kkty"]
+
+[node name="horsePill" type="Node2D" unique_id=2007782314]
+script = ExtResource("1_3kkty")
+
+[node name="Timer" type="Timer" parent="." unique_id=1223323774]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

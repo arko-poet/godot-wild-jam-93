@@ -10,6 +10,11 @@ const powerUpSprite1 = preload("res://OURSTUFF/resources/powerup1.tres")
 const powerUpSprite2 = preload("res://OURSTUFF/resources/powerup2.tres")
 const powerUpSprite3 = preload("res://OURSTUFF/resources/powerup3.tres")
 
+const horsePill = preload("res://OURSTUFF/Night/power_ups/horse_pill.tscn")
+const maxStamina = preload("res://OURSTUFF/Night/power_ups/max_stamina.tscn")
+const freeMoney = preload("res://OURSTUFF/Night/power_ups/free_money.tscn")
+const starShower = preload("res://OURSTUFF/Night/power_ups/star_shower.tscn")
+
 var interactTimer
 var decayTimer
 var pointLightTimer
@@ -97,7 +102,17 @@ func stagecoachInteractComplete():
 	pass # spawn power up actual
 	match powerUpType:
 		0:
-			pass
+			var temp = horsePill.instantiate()
+			inGameNightMain.add_child(temp)
+		1:
+			var temp = maxStamina.instantiate()
+			inGameNightMain.add_child(temp)
+		2:
+			var temp = freeMoney.instantiate()
+			inGameNightMain.add_child(temp)
+		3:
+			var temp = starShower.instantiate()
+			inGameNightMain.add_child(temp)
 	#delet self
 	inGameNightMain.deleteInteractable(self)
 	interactingStagecoach.interactComplete()

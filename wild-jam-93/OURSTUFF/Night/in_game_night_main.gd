@@ -16,6 +16,10 @@ const NIGHT_DURATION := 300.0
 @export var overlapRange := 75
 @export var stagecoachSelectScale := 1.2
 @export var interactableSelectScale := 1.5
+@export var enablePowerups := true
+
+var starSpawnHighRoll := 7.0
+var starSpawnLowRoll := 3.0
 
 var playableArea := Vector2i(1280, 720)
 
@@ -46,6 +50,7 @@ var inGameMain
 @onready var dispatch_window: DispatchWindow = $dispatchUiLayer/DispatchWindow
 @onready var roundTimer = $roundTimer
 @onready var starSpawnTimer = $starSpawnTimer
+@onready var spawnPowerupTimer = $spawnPowerupTimer
 @onready var nightModulate = $Map/NightModulate
 
 func _ready() -> void:
@@ -53,7 +58,8 @@ func _ready() -> void:
 	
 	night_ui.update_money(inGameMain.money)
 	
-	spawnInteractable("powerUp", Vector2(playableArea.x/2, playableArea.y/2))
+	if enablePowerups:
+		spawnPowerupTimer.start(60.0)
 
 
 func _process(delta: float) -> void:
@@ -288,3 +294,21 @@ func _on_night_ui_play_again() -> void:
 	
 	#night_ui.score_panel.hide()
 	#inGameMain.loadDay()
+
+
+func _on_spawn_powerup_timer_timeout() -> void:
+	pass # Replace with function body.
+	spawnPowerupTimer.start(randf_range(30.0, 90.0))
+	
+	var isOverlaping = true
+	var allClickables = stageCoaches + interactables
+	var temp = Vector2(0,0)
+	while(isOverlaping): # may have performance issues if large numbers
+		isOverlaping = false
+		temp = Vector2(randf_range(90,playableArea.x), randf_range(0,playableArea.y - 50))
+		for i in allClickables:
+			if (temp - i.global_position).length() < overlapRange:
+				isOverlaping = true
+				break
+	
+	spawnInteractable("powerUp", temp)
