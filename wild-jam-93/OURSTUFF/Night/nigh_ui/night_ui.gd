@@ -65,7 +65,7 @@ func show_score_panel(money: int) -> void:
 
 func _on_pause_button_pressed() -> void:
 	if get_tree().paused == false:
-		pause_button.text = "▶"
+		pause_button.text = ">"
 	else:
 		pause_button.text = "II"
 	if !help_panel.visible:

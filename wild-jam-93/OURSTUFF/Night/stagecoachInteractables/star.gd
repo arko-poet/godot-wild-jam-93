@@ -17,6 +17,7 @@ var failChance
 @onready var bounty_progress_label: Label = $BountyProgressLabel
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
+@onready var star_sound: AudioStreamPlayer2D = $StarSound
 
 
 func _ready() -> void:
@@ -39,6 +40,8 @@ func _ready() -> void:
 	
 	star_time_bar.reparent(inGameNightMain.dispatchUiLayer)
 	bounty_progress_label.reparent(inGameNightMain.dispatchUiLayer)
+	
+	star_sound.play()
 	
 
 func _process(_delta: float) -> void:

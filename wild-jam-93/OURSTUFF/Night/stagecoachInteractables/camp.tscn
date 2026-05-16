@@ -1,17 +1,30 @@
 [gd_scene format=3 uid="uid://br4tmaaj48on7"]
 
-[ext_resource type="Texture2D" uid="uid://bkw0thjmac5qb" path="res://OURSTUFF/resources/devCamp.png" id="1_071io"]
 [ext_resource type="Script" uid="uid://vjnclx0qslbp" path="res://OURSTUFF/Night/stagecoachInteractables/camp.gd" id="1_xowhr"]
+[ext_resource type="Texture2D" uid="uid://2yavsf8a5751" path="res://OURSTUFF/Night/Animation/Map/signpost.png" id="2_xowhr"]
+[ext_resource type="AudioStream" uid="uid://cpmooyuf201ri" path="res://OURSTUFF/sound/effects/money/63524__florian_reinke__money5.wav" id="3_vuhgm"]
 
 [node name="camp" type="Node2D" unique_id=502608680]
 script = ExtResource("1_xowhr")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1278291905]
-texture = ExtResource("1_071io")
-offset = Vector2(0, -477.435)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_xowhr")
+
+[node name="Label" type="Label" parent="." unique_id=1958245946]
+offset_left = -28.999998
+offset_top = -37.0
+offset_right = 24.000002
+offset_bottom = -15.0
+rotation = 0.5235988
+text = "TOWN"
 
 [node name="interactTimer" type="Timer" parent="." unique_id=1792201363]
 wait_time = 0.1
 one_shot = true
+
+[node name="MoneySound" type="AudioStreamPlayer2D" parent="." unique_id=901131750]
+stream = ExtResource("3_vuhgm")
+bus = &"SFX"
 
 [connection signal="timeout" from="interactTimer" to="." method="_on_interact_timer_timeout"]

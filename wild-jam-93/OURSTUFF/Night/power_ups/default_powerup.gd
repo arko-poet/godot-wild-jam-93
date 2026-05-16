@@ -31,7 +31,7 @@ var powerUpDescription := ""
 
 
 @onready var star_time_bar: Node2D = $StarTimeBar
-@onready var bounty_progress_label: Label = $BountyProgressLabel
+#@onready var bounty_progress_label: Label = $BountyProgressLabel
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
 
