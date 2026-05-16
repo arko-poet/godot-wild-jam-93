@@ -7,8 +7,8 @@ class_name Portrait extends Panel
 
 var size_res = 64
 
-func _ready() -> void:
-	_init_random_portrait()
+#func _ready() -> void:
+	#_init_random_portrait()
 
 func _init_random_portrait() -> void:
 	random_head()
