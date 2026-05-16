@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://f1kdnmc7wt7k"
-path="res://.godot/imported/Cowboy Outlaw.otf-73c6c925eb361f18096524c0866f4ae4.fontdata"
+uid="uid://byxlveg0bifyu"
+path="res://.godot/imported/Carnevalee Freakshow.ttf-a8d5b129a09588675c84e4cc24fa12ed.fontdata"
 
 [deps]
 
-source_file="res://OURSTUFF/Night/Animation/UI_ART/Cowboy Outlaw.otf"
-dest_files=["res://.godot/imported/Cowboy Outlaw.otf-73c6c925eb361f18096524c0866f4ae4.fontdata"]
+source_file="res://OURSTUFF/Night/Animation/UI_ART/license_font/Carnevalee Freakshow.ttf"
+dest_files=["res://.godot/imported/Carnevalee Freakshow.ttf-a8d5b129a09588675c84e4cc24fa12ed.fontdata"]
 
 [params]
 

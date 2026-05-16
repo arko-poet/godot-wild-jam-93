@@ -98,7 +98,6 @@ text = "HELP"
 
 [node name="HelpPanel" type="Panel" parent="." unique_id=549440930]
 process_mode = 3
-visible = false
 custom_minimum_size = Vector2(400, 600)
 layout_mode = 1
 anchors_preset = 8
@@ -132,7 +131,7 @@ text = "[center][font_size=28][b]Game Rules[/b][/font_size][/center]
 [font_size=22][b]Preparing a Dispatch[/b][/font_size]
 - Choose a [u]Stagecoach[/u], assign [u]Hunters[/u] and a [u]Star[/u] to prepare the dispatch
 - Assign [u]Bounty Hunters[/u] to the [u]Stagecoach[/u] and send them out
-- Be quick — the competition may claim targets before you do
+- Be quick - the competition may claim targets before you do
 - Go back to town to claim the bounties
 
 [font_size=22][b]Danger & Crew Strength[/b][/font_size]
@@ -141,7 +140,7 @@ text = "[center][font_size=28][b]Game Rules[/b][/font_size][/center]
 - Your [u]Stagecoach Power[/u] determines how much danger your crew can handle
 
 [font_size=22][b]Supplies & Recovery[/b][/font_size]
-- [u]Stagecoaches[/u] carry limited supplies — refill them in town
+- [u]Stagecoaches[/u] carry limited supplies - refill them in town
 - Dispatches can fail resulting in hunter injuries
 - Injured hunters must return to town to recover
 
@@ -149,9 +148,9 @@ text = "[center][font_size=28][b]Game Rules[/b][/font_size][/center]
 
 [font_size=22][b]Controls[/b][/font_size]
 
-[b]Right Mouse Button[/b] — Cancel Selection
-[b]Left Mouse Button[/b] — All Other Actions
-[b]Esc[/b] — Pause Menu
+[b]Right Mouse Button[/b] - Cancel Selection
+[b]Left Mouse Button[/b] - All Other Actions
+[b]Esc[/b] - Pause Menu
 
 [center]----------------------[/center]
 

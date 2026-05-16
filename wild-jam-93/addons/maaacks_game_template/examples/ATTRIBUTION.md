@@ -53,9 +53,9 @@ License: [Pixabay Content License](https://pixabay.com/service/license-summary/)
 
 ### Font
 #### UI theme
-Author: [Sronstudio](https://www.1001fonts.com/users/yusron-billah/)  
-Source: [Domain : https://www.1001fonts.com](https://www.1001fonts.com/cowboy-outlaw-font.html)  
-License: [License](https://www.1001fonts.com/licenses/general-font-usage-terms.html)
+Author: [Chris Hansen](https://www.1001fonts.com/users/chrisx/)  
+Source: [1001fonts](https://www.1001fonts.com/carnivalee-freakshow-font.html)  
+License: [FFC](https://www.1001fonts.com/licenses/general-font-usage-terms.html)
 
 #### Godot Engine Logo
 Author: Andrea Calabró  
