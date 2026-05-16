@@ -113,21 +113,21 @@ bbcode_enabled = true
 text = "[center][font_size=28][b]Game Rules[/b][/font_size][/center]
 
 [font_size=22][b]Preparing a Dispatch[/b][/font_size]
-• Choose a [u]Stagecoach[/u] and a [u]Star[/u] to prepare the dispatch
-• Assign [u]Bounty Hunters[/u] to the [u]Stagecoach[/u] and send them out
-• Be quick — the competition may claim targets before you do
+- Choose a [u]Stagecoach[/u] and a [u]Star[/u] to prepare the dispatch
+- Assign [u]Bounty Hunters[/u] to the [u]Stagecoach[/u] and send them out
+- Be quick — the competition may claim targets before you do
 
 [font_size=22][b]Danger & Crew Strength[/b][/font_size]
-• Dangerous desert areas require stronger crews
-• Make sure your crew is powerful enough for the region
-• Your [u]Stagecoach Power[/u] determines how much danger your crew can handle
+- Dangerous desert areas require stronger crews
+- Make sure your crew is powerful enough for the region
+- Your [u]Stagecoach Power[/u] determines how much danger your crew can handle
 
 [font_size=22][b]Supplies & Recovery[/b][/font_size]
-• [u]Stagecoaches[/u] carry limited supplies — refill them in town
-• Dispatches can fail
-• Injured hunters must return to town to recover
+- [u]Stagecoaches[/u] carry limited supplies — refill them in town
+- Dispatches can fail
+- Injured hunters must return to town to recover
 
-[center]────────────────────────[/center]
+[center]----------------------[/center]
 
 [font_size=22][b]Controls[/b][/font_size]
 
@@ -135,13 +135,13 @@ text = "[center][font_size=28][b]Game Rules[/b][/font_size][/center]
 [b]Esc[/b] — Pause Menu
 [b]Left Mouse Button[/b] — All Other Actions
 
-[center]────────────────────────[/center]
+[center]----------------------[/center]
 
 [font_size=22][b]Hunter Status Colors[/b][/font_size]
 
-[color=green]● Green[/color] — Available in town
-[color=yellow]● Yellow[/color] — Currently on a dispatch
-[color=red]● Red[/color] — Injured"
+[color=green]- Green[/color] — Available in town
+[color=yellow]- Yellow[/color] — Currently on a dispatch
+[color=red]- Red[/color] — Injured"
 
 [node name="CloseButton" type="Button" parent="HelpPanel/MarginContainer" unique_id=179815828]
 custom_minimum_size = Vector2(68, 0)
