@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://bfpwwh2vupjfn"]
+
+[ext_resource type="Texture2D" uid="uid://c3utmfig5kf1" path="res://OURSTUFF/resources/powerups.png" id="1_fblyc"]
+
+[resource]
+atlas = ExtResource("1_fblyc")
+region = Rect2(109.01178, 49.383675, 156.52393, 140.24545)
