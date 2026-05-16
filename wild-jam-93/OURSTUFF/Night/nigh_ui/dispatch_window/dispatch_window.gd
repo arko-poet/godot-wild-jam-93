@@ -25,7 +25,7 @@ var stamina_needed
 @onready var hunter_grid: GridContainer = $HunterGrid
 @onready var dispatch_button: Button = $HBoxContainer/DispatchButton
 @onready var whip_sound: AudioStreamPlayer2D = $WhipSound
-
+@onready var loot_text: Label = $StagecoachPanel/VBoxContainer/Loot
 
 var inGameNightMain
 
@@ -40,6 +40,12 @@ func show_dispatch_panel(new_stagecoach: StageCoach, new_interactable: Node2D) -
 	# clean slots from previously selected stagecoach
 	for stagecoach_slot: StagecoachSlot in hunter_grid.get_children():
 		stagecoach_slot.hunter = null
+	
+	#loot text
+	var loot = 0
+	for i in stagecoach.bounties:
+		loot += i.reward
+	loot_text.text = "Return to town to redeem $%s" % loot
 	
 	# bounty properties
 	var reward: String
