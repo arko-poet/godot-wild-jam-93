@@ -1,6 +1,6 @@
 [gd_resource type="Theme" format=3 uid="uid://cw0ct2u04pouy"]
 
-[ext_resource type="FontFile" uid="uid://f1kdnmc7wt7k" path="res://OURSTUFF/Night/Animation/UI_ART/Cowboy Outlaw.otf" id="1_f68l1"]
+[ext_resource type="FontFile" uid="uid://byxlveg0bifyu" path="res://OURSTUFF/Night/Animation/UI_ART/license_font/Carnevalee Freakshow.ttf" id="1_f68l1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_htui1"]
 bg_color = Color(0.31764707, 0.16078432, 0.09803922, 1)
