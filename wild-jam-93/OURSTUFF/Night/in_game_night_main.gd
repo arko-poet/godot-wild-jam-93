@@ -60,6 +60,7 @@ func _ready() -> void:
 	inGameMain = find_parent("InGameMain")
 	
 	night_ui.update_money(inGameMain.money)
+	night_ui.hunter_box.hide()
 	
 	if enablePowerups:
 		spawnPowerupTimer.start(60.0)
@@ -153,6 +154,7 @@ func dispatchStagecoach(stagecoach: StageCoach): # called by the ui when player 
 	if (selectedInteractable != null) && (selectedStageCoach != null):
 		if selectedInteractable.canInteract(selectedStageCoach) == true:
 			selectedInteractable.stopDecayTimer()
+			night_ui.hunter_box.hide()
 			selectedStageCoach.dispatch(selectedInteractable)
 			selectedInteractable.sprite.scale /= interactableSelectScale
 			selectedStageCoach.setSpriteScale(1.0)
