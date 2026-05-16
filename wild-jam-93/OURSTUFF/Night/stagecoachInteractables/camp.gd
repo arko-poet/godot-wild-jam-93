@@ -1,11 +1,13 @@
 class_name Camp extends StagecoachInteractable
 
 const MAX_STAMINA := 30.0
+const floatingText = preload("res://OURSTUFF/Night/nigh_ui/floating_text/floating_text.tscn")
 
 @onready var campTexture = "res://OURSTUFF/resources/DevCampAtlas.tres"
 
 @onready var interactTimer = $interactTimer
 @onready var sprite = $Sprite2D
+
 
 var inGameMain
 
@@ -27,9 +29,15 @@ func stagecoachInteractStart(stagecoach: StageCoach): # the result of a stagecoa
 func stagecoachInteractComplete(): # called when stagecoach finishes interaciton timer
 	pass 
 	interactingStagecoach.stamina = MAX_STAMINA
+	var cashEarned = 0
 	for i in interactingStagecoach.bounties:
-		inGameMain.addMoney(i.reward)
-		print(i.reward)
+		cashEarned += i.reward
+	if cashEarned > 0:
+		inGameMain.addMoney(cashEarned)
+		var temp = floatingText.instantiate()
+		add_child(temp)
+		temp.show_text("$%s" % cashEarned) 
+		#play cash register sound
 	interactingStagecoach.bounties = []
 	
 	#heal hunters
