@@ -12,12 +12,20 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_n6nwx")
 
+[node name="Panel" type="Panel" parent="." unique_id=845845883]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
 [node name="HunterBox" type="VBoxContainer" parent="." unique_id=222427354]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 4.0
 offset_right = 144.0
 offset_bottom = 724.0
+theme_override_constants/separation = 16
 
 [node name="HuntersLabel" type="Label" parent="HunterBox" unique_id=762028144]
 layout_mode = 2
@@ -90,16 +98,26 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "4x"
 
-[node name="HelpButton" type="Button" parent="." unique_id=1897686449]
+[node name="HBoxContainer2" type="HBoxContainer" parent="." unique_id=878332022]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -44.0
+offset_left = -218.0
 offset_top = 4.0
 offset_right = -4.0
-offset_bottom = 44.0
+offset_bottom = 33.0
 grow_horizontal = 0
+theme_override_constants/separation = 16
+alignment = 2
+
+[node name="Label" type="Label" parent="HBoxContainer2" unique_id=1664761145]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Press `Esc` for menu"
+
+[node name="HelpButton" type="Button" parent="HBoxContainer2" unique_id=1897686449]
+layout_mode = 2
 mouse_default_cursor_shape = 2
 text = "HELP"
 
@@ -217,6 +235,6 @@ text = "Play Again"
 [connection signal="pressed" from="HBoxContainer/Speed1Button" to="." method="_on_speed_1_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/Speed2Button" to="." method="_on_speed_2_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/Speed4Button" to="." method="_on_speed_4_button_pressed"]
-[connection signal="pressed" from="HelpButton" to="." method="_on_helpbutton_pressed"]
+[connection signal="pressed" from="HBoxContainer2/HelpButton" to="." method="_on_helpbutton_pressed"]
 [connection signal="pressed" from="HelpPanel/CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="ScorePanel/VBoxContainer/PlayAgainButton" to="." method="_on_play_again_button_pressed"]
