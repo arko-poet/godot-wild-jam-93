@@ -98,9 +98,13 @@ func stagecoachInteractComplete():
 		inGameNightMain.deleteInteractable(self)
 		
 		# hunter injuries
-		for h in interactingStagecoach.hunters:
-			h.state = Hunter.State.UNAVAILABLE
-			
+		var huntersAmount = randi_range(1, interactingStagecoach.hunters.size()) 
+		
+		for h in huntersAmount:
+			if interactingStagecoach.hunters[h].state != Hunter.State.UNAVAILABLE:
+				interactingStagecoach.hunters[h].state = Hunter.State.UNAVAILABLE
+			elif huntersAmount < 4:
+				huntersAmount += 1 
 	
 
 func canInteract(stagecoach: StageCoach): #check if stagecoach is able to interact
