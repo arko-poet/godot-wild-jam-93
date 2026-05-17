@@ -2,6 +2,15 @@
 
 [ext_resource type="FontFile" uid="uid://byxlveg0bifyu" path="res://OURSTUFF/Night/Animation/UI_ART/license_font/Carnevalee Freakshow.ttf" id="1_f68l1"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4cq3u"]
+bg_color = Color(0.31764707, 0.16078432, 0.09803922, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_htui1"]
 bg_color = Color(0.31764707, 0.16078432, 0.09803922, 1)
 border_width_left = 5
@@ -9,6 +18,15 @@ border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
 border_color = Color(0.6447025, 0.50366575, 0.34970742, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mck7l"]
+bg_color = Color(0.58826995, 0.32301834, 0.2176866, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.2509804, 0.12156863, 0.07058824, 1)
 border_blend = true
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f68l1"]
@@ -22,7 +40,9 @@ border_blend = true
 
 [resource]
 default_font = ExtResource("1_f68l1")
+Button/styles/hover = SubResource("StyleBoxFlat_4cq3u")
 Button/styles/normal = SubResource("StyleBoxFlat_htui1")
+Button/styles/pressed = SubResource("StyleBoxFlat_mck7l")
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/constants/outline_size = 2
 Label/font_sizes/font_size = 24
