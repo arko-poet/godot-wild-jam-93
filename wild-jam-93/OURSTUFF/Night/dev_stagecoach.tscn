@@ -10,12 +10,12 @@
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_b14l5"]
 resource_local_to_scene = true
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_imxsf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4eig"]
 resource_local_to_scene = true
 atlas = ExtResource("3_w4eig")
 region = Rect2(24, 147, 93, 76)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_abrj3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_imxsf"]
 resource_local_to_scene = true
 atlas = ExtResource("3_w4eig")
 region = Rect2(0, 14, 120, 108)
@@ -33,10 +33,10 @@ use_parent_material = true
 scale = Vector2(0.5, 0.5)
 
 [node name="Sprite2D" parent="StageCOachAnimation" index="0" unique_id=394255853]
-texture = SubResource("AtlasTexture_imxsf")
+texture = SubResource("AtlasTexture_w4eig")
 
 [node name="Sprite2D2" parent="StageCOachAnimation" index="1" unique_id=944317799]
-texture = SubResource("AtlasTexture_abrj3")
+texture = SubResource("AtlasTexture_imxsf")
 
 [node name="CPUParticles2D" parent="StageCOachAnimation" index="7" unique_id=1612455192]
 emitting = false

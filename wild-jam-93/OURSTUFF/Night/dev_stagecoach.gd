@@ -78,7 +78,7 @@ func _draw() -> void:
 	if selected:
 		draw_circle(
 				Vector2(0, 0),
-				max(collision_shape_2d.shape.size.x, collision_shape_2d.shape.size.y) / 2,
+				max(collision_shape_2d.shape.size.x, collision_shape_2d.shape.size.y) / 3.5,
 				Color.AQUA,
 				false,
 				4.0,
