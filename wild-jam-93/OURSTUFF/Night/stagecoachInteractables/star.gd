@@ -54,14 +54,21 @@ func _process(_delta: float) -> void:
 
 
 func _draw() -> void:
-	if selected and selection_highligh_enabled:
+	if selected:
 		draw_circle(
-				Vector2(0, 0),
-				max(collision_shape_2d.shape.size.x, collision_shape_2d.shape.size.y) / 2,
-				Color("a855f778"),
-				false,
-				16.0,
+			Vector2(0, 0),
+			(max(collision_shape_2d.shape.size.x, collision_shape_2d.shape.size.y) / 2),
+			Color("097ea047"),
+			true,
+			4.0,
 		)
+		draw_circle(
+			Vector2(0, 0),
+			(max(collision_shape_2d.shape.size.x, collision_shape_2d.shape.size.y) / 1.5),
+			Color("1b6bffff"),
+			false,
+			2.0,
+	)
 
 
 func _on_decay_timer_timeout() -> void:
