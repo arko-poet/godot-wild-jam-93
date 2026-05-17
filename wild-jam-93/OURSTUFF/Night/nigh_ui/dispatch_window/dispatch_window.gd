@@ -43,6 +43,10 @@ func _physics_process(delta: float) -> void:
 	else:
 		interactable_timeLeft.visible = false
 		expiredlable.visible = true
+		
+	if (interactable != null) && (interactable is Camp):
+		expiredlable.visible = false
+		
 
 func show_dispatch_panel(new_stagecoach: StageCoach, new_interactable: Node2D) -> void:
 	stagecoach = new_stagecoach
