@@ -34,12 +34,12 @@ var selectedStageCoach:
 			selectedStageCoach.selected = true
 var selectedInteractable:
 	set(value):
-		if value is not Camp:
-			if value == null and selectedInteractable != null:
-				selectedInteractable.selected = false
-			selectedInteractable = value
-			if selectedInteractable != null:
-				selectedInteractable.selected = true
+		#if value is not Camp:
+		if value == null and selectedInteractable != null:
+			selectedInteractable.selected = false
+		selectedInteractable = value
+		if selectedInteractable != null:
+			selectedInteractable.selected = true
 		else:
 			selectedInteractable = value
 
@@ -322,7 +322,7 @@ func _on_night_ui_play_again() -> void:
 func _on_spawn_powerup_timer_timeout() -> void:
 	pass # Replace with function body.
 	spawnPowerupTimer.start(randf_range(25.0, 35.0))
-	#spawnPowerupTimer.start(randf_range(1.0, 1.0))
+	#spawnPowerupTimer.start(randf_range(1.0, 1.0)) test
 	
 	var isOverlaping = true
 	var allClickables = stageCoaches + interactables
@@ -360,11 +360,12 @@ func _on_interactable_clicked(interactable: StagecoachInteractable) -> void:
 	#if star or interactable check if its not already used
 	#print(interactable.interactingStagecoach)
 	if (interactable is Star or interactable is PowerUp) and interactable.interactingStagecoach != null:
+		print("return")
 		return
 	if selectedInteractable != null:
 		selectedInteractable.selected = false
 	selectedInteractable = interactable
-	selectedInteractable.sprite.scale *= interactableSelectScale
+	#selectedInteractable.sprite.scale = Vector2(interactableSelectScale, interactableSelectScale)
 			#call a function to spawn ui element here
 	if selectedStageCoach != null:
 		dispatch_window.show_dispatch_panel(selectedStageCoach, selectedInteractable)

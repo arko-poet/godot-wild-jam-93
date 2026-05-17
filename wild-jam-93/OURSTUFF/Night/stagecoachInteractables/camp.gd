@@ -10,6 +10,7 @@ const floatingText = preload("res://OURSTUFF/Night/nigh_ui/floating_text/floatin
 @onready var interactTimer = $interactTimer
 @onready var sprite = $Sprite2D
 @onready var money_sound: AudioStreamPlayer2D = $MoneySound
+@onready var collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
 
 
 var inGameMain
@@ -24,6 +25,19 @@ func _ready() -> void:
 	dispatchTitle = "Refill"
 	
 	sign_post_scale = sprite.scale
+
+
+func _draw() -> void:
+	print(selected)
+	if selected:
+		draw_circle(
+				Vector2(0, 0),
+				collision_shape_2d.shape.radius,
+				Color.DARK_ORCHID,
+				false,
+				4.0,
+		)
+
 
 func stagecoachInteractStart(stagecoach: StageCoach): # the result of a stagecoach interacting
 	pass #input stage coach, get array of hunters, this would decide how interaction would go like length of time or fail chance
