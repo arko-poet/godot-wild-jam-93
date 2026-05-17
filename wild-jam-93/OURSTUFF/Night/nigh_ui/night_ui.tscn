@@ -113,6 +113,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="HelpPanel" unique_id=2063652383]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -123,8 +124,12 @@ theme_override_constants/margin_left = 13
 theme_override_constants/margin_top = 13
 theme_override_constants/margin_bottom = 13
 
-[node name="RichTextLabel" type="RichTextLabel" parent="HelpPanel/MarginContainer" unique_id=2032080555]
-layout_mode = 2
+[node name="RichTextLabel" type="RichTextLabel" parent="HelpPanel" unique_id=2032080555]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 13.0
+offset_right = 400.0
+offset_bottom = 587.0
 bbcode_enabled = true
 text = "[center][font_size=28][b]Game Rules[/b][/font_size][/center]
 
@@ -160,10 +165,14 @@ text = "[center][font_size=28][b]Game Rules[/b][/font_size][/center]
 [color=yellow]- Yellow[/color] - In coach
 [color=red]- Red[/color] - Injured"
 
-[node name="CloseButton" type="Button" parent="HelpPanel/MarginContainer" unique_id=179815828]
+[node name="CloseButton" type="Button" parent="HelpPanel" unique_id=179815828]
 custom_minimum_size = Vector2(68, 0)
-layout_mode = 2
-size_flags_horizontal = 4
+layout_mode = 0
+offset_left = 316.0
+offset_top = 558.0
+offset_right = 384.0
+offset_bottom = 587.0
+size_flags_horizontal = 8
 size_flags_vertical = 8
 text = "OK"
 
@@ -200,5 +209,5 @@ text = "Play Again"
 [connection signal="pressed" from="HBoxContainer/Speed2Button" to="." method="_on_speed_2_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/Speed4Button" to="." method="_on_speed_4_button_pressed"]
 [connection signal="pressed" from="HelpButton" to="." method="_on_helpbutton_pressed"]
-[connection signal="pressed" from="HelpPanel/MarginContainer/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="HelpPanel/CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="ScorePanel/VBoxContainer/PlayAgainButton" to="." method="_on_play_again_button_pressed"]
