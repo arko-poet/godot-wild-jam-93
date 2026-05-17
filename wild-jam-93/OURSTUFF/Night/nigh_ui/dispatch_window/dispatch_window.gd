@@ -106,13 +106,17 @@ func show_dispatch_panel(new_stagecoach: StageCoach, new_interactable: Node2D) -
 
 
 func _on_dispatch_button_pressed() -> void:
+	var stagecoach_dup = $stagecoach.duplicate()
+	get_parent().add_child(stagecoach_dup)
+	stagecoach_dup.position = $stagecoach.global_position
 	var tweens = get_tree().create_tween()
-	tweens.tween_property($stagecoach, "position", Vector2(800, 37), 0.5)
-	tweens.parallel().tween_property(self, "modulate", Color(1, 1, 1, 0), 0.5)
-	tweens.parallel().tween_property($HunterGrid, "position", Vector2(928, 64), 0.5)
-	await tweens.finished
-	$stagecoach.position = Vector2(68, 37)
-	$HunterGrid.position = Vector2(128, 64)
+	tweens.tween_property(stagecoach_dup, "position:x", 1280, 0.5)
+	#tweens.parallel().tween_property(self, "modulate", Color(1, 1, 1, 0), 0.5)
+	#tweens.parallel().tween_property($HunterGrid, "position", Vector2(928, 64), 0.5)
+	tweens.finished.connect(stagecoach_dup.queue_free)
+	#await tweens.finished
+	#$stagecoach.position = Vector2(68, 37)
+	#$HunterGrid.position = Vector2(128, 64)
 	modulate = Color.WHITE
 	
 	if interactable is not Camp:
