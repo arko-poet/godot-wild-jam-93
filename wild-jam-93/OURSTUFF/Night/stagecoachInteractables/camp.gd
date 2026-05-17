@@ -68,7 +68,9 @@ func _on_interact_timer_timeout() -> void:
 
 func _on_area_2d_mouse_entered() -> void:
 	sprite.scale = sign_post_scale * 1.2
+	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 
 
 func _on_area_2d_mouse_exited() -> void:
 	sprite.scale = sign_post_scale
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)

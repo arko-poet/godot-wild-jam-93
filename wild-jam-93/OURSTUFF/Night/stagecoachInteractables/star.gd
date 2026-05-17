@@ -152,7 +152,8 @@ func updateFailChance(hunters: Array):
 
 func _on_area_2d_mouse_entered() -> void:
 	scale = Vector2(1.1, 1.1)
-
+	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 
 func _on_area_2d_mouse_exited() -> void:
 	scale = Vector2(1.0, 1.0)
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)

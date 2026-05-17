@@ -65,11 +65,13 @@ grow_vertical = 0
 [node name="CancelButton" type="Button" parent="HBoxContainer" unique_id=500679443]
 modulate = Color(0.8175213, 0.8175213, 0.81752115, 1)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 text = "CANCEL"
 
 [node name="DispatchButton" type="Button" parent="HBoxContainer" unique_id=337294282]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0, 1, 0, 1)
 text = "DISPATCH"
 
@@ -249,15 +251,19 @@ columns = 2
 
 [node name="StagecoachSlot" parent="HunterGrid" unique_id=1734010295 instance=ExtResource("3_otvtg")]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 
 [node name="StagecoachSlot2" parent="HunterGrid" unique_id=565418700 instance=ExtResource("3_otvtg")]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 
 [node name="StagecoachSlot3" parent="HunterGrid" unique_id=33095940 instance=ExtResource("3_otvtg")]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 
 [node name="StagecoachSlot4" parent="HunterGrid" unique_id=343284322 instance=ExtResource("3_otvtg")]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 
 [node name="WhipSound" type="AudioStreamPlayer2D" parent="." unique_id=1773653877]
 stream = ExtResource("5_s3aue")

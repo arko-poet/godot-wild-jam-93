@@ -149,10 +149,12 @@ func setSpriteScale(new_scale: float):
 
 func _on_area_2d_mouse_entered() -> void:
 	scale = stageCoachScale * 1.1
+	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 
 
 func _on_area_2d_mouse_exited() -> void:
 	scale = stageCoachScale
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 
 func _on_light_timer_timeout() -> void:
 	pass # Replace with function body.

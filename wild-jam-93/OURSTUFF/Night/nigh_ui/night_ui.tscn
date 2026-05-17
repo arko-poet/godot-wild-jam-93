@@ -9,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_n6nwx")
 
 [node name="HunterBox" type="VBoxContainer" parent="." unique_id=222427354]
@@ -67,22 +68,26 @@ grow_horizontal = 2
 process_mode = 3
 custom_minimum_size = Vector2(24, 0)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "II"
 
 [node name="Speed1Button" type="Button" parent="HBoxContainer" unique_id=56339402]
 custom_minimum_size = Vector2(24, 0)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 disabled = true
 text = "1x"
 
 [node name="Speed2Button" type="Button" parent="HBoxContainer" unique_id=1003003581]
 custom_minimum_size = Vector2(24, 0)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "2x"
 
 [node name="Speed4Button" type="Button" parent="HBoxContainer" unique_id=546145257]
 custom_minimum_size = Vector2(24, 0)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "4x"
 
 [node name="HelpButton" type="Button" parent="." unique_id=1897686449]
@@ -95,6 +100,7 @@ offset_top = 4.0
 offset_right = -4.0
 offset_bottom = 44.0
 grow_horizontal = 0
+mouse_default_cursor_shape = 2
 text = "HELP"
 
 [node name="HelpPanel" type="Panel" parent="." unique_id=549440930]
@@ -175,6 +181,7 @@ offset_right = 384.0
 offset_bottom = 587.0
 size_flags_horizontal = 8
 size_flags_vertical = 8
+mouse_default_cursor_shape = 2
 text = "OK"
 
 [node name="ScorePanel" type="PanelContainer" parent="." unique_id=347556490]
@@ -203,6 +210,7 @@ text = "You've earned  0$ this night."
 
 [node name="PlayAgainButton" type="Button" parent="ScorePanel/VBoxContainer" unique_id=568703402]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "Play Again"
 
 [connection signal="pressed" from="HBoxContainer/PauseButton" to="." method="_on_pause_button_pressed"]
