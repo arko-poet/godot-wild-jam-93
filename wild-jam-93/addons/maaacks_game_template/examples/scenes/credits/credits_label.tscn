@@ -13,17 +13,61 @@ size_flags_vertical = 5
 bbcode_enabled = true
 text = "[font_size=48]Collaborators[/font_size]
 
-[font_size=32]Role[/font_size]
-Person 1  
-Person 2  
-[url=]Person w/ Link[/url]  
+[font_size=32]Game Design[/font_size]
+[url=https://arko-poet.itch.io/]arko[/url]
+
+[font_size=32]Programming[/font_size]
+[url=https://paul-awesome-games.itch.io/]Paul Awesome Games[/url]
+[url=https://arko-poet.itch.io/]arko[/url]
+
+[font_size=32]Art & VFX[/font_size]
+[url=https://nanbanya.itch.io/]Nanbanya[/url]
+
+[font_size=32]Music Composition[/font_size]
+Nico_
 
 [font_size=48]Sourced[/font_size]
-[font_size=32]Asset Type[/font_size]
-[font_size=24]Use Case[/font_size]
-Author: [url=]Name[/url]  
-Source: [url=]Domain : webpage.html[/url]  
-License: [url=]License[/url]
+[font_size=32]Sound Effects[/font_size]
+[font_size=24]Bounty Success[/font_size]
+Author: [url=https://freesound.org/people/GabrielAraujo/]GabrielAraujo[/url]  
+Source: [url=https://freesound.org/s/611113/]Freesound – sound #611113[/url]  
+License: [url=https://creativecommons.org/publicdomain/zero/1.0/]CC0 1.0[/url]
+
+[font_size=24]Bounty Failure[/font_size]
+Author: [url=https://freesound.org/people/GabrielAraujo/]GabrielAraujo[/url]  
+Source: [url=https://freesound.org/s/242503/]Freesound – sound #242503[/url]  
+License: [url=https://creativecommons.org/publicdomain/zero/1.0/]CC0 1.0[/url]
+
+[font_size=24]Horse Sound[/font_size]
+Author: [url=https://freesound.org/people/soundslikewillem/]soundslikewillem[/url]  
+Source: [url=https://freesound.org/s/418428/]Freesound – sound #4184283[/url]  
+License: [url=https://creativecommons.org/licenses/by-nc/4.0/]CC BY-NC 4.0[/url]
+
+[font_size=24]UI Button Click[/font_size]
+Author: [url=https://www.kenney.nl/]Kenney[/url]  
+Source: [url=https://kenney.nl/assets/interface-sounds]Interface Sounds[/url]  
+License: [url=http://creativecommons.org/publicdomain/zero/1.0/]CC0[/url]
+
+[font_size=24]Money Sound[/font_size]
+Author: [url=https://freesound.org/people/florian_reinke/]florian_reinke[/url]  
+Source: [url=https://freesound.org/s/63524/]Freesound – sound #63524[/url]  
+License: [url=http://creativecommons.org/publicdomain/zero/1.0/]CC0[/url]
+
+[font_size=24]Shooting Star[/font_size]
+Author: [url=https://freesound.org/people/plasterbrain/]plasterbrain[/url]  
+Source: [url=https://freesound.org/people/plasterbrain/sounds/351810/]Freesound – sound #351810[/url]  
+License: [url=http://creativecommons.org/publicdomain/zero/1.0/]CC0[/url]
+
+[font_size=24]Whip Sound[/font_size]
+Author: [url=https://pixabay.com/users/universfield-28281460/]Universfield[/url]  
+Source: [url=https://pixabay.com/sound-effects/film-special-effects-whip-02-242215/]Pixabay – sound #242215[/url]  
+License: [url=https://pixabay.com/service/license-summary/]Pixabay Content License[/url]
+
+[font_size=32]Font[/font_size]
+[font_size=24]UI theme[/font_size]
+Author: [url=https://www.1001fonts.com/users/chrisx/]Chris Hansen[/url]  
+Source: [url=https://www.1001fonts.com/carnivalee-freakshow-font.html]1001fonts[/url]  
+License: [url=https://www.1001fonts.com/licenses/general-font-usage-terms.html]FFC[/url]
 
 [font_size=24]Godot Engine Logo[/font_size]
 Author: Andrea Calabró  
@@ -54,6 +98,7 @@ scroll_active = false
 horizontal_alignment = 1
 script = ExtResource("1_mkjgh")
 attribution_file_path = "res://addons/maaacks_game_template/examples/ATTRIBUTION.md"
+auto_update = false
 h1_font_size = 64
 h2_font_size = 48
 h3_font_size = 32

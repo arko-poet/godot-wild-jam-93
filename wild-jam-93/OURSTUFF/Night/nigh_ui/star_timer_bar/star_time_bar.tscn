@@ -2,6 +2,10 @@
 
 [ext_resource type="Script" uid="uid://dvtr2seqo72be" path="res://OURSTUFF/Night/nigh_ui/star_timer_bar/star_time_bar.gd" id="1_lr7kv"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_lr7kv"]
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
 [node name="StarTimeBar" type="Node2D" unique_id=702095990]
 script = ExtResource("1_lr7kv")
 
@@ -30,5 +34,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 12
 text = "00:30"
+label_settings = SubResource("LabelSettings_lr7kv")
 horizontal_alignment = 1
 vertical_alignment = 1

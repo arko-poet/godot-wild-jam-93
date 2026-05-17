@@ -31,6 +31,10 @@ texture = ExtResource("3_fkb68")
 
 [node name="StarTimeBar" parent="." unique_id=702095990 instance=ExtResource("4_q1a55")]
 position = Vector2(1, 39)
+scale = Vector2(1.2, 1.2)
+
+[node name="TimerLabel" parent="StarTimeBar/TimerProgress" parent_id_path=PackedInt32Array(702095990, 1394891135) index="0" unique_id=783641963]
+theme_override_font_sizes/font_size = 16
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1589580529]
 
@@ -48,3 +52,5 @@ autostart = true
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+
+[editable path="StarTimeBar"]
