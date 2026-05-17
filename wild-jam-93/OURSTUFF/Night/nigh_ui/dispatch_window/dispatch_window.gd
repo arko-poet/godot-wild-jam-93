@@ -162,12 +162,20 @@ func _update_hunter_power() -> void:
 	_stagecoach_power.text = "Power: %s" % power
 	
 	# bounty fail chance
-	if (interactable is not Camp) && (interactable is not PowerUp):
+	if interactable and (interactable is not Camp) && (interactable is not PowerUp):
 		interactable.updateFailChance(stagecoach.hunters)
 		_fail_chance.text = "Fail Chance: %s%%" % int(interactable.failChance * 100.0)
 	
-	dispatch_button.disabled = (stagecoach.stamina < stamina_needed) || (stagecoach.hunters.size() <= 0) || (power == 0 and interactable is not Camp)
-	if (stagecoach.stamina < stamina_needed):
+	print(interactable)
+	var interactable_exists: bool
+	if interactable:
+		interactable_exists = true
+	else:
+		interactable_exists = false
+	dispatch_button.disabled = not interactable_exists || (stagecoach.stamina < stamina_needed) || (stagecoach.hunters.size() <= 0) || (power == 0 and interactable is not Camp)
+	if not interactable_exists:
+		dispatch_button.tooltip_text = "BOUNTY EXPIRED"
+	elif (stagecoach.stamina < stamina_needed):
 		dispatch_button.tooltip_text = "INSUFFICIENT STAMINA\nRESUPPLY IN TOWN"
 	elif (stagecoach.hunters.size() <= 0):
 		dispatch_button.tooltip_text = "NOT ENOUGH HUNTERS"
