@@ -188,7 +188,12 @@ text = "[center][font_size=28][b]Game Rules[/b][/font_size][/center]
 
 [color=green]- Green[/color] - In town
 [color=yellow]- Yellow[/color] - In coach
-[color=red]- Red[/color] - Injured"
+[color=red]- Red[/color] - Injured
+
+[font_size=22][b]Selection Circle Highlight[/b][/font_size]
+
+[color=blue]- Blue[/color] - stagecoach
+[color=purple]- Purple[/color] -destination"
 
 [node name="CloseButton" type="Button" parent="HelpPanel" unique_id=179815828]
 custom_minimum_size = Vector2(68, 0)
