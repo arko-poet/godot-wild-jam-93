@@ -353,8 +353,13 @@ func _on_stagecoach_clicked(stagecoach: StageCoach) -> void:
 		if selectedInteractable != null:
 			dispatch_window.show_dispatch_panel(selectedStageCoach, selectedInteractable)
 			night_ui.hunter_box.show()
-	
+
+
 func _on_interactable_clicked(interactable: StagecoachInteractable) -> void:
+	#if star or interactable check if its not already used
+	#print(interactable.interactingStagecoach)
+	if (interactable is Star or interactable is PowerUp) and interactable.interactingStagecoach != null:
+		return
 	if selectedInteractable != null:
 		selectedInteractable.selected = false
 	selectedInteractable = interactable

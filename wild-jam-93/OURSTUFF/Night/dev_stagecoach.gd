@@ -90,6 +90,10 @@ func _draw() -> void:
 func dispatch(node: StagecoachInteractable): #imput a new interacrable node, find route and time of route, start moving
 	pass
 	isAtCamp = false
+	
+	if interactingNode != null:
+		interactingNode.interactingStagecoach = null
+	
 	interactingNode = node
 	
 	var destination = interactingNode.global_position
@@ -107,6 +111,7 @@ func dispatch(node: StagecoachInteractable): #imput a new interacrable node, fin
 		movementTimer.start(routeTime)
 		isMoving = true
 		pausedNode = interactingNode
+		interactingNode.interactingStagecoach = self
 
 func interactStart(): #called when stagecoach reaches destinatino
 	pass
