@@ -63,7 +63,7 @@ func show_dispatch_panel(new_stagecoach: StageCoach, new_interactable: Node2D) -
 		_interactables_stamina.hide()
 		_fail_chance.hide()
 		stamina_needed = 0.0
-		reward = "+ Resupply\n+ Heal"
+		reward = "+Resupply\n+Heal\n+Claim Bounties"
 	elif interactable is PowerUp:
 		_fail_chance.hide()
 		_interactables_stamina.show()
