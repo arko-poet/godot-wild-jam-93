@@ -1,7 +1,7 @@
 [gd_resource type="AtlasTexture" format=3 uid="uid://bf0q6icxrw6cd"]
 
-[ext_resource type="Texture2D" uid="uid://c3utmfig5kf1" path="res://OURSTUFF/resources/powerups.png" id="1_na2cc"]
+[ext_resource type="Texture2D" uid="uid://dx802klfmkx3h" path="res://OURSTUFF/Night/Animation/UI_ART/ICONPOWERUP.png" id="1_na2cc"]
 
 [resource]
 atlas = ExtResource("1_na2cc")
-region = Rect2(356.06116, 26.297684, 126.8291, 138.18727)
+region = Rect2(371, 88, 159, 164)
