@@ -63,7 +63,7 @@ func _ready() -> void:
 	night_ui.hunter_box.hide()
 	
 	if enablePowerups:
-		spawnPowerupTimer.start(30.0)
+		spawnPowerupTimer.start(2.0)
 
 
 func _process(delta: float) -> void:
@@ -183,7 +183,7 @@ func _on_star_spawn_timer_timeout() -> void:
 	var temp = Vector2(0,0)
 	while(isOverlaping): # may have performance issues if large numbers
 		isOverlaping = false
-		temp = Vector2(randf_range(90,playableArea.x), randf_range(0,playableArea.y - 50))
+		temp = Vector2(randf_range(90,playableArea.x), randf_range(64,playableArea.y - 50))
 		for i in allClickables:
 			if (temp - i.global_position).length() < overlapRange:
 				isOverlaping = true
@@ -321,14 +321,15 @@ func _on_night_ui_play_again() -> void:
 
 func _on_spawn_powerup_timer_timeout() -> void:
 	pass # Replace with function body.
-	spawnPowerupTimer.start(randf_range(30.0, 90.0))
+	spawnPowerupTimer.start(randf_range(25.0, 35.0))
+	#spawnPowerupTimer.start(randf_range(1.0, 1.0))
 	
 	var isOverlaping = true
 	var allClickables = stageCoaches + interactables
 	var temp = Vector2(0,0)
 	while(isOverlaping): # may have performance issues if large numbers
 		isOverlaping = false
-		temp = Vector2(randf_range(90,playableArea.x), randf_range(0,playableArea.y - 50))
+		temp = Vector2(randf_range(90,playableArea.x), randf_range(64,playableArea.y - 100))
 		for i in allClickables:
 			if (temp - i.global_position).length() < overlapRange:
 				isOverlaping = true
