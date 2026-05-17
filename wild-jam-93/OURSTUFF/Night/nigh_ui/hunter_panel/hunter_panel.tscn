@@ -29,7 +29,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_mrjkh")
 
-[node name="VoiceLinePlayer" type="AudioStreamPlayer2D" parent="." unique_id=829718197]
+[node name="VoiceLinePlayer" type="AudioStreamPlayer" parent="." unique_id=149710527]
 bus = &"SFX"
 
 [node name="Portrait_generator" parent="." unique_id=993431955 instance=ExtResource("3_exwa6")]

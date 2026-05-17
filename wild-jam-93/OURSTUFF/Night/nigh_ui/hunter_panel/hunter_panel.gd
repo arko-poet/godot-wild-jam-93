@@ -33,7 +33,7 @@ var hunter: Hunter:
 		get_theme_stylebox(&"panel").bg_color = STATE_COLORS[hunter.state]
 
 @onready var icon: TextureRect = $Icon
-@onready var voice_line_player: AudioStreamPlayer2D = $VoiceLinePlayer
+@onready var voice_line_player: AudioStreamPlayer = $VoiceLinePlayer
 
 
 func remove_border() -> void:

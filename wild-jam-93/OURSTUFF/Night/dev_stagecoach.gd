@@ -79,13 +79,22 @@ func _process(delta: float) -> void:
 
 
 func _draw() -> void:
-	if selected and selection_highligh_enabled:
+	var radius = sqrt(pow(collision_shape_2d.shape.size.x, 2) + pow(collision_shape_2d.shape.size.y, 2)) * 0.25
+	if selected:# and selection_highligh_enabled:
+		#draw_circle(
+				#Vector2(0, 0),
+				#(max(collision_shape_2d.shape.size.x, collision_shape_2d.shape.size.y) / 3.5),
+				#Color("#3B82F6"),
+				#false,
+				#4.0,
+		#)
+			#if selected and selection_highligh_enabled:
 		draw_circle(
 				Vector2(0, 0),
 				(max(collision_shape_2d.shape.size.x, collision_shape_2d.shape.size.y) / 3.5),
-				Color("#3B82F6"),
+				Color("3b82f67d"),
 				false,
-				4.0,
+				16.0,
 		)
 
 
