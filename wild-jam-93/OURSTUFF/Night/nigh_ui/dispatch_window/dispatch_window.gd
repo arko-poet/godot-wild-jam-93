@@ -27,6 +27,7 @@ var stamina_needed
 @onready var whip_sound: AudioStreamPlayer2D = $WhipSound
 @onready var loot_text: Label = $StagecoachPanel/VBoxContainer/Loot
 @onready var interactable_timeLeft: Label = $InteractablesPanel/timeleft
+@onready var expiredlable: Label = $InteractablesPanel/Expired
 
 var inGameNightMain
 
@@ -35,11 +36,13 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if (interactable != null) && (interactable is not Camp):
+		expiredlable.visible = false
 		interactable_timeLeft.visible = true
 		interactable_timeLeft.text = "0:%.1f" % interactable.decayTimer.time_left 
 		#need formating thing that adds zero in front if less than 10
 	else:
 		interactable_timeLeft.visible = false
+		expiredlable.visible = true
 
 func show_dispatch_panel(new_stagecoach: StageCoach, new_interactable: Node2D) -> void:
 	stagecoach = new_stagecoach
