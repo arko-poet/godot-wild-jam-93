@@ -60,6 +60,7 @@ scale = Vector2(2.2657142, 1.85)
 color = Color(0.7866932, 0.46402866, 0.07003514, 1)
 energy = 0.0
 texture = ExtResource("4_trda3")
+texture_scale = 0.25
 
 [node name="lightTimer" type="Timer" parent="." unique_id=820773428]
 

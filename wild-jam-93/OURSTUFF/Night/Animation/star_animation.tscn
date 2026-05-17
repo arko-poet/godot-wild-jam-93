@@ -109,3 +109,4 @@ position = Vector2(-4, 7.999996)
 scale = Vector2(1.4228573, 1.48)
 color = Color(1, 1, 0.5294118, 1)
 texture = ExtResource("4_l52jw")
+texture_scale = 0.5
