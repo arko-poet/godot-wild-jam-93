@@ -41,7 +41,7 @@ colors = PackedColorArray(0, 0.8027964, 0.7349415, 0, 0, 0.58907485, 0.96216804,
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6bk67"]
 atlas = ExtResource("2_6f726")
-region = Rect2(514.4848, 140.19746, 43.515198, 43.44966)
+region = Rect2(516, 141, 42, 41)
 
 [node name="Star" type="CharacterBody2D" unique_id=160080908]
 material = SubResource("CanvasItemMaterial_017em")

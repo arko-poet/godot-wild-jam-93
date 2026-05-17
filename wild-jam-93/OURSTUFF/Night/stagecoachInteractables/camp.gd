@@ -31,14 +31,21 @@ func _ready() -> void:
 
 func _draw() -> void:
 	print(selected)
-	if selected and selection_highligh_enabled:
+	if selected:
 		draw_circle(
-				Vector2(0, 0),
-				collision_shape_2d.shape.radius,
-				Color.DARK_ORCHID,
-				false,
-				4.0,
+			Vector2(0, 0),
+			collision_shape_2d.shape.radius / 2,
+			Color("d30848ff"),
+			true,
+			4.0,
 		)
+		draw_circle(
+			Vector2(0, 0),
+			collision_shape_2d.shape.radius / 1.5,
+			Color("d3084879"),
+			false,
+			2.0,
+	)
 
 
 func stagecoachInteractStart(stagecoach: StageCoach): # the result of a stagecoach interacting
