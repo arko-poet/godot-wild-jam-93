@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://crfayacamdakg"
+path="res://.godot/imported/horse food.ogg-5606cc1a530754880111c6cedd862391.oggvorbisstr"
+
+[deps]
+
+source_file="res://OURSTUFF/Night/power_ups/horse food.ogg"
+dest_files=["res://.godot/imported/horse food.ogg-5606cc1a530754880111c6cedd862391.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

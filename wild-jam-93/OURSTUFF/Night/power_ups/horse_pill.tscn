@@ -1,10 +1,15 @@
 [gd_scene format=3 uid="uid://mwvv11h0ymhx"]
 
 [ext_resource type="Script" uid="uid://uafs86jt5ye4" path="res://OURSTUFF/Night/power_ups/horse_pill.gd" id="1_3kkty"]
+[ext_resource type="AudioStream" uid="uid://crfayacamdakg" path="res://OURSTUFF/Night/power_ups/horse food.ogg" id="2_taxoi"]
 
 [node name="horsePill" type="Node2D" unique_id=2007782314]
 script = ExtResource("1_3kkty")
 
 [node name="Timer" type="Timer" parent="." unique_id=1223323774]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2103183447]
+stream = ExtResource("2_taxoi")
+bus = &"SFX"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

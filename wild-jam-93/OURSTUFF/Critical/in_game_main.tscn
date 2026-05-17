@@ -9,4 +9,4 @@ script = ExtResource("1_rnm73")
 
 [node name="BackgroundMusicPlayer" parent="." unique_id=1446051342 instance=ExtResource("2_jisu2")]
 stream = ExtResource("3_oopit")
-parameters/looping = true
+parameters/looping = false

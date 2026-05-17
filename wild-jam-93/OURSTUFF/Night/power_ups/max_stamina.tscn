@@ -1,10 +1,15 @@
 [gd_scene format=3 uid="uid://d26piof6mrlbb"]
 
 [ext_resource type="Script" uid="uid://dbl0immdebd2d" path="res://OURSTUFF/Night/power_ups/max_stamina.gd" id="1_xbqj5"]
+[ext_resource type="AudioStream" uid="uid://b2fm68giuww5c" path="res://OURSTUFF/Night/power_ups/max stamina.ogg" id="2_qad2m"]
 
 [node name="maxStamina" type="Node2D" unique_id=1247356765]
 script = ExtResource("1_xbqj5")
 
 [node name="Timer" type="Timer" parent="." unique_id=549554088]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=32180986]
+stream = ExtResource("2_qad2m")
+bus = &"SFX"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

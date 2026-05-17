@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b00ta48h1cnk7"
+path="res://.godot/imported/star shower.ogg-296f84b75b1a4dd813dc944b1696cce5.oggvorbisstr"
+
+[deps]
+
+source_file="res://OURSTUFF/Night/power_ups/star shower.ogg"
+dest_files=["res://.godot/imported/star shower.ogg-296f84b75b1a4dd813dc944b1696cce5.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
