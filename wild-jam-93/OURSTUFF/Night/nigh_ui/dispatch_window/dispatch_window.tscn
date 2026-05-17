@@ -23,6 +23,11 @@ region = Rect2(6, 222, 215, 292)
 atlas = ExtResource("3_j6hqk")
 region = Rect2(330, 0, 85, 86)
 
+[sub_resource type="LabelSettings" id="LabelSettings_m2um7"]
+font_size = 112
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_knrgd"]
 atlas = ExtResource("3_j6hqk")
 region = Rect2(317, 308, 267, 167)
@@ -187,6 +192,19 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 text = "Difficulty: 5"
+
+[node name="Expired" type="Label" parent="InteractablesPanel" unique_id=1484957324]
+self_modulate = Color(0.8081284, 6.988585e-05, 3.792703e-05, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.849
+anchor_right = 1.0
+offset_bottom = 126.0
+grow_horizontal = 2
+rotation = 0.72082096
+text = "Expired"
+label_settings = SubResource("LabelSettings_m2um7")
+horizontal_alignment = 1
 
 [node name="StagecoachPanel" type="Panel" parent="." unique_id=704100280]
 custom_minimum_size = Vector2(300, 100)
