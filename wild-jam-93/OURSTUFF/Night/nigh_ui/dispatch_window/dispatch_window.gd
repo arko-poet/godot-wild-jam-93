@@ -147,7 +147,7 @@ func _on_hunter_slot_hunter_removed(hunter: Hunter) -> void:
 
 
 func _on_cancel_button_pressed() -> void:
-	if interactable is not Camp:
+	if (interactable != null) && (interactable is not Camp):
 		interactable.bounty_expired.disconnect(_on_bounty_expired)
 	hide()
 	cancel.emit()
@@ -178,4 +178,5 @@ func _update_hunter_power() -> void:
 
 
 func _on_bounty_expired(_p_position) -> void:
-	hide()
+	dispatch_button.disabled = true
+	dispatch_button.tooltip_text = "DESTINATION EXPIRED"
