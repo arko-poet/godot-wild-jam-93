@@ -2,6 +2,15 @@
 
 [ext_resource type="Script" uid="uid://cl00m4jgbpaoh" path="res://OURSTUFF/Night/nigh_ui/dispatch_window/stagecoach_slot/stagecoach_slot.gd" id="1_aaasq"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aaasq"]
+bg_color = Color(0.251, 0.122, 0.071, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.6431373, 0.5019608, 0.34901962, 1)
+border_blend = true
+
 [node name="BountyStagecoachSlot" type="Panel" unique_id=1734010295]
 custom_minimum_size = Vector2(64, 64)
 anchors_preset = 15
@@ -11,6 +20,7 @@ offset_right = -1216.0
 offset_bottom = -656.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aaasq")
 script = ExtResource("1_aaasq")
 
 [node name="Texture" type="TextureRect" parent="." unique_id=1699549357]
