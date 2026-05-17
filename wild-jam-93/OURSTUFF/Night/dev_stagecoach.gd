@@ -1,9 +1,12 @@
 class_name StageCoach extends Node2D
 #dev stage coach
 
+signal stagecoach_clicked(stagecoach: StageCoach)
+
 var speed := 50.0
 var interactRange
 var stageCoachScale := scale
+var selection_highligh_enabled := false
 
 var hunters: Array[Hunter] = []
 var upgrades = [] #non stat based upgrades
@@ -49,6 +52,7 @@ var selected := false:
 @onready var lightTimer: Timer = $lightTimer
 @onready var horse_sound: AudioStreamPlayer2D = $HorseSound
 @onready var dirtParticles: CPUParticles2D = $StageCOachAnimation/CPUParticles2D
+@onready var highlight_switch: Timer = $HighlightSwitch
 
 
 func _ready() -> void:
@@ -75,11 +79,11 @@ func _process(delta: float) -> void:
 
 
 func _draw() -> void:
-	if selected:
+	if selected and selection_highligh_enabled:
 		draw_circle(
 				Vector2(0, 0),
-				max(collision_shape_2d.shape.size.x, collision_shape_2d.shape.size.y) / 2,
-				Color.AQUA,
+				(max(collision_shape_2d.shape.size.x, collision_shape_2d.shape.size.y) / 3.5),
+				Color("#3B82F6"),
 				false,
 				4.0,
 		)
@@ -88,6 +92,10 @@ func _draw() -> void:
 func dispatch(node: StagecoachInteractable): #imput a new interacrable node, find route and time of route, start moving
 	pass
 	isAtCamp = false
+	
+	if interactingNode != null:
+		interactingNode.interactingStagecoach = null
+	
 	interactingNode = node
 	
 	var destination = interactingNode.global_position
@@ -105,6 +113,7 @@ func dispatch(node: StagecoachInteractable): #imput a new interacrable node, fin
 		movementTimer.start(routeTime)
 		isMoving = true
 		pausedNode = interactingNode
+		interactingNode.interactingStagecoach = self
 
 func interactStart(): #called when stagecoach reaches destinatino
 	pass
@@ -149,12 +158,24 @@ func setSpriteScale(new_scale: float):
 
 func _on_area_2d_mouse_entered() -> void:
 	scale = stageCoachScale * 1.1
+	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 
 
 func _on_area_2d_mouse_exited() -> void:
 	scale = stageCoachScale
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 
 func _on_light_timer_timeout() -> void:
 	pass # Replace with function body.
 	pointLight.energy = 2.5
 	scale = stageCoachScale
+
+
+func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
+		stagecoach_clicked.emit(self)
+
+
+func _on_highlight_switch_timeout() -> void:
+	selection_highligh_enabled = !selection_highligh_enabled
+	queue_redraw()

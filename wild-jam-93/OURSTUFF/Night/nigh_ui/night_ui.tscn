@@ -9,7 +9,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_n6nwx")
+
+[node name="Panel" type="Panel" parent="." unique_id=845845883]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
 
 [node name="HunterBox" type="VBoxContainer" parent="." unique_id=222427354]
 layout_mode = 0
@@ -17,6 +25,7 @@ offset_left = 4.0
 offset_top = 4.0
 offset_right = 144.0
 offset_bottom = 724.0
+theme_override_constants/separation = 16
 
 [node name="HuntersLabel" type="Label" parent="HunterBox" unique_id=762028144]
 layout_mode = 2
@@ -26,6 +35,7 @@ text = "Bounty Hunters"
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_constants/v_separation = 16
 
 [node name="TimeLeftLabel" type="Label" parent="." unique_id=591525346]
 layout_mode = 1
@@ -66,34 +76,49 @@ grow_horizontal = 2
 process_mode = 3
 custom_minimum_size = Vector2(24, 0)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "II"
 
 [node name="Speed1Button" type="Button" parent="HBoxContainer" unique_id=56339402]
 custom_minimum_size = Vector2(24, 0)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 disabled = true
 text = "1x"
 
 [node name="Speed2Button" type="Button" parent="HBoxContainer" unique_id=1003003581]
 custom_minimum_size = Vector2(24, 0)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "2x"
 
 [node name="Speed4Button" type="Button" parent="HBoxContainer" unique_id=546145257]
 custom_minimum_size = Vector2(24, 0)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "4x"
 
-[node name="HelpButton" type="Button" parent="." unique_id=1897686449]
+[node name="HBoxContainer2" type="HBoxContainer" parent="." unique_id=878332022]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -44.0
+offset_left = -226.0
 offset_top = 4.0
-offset_right = -4.0
-offset_bottom = 44.0
+offset_right = -12.0
+offset_bottom = 33.0
 grow_horizontal = 0
+theme_override_constants/separation = 16
+alignment = 2
+
+[node name="Label" type="Label" parent="HBoxContainer2" unique_id=1664761145]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Press `Esc` for menu"
+
+[node name="HelpButton" type="Button" parent="HBoxContainer2" unique_id=1897686449]
+layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "HELP"
 
 [node name="HelpPanel" type="Panel" parent="." unique_id=549440930]
@@ -113,6 +138,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="HelpPanel" unique_id=2063652383]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -123,13 +149,17 @@ theme_override_constants/margin_left = 13
 theme_override_constants/margin_top = 13
 theme_override_constants/margin_bottom = 13
 
-[node name="RichTextLabel" type="RichTextLabel" parent="HelpPanel/MarginContainer" unique_id=2032080555]
-layout_mode = 2
+[node name="RichTextLabel" type="RichTextLabel" parent="HelpPanel" unique_id=2032080555]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 13.0
+offset_right = 400.0
+offset_bottom = 587.0
 bbcode_enabled = true
 text = "[center][font_size=28][b]Game Rules[/b][/font_size][/center]
 
 [font_size=22][b]Preparing a Dispatch[/b][/font_size]
-- Choose a [u]Stagecoach[/u], assign [u]Hunters[/u] and a [u]Star[/u] to prepare the dispatch
+- Choose a [u]Stagecoach[/u] and a [u]Star[/u]
 - Assign [u]Bounty Hunters[/u] to the [u]Stagecoach[/u] and send them out
 - Be quick - the competition may claim targets before you do
 - Go back to town to claim the bounties
@@ -158,13 +188,23 @@ text = "[center][font_size=28][b]Game Rules[/b][/font_size][/center]
 
 [color=green]- Green[/color] - In town
 [color=yellow]- Yellow[/color] - In coach
-[color=red]- Red[/color] - Injured"
+[color=red]- Red[/color] - Injured
 
-[node name="CloseButton" type="Button" parent="HelpPanel/MarginContainer" unique_id=179815828]
+[font_size=22][b]Selection Circle Highlight[/b][/font_size]
+
+[color=blue]- Blue[/color] - stagecoach
+[color=purple]- Purple[/color] -destination"
+
+[node name="CloseButton" type="Button" parent="HelpPanel" unique_id=179815828]
 custom_minimum_size = Vector2(68, 0)
-layout_mode = 2
-size_flags_horizontal = 4
+layout_mode = 0
+offset_left = 316.0
+offset_top = 558.0
+offset_right = 384.0
+offset_bottom = 587.0
+size_flags_horizontal = 8
 size_flags_vertical = 8
+mouse_default_cursor_shape = 2
 text = "OK"
 
 [node name="ScorePanel" type="PanelContainer" parent="." unique_id=347556490]
@@ -193,12 +233,13 @@ text = "You've earned  0$ this night."
 
 [node name="PlayAgainButton" type="Button" parent="ScorePanel/VBoxContainer" unique_id=568703402]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 text = "Play Again"
 
 [connection signal="pressed" from="HBoxContainer/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/Speed1Button" to="." method="_on_speed_1_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/Speed2Button" to="." method="_on_speed_2_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/Speed4Button" to="." method="_on_speed_4_button_pressed"]
-[connection signal="pressed" from="HelpButton" to="." method="_on_helpbutton_pressed"]
-[connection signal="pressed" from="HelpPanel/MarginContainer/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="HBoxContainer2/HelpButton" to="." method="_on_helpbutton_pressed"]
+[connection signal="pressed" from="HelpPanel/CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="ScorePanel/VBoxContainer/PlayAgainButton" to="." method="_on_play_again_button_pressed"]

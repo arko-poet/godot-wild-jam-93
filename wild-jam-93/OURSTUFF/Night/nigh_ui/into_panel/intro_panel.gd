@@ -5,11 +5,11 @@ signal intro_finished
 const INTRO: Array[String] = [
 	"Welcome Dispatcher.",
 	"Every night, stars fall across the desert.",
-	"Stars are a source of stardust, a valuable fuel.",
+	"Stars are a source of stardust, a valuable yet dangerous fuel.",
 	"The mayor pays bounties for recovered stars.",
 	"Many try to collect them, but the desert is full of dangers - and competition.",
 	"Your goal is to manage a gang of hunters to collect the stars and maximise profit.",
-	"Select a stagecoach, assign hunters and pick a star to hunt.",
+	"Select a stagecoach, pick a star, assign hunters and dispatch.",
 	"Be quick or other gangs will claim them before you.",
 	"Good Luck."
 ]

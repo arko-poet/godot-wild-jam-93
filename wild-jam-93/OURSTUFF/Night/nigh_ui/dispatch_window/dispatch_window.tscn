@@ -65,11 +65,13 @@ grow_vertical = 0
 [node name="CancelButton" type="Button" parent="HBoxContainer" unique_id=500679443]
 modulate = Color(0.8175213, 0.8175213, 0.81752115, 1)
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 text = "CANCEL"
 
 [node name="DispatchButton" type="Button" parent="HBoxContainer" unique_id=337294282]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0, 1, 0, 1)
 text = "DISPATCH"
 
@@ -102,6 +104,8 @@ anchor_left = 0.5
 anchor_right = 0.5
 offset_top = 15.0
 grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 text = "BOUNTY"
 
 [node name="timeleft" type="Label" parent="InteractablesPanel" unique_id=1569319057]
@@ -123,9 +127,14 @@ anchor_left = 0.5
 anchor_top = 0.25
 anchor_right = 0.5
 anchor_bottom = 0.25
+offset_left = -42.5
+offset_top = -32.0
+offset_right = 42.5
+offset_bottom = 54.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AtlasTexture_dgd1a")
+expand_mode = 4
 
 [node name="Description" type="Label" parent="InteractablesPanel" unique_id=1058534622]
 layout_mode = 1
@@ -134,16 +143,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -44.0
-offset_top = -11.5
-offset_right = 44.0
-offset_bottom = 11.5
+offset_left = -101.0
+offset_top = -18.0
+offset_right = 97.0
+offset_bottom = 135.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 32
 text = "$ 1000"
 horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="InteractablesPanel" unique_id=1410431926]
 layout_mode = 1
@@ -168,10 +178,14 @@ text = "Difficulty: 5"
 
 [node name="RequiredStamina" type="Label" parent="InteractablesPanel/VBoxContainer" unique_id=1173926853]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 text = "12.3 miles"
 
 [node name="FailChance" type="Label" parent="InteractablesPanel/VBoxContainer" unique_id=1137483218]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 text = "Difficulty: 5"
 
 [node name="StagecoachPanel" type="Panel" parent="." unique_id=704100280]
@@ -196,7 +210,7 @@ offset_top = -241.0
 offset_right = 80.5
 offset_bottom = -213.0
 grow_horizontal = 2
-text = "ASSIGN HUNTERS"
+text = "ASSIGNED HUNTERS"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="StagecoachPanel" unique_id=1450545697]
 layout_mode = 1
@@ -245,15 +259,19 @@ columns = 2
 
 [node name="StagecoachSlot" parent="HunterGrid" unique_id=1734010295 instance=ExtResource("3_otvtg")]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 
 [node name="StagecoachSlot2" parent="HunterGrid" unique_id=565418700 instance=ExtResource("3_otvtg")]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 
 [node name="StagecoachSlot3" parent="HunterGrid" unique_id=33095940 instance=ExtResource("3_otvtg")]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 
 [node name="StagecoachSlot4" parent="HunterGrid" unique_id=343284322 instance=ExtResource("3_otvtg")]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 
 [node name="WhipSound" type="AudioStreamPlayer2D" parent="." unique_id=1773653877]
 stream = ExtResource("5_s3aue")

@@ -63,9 +63,15 @@ stream = ExtResource("4_ggh5l")
 volume_db = -11.773
 bus = &"SFX"
 
+[node name="HighlighTimer" type="Timer" parent="." unique_id=695559928]
+wait_time = 0.35
+autostart = true
+
 [connection signal="timeout" from="decayTimer" to="." method="_on_decay_timer_timeout"]
 [connection signal="timeout" from="interactTimer" to="." method="_on_interact_timer_timeout"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="timeout" from="HighlighTimer" to="." method="_on_highligh_timer_timeout"]
 
 [editable path="TimerBar"]

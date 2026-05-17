@@ -10,12 +10,12 @@
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_b14l5"]
 resource_local_to_scene = true
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_imxsf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4eig"]
 resource_local_to_scene = true
 atlas = ExtResource("3_w4eig")
 region = Rect2(24, 147, 93, 76)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_abrj3"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_imxsf"]
 resource_local_to_scene = true
 atlas = ExtResource("3_w4eig")
 region = Rect2(0, 14, 120, 108)
@@ -33,10 +33,10 @@ use_parent_material = true
 scale = Vector2(0.5, 0.5)
 
 [node name="Sprite2D" parent="StageCOachAnimation" index="0" unique_id=394255853]
-texture = SubResource("AtlasTexture_imxsf")
+texture = SubResource("AtlasTexture_w4eig")
 
 [node name="Sprite2D2" parent="StageCOachAnimation" index="1" unique_id=944317799]
-texture = SubResource("AtlasTexture_abrj3")
+texture = SubResource("AtlasTexture_imxsf")
 
 [node name="CPUParticles2D" parent="StageCOachAnimation" index="7" unique_id=1612455192]
 emitting = false
@@ -60,6 +60,7 @@ scale = Vector2(2.2657142, 1.85)
 color = Color(0.7866932, 0.46402866, 0.07003514, 1)
 energy = 0.0
 texture = ExtResource("4_trda3")
+texture_scale = 0.25
 
 [node name="lightTimer" type="Timer" parent="." unique_id=820773428]
 
@@ -67,9 +68,15 @@ texture = ExtResource("4_trda3")
 stream = ExtResource("5_8oxbi")
 bus = &"SFX"
 
+[node name="HighlightSwitch" type="Timer" parent="." unique_id=53929785]
+wait_time = 0.35
+autostart = true
+
 [connection signal="timeout" from="movementTimer" to="." method="_on_movement_timer_timeout"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
 [connection signal="timeout" from="lightTimer" to="." method="_on_light_timer_timeout"]
+[connection signal="timeout" from="HighlightSwitch" to="." method="_on_highlight_switch_timeout"]
 
 [editable path="StageCOachAnimation"]

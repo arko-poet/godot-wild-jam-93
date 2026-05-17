@@ -1,13 +1,18 @@
 class_name Camp extends StagecoachInteractable
 
+signal camp_clicked(camp: Camp)
+
 const MAX_STAMINA := 30.0
 const floatingText = preload("res://OURSTUFF/Night/nigh_ui/floating_text/floating_text.tscn")
+
+var selection_highligh_enabled = false
 
 @onready var campTexture = "res://OURSTUFF/resources/DevCampAtlas.tres"
 
 @onready var interactTimer = $interactTimer
 @onready var sprite = $Sprite2D
 @onready var money_sound: AudioStreamPlayer2D = $MoneySound
+@onready var collision_shape_2d: CollisionShape2D = $Area2D/CollisionShape2D
 
 
 var inGameMain
@@ -22,6 +27,19 @@ func _ready() -> void:
 	dispatchTitle = "Refill"
 	
 	sign_post_scale = sprite.scale
+
+
+func _draw() -> void:
+	print(selected)
+	if selected and selection_highligh_enabled:
+		draw_circle(
+				Vector2(0, 0),
+				collision_shape_2d.shape.radius,
+				Color.DARK_ORCHID,
+				false,
+				4.0,
+		)
+
 
 func stagecoachInteractStart(stagecoach: StageCoach): # the result of a stagecoach interacting
 	pass #input stage coach, get array of hunters, this would decide how interaction would go like length of time or fail chance
@@ -68,7 +86,19 @@ func _on_interact_timer_timeout() -> void:
 
 func _on_area_2d_mouse_entered() -> void:
 	sprite.scale = sign_post_scale * 1.2
+	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 
 
 func _on_area_2d_mouse_exited() -> void:
 	sprite.scale = sign_post_scale
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+
+
+func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
+		camp_clicked.emit(self)
+
+
+func _on_timer_timeout() -> void:
+	selection_highligh_enabled = !selection_highligh_enabled
+	queue_redraw()

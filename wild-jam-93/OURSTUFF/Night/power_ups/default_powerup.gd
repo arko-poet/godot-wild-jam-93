@@ -2,6 +2,7 @@ class_name PowerUp extends StagecoachInteractable
 
 signal bounty_completed(success: bool, p_position: Vector2)
 signal bounty_expired(p_position: Vector2)
+signal powerup_clicked(powerup: PowerUp)
 
 const strobeCurve = preload("res://OURSTUFF/resources/powerupStrobeCurve.tres")
 
@@ -29,6 +30,7 @@ var inGameMain
 var powerUpType := 0
 var powerUpDescription := ""
 
+var selection_highligh_enabled := false
 
 @onready var star_time_bar: Node2D = $StarTimeBar
 #@onready var bounty_progress_label: Label = $BountyProgressLabel
@@ -84,7 +86,7 @@ func stagecoachInteractStart(stagecoach: StageCoach):
 	print(interactTimer.time_left)
 
 func _draw() -> void:
-	if selected:
+	if selected and selection_highligh_enabled:
 		draw_circle(
 				Vector2(0, 0),
 				max(collision_shape_2d.shape.size.x, collision_shape_2d.shape.size.y) / 2,
@@ -157,7 +159,19 @@ func updateFailChance(hunters: Array):
 
 func _on_area_2d_mouse_entered() -> void:
 	scale = Vector2(1.1, 1.1)
+	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 
 
 func _on_area_2d_mouse_exited() -> void:
 	scale = Vector2(1.0, 1.0)
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+
+
+func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
+		powerup_clicked.emit(self)
+
+
+func _on_timer_timeout() -> void:
+	selection_highligh_enabled = !selection_highligh_enabled
+	queue_redraw()

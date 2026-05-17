@@ -2,6 +2,7 @@ class_name Star extends StagecoachInteractable
 
 signal bounty_completed(success: bool, p_position: Vector2)
 signal bounty_expired(p_position: Vector2)
+signal star_clicked(star: Star)
 
 var decayTimer
 var interaction_time: float
@@ -11,7 +12,7 @@ var inGameNightMain: Night
 
 var bounty: Bounty
 var failChance
-
+var selection_highligh_enabled := false
 
 @onready var star_time_bar: Node2D = $TimerBar
 @onready var bounty_progress_label: Label = $BountyProgressLabel
@@ -53,11 +54,11 @@ func _process(_delta: float) -> void:
 
 
 func _draw() -> void:
-	if selected:
+	if selected and selection_highligh_enabled:
 		draw_circle(
 				Vector2(0, 0),
 				max(collision_shape_2d.shape.size.x, collision_shape_2d.shape.size.y) / 2,
-				Color.DARK_ORCHID,
+				Color("#A855F7"),
 				false,
 				4.0,
 		)
@@ -152,7 +153,18 @@ func updateFailChance(hunters: Array):
 
 func _on_area_2d_mouse_entered() -> void:
 	scale = Vector2(1.1, 1.1)
-
+	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 
 func _on_area_2d_mouse_exited() -> void:
 	scale = Vector2(1.0, 1.0)
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+
+
+func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
+		star_clicked.emit(self)
+
+
+func _on_highligh_timer_timeout() -> void:
+	selection_highligh_enabled = !selection_highligh_enabled
+	queue_redraw()

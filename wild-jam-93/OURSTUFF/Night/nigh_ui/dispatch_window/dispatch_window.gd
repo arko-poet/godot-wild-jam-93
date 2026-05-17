@@ -63,7 +63,7 @@ func show_dispatch_panel(new_stagecoach: StageCoach, new_interactable: Node2D) -
 		_interactables_stamina.hide()
 		_fail_chance.hide()
 		stamina_needed = 0.0
-		reward = "+ Resupply\n+ Heal"
+		reward = "+Resupply\n+Heal\n+Claim Bounties"
 	elif interactable is PowerUp:
 		_fail_chance.hide()
 		_interactables_stamina.show()
@@ -106,13 +106,17 @@ func show_dispatch_panel(new_stagecoach: StageCoach, new_interactable: Node2D) -
 
 
 func _on_dispatch_button_pressed() -> void:
+	var stagecoach_dup = $stagecoach.duplicate()
+	get_parent().add_child(stagecoach_dup)
+	stagecoach_dup.position = $stagecoach.global_position
 	var tweens = get_tree().create_tween()
-	tweens.tween_property($stagecoach, "position", Vector2(800, 37), 0.5)
-	tweens.parallel().tween_property(self, "modulate", Color(1, 1, 1, 0), 0.5)
-	tweens.parallel().tween_property($HunterGrid, "position", Vector2(928, 64), 0.5)
-	await tweens.finished
-	$stagecoach.position = Vector2(68, 37)
-	$HunterGrid.position = Vector2(128, 64)
+	tweens.tween_property(stagecoach_dup, "position:x", 1280, 0.5)
+	#tweens.parallel().tween_property(self, "modulate", Color(1, 1, 1, 0), 0.5)
+	#tweens.parallel().tween_property($HunterGrid, "position", Vector2(928, 64), 0.5)
+	tweens.finished.connect(stagecoach_dup.queue_free)
+	#await tweens.finished
+	#$stagecoach.position = Vector2(68, 37)
+	#$HunterGrid.position = Vector2(128, 64)
 	modulate = Color.WHITE
 	
 	if interactable is not Camp:
@@ -162,12 +166,20 @@ func _update_hunter_power() -> void:
 	_stagecoach_power.text = "Power: %s" % power
 	
 	# bounty fail chance
-	if (interactable is not Camp) && (interactable is not PowerUp):
+	if interactable and (interactable is not Camp) && (interactable is not PowerUp):
 		interactable.updateFailChance(stagecoach.hunters)
 		_fail_chance.text = "Fail Chance: %s%%" % int(interactable.failChance * 100.0)
 	
-	dispatch_button.disabled = (stagecoach.stamina < stamina_needed) || (stagecoach.hunters.size() <= 0) || (power == 0 and interactable is not Camp)
-	if (stagecoach.stamina < stamina_needed):
+	print(interactable)
+	var interactable_exists: bool
+	if interactable:
+		interactable_exists = true
+	else:
+		interactable_exists = false
+	dispatch_button.disabled = not interactable_exists || (stagecoach.stamina < stamina_needed) || (stagecoach.hunters.size() <= 0) || (power == 0 and interactable is not Camp)
+	if not interactable_exists:
+		dispatch_button.tooltip_text = "BOUNTY EXPIRED"
+	elif (stagecoach.stamina < stamina_needed):
 		dispatch_button.tooltip_text = "INSUFFICIENT STAMINA\nRESUPPLY IN TOWN"
 	elif (stagecoach.hunters.size() <= 0):
 		dispatch_button.tooltip_text = "NOT ENOUGH HUNTERS"

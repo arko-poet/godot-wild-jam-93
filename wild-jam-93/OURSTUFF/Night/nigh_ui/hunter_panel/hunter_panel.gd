@@ -38,6 +38,7 @@ var hunter: Hunter:
 
 func remove_border() -> void:
 	get_theme_stylebox(&"panel").set_border_width_all(0)
+	get_theme_stylebox(&"panel").shadow_size = 0
 
 
 func _add_border() -> void:
@@ -47,6 +48,7 @@ func _add_border() -> void:
 	style.set_border_width_all(BORDER_WIDTH)
 
 	add_theme_stylebox_override(&"panel", style)
+	get_theme_stylebox(&"panel").shadow_size = 8
 	
 
 func _on_gui_input(event: InputEvent) -> void:
