@@ -77,14 +77,22 @@ func _process(delta: float) -> void:
 	var ihateyou = 0
 	
 	#input detection
-	if Input.is_action_just_pressed("mousePrimary"):
-		pass
-		if selectedStageCoach == null:
-			selectStageCoach()
-		elif selectedInteractable == null:
-			selectInteractable()
+	#if Input.is_action_just_pressed("mousePrimary"):
+		#pass
+		##print("--------")
+		##print("primary")
+		##print(selectedStageCoach)
+		##print(selectedInteractable)
+		##if selectedStageCoach == null:
+			##selectStageCoach()
+		##elif selectedInteractable == null:
+			##selectInteractable()
+		#if selectedStageCoach != null and selectedInteractable == null:
+			#selectInteractable()
+		#else:
+			#selectStageCoach()
 		
-	elif Input.is_action_just_pressed("mouseSecondary"):
+	if Input.is_action_just_pressed("mouseSecondary"):
 		if selectedInteractable != null:
 			selectedInteractable.sprite.scale /= interactableSelectScale
 			selectedInteractable = null
@@ -109,6 +117,7 @@ func set_hunters(hunters: Array[Hunter]) -> void:
 		night_ui.add_hunter(hunter)
 
 
+# DEPRECATED dont use
 func selectStageCoach():
 	pass #attempt to select coach at mouse position, if one exists
 	#right now you can select a moving coach and divert it, but that cna change
@@ -125,6 +134,7 @@ func selectStageCoach():
 				night_ui.hunter_box.show()
 			break
 
+# DEPRECATED dont use
 func selectInteractable():
 	pass #attempt to select anyinteractable
 	for i in interactables.size():
@@ -191,7 +201,8 @@ func spawnInteractable(type: String, location: Vector2): #controls spawning of s
 	pass
 	match type:
 		"star":
-			var temp =  star.instantiate()
+			var temp: Star =  star.instantiate()
+			temp.star_clicked.connect(_on_interactable_clicked)
 			temp.bounty_expired.connect(_on_bounty_expired)
 			temp.global_position = location
 			interactables.append(temp)
@@ -204,11 +215,13 @@ func spawnInteractable(type: String, location: Vector2): #controls spawning of s
 			add_child(temp)
 		"camp":
 			var temp = camp.instantiate()
+			temp.camp_clicked.connect(_on_interactable_clicked)
 			temp.position = Vector2i(playableArea.x / 2, playableArea.y - 25)
 			interactables.append(temp)
 			add_child(temp)
 		"powerUp":
 			var temp = powerUp.instantiate()
+			temp.powerup_clicked.connect(_on_interactable_clicked)
 			interactables.append(temp)
 			temp.global_position = location
 			add_child(temp)
@@ -222,10 +235,11 @@ func spawnStagecoaches(coaches: Array): #array of stage coach objects
 	
 	for i in coaches.size():
 		pass #spawn stagecoaches, apply data to stage coach
-		var temp = stageCoach.instantiate()
+		var temp: StageCoach = stageCoach.instantiate()
 		var displacementVector = (Vector2.from_angle((angleIncrement * i) - (PI/2) - angleIncrement) * distanceFromCamp)
 		temp.position = campPosition + displacementVector
 		stageCoaches.append(temp)
+		temp.stagecoach_clicked.connect(_on_stagecoach_clicked)
 		temp.setStagecoachData(coaches[i].getStagecoachData())
 		temp.ui_layer = dispatchUiLayer
 		add_child(temp)
@@ -321,3 +335,31 @@ func _on_spawn_powerup_timer_timeout() -> void:
 				break
 	
 	spawnInteractable("powerUp", temp)
+
+
+func _on_stagecoach_clicked(stagecoach: StageCoach) -> void:
+	#print("stagecoach clicked")
+	#print(stagecoach)
+	#selectStageCoach()
+	
+	if stagecoach.isInteracting == false:
+		if selectedStageCoach:
+			selectedStageCoach.selected = false
+		selectedStageCoach = stagecoach
+		selectedStageCoach.setSpriteScale(1.2)
+		selectedStageCoach.material.light_mode = 1
+		#highlight coach or something
+		selectedStageCoach.selected = true
+		if selectedInteractable != null:
+			dispatch_window.show_dispatch_panel(selectedStageCoach, selectedInteractable)
+			night_ui.hunter_box.show()
+	
+func _on_interactable_clicked(interactable: StagecoachInteractable) -> void:
+	if selectedInteractable != null:
+		selectedInteractable.selected = false
+	selectedInteractable = interactable
+	selectedInteractable.sprite.scale *= interactableSelectScale
+			#call a function to spawn ui element here
+	if selectedStageCoach != null:
+		dispatch_window.show_dispatch_panel(selectedStageCoach, selectedInteractable)
+		night_ui.hunter_box.show()

@@ -40,5 +40,6 @@ shape = SubResource("RectangleShape2D_q1a55")
 
 [connection signal="timeout" from="interactTimer" to="." method="_on_interact_timer_timeout"]
 [connection signal="timeout" from="decayTimer" to="." method="_on_decay_timer_timeout"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

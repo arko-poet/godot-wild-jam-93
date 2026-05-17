@@ -20,7 +20,7 @@ var selected_hunter: Hunter:
 @onready var speed_1_button: Button = $HBoxContainer/Speed1Button
 @onready var speed_2_button: Button = $HBoxContainer/Speed2Button
 @onready var speed_4_button: Button = $HBoxContainer/Speed4Button
-@onready var helpbutton: Button = $HelpButton
+@onready var helpbutton: Button = $HBoxContainer2/HelpButton
 @onready var help_panel: Panel = $HelpPanel
 @onready var close_help_panel_button: Button = $HelpPanel/CloseButton
 @onready var score_panel: PanelContainer = $ScorePanel

@@ -1,6 +1,8 @@
 class_name StageCoach extends Node2D
 #dev stage coach
 
+signal stagecoach_clicked(stagecoach: StageCoach)
+
 var speed := 50.0
 var interactRange
 var stageCoachScale := scale
@@ -160,3 +162,8 @@ func _on_light_timer_timeout() -> void:
 	pass # Replace with function body.
 	pointLight.energy = 2.5
 	scale = stageCoachScale
+
+
+func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
+		stagecoach_clicked.emit(self)

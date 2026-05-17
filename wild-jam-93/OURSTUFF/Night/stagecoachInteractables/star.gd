@@ -2,6 +2,7 @@ class_name Star extends StagecoachInteractable
 
 signal bounty_completed(success: bool, p_position: Vector2)
 signal bounty_expired(p_position: Vector2)
+signal star_clicked(star: Star)
 
 var decayTimer
 var interaction_time: float
@@ -157,3 +158,8 @@ func _on_area_2d_mouse_entered() -> void:
 func _on_area_2d_mouse_exited() -> void:
 	scale = Vector2(1.0, 1.0)
 	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+
+
+func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
+		star_clicked.emit(self)
