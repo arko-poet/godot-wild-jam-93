@@ -68,10 +68,15 @@ texture_scale = 0.25
 stream = ExtResource("5_8oxbi")
 bus = &"SFX"
 
+[node name="HighlightSwitch" type="Timer" parent="." unique_id=53929785]
+wait_time = 0.35
+autostart = true
+
 [connection signal="timeout" from="movementTimer" to="." method="_on_movement_timer_timeout"]
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
 [connection signal="timeout" from="lightTimer" to="." method="_on_light_timer_timeout"]
+[connection signal="timeout" from="HighlightSwitch" to="." method="_on_highlight_switch_timeout"]
 
 [editable path="StageCOachAnimation"]

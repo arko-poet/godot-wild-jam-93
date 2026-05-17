@@ -6,6 +6,7 @@ signal stagecoach_clicked(stagecoach: StageCoach)
 var speed := 50.0
 var interactRange
 var stageCoachScale := scale
+var selection_highligh_enabled := false
 
 var hunters: Array[Hunter] = []
 var upgrades = [] #non stat based upgrades
@@ -51,6 +52,7 @@ var selected := false:
 @onready var lightTimer: Timer = $lightTimer
 @onready var horse_sound: AudioStreamPlayer2D = $HorseSound
 @onready var dirtParticles: CPUParticles2D = $StageCOachAnimation/CPUParticles2D
+@onready var highlight_switch: Timer = $HighlightSwitch
 
 
 func _ready() -> void:
@@ -77,10 +79,10 @@ func _process(delta: float) -> void:
 
 
 func _draw() -> void:
-	if selected:
+	if selected and selection_highligh_enabled:
 		draw_circle(
 				Vector2(0, 0),
-				max(collision_shape_2d.shape.size.x, collision_shape_2d.shape.size.y) / 3.5,
+				(max(collision_shape_2d.shape.size.x, collision_shape_2d.shape.size.y) / 3.5),
 				Color.AQUA,
 				false,
 				4.0,
@@ -172,3 +174,8 @@ func _on_light_timer_timeout() -> void:
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
 		stagecoach_clicked.emit(self)
+
+
+func _on_highlight_switch_timeout() -> void:
+	selection_highligh_enabled = !selection_highligh_enabled
+	queue_redraw()

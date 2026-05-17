@@ -5,6 +5,8 @@ signal camp_clicked(camp: Camp)
 const MAX_STAMINA := 30.0
 const floatingText = preload("res://OURSTUFF/Night/nigh_ui/floating_text/floating_text.tscn")
 
+var selection_highligh_enabled = false
+
 @onready var campTexture = "res://OURSTUFF/resources/DevCampAtlas.tres"
 
 @onready var interactTimer = $interactTimer
@@ -29,7 +31,7 @@ func _ready() -> void:
 
 func _draw() -> void:
 	print(selected)
-	if selected:
+	if selected and selection_highligh_enabled:
 		draw_circle(
 				Vector2(0, 0),
 				collision_shape_2d.shape.radius,
@@ -95,3 +97,8 @@ func _on_area_2d_mouse_exited() -> void:
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
 		camp_clicked.emit(self)
+
+
+func _on_timer_timeout() -> void:
+	selection_highligh_enabled = !selection_highligh_enabled
+	queue_redraw()

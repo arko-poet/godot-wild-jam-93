@@ -12,7 +12,7 @@ var inGameNightMain: Night
 
 var bounty: Bounty
 var failChance
-
+var selection_highligh_enabled := false
 
 @onready var star_time_bar: Node2D = $TimerBar
 @onready var bounty_progress_label: Label = $BountyProgressLabel
@@ -54,7 +54,7 @@ func _process(_delta: float) -> void:
 
 
 func _draw() -> void:
-	if selected:
+	if selected and selection_highligh_enabled:
 		draw_circle(
 				Vector2(0, 0),
 				max(collision_shape_2d.shape.size.x, collision_shape_2d.shape.size.y) / 2,
@@ -163,3 +163,8 @@ func _on_area_2d_mouse_exited() -> void:
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
 		star_clicked.emit(self)
+
+
+func _on_highligh_timer_timeout() -> void:
+	selection_highligh_enabled = !selection_highligh_enabled
+	queue_redraw()
