@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://d4cy8vh0gt5w8"]
+
+[ext_resource type="Script" uid="uid://d03fyhj27cx36" path="res://OURSTUFF/Night/Animation/thumblewheels_generator.gd" id="1_dqwbj"]
+
+[node name="ThumblewheelsGenerator" type="Node2D" unique_id=877089772]
+script = ExtResource("1_dqwbj")
