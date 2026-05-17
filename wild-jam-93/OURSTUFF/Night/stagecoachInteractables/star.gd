@@ -58,9 +58,9 @@ func _draw() -> void:
 		draw_circle(
 				Vector2(0, 0),
 				max(collision_shape_2d.shape.size.x, collision_shape_2d.shape.size.y) / 2,
-				Color("#A855F7"),
+				Color("a855f778"),
 				false,
-				4.0,
+				16.0,
 		)
 
 
