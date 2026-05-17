@@ -47,9 +47,10 @@ func stagecoachInteractComplete(): # called when stagecoach finishes interaciton
 	
 	#heal hunters
 	for h: Hunter in interactingStagecoach.hunters:
-		h.state = Hunter.State.BUSY
+		h.state = Hunter.State.AVAILABLE
 	
 	interactingStagecoach.interactComplete()
+	interactingStagecoach.hunters = []
 	
 
 func canInteract(stagecoach: StageCoach): #check data and return true if all requirments are met 
