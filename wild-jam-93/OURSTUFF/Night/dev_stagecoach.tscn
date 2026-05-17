@@ -21,7 +21,7 @@ atlas = ExtResource("3_w4eig")
 region = Rect2(0, 14, 120, 108)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b14l5"]
-size = Vector2(234, 123)
+size = Vector2(224, 110)
 
 [node name="devStagecoach" type="Node2D" unique_id=400670669]
 z_index = 1
@@ -51,7 +51,7 @@ position = Vector2(0, 34)
 scale = Vector2(0.5, 0.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=30248717]
-position = Vector2(-13, -8.5)
+position = Vector2(-12, -13)
 shape = SubResource("RectangleShape2D_b14l5")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1304168188]
@@ -61,6 +61,7 @@ color = Color(0.7866932, 0.46402866, 0.07003514, 1)
 energy = 0.0
 texture = ExtResource("4_trda3")
 texture_scale = 0.25
+metadata/_edit_lock_ = true
 
 [node name="lightTimer" type="Timer" parent="." unique_id=820773428]
 

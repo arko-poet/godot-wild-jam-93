@@ -51,7 +51,7 @@ func _physics_process(delta: float) -> void:
 func show_dispatch_panel(new_stagecoach: StageCoach, new_interactable: Node2D) -> void:
 	stagecoach = new_stagecoach
 	interactable = new_interactable
-	if interactable is not Camp:
+	if interactable is not Camp and not interactable.bounty_expired.is_connected(_on_bounty_expired):
 		interactable.bounty_expired.connect(_on_bounty_expired)
 	# clean slots from previously selected stagecoach
 	for stagecoach_slot: StagecoachSlot in hunter_grid.get_children():
