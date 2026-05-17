@@ -5,6 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://hvui1gigm1pt" path="res://OURSTUFF/Night/nigh_ui/star_timer_bar/star_time_bar.tscn" id="3_r24oq"]
 [ext_resource type="AudioStream" uid="uid://bciva3q5dahe" path="res://OURSTUFF/sound/effects/shooting_star/351810__plasterbrain__shooting-star-4.ogg" id="4_ggh5l"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_ggh5l"]
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r24oq"]
 size = Vector2(32, 28.5)
 
@@ -24,8 +28,11 @@ one_shot = true
 one_shot = true
 
 [node name="TimerBar" parent="." unique_id=702095990 instance=ExtResource("3_r24oq")]
-position = Vector2(1.9073486e-06, 13)
-scale = Vector2(0.99999994, 1)
+position = Vector2(0, 22)
+scale = Vector2(1.2, 1.2)
+
+[node name="TimerLabel" parent="TimerBar/TimerProgress" parent_id_path=PackedInt32Array(702095990, 1394891135) index="0" unique_id=783641963]
+label_settings = SubResource("LabelSettings_ggh5l")
 
 [node name="BountyProgressLabel" type="Label" parent="." unique_id=1242448715]
 visible = false
@@ -60,3 +67,5 @@ bus = &"SFX"
 [connection signal="timeout" from="interactTimer" to="." method="_on_interact_timer_timeout"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+
+[editable path="TimerBar"]
