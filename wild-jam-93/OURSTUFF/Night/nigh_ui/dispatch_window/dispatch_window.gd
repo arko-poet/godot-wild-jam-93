@@ -108,6 +108,7 @@ func show_dispatch_panel(new_stagecoach: StageCoach, new_interactable: Node2D) -
 		dispatch_button.tooltip_text = ""
 	
 	_update_hunter_power()
+	_update_stagecoach_slot_tooltip(not stagecoach.isAtCamp)
 	
 	show()
 
@@ -134,6 +135,7 @@ func _on_dispatch_button_pressed() -> void:
 
 
 func _on_hunter_selected(hunter: Hunter) -> void:
+	_update_stagecoach_slot_tooltip(not stagecoach.isAtCamp)
 	selected_hunter = hunter
 	for stagecoach_slot: StagecoachSlot in hunter_grid.get_children():
 		if stagecoach_slot.hunter == null and stagecoach != null and stagecoach.isAtCamp:
@@ -142,6 +144,7 @@ func _on_hunter_selected(hunter: Hunter) -> void:
 
 ## add hunter to a stagecoach
 func _on_hunter_slot_selected(stagecoach_slot: StagecoachSlot) -> void:
+	_update_stagecoach_slot_tooltip(not stagecoach.isAtCamp)
 	if selected_hunter != null and stagecoach.isAtCamp:
 		print(selected_hunter.at_camp)
 		stagecoach_slot.hunter = selected_hunter
@@ -199,3 +202,11 @@ func _update_hunter_power() -> void:
 func _on_bounty_expired(_p_position) -> void:
 	dispatch_button.disabled = true
 	dispatch_button.tooltip_text = "DESTINATION EXPIRED"
+
+
+func _update_stagecoach_slot_tooltip(can_assign: bool) -> void:
+	for stagecoach_slot: StagecoachSlot in hunter_grid.get_children():
+		if can_assign:
+			stagecoach_slot.tooltip_text = "Assign / Remove Hunters in Town"
+		else:
+			stagecoach_slot.tooltip_text = ""
