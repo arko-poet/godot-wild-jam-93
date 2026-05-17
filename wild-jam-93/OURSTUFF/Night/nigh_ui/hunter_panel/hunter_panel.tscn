@@ -12,6 +12,7 @@ corner_radius_bottom_left = 1
 shadow_color = Color(0.972549, 0.972549, 0.972549, 1)
 
 [node name="HunterPanel" type="Panel" unique_id=1304751859]
+visible = false
 custom_minimum_size = Vector2(64, 64)
 offset_right = 40.0
 offset_bottom = 40.0

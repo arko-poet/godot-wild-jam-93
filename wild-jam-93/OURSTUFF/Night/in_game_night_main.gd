@@ -211,7 +211,7 @@ func spawnInteractable(type: String, location: Vector2): #controls spawning of s
 			for i in get_children():
 				if i is AnimationStar:
 					i.reparent(temp)
-					i.target += Vector2(2,2)
+					#i.target += Vector2(2,2)
 					i.speed = 0
 			add_child(temp)
 		"camp":

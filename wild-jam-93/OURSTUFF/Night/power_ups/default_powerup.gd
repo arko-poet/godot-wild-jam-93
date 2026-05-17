@@ -86,14 +86,21 @@ func stagecoachInteractStart(stagecoach: StageCoach):
 	print(interactTimer.time_left)
 
 func _draw() -> void:
-	if selected and selection_highligh_enabled:
+	if selected:
 		draw_circle(
-				Vector2(0, 0),
-				max(collision_shape_2d.shape.size.x, collision_shape_2d.shape.size.y) / 2,
-				Color.DARK_ORCHID,
-				false,
-				4.0,
+			Vector2(0, 0),
+			(max(collision_shape_2d.shape.size.x, collision_shape_2d.shape.size.y) / 2),
+			Color("d30848ff"),
+			true,
+			4.0,
 		)
+		draw_circle(
+			Vector2(0, 0),
+			(max(collision_shape_2d.shape.size.x, collision_shape_2d.shape.size.y) / 1.5),
+			Color("d3084886"),
+			false,
+			2.0,
+	)
 
 func _on_decay_timer_timeout() -> void:
 	bounty_expired.emit(global_position)
