@@ -292,6 +292,7 @@ func _on_night_ui_intro_finished() -> void:
 		i.lightTimer.start(randf_range(20, 30))
 	spawnInteractable("camp", Vector2(0,0))
 	night_ui.show()
+	get_tree().paused = true
 
 
 func _on_night_ui_play_again() -> void:
