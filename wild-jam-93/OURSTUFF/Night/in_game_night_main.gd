@@ -63,7 +63,7 @@ func _ready() -> void:
 	night_ui.hunter_box.hide()
 	
 	if enablePowerups:
-		spawnPowerupTimer.start(60.0)
+		spawnPowerupTimer.start(30.0)
 
 
 func _process(delta: float) -> void:
