@@ -2,6 +2,7 @@ extends Node2D
 
 var inGameNightMain
 @onready var timer: Timer = $Timer
+@onready var sfx: AudioStreamPlayer = $AudioStreamPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -10,7 +11,7 @@ func _ready() -> void:
 	inGameNightMain.starSpawnHighRoll = 3.0
 	inGameNightMain.starSpawnLowRoll = 1.0
 	timer.start(30)
-	
+	sfx.play()
 
 
 func _on_timer_timeout() -> void:

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b2fm68giuww5c"
+path="res://.godot/imported/max stamina.ogg-9792ed4b29eefca8ecd98226ad158de8.oggvorbisstr"
+
+[deps]
+
+source_file="res://OURSTUFF/Night/power_ups/max stamina.ogg"
+dest_files=["res://.godot/imported/max stamina.ogg-9792ed4b29eefca8ecd98226ad158de8.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

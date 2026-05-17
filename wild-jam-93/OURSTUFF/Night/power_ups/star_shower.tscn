@@ -1,8 +1,13 @@
 [gd_scene format=3 uid="uid://ovc2pcg66xkq"]
 
 [ext_resource type="Script" uid="uid://dyihsbnv6wxu1" path="res://OURSTUFF/Night/power_ups/star_shower.gd" id="1_glkbe"]
+[ext_resource type="AudioStream" uid="uid://b00ta48h1cnk7" path="res://OURSTUFF/Night/power_ups/star shower.ogg" id="2_8fpat"]
 
 [node name="starShower" type="Node2D" unique_id=1792629313]
 script = ExtResource("1_glkbe")
 
 [node name="Timer" type="Timer" parent="." unique_id=884886474]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2085196247]
+stream = ExtResource("2_8fpat")
+bus = &"SFX"
