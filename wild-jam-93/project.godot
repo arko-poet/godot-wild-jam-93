@@ -12,6 +12,7 @@ config_version=5
 
 config/name="Nebula Bounty Hunters"
 config/version="0.2.2"
+config/tags=PackedStringArray("jam")
 run/main_scene="res://scenes/opening/opening.tscn"
 config/features=PackedStringArray("4.6")
 config/icon="uid://dh3n74rhxxpaa"
